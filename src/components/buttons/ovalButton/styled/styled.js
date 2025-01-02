@@ -7,7 +7,7 @@ export const Default = styled.button`
     height: ${(props) => props.height || '85px'};
     top: 355px;
     left: 20px;
-    padding: 20px 88px 20px 88px;
+    padding: 20px 88px;
     border-radius: 56px;
     border: none;
 

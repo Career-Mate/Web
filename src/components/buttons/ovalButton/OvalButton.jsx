@@ -1,8 +1,8 @@
 import * as S from './styled/styled';
 
-const OvalButton = ({backgroundColor,children}) =>{
+const OvalButton = ({width, height, backgroundColor,children}) =>{
     return (
-        <S.Default backgroundColor= {backgroundColor}>{children}</S.Default>
+        <S.Default width = {width} height = {height} backgroundColor= {backgroundColor}>{children}</S.Default>
     )
 }
 
