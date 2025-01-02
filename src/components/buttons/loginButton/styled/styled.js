@@ -9,8 +9,6 @@ export const Default = styled.button`
     //button design
     width: ${(props) => props.width || '230px'};
     height: ${(props) => props.height || '49px'};
-    top: 20px;
-    left: 20px;
     padding: 10px 68px;
     border-radius: ${(props) => props.type === 'membership' ? '0px 8px 8px 0px' : '8px 0px 0px 8px'};
     border: none;

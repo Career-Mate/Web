@@ -11,8 +11,6 @@ export const Default = styled.button`
     //button design
     width: ${(props) => props.width || '372px'};
     height: ${(props) => props.height || '59px'};
-    top: 20px;
-    left: 20px;
     padding: 20px 88px;
     border-radius: 10px;
     border: none;

@@ -5,8 +5,6 @@ export const Default = styled.button`
     //button design
     width: ${(props) => props.width || '536px'};
     height: ${(props) => props.height || '85px'};
-    top: 355px;
-    left: 20px;
     padding: 20px 88px;
     border-radius: 56px;
     border: none;
