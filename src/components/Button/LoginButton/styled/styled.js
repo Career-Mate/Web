@@ -10,7 +10,7 @@ export const Default = styled.button`
     width: ${(props) => props.width || '230px'};
     height: ${(props) => props.height || '49px'};
     padding: 10px 68px;
-    border-radius: ${(props) => props.type === 'membership' ? '0px 8px 8px 0px' : '8px 0px 0px 8px'};
+    border-radius: 5px 5px 5px 5px;
     border: none;
     //font 설정
     font-family: "Albert Sans";
