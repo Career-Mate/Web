@@ -3,7 +3,7 @@ const Thumbnail = ({width, height, path})=>{
     return(
         <S.Wrapper width = {width} height ={height}>
             <S.StyledImg src={path}/>
-        </S.Wrapper>
+        </S.Wrapper> 
     )
 }
 
