@@ -1,4 +1,4 @@
-import UserTemplate from './components/UserTemplate/UserTemplate';
+import UserTemplate from './components/UserTemplate/UserTemplate/Template';
 
 function App() {
     return (
