@@ -1,4 +1,4 @@
-import ContentCard from "./components/Card/ContentCard";
+import ContentCard from "./components/Card/ContentCard/ContentCard";
 
 function App() {
     return <ContentCard 
