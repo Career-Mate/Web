@@ -1,4 +1,10 @@
+import SubMenu from "./components/SubMenu";
+
 function App() {
-    return <h1>hello world</h1>;
+    return (
+        <>
+            <SubMenu />
+        </>
+    );
 }
 export default App;
