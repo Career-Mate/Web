@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const InputContainer = styled.div`
+export const InputContainer = styled.div`
     width: 633px;
     height: 91px;
     display: flex;
@@ -9,7 +9,7 @@ const InputContainer = styled.div`
     gap: 10px;
 `;
 
-const Label = styled.label`
+export const Label = styled.label`
     width: 633px;
     height: 21px;
     font-weight: 500;
@@ -18,7 +18,7 @@ const Label = styled.label`
     color: #000000;
 `;
 
-const StyledInputWrapper = styled.div`
+export const StyledInputWrapper = styled.div`
     width: 633px;
     height: 60px;
     display: flex;
@@ -32,7 +32,7 @@ const StyledInputWrapper = styled.div`
     gap: 10px;
 `;
 
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
     width: 100%;
     border: none;
     outline: none;
@@ -43,16 +43,3 @@ const StyledInput = styled.input`
         color: #c4c4c4;
     }
 `;
-
-const ProfileInput = ({ label, placeholder, value, onChange, type = 'text' }) => {
-    return (
-        <InputContainer>
-            <Label>{label}</Label>
-            <StyledInputWrapper>
-                <StyledInput type={type} placeholder={placeholder} value={value} onChange={onChange} />
-            </StyledInputWrapper>
-        </InputContainer>
-    );
-};
-
-export default ProfileInput;

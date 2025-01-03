@@ -1,4 +1,4 @@
-import Input from './components/Input/ProfileInput';
+import Input from './components/Input/ProfileInput/ProfileInput';
 
 function App() {
     return (
