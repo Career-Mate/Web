@@ -1,4 +1,4 @@
-import Thumbnail from "./components/thumbnail/Thumnail";
+import Thumbnail from "./components/Thumbnail/Thumbnail";
 
 function App() {
     return (
