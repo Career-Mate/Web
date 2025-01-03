@@ -1,7 +1,7 @@
 import * as S from './styled/styled'
-const Thumbnail = ({path})=>{
+const Thumbnail = ({width, height, path})=>{
     return(
-        <S.Wrapper>
+        <S.Wrapper width = {width} height ={height}>
             <S.StyledImg src={path}/>
         </S.Wrapper>
     )

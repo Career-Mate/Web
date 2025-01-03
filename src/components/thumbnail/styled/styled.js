@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    width: 391px;
-    height: 210px;
+    width: ${(props) => props.width || '391px'};
+    height: ${(props) => props.height || '210px'};
     border-radius: 20px;
     background-color: gray;
 `
