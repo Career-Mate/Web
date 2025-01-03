@@ -1,5 +1,15 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+
+const FontStyle = createGlobalStyle`
+  body {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000;
+  }
+`;
 
 const TemplateWrapper = styled.div`
     display: flex;
@@ -115,35 +125,42 @@ const UserTemplate = () => {
     };
 
     return (
-        <div>
-            {data.map((section, sectionIndex) => (
-                <TemplateWrapper key={sectionIndex}>
-                    <TemplateTitle>{section.title}</TemplateTitle>
-                    <TemplateTable>
-                        {section.items.map((item, itemIndex) => (
-                            <TableRow key={itemIndex}>
-                                <TableCellHeader
-                                    isFirstRow={itemIndex === 0}
-                                    isLastRow={itemIndex === section.items.length - 1}
-                                >
-                                    {item.label}
-                                </TableCellHeader>
-                                <TableCellData
-                                    isFirstRow={itemIndex === 0}
-                                    isLastRow={itemIndex === section.items.length - 1}
-                                >
-                                    <input
-                                        type="text"
-                                        value={item.content}
-                                        onChange={(e) => handleInputChange(sectionIndex, itemIndex, e.target.value)}
-                                    />
-                                </TableCellData>
-                            </TableRow>
-                        ))}
-                    </TemplateTable>
-                </TemplateWrapper>
-            ))}
-        </div>
+        <>
+            <FontStyle />
+            <link
+                href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Albert+Sans:wght@400;700&display=swap"
+                rel="stylesheet"
+            />
+            <div>
+                {data.map((section, sectionIndex) => (
+                    <TemplateWrapper key={sectionIndex}>
+                        <TemplateTitle>{section.title}</TemplateTitle>
+                        <TemplateTable>
+                            {section.items.map((item, itemIndex) => (
+                                <TableRow key={itemIndex}>
+                                    <TableCellHeader
+                                        isFirstRow={itemIndex === 0}
+                                        isLastRow={itemIndex === section.items.length - 1}
+                                    >
+                                        {item.label}
+                                    </TableCellHeader>
+                                    <TableCellData
+                                        isFirstRow={itemIndex === 0}
+                                        isLastRow={itemIndex === section.items.length - 1}
+                                    >
+                                        <input
+                                            type="text"
+                                            value={item.content}
+                                            onChange={(e) => handleInputChange(sectionIndex, itemIndex, e.target.value)}
+                                        />
+                                    </TableCellData>
+                                </TableRow>
+                            ))}
+                        </TemplateTable>
+                    </TemplateWrapper>
+                ))}
+            </div>
+        </>
     );
 };
 
