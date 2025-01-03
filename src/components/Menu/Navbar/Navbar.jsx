@@ -1,6 +1,6 @@
-import * as S from "./styled/styled-navbar.js"
+import * as S from "./styled/styled.js"
 import { useLocation, useNavigate } from "react-router-dom";
-import logo from '../../assets/career-mate.png'; 
+import logo from '../../../assets/career-mate.png'; 
 
 
 const Navbar=()=>{
