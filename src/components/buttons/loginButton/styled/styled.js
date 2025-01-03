@@ -21,12 +21,15 @@ export const Default = styled.button`
     //색상 설정
     color: white;
     background-color: ${(props) => colorPalette[props.status] || colorPalette["active"]};
+
+    //button 활성화 설정
+    pointer-events: ${(props) => (props.status === "unactive" ? "none" : "auto")};
+
     //action시
     &:active {
     transform: scale(0.99);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     }
-    
     &:hover {
         cursor: pointer;
     };

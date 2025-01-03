@@ -8,13 +8,12 @@ function App() {
             <SquareButton backgroundColor="deepgreen">deepgreen button</SquareButton>
             <SquareButton backgroundColor="green">green button</SquareButton>
             <SquareButton backgroundColor="lightgreen">lightgreen button</SquareButton>
-            <SquareButton backgroundColor="grey">버튼</SquareButton>
+            <SquareButton backgroundColor="grey">grey button</SquareButton>
             <OvalButton>버튼</OvalButton>
             <LoginButton type="login"/>
             <LoginButton type = "login" status="unactive" />
             <LoginButton type="membership" />
             <LoginButton type="membership" status="unactive"/>
-            
         </Box>
     )
         
