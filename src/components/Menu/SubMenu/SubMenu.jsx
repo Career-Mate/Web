@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as S from "./styled/styled-submenu.js"
+import * as S from "./styled/styled.js"
 
 const SubMenu=()=>{
     const [activeButton, setActiveButton]=useState(0);
