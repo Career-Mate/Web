@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import SquareButton from "./components/buttons/squareButton/SquareButton";
-import OvalButton from "./components/buttons/ovalButton/OvalButton";
-import LoginButton from "./components/buttons/loginButton/LoginButton";
+import SquareButton from "./components/Button/SquareButton/SquareButton";
+import OvalButton from "./components/Button/OvalButton/OvalButton";
+import LoginButton from "./components/Button/LoginButton/LoginButton";
 function App() {
     return (
         <Box>
