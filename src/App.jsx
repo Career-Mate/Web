@@ -1,4 +1,10 @@
+import UserTemplate from './components/UserTemplate/UserTemplate';
+
 function App() {
-    return <h1>hello world</h1>;
+    return (
+        <>
+            <UserTemplate />
+        </>
+    );
 }
 export default App;
