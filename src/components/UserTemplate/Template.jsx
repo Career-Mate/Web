@@ -7,7 +7,7 @@ import {
     TableRow,
     TableCellHeader,
     TableCellData,
-} from '../styled/styled';
+} from './styled/styled';
 
 const Template = () => {
     const [data, setData] = useState([
