@@ -1,13 +1,13 @@
-import { InputContainer, Label, StyledInputWrapper, StyledInput } from './styled/styled';
+import * as S from './styled/styled';
 
 const ProfileInput = ({ label, placeholder, value, onChange, type = 'text' }) => {
     return (
-        <InputContainer>
-            <Label>{label}</Label>
-            <StyledInputWrapper>
-                <StyledInput type={type} placeholder={placeholder} value={value} onChange={onChange} />
-            </StyledInputWrapper>
-        </InputContainer>
+        <S.InputContainer>
+            <S.Label>{label}</S.Label>
+            <S.StyledInputWrapper>
+                <S.StyledInput type={type} placeholder={placeholder} value={value} onChange={onChange} />
+            </S.StyledInputWrapper>
+        </S.InputContainer>
     );
 };
 
