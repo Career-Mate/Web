@@ -1,15 +1,4 @@
 import styled from 'styled-components';
-import { createGlobalStyle } from 'styled-components';
-
-export const FontStyle = createGlobalStyle`
-  body {
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #000;
-  }
-`;
 
 export const TemplateWrapper = styled.div`
     display: flex;
@@ -21,7 +10,6 @@ export const TemplateWrapper = styled.div`
 `;
 
 export const TemplateTitle = styled.h2`
-    font-family: 'Albert Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 26px;
@@ -55,11 +43,10 @@ export const TableCellHeader = styled.div.withConfig({
     shouldForwardProp: (prop) => !['isFirstRow', 'isLastRow'].includes(prop),
 })`
     width: 208px;
-    background: #cbf8dd;
+    background: #b6e3cf;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
@@ -78,14 +65,12 @@ export const TableCellData = styled.div.withConfig({
     display: flex;
     align-items: center;
     padding: 0 20px;
-    font-family: 'Inter', sans-serif;
     border-top-right-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
     border-bottom-right-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
 
     input {
         width: 100%;
         border: none;
-        font-family: 'Inter', sans-serif;
         font-weight: 500;
         font-size: 16px;
         line-height: 24px;

@@ -1,13 +1,5 @@
 import { useState } from 'react';
-import {
-    FontStyle,
-    TemplateWrapper,
-    TemplateTitle,
-    TemplateTable,
-    TableRow,
-    TableCellHeader,
-    TableCellData,
-} from './styled/styled';
+import * as S from './styled/styled';
 
 const Template = () => {
     const [data, setData] = useState([
@@ -31,25 +23,20 @@ const Template = () => {
 
     return (
         <>
-            <FontStyle />
-            <link
-                href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Albert+Sans:wght@400;700&display=swap"
-                rel="stylesheet"
-            />
             <div>
                 {data.map((section, sectionIndex) => (
-                    <TemplateWrapper key={sectionIndex}>
-                        <TemplateTitle>{section.title}</TemplateTitle>
-                        <TemplateTable>
+                    <S.TemplateWrapper key={sectionIndex}>
+                        <S.TemplateTitle>{section.title}</S.TemplateTitle>
+                        <S.TemplateTable>
                             {section.items.map((item, itemIndex) => (
-                                <TableRow key={itemIndex}>
-                                    <TableCellHeader
+                                <S.TableRow key={itemIndex}>
+                                    <S.TableCellHeader
                                         isFirstRow={itemIndex === 0}
                                         isLastRow={itemIndex === section.items.length - 1}
                                     >
                                         {item.label}
-                                    </TableCellHeader>
-                                    <TableCellData
+                                    </S.TableCellHeader>
+                                    <S.TableCellData
                                         isFirstRow={itemIndex === 0}
                                         isLastRow={itemIndex === section.items.length - 1}
                                     >
@@ -58,11 +45,11 @@ const Template = () => {
                                             value={item.content}
                                             onChange={(e) => handleInputChange(sectionIndex, itemIndex, e.target.value)}
                                         />
-                                    </TableCellData>
-                                </TableRow>
+                                    </S.TableCellData>
+                                </S.TableRow>
                             ))}
-                        </TemplateTable>
-                    </TemplateWrapper>
+                        </S.TemplateTable>
+                    </S.TemplateWrapper>
                 ))}
             </div>
         </>
