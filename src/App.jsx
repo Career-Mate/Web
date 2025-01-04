@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SquareButton from "./components/Button/SquareButton/SquareButton";
 import OvalButton from "./components/Button/OvalButton/OvalButton";
-import LoginButton from "./components/Button/LoginButton/LoginButton";
+
 function App() {
     return (
         <Box>
@@ -10,10 +10,6 @@ function App() {
             <SquareButton backgroundColor="lightgreen">lightgreen button</SquareButton>
             <SquareButton backgroundColor="grey">grey button</SquareButton>
             <OvalButton>버튼</OvalButton>
-            <LoginButton type="login"/>
-            <LoginButton type = "login" status="unactive" />
-            <LoginButton type="membership" />
-            <LoginButton type="membership" status="unactive"/>
         </Box>
     )
         
