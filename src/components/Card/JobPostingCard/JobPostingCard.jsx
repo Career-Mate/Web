@@ -1,10 +1,10 @@
-import * as S from "./styled/styled.js"
+import * as S from "../ContentCard/styled/styled"
 import defaultThumbnail from '../../../assets/thumbnail.png';
 import scrapUncheckedIcon from '../../../assets/scrap-uncheck.png';
 import scrapCheckedIcon from '../../../assets/scrap-check.png';
 import { useState } from "react";
 
-const ContentCard=({ contentName, thumbnail, scrap })=>{
+const JobPostingCard=({ companyName, deadline, contentName, thumbnail, scrap })=>{
     const [isScrap, setIsScrap]=useState(scrap);
 
     const handleClick=()=>{
@@ -13,13 +13,15 @@ const ContentCard=({ contentName, thumbnail, scrap })=>{
     
     return(
         <S.CardContainer>
+            <S.CompanyName>{companyName}</S.CompanyName>
             <S.Thumbnail src={thumbnail || defaultThumbnail} alt={contentName}/>
             <S.Line />
             <S.TitleWrapper>
                 <S.Title>{contentName}</S.Title>
+                <S.DetailButton $type={false}>공고 보기 &gt;</S.DetailButton>
             </S.TitleWrapper>
             <S.DeadlineWrapper>
-                <S.DetailButton $type={true}>자세히 보기 &gt;</S.DetailButton>
+                <S.Deadline>{deadline}</S.Deadline>
                 <S.ScrapIcon 
                     src={isScrap ? scrapCheckedIcon : scrapUncheckedIcon} 
                     alt="스크랩 아이콘"
@@ -30,5 +32,5 @@ const ContentCard=({ contentName, thumbnail, scrap })=>{
     )
 }
 
-export default ContentCard;
+export default JobPostingCard;
 
