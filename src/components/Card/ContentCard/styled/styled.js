@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const CardContainer = styled.div`
     display:flex;
     flex-direction:column;
-    width: 100%;
-    max-width: 416px;
+    width: 335px;
+    height: auto;
     border: 1px solid #C4C4C4;
     border-radius: 20px;
     box-shadow: 2px 2px 5.6px 0px #00000040,
@@ -23,7 +23,6 @@ export const CompanyName = styled.div`
 
 export const Thumbnail = styled.img`
     width: 100%;
-    height: 210px;
     border-radius: 20px;
     object-fit: cover;
 `;
@@ -38,24 +37,31 @@ export const TitleWrapper=styled.div`
     flex-direction:row;
     align-items: center;
     gap:20px;
+    flex-wrap: wrap;
 `
 
 export const Title = styled.div`
-    color: #333;
+    word-break:keep-all;
+    max-width:283px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 export const DetailButton = styled.div`
     font-size:16px;
     font-weight: 400;
-    color:  ${({ $type }) => $type ? '#000000' : '#00000080'};
+    color: ${({ $type }) => $type ? '#000000' : '#00000080'};
     cursor: pointer;
 `
 
 export const DeadlineWrapper = styled.div`
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
 `;
 
 export const Deadline = styled.div`
@@ -67,6 +73,7 @@ export const ScrapIcon = styled.img`
     width: 27px;
     height: 27px;
     cursor: pointer;
+    box-shadow: inset -6px 2px 0px rgba(255, 255, 255, 0.25);
     &:hover {
         opacity: 0.7;
     }
