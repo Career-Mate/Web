@@ -1,26 +1,34 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const sizeStyles = {
+    large: css`
+        width: 633px;
+        height: 121px;
+    `,
+    small: css`
+        width: 199px;
+        height: 112px;
+    `,
+};
 
 export const InputContainer = styled.div`
-    width: 633px;
-    height: 91px;
+    ${({ size }) => sizeStyles[size] || sizeStyles.large}
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    margin-bottom: 20px;
 `;
 
 export const Label = styled.label`
-    width: 633px;
-    height: 21px;
     font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
+    font-size: ${({ size }) => (size === 'large' ? '18px' : '16px')};
+    line-height: ${({ size }) => (size === 'large' ? '21px' : '19px')};
     color: #000000;
 `;
 
 export const StyledInputWrapper = styled.div`
-    width: 633px;
-    height: 60px;
+    ${({ size }) => (size === 'large' ? 'width: 633px; height: 60px;' : 'width: 199px; height: 60px;')};
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -42,4 +50,12 @@ export const StyledInput = styled.input`
     &::placeholder {
         color: #c4c4c4;
     }
+`;
+
+export const ErrorMessage = styled.span`
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ff5353;
+    width: 100%;
 `;
