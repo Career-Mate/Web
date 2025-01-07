@@ -11,14 +11,14 @@ const Navbar=()=>{
 
     return(
         <S.NavbarContainer>
-            <S.Conatiner>
+            <S.Container>
                 <S.Bar>
                     <S.LogoWrapper>
                         <S.Logo src={logo}
                             onClick={()=>navigate(``)}
                         />
                     </S.LogoWrapper>
-                    <S.Texts>
+                    <S.TextWrapper>
                         <S.Text 
                             $active={isActive('career')}
                             onClick={()=>navigate(`career`)}
@@ -37,9 +37,9 @@ const Navbar=()=>{
                         >
                             나의 커리어
                         </S.Text>
-                    </S.Texts>
+                    </S.TextWrapper>
                 </S.Bar>
-            </S.Conatiner>
+            </S.Container>
             <S.GradientBorder />
         </S.NavbarContainer>
     )

@@ -9,7 +9,7 @@ export const NavbarContainer = styled.div`
     position: relative;
 `;
 
-export const Conatiner=styled.div`
+export const Container=styled.div`
     display: flex;
     justify-content: space-between;
     height:100%;
@@ -40,7 +40,7 @@ export const Logo=styled.img`
 `;
 
 
-export const Texts=styled.div`
+export const TextWrapper=styled.div`
     display: flex;
     justify-content: space-between;
 `;
