@@ -5,7 +5,7 @@ export const NavbarContainer = styled.div`
     flex-direction: column; 
     justify-self: center;
     width: 98%;
-    height:111px;
+    height: 111px;
     position: relative;
 `;
 
@@ -19,15 +19,15 @@ export const Container=styled.div`
 export const Bar = styled.div`
     display: flex;
     justify-content:space-between;
-    align-items:flex-end;
-    width: 750px;
+    align-self:flex-end;
+    width: 70%;
 `;
 
 export const LogoWrapper = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: flex-end;
-    width:40%;
+    width:20%;
 `;
 
 export const Logo=styled.img`
@@ -48,13 +48,23 @@ export const TextWrapper=styled.div`
 export const Text = styled.div`
     font-size:16px;
     cursor: pointer; 
-    text-align:center;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    height:58px;
     padding:10px 20px;
     border-radius:10px 10px 0 0;
     box-sizing: border-box;
     font-weight:${({ $active }) => ($active ? " 700" : "normal")};
     color:${({ $active }) => ($active ? " #66CCAA" : "black")};
     border:${({ $active }) => ($active ? "3px solid #80CFB0" : "3px solid transparent")};
+`;
+
+export const ButtonWrapper=styled.div`
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding:10px 0;
 `;
 
 export const GradientBorder = styled.div`
