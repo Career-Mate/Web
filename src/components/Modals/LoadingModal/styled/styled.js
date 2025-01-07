@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const ModalOverlay = styled.div`
     width: 100vw;
@@ -13,20 +13,19 @@ export const ModalOverlay = styled.div`
     align-items: center;
 `;
 
-export const ModalWrapper = styled.div`
-
-
-    width: 336.5px;
-    height: 143.5px;
+export const ModalContainer = styled.div`
+    width: 673px;
+    height: 287px;
     top: 30%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-    border: 1px;
-    padding: 78px 40.5px;
+    transform: translate(-50%, 0);
+    
     background: #FFFFFF;
     border: 1px solid #C4C4C4;
-    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.6);
+    padding: 156px 81px;
+    gap: 10px;
 
     box-sizing: border-box;
     display: flex;
@@ -36,44 +35,47 @@ export const ModalWrapper = styled.div`
     position: absolute;
 `;
 
-export const ModalContent = styled.div`
-    width: 286.5px;
-    height: 105.5px;
-    gap: 9px;
+export const ModalWrapper = styled.div`
+    width: 573px;
+    height: 211px;
 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
+    align-content: flex-end;
+    padding: 0px;
+    gap: 18px;
 `;
 
-export const TextGroup = styled.div`
-    width: 286.5px;
-    height: 52.5px;
-    gap: 5px;
+export const TextWrapper = styled.div`
+    width: 573px;
+    height: 105px;
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
 `;
 
-export const Text = styled.div`
-    width: 260px;
-    height: 33px;
+export const StyledText = styled.div`
+    width: 520px;
+    height: 66px;
     
     font-family: 'Pretendard';
     font-weight: 700;
-    font-size: 14px;
-    line-height: 16.7px;
+    font-size: 28px;
+    line-height: 33px;
     color: #000000;
 `;
 
 export const Loading = styled.div`
     font-family: 'Pretendard';
     font-weight: 400;
-    font-size: 12px;
-    line-height: 14.32px;
+    font-size: 24px;
+    line-height: 29px;
     color: #000000;
     
     display: flex;
@@ -82,26 +84,39 @@ export const Loading = styled.div`
     gap: 5px;
 `;
 
+const rotate = keyframes`
+    from {
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+`
+
 export const Loader = styled.img`
-    width: 12px;
-    height: 12px;
+    width: 24px;
+    height: 24px;
+
+    animation: ${rotate} 1s linear infinite;
 `;
 
 export const CancelButton = styled.button`
-    width: 46.5px;
-    height: 21px;
-    border-radius: 5px;
-    padding: 10px 44px;
-    gap: 5px;
+    width: 93px;
+    height: 42px;
+
+    border-radius: 10px;
+    gap: 10px;
     background: #66CCAA;
 
     font-family: 'Pretendard';
+    font-style: normal;
     font-weight: 400;
-    font-size: 10px;
-    line-height: 11.94px;
+    font-size: 20px;
+    line-height: 24px;
     color: #FFFFFF;
 
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     border: none;
