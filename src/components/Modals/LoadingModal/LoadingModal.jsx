@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './styled/styled';
-import loadingIcon from '../../../assets/loader.png';
+import loadingIcon from '../../../assets/loader.svg';
 
 const LoadingModal = ({ text, onCancel }) => {
     return (
