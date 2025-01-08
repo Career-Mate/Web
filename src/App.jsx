@@ -1,41 +1,41 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RootLayout from "./layout/RootLayout";
-import HomePage from "./pages/HomePage";
-import Test from "./test/Test";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import RootLayout from './layout/RootLayout';
+import HomePage from './pages/HomePage';
+import Test from './test/Test';
 
-const router=createBrowserRouter([
+const router = createBrowserRouter([
     {
         path: '/',
-        element:<RootLayout/>,
+        element: <RootLayout />,
         children: [
             {
-                index:true,
-                element: <HomePage/>
+                index: true,
+                element: <HomePage />,
             },
             {
-                path:'career',
-                element: <HomePage/>
+                path: 'career',
+                element: <HomePage />,
             },
             {
-                path:'announcement',
-                element: <HomePage/>
+                path: 'announcement',
+                element: <HomePage />,
             },
             {
-                path:'mycareer',
-                element: <HomePage/>
+                path: 'mycareer',
+                element: <HomePage />,
             },
             {
-                path:'test',
-                element: <Test/>
+                path: 'test',
+                element: <Test />,
             },
-        ]
-    }
-])
+        ],
+    },
+]);
 
 function App() {
     return (
         <>
-            <RouterProvider router={router}/>
+            <RouterProvider router={router} />
         </>
     );
 }
