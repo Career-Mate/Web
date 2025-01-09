@@ -1,24 +1,25 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     width: 335px;
     height: auto;
-    border: 1px solid #C4C4C4;
+    border: 1px solid #c4c4c4;
     border-radius: 20px;
-    box-shadow: 2px 2px 5.6px 0px #00000040,
-                inset 0px 0px 6.6px 0px #00000040;
+    box-shadow:
+        2px 2px 5.6px 0px #00000040,
+        inset 0px 0px 6.6px 0px #00000040;
 
     padding: 24px 26px;
-    gap:10px;
+    gap: 10px;
     box-sizing: border-box;
     font-weight: 600;
     font-size: 18px;
 `;
 
 export const CompanyName = styled.div`
-    color: #C4C4C4;
+    color: #c4c4c4;
 `;
 
 export const Thumbnail = styled.img`
@@ -27,35 +28,35 @@ export const Thumbnail = styled.img`
     object-fit: cover;
 `;
 
-export const Line= styled.div`
+export const Line = styled.div`
     border-top: 2px dashed #C4C4C4;W
     width: 100%;
-`
+`;
 
-export const TitleWrapper=styled.div`
+export const TitleWrapper = styled.div`
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     align-items: center;
-    gap:20px;
+    gap: 20px;
     flex-wrap: wrap;
-`
+`;
 
 export const Title = styled.div`
-    word-break:keep-all;
-    max-width:283px;
+    word-break: keep-all;
+    max-width: 283px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical; 
+    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 `;
 
 export const DetailButton = styled.div`
-    font-size:16px;
+    font-size: 16px;
     font-weight: 400;
-    color: ${({ $type }) => $type ? '#000000' : '#00000080'};
+    color: ${({ $type }) => ($type ? '#000000' : '#00000080')};
     cursor: pointer;
-`
+`;
 
 export const DeadlineWrapper = styled.div`
     height: 40px;
@@ -65,8 +66,8 @@ export const DeadlineWrapper = styled.div`
 `;
 
 export const Deadline = styled.div`
-    color: #FF0000;
-    font-size:20px;
+    color: #ff0000;
+    font-size: 20px;
 `;
 
 export const ScrapIcon = styled.img`
