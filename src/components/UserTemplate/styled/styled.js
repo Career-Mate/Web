@@ -42,6 +42,7 @@ export const TableRow = styled.div`
 export const TableCellHeader = styled.div.withConfig({
     shouldForwardProp: (prop) => !['isFirstRow', 'isLastRow'].includes(prop),
 })`
+    position: relative;
     width: 208px;
     background: #b6e3cf;
     display: flex;
@@ -77,5 +78,49 @@ export const TableCellData = styled.div.withConfig({
         color: rgba(0, 0, 0, 0.8);
         background: none;
         outline: none;
+    }
+`;
+
+export const Tooltip = styled.div`
+    position: absolute;
+    width: 250px;
+    height: auto;
+    left: -10px;
+    top: -75px;
+    background: #ffffff;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 12px;
+    z-index: 10;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 30px;
+        width: 0;
+        height: 0;
+        border-left: -5px solid transparent;
+        border-right: 40px solid transparent;
+        border-top: 15px solid #ffffff;
+    }
+`;
+
+export const TooltipText = styled.div`
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.8);
+    line-height: 1.5;
+    text-align: center;
+`;
+
+export const IconWrapper = styled.span`
+    margin-left: 5px;
+    color: #ff0000;
+    cursor: pointer;
+    position: relative;
+
+    &:hover ${Tooltip} {
+        display: block;
     }
 `;

@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import { FaCalendarAlt } from 'react-icons/fa';
+import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import 'react-datepicker/dist/react-datepicker.css';
 import * as S from './styled/styled';
 
 const Template = () => {
+    const [tooltipVisible, setTooltipVisible] = useState(false);
+
     const [data, setData] = useState([
         {
             title: '1. 인턴 경험',
             items: [
-                { label: '직무명', content: '', placeholder: '직무명을 입력해주세요', type: 'text' },
+                { label: '직무명', content: '', placeholder: '직무명을 입력해주세요', type: 'text', required: true },
                 {
                     label: '근무기간',
                     content: '',
@@ -64,6 +66,22 @@ const Template = () => {
                                         isLastRow={itemIndex === section.items.length - 1}
                                     >
                                         {item.label}
+                                        {itemIndex === 0 && (
+                                            <S.IconWrapper
+                                                onMouseEnter={() => setTooltipVisible(true)}
+                                                onMouseLeave={() => setTooltipVisible(false)}
+                                            >
+                                                <FaExclamationCircle />
+                                                {tooltipVisible && (
+                                                    <S.Tooltip>
+                                                        <S.TooltipText>
+                                                            직무명, 근무기간, 회사명, 주요 성과 및 역할은 꼭
+                                                            입력해주세요 !
+                                                        </S.TooltipText>
+                                                    </S.Tooltip>
+                                                )}
+                                            </S.IconWrapper>
+                                        )}
                                     </S.TableCellHeader>
                                     <S.TableCellData
                                         isFirstRow={itemIndex === 0}
