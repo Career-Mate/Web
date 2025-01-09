@@ -1,10 +1,41 @@
-import ProfileInput from './components/Input/ProfileInput';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import RootLayout from './layout/RootLayout';
+import HomePage from './pages/HomePage';
+import Test from './test/Test';
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <RootLayout />,
+        children: [
+            {
+                index: true,
+                element: <HomePage />,
+            },
+            {
+                path: 'career',
+                element: <HomePage />,
+            },
+            {
+                path: 'announcement',
+                element: <HomePage />,
+            },
+            {
+                path: 'mycareer',
+                element: <HomePage />,
+            },
+            {
+                path: 'test',
+                element: <Test />,
+            },
+        ],
+    },
+]);
 
 function App() {
     return (
         <>
-            <ProfileInput label="이름" placeholder="이름을 입력하세요" size="large" />
-            <ProfileInput label="학교" placeholder="학교" size="small" />
+            <RouterProvider router={router} />
         </>
     );
 }
