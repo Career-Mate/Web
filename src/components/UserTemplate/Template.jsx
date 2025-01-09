@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import { FaCalendarAlt } from 'react-icons/fa';
+import 'react-datepicker/dist/react-datepicker.css';
 import * as S from './styled/styled';
 
 const Template = () => {
@@ -6,19 +9,23 @@ const Template = () => {
         {
             title: '1. 인턴 경험',
             items: [
-                { label: '직무명', content: '프론트엔드 개발자', placeholder: '직무명을 입력해주세요' },
-                { label: '근무기간', content: '2021년 3월 ~ 2022년 1월', placeholder: '근무기간을 정해주세요' },
-                { label: '회사명', content: 'Kakao Bank', placeholder: '회사명을 입력해주세요' },
+                { label: '직무명', content: '', placeholder: '직무명을 입력해주세요', type: 'text' },
+                {
+                    label: '근무기간',
+                    content: '',
+                    placeholder: '근무기간을 정해주세요',
+                    type: 'date',
+                    startDate: null,
+                    endDate: null,
+                },
+                { label: '회사명', content: '', placeholder: '회사명을 입력해주세요', type: 'text' },
                 {
                     label: '주요 성과 및 역할',
-                    content: 'React를 사용하여 웹 애플리케이션 개발',
+                    content: '',
                     placeholder: '주요 성과 및 역할을 입력해주세요',
+                    type: 'text',
                 },
-                {
-                    label: '느낀점 / 배운점',
-                    content: '코드 최적화와 성능 향상의 중요성 학습',
-                    placeholder: '느낀점/배운점을 입력해주세요',
-                },
+                { label: '느낀점 / 배운점', content: '', placeholder: '느낀점/배운점을 입력해주세요', type: 'text' },
             ],
         },
     ]);
@@ -26,6 +33,20 @@ const Template = () => {
     const handleInputChange = (sectionIndex, itemIndex, value) => {
         const updatedData = [...data];
         updatedData[sectionIndex].items[itemIndex].content = value;
+        setData(updatedData);
+    };
+
+    const handleDateChange = (sectionIndex, itemIndex, date, isStartDate) => {
+        const updatedData = [...data];
+        if (isStartDate) {
+            updatedData[sectionIndex].items[itemIndex].startDate = date;
+
+            if (updatedData[sectionIndex].items[itemIndex].endDate < date) {
+                updatedData[sectionIndex].items[itemIndex].endDate = null;
+            }
+        } else {
+            updatedData[sectionIndex].items[itemIndex].endDate = date;
+        }
         setData(updatedData);
     };
 
@@ -48,12 +69,52 @@ const Template = () => {
                                         isFirstRow={itemIndex === 0}
                                         isLastRow={itemIndex === section.items.length - 1}
                                     >
-                                        <input
-                                            type="text"
-                                            value={item.content}
-                                            placeholder={item.placeholder}
-                                            onChange={(e) => handleInputChange(sectionIndex, itemIndex, e.target.value)}
-                                        />
+                                        {item.type === 'date' ? (
+                                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                <FaCalendarAlt
+                                                    style={{
+                                                        marginRight: '8px',
+                                                        color: 'grey',
+                                                    }}
+                                                />
+                                                <DatePicker
+                                                    selected={item.startDate}
+                                                    onChange={(date) =>
+                                                        handleDateChange(sectionIndex, itemIndex, date, true)
+                                                    }
+                                                    selectsStart
+                                                    startDate={item.startDate}
+                                                    endDate={item.endDate}
+                                                    placeholderText="시작 날짜를 선택하세요"
+                                                />
+                                                <FaCalendarAlt
+                                                    style={{
+                                                        marginRight: '8px',
+                                                        color: 'grey',
+                                                    }}
+                                                />
+                                                <DatePicker
+                                                    selected={item.endDate}
+                                                    onChange={(date) =>
+                                                        handleDateChange(sectionIndex, itemIndex, date, false)
+                                                    }
+                                                    selectsEnd
+                                                    startDate={item.startDate}
+                                                    endDate={item.endDate}
+                                                    minDate={item.startDate}
+                                                    placeholderText="종료 날짜를 선택하세요"
+                                                />
+                                            </div>
+                                        ) : (
+                                            <input
+                                                type="text"
+                                                value={item.content}
+                                                placeholder={item.placeholder}
+                                                onChange={(e) =>
+                                                    handleInputChange(sectionIndex, itemIndex, e.target.value)
+                                                }
+                                            />
+                                        )}
                                     </S.TableCellData>
                                 </S.TableRow>
                             ))}
