@@ -5,8 +5,7 @@ export const ModalOverlay = styled.div`
     height: 100vh;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.25); 
-
+    background: rgba(0, 0, 0, 0.25);
     position: fixed;
     display: flex;
     justify-content: center;
@@ -15,21 +14,18 @@ export const ModalOverlay = styled.div`
 
 export const ModalContainer = styled.div`
     box-sizing: border-box;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
-
     position: absolute;
     width: 584px;
     height: 225px;
-    left: calc(50% - 584px/2 - 18px);
-    top: calc(50% - 225px/2 - 75.5px);
-
-    background: #FFFFFF;
-    border: 1px solid #C4C4C4;
+    left: calc(50% - 584px / 2 - 18px);
+    top: calc(50% - 225px / 2 - 75.5px);
+    background: #ffffff;
+    border: 1px solid #c4c4c4;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.6);
     border-radius: 20px;
 `;
@@ -43,7 +39,6 @@ export const ModalWrapper = styled.div`
     align-content: flex-end;
     padding: 0px;
     gap: 18px;
-
     width: 496px;
     height: 211px;
 `;
@@ -54,7 +49,6 @@ export const TextWrapper = styled.div`
     align-items: flex-start;
     padding: 0px;
     gap: 18px;
-
     width: 497px;
     height: 83px;
 `;
@@ -62,13 +56,10 @@ export const TextWrapper = styled.div`
 export const StyledText = styled.div`
     width: 520px;
     height: 36px;
-
-    font-family: 'Pretendard';
     font-style: normal;
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
-
     color: #000000;
 `;
 
@@ -78,11 +69,8 @@ export const Logout = styled.div`
     align-items: flex-start;
     padding: 0px;
     gap: 10px;
-
     width: 497px;
     height: 29px;
-
-    font-family: 'Pretendard';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -95,8 +83,8 @@ export const ButtonWrapper = styled.div`
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 10px;  
-    margin-bottom: 15px; 
+    margin-top: 10px;
+    margin-bottom: 15px;
 `;
 
 export const CancelButton = styled.button`
@@ -105,25 +93,19 @@ export const CancelButton = styled.button`
     justify-content: center;
     align-items: center;
     gap: 10px;
-
     width: 93px;
     height: 42px;
-
-    background: #C4C8CE;
+    background: #c4c8ce;
     border-radius: 10px;
-    
-    font-family: 'Pretendard';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
     text-align: center;
-
-    color: #FFFFFF;
-
+    color: #ffffff;
     border: none;
     cursor: pointer;
-    white-space: nowrap; 
+    white-space: nowrap;
 `;
 
 export const LogoutButton = styled.button`
@@ -132,21 +114,16 @@ export const LogoutButton = styled.button`
     justify-content: center;
     align-items: center;
     gap: 10px;
-
     width: 115px;
     height: 42px;
-
-    background: #66CCAA;
+    background: #66ccaa;
     border-radius: 10px;
-    font-family: 'Pretendard';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
-    
-    color: #FFFFFF;
-    
+    color: #ffffff;
     border: none;
     cursor: pointer;
-    white-space: nowrap; 
-`
+    white-space: nowrap;
+`;
