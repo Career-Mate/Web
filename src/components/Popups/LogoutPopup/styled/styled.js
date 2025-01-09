@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalOverlay = styled.div`
+export const PopupOverlay = styled.div`
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -12,7 +12,7 @@ export const ModalOverlay = styled.div`
     align-items: center;
 `;
 
-export const ModalContainer = styled.div`
+export const PopupContainer = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@ export const ModalContainer = styled.div`
     border-radius: 20px;
 `;
 
-export const ModalWrapper = styled.div`
+export const PopupWrapper = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

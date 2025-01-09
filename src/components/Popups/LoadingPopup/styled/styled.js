@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
-export const ModalOverlay = styled.div`
+export const PopupOverlay = styled.div`
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -12,7 +12,7 @@ export const ModalOverlay = styled.div`
     align-items: center;
 `;
 
-export const ModalContainer = styled.div`
+export const PopupContainer = styled.div`
     width: 673px;
     height: 287px;
     top: 30%;
@@ -32,7 +32,7 @@ export const ModalContainer = styled.div`
     position: absolute;
 `;
 
-export const ModalWrapper = styled.div`
+export const PopupWrapper = styled.div`
     width: 573px;
     height: 211px;
     display: flex;

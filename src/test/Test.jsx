@@ -1,18 +1,32 @@
 import styled from 'styled-components';
+import React, { useState } from 'react';
 import LogoutPopup from '../components/Popups/LogoutPopup/LogoutPopup';
 
 const Test = () => {
-    return <LogoutPopup></LogoutPopup>;
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    // 모달 열기 함수
+    const handleOpenPopup = () => {
+        setIsPopupOpen(true);
+    };
+
+    // 모달 닫기 함수
+    const handleClosePopup = () => {
+        setIsPopupOpen(false);
+    };
+
+    // 로그아웃 함수
+    const handleLogout = () => {
+        console.log('로그아웃되었습니다.');
+        setIsPopupOpen(false);
+    };
+
+    return (
+        <div>
+            <button onClick={handleOpenPopup}>로그아웃</button>
+
+            {isPopupOpen && <LogoutPopup onCancel={handleClosePopup} onLogout={handleLogout} />}
+        </div>
+    );
 };
 export default Test;
-
-const LogoutPopup = styled.div`
-    background-color: #797979;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100vw;
-    height: 100vh;
-    padding-left: 10px;
-    padding-top: 10px;
-`;
