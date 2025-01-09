@@ -16,7 +16,7 @@ export const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 5px;
     margin-bottom: 20px;
 `;
 
@@ -37,7 +37,7 @@ export const StyledInputWrapper = styled.div`
     border-radius: 10px;
     box-sizing: border-box;
     padding: 20px 29px;
-    gap: 10px;
+    gap: 8px;
 `;
 
 export const StyledInput = styled.input`
