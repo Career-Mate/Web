@@ -4,15 +4,23 @@ export const Conatiner = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     width: 349px;
     height: 268px;
+    background: #ffffff;
     border: 1px solid #b9b9b9;
-    border-left: none;
     border-radius: 0 20px 20px 0;
-    padding: 16px 17px 16px 40px;
+    padding: 16px 17px;
     gap: 10px;
     box-sizing: border-box;
+`;
+
+export const ButtonWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 14px;
 `;
 
 export const Button = styled.button`
