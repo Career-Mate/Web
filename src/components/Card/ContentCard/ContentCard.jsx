@@ -1,7 +1,7 @@
 import * as S from './styled/styled.js';
-import defaultThumbnail from '../../../assets/thumbnail.png';
-import scrapUncheckedIcon from '../../../assets/scrap-uncheck.png';
-import scrapCheckedIcon from '../../../assets/scrap-check.png';
+import defaultThumbnail from '../../../assets/thumbnail.svg';
+import scrapUncheckedIcon from '../../../assets/scrap-uncheck.svg';
+import scrapCheckedIcon from '../../../assets/scrap-check.svg';
 import { useState } from 'react';
 
 const ContentCard = ({ contentName, thumbnail, scrap }) => {
@@ -12,8 +12,8 @@ const ContentCard = ({ contentName, thumbnail, scrap }) => {
     };
 
     return (
-        <S.CardContainer>
-            <S.Thumbnail src={thumbnail || defaultThumbnail} alt={contentName} />
+        <S.CardContainer $width={'375px'}>
+            <S.Thumbnail src={thumbnail || defaultThumbnail} alt={contentName} $width={'323px'} $height={'227px'} />
             <S.Line />
             <S.TitleWrapper>
                 <S.Title>{contentName}</S.Title>

@@ -3,14 +3,12 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 335px;
-    height: auto;
+    width: ${({ $width }) => $width};
     border: 1px solid #c4c4c4;
     border-radius: 20px;
     box-shadow:
         2px 2px 5.6px 0px #00000040,
         inset 0px 0px 6.6px 0px #00000040;
-
     padding: 24px 26px;
     gap: 10px;
     box-sizing: border-box;
@@ -23,7 +21,8 @@ export const CompanyName = styled.div`
 `;
 
 export const Thumbnail = styled.img`
-    width: 100%;
+    width: ${({ $width }) => $width};
+    height: ${({ $height }) => $height};
     border-radius: 20px;
     object-fit: cover;
 `;
@@ -43,9 +42,9 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled.div`
     word-break: keep-all;
-    max-width: 283px;
+    max-width: 290px;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;

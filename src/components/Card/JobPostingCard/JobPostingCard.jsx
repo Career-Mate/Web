@@ -1,7 +1,7 @@
 import * as S from '../ContentCard/styled/styled';
-import defaultThumbnail from '../../../assets/thumbnail.png';
-import scrapUncheckedIcon from '../../../assets/scrap-uncheck.png';
-import scrapCheckedIcon from '../../../assets/scrap-check.png';
+import defaultThumbnail from '../../../assets/thumbnail.svg';
+import scrapUncheckedIcon from '../../../assets/scrap-uncheck.svg';
+import scrapCheckedIcon from '../../../assets/scrap-check.svg';
 import { useState } from 'react';
 
 const JobPostingCard = ({ companyName, deadline, contentName, thumbnail, scrap }) => {
@@ -12,14 +12,14 @@ const JobPostingCard = ({ companyName, deadline, contentName, thumbnail, scrap }
     };
 
     return (
-        <S.CardContainer>
+        <S.CardContainer $width={'400px'}>
             <S.CompanyName>{companyName}</S.CompanyName>
-            <S.Thumbnail src={thumbnail || defaultThumbnail} alt={contentName} />
+            <S.Thumbnail src={thumbnail || defaultThumbnail} alt={contentName} $width={'348px'} $height={'200px'} />
             <S.Line />
-            <S.TitleWrapper>
-                <S.Title>{contentName}</S.Title>
-                <S.DetailButton $type={false}>공고 보기 &gt;</S.DetailButton>
-            </S.TitleWrapper>
+
+            <S.Title>{contentName}</S.Title>
+            <S.DetailButton $type={false}>공고 보기 &gt;</S.DetailButton>
+
             <S.DeadlineWrapper>
                 <S.Deadline>{deadline}</S.Deadline>
                 <S.ScrapIcon
