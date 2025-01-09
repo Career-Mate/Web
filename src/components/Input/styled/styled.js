@@ -22,7 +22,7 @@ export const InputContainer = styled.div`
 
 export const Label = styled.label`
     font-weight: 500;
-    font-size: ${({ size }) => (size === 'large' ? '18px' : '16px')};
+    font-size: 18px;
     line-height: ${({ size }) => (size === 'large' ? '21px' : '19px')};
     color: #000000;
 `;
