@@ -124,3 +124,35 @@ export const IconWrapper = styled.span`
         display: block;
     }
 `;
+
+export const DatePickerRow = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 20px;
+`;
+
+export const DateInput = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .calendar-icon {
+        font-size: 16px;
+        color: #c4c4c4;
+    }
+
+    input {
+        font-size: 16px;
+        width: 200px;
+        outline: none;
+    }
+`;
+
+export const DateDivider = styled.span`
+    font-size: 16px;
+    font-weight: 500;
+    color: #d9d9d9;
+    padding-right: 20px;
+`;

@@ -88,43 +88,40 @@ const Template = () => {
                                         isLastRow={itemIndex === section.items.length - 1}
                                     >
                                         {item.type === 'date' ? (
-                                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                <FaCalendarAlt
-                                                    style={{
-                                                        marginRight: '8px',
-                                                        color: 'grey',
-                                                    }}
-                                                />
-                                                <DatePicker
-                                                    selected={item.startDate}
-                                                    onChange={(date) =>
-                                                        handleDateChange(sectionIndex, itemIndex, date, true)
-                                                    }
-                                                    selectsStart
-                                                    startDate={item.startDate}
-                                                    endDate={item.endDate}
-                                                    placeholderText="시작 날짜를 선택해주세요"
-                                                    dateFormat="yyyy년 MM월 dd일"
-                                                />
-                                                <FaCalendarAlt
-                                                    style={{
-                                                        marginRight: '8px',
-                                                        color: 'grey',
-                                                    }}
-                                                />
-                                                <DatePicker
-                                                    selected={item.endDate}
-                                                    onChange={(date) =>
-                                                        handleDateChange(sectionIndex, itemIndex, date, false)
-                                                    }
-                                                    selectsEnd
-                                                    startDate={item.startDate}
-                                                    endDate={item.endDate}
-                                                    minDate={item.startDate}
-                                                    placeholderText="종료 날짜를 선택해주세요"
-                                                    dateFormat="yyyy년 MM월 dd일"
-                                                />
-                                            </div>
+                                            <S.DatePickerRow>
+                                                <S.DateInput>
+                                                    <FaCalendarAlt className="calendar-icon" />
+                                                    <DatePicker
+                                                        selected={item.startDate}
+                                                        onChange={(date) =>
+                                                            handleDateChange(sectionIndex, itemIndex, date, true)
+                                                        }
+                                                        selectsStart
+                                                        startDate={item.startDate}
+                                                        endDate={item.endDate}
+                                                        placeholderText="시작 날짜를 선택해주세요"
+                                                        dateFormat="yyyy년 MM월 dd일"
+                                                    />
+                                                </S.DateInput>
+
+                                                <S.DateDivider>|</S.DateDivider>
+
+                                                <S.DateInput>
+                                                    <FaCalendarAlt className="calendar-icon" />
+                                                    <DatePicker
+                                                        selected={item.endDate}
+                                                        onChange={(date) =>
+                                                            handleDateChange(sectionIndex, itemIndex, date, false)
+                                                        }
+                                                        selectsEnd
+                                                        startDate={item.startDate}
+                                                        endDate={item.endDate}
+                                                        minDate={item.startDate}
+                                                        placeholderText="종료 날짜를 선택해주세요"
+                                                        dateFormat="yyyy년 MM월 dd일"
+                                                    />
+                                                </S.DateInput>
+                                            </S.DatePickerRow>
                                         ) : (
                                             <input
                                                 type="text"
