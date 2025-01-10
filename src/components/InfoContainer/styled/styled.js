@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalContainer = styled.div`
+export const InfoContainer = styled.div`
     box-sizing: border-box;
     position: absolute;
     top: 50%;
@@ -17,7 +17,7 @@ export const ModalContainer = styled.div`
     overflow: auto;
 `;
 
-export const ModalContent = styled.div`
+export const ContainerContent = styled.div`
     padding: 20px;
     position: relative;
 `;
