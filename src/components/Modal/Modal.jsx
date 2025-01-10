@@ -1,12 +1,12 @@
 import React from 'react';
-import * as S from './styled/styled';
+import * as S from './styled/styled'; 
 
-const Modal = ({ children }) => {
+const Container = ({ children }) => {
     return (
-        <S.ModalContainer>
+        <S.ModalContainer> 
             <S.ModalContent>{children}</S.ModalContent>
         </S.ModalContainer>
     );
 };
 
-export default Modal;
+export default Container;
