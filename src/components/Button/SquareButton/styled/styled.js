@@ -11,7 +11,7 @@ export const StyledButton = styled.button`
     
     width: ${(props) => props.width || '372px'};
     height: ${(props) => props.height || '59px'};
-    padding: 20px 88px;
+    padding: ${(props) => props.padding || '10px 20px'};
     border-radius: 10px;
     border: none;
 
