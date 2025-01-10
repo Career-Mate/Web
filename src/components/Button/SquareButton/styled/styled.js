@@ -20,7 +20,7 @@ export const StyledButton = styled.button`
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
-    
+
     color: white;
     background-color: ${(props) => colorPalette[props.backgroundColor] || colorPalette["deepgreen"]};
     
