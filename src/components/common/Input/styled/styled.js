@@ -2,16 +2,15 @@ import styled from 'styled-components';
 
 export const InputContainer = styled.div`
     width: 633px;
-    height: 91px;
+    height: 121px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 5px;
+    margin-bottom: 20px;
 `;
 
 export const Label = styled.label`
-    width: 633px;
-    height: 21px;
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
@@ -29,7 +28,7 @@ export const StyledInputWrapper = styled.div`
     border-radius: 10px;
     box-sizing: border-box;
     padding: 20px 29px;
-    gap: 10px;
+    gap: 8px;
 `;
 
 export const StyledInput = styled.input`
@@ -42,4 +41,12 @@ export const StyledInput = styled.input`
     &::placeholder {
         color: #c4c4c4;
     }
+`;
+
+export const ErrorMessage = styled.span`
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ff5353;
+    width: 100%;
 `;
