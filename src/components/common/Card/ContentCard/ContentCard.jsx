@@ -1,7 +1,7 @@
 import * as S from './styled/styled.js';
-import defaultThumbnail from '../../../assets/thumbnail.svg';
-import scrapUncheckedIcon from '../../../assets/scrap-uncheck.svg';
-import scrapCheckedIcon from '../../../assets/scrap-check.svg';
+import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
+import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
+import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
 import { useState } from 'react';
 
 const ContentCard = ({ contentName, thumbnail, scrap }) => {
