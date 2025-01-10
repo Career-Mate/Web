@@ -1,5 +1,6 @@
 import React from 'react';
 import * as S from './styled/styled';
+import SquareButton from '../../Button/SquareButton/SquareButton';
 
 const LogoutPopup = ({ onCancel, onLogout }) => {
     return (
@@ -11,8 +12,12 @@ const LogoutPopup = ({ onCancel, onLogout }) => {
                         <S.Logout>정말 로그아웃 하시겠어요?</S.Logout>
                     </S.TextWrapper>
                     <S.ButtonWrapper>
-                        <S.CancelButton onClick={onCancel}>취소</S.CancelButton>
-                        <S.LogoutButton onClick={onLogout}>로그아웃</S.LogoutButton>
+                        <SquareButton width = "95px" height = "48px" padding = "12px 40x"
+                            backgroundColor = "grey" onClick = {onCancel}
+                        >취소</SquareButton>
+                        <SquareButton width = "95px" height = "48px" padding = "0px"
+                            backgroundColor = "green" onClick = {onLogout}
+                        >로그아웃</SquareButton>
                     </S.ButtonWrapper>
                 </S.PopupWrapper>
             </S.PopupContainer>

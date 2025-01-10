@@ -9,4 +9,5 @@ export const RootLayoutContainer = styled.div`
 export const MainContent = styled.main`
     flex: 1;
     overflow-y: auto;
+    position:relative;
 `;
