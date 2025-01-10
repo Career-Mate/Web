@@ -103,7 +103,8 @@ const Template = () => {
                                                     selectsStart
                                                     startDate={item.startDate}
                                                     endDate={item.endDate}
-                                                    placeholderText="시작 날짜를 선택하세요"
+                                                    placeholderText="시작 날짜를 선택해주세요"
+                                                    dateFormat="yyyy년 MM월 dd일"
                                                 />
                                                 <FaCalendarAlt
                                                     style={{
@@ -120,7 +121,8 @@ const Template = () => {
                                                     startDate={item.startDate}
                                                     endDate={item.endDate}
                                                     minDate={item.startDate}
-                                                    placeholderText="종료 날짜를 선택하세요"
+                                                    placeholderText="종료 날짜를 선택해주세요"
+                                                    dateFormat="yyyy년 MM월 dd일"
                                                 />
                                             </div>
                                         ) : (
