@@ -12,7 +12,7 @@ export const NavbarContainer = styled.div`
 export const Container=styled.div`
     display: flex;
     justify-content: space-between;
-    height: 100%;
+    height:100%;
     position: relative; 
 `;
 
@@ -40,7 +40,7 @@ export const Logo=styled.img`
 `;
 
 
-export const TextWrapper = styled.div`
+export const TextWrapper=styled.div`
     display: flex;
     justify-content: space-between;
 `;
@@ -57,7 +57,8 @@ export const Text = styled.div`
     box-sizing: border-box;
     font-weight:${({ $active }) => ($active ? " 700" : "normal")};
     color:${({ $active }) => ($active ? " #66CCAA" : "black")};
-    border:${({ $active }) => ($active ? "3px solid #80CFB0" : "3px solid transparent")};`;
+    border:${({ $active }) => ($active ? "3px solid #80CFB0" : "3px solid transparent")};
+`;
 
 export const ButtonWrapper=styled.div`
     display: flex;
@@ -72,6 +73,6 @@ export const GradientBorder = styled.div`
     left: 0;
     width: 100%;
     height: 4px; 
-    border-radius: 4px;
+    border-radius:4px;
     background: linear-gradient(to right, #66CCAA, #A8D5BA);
 `;
