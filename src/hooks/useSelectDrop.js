@@ -8,18 +8,16 @@ export const academicStatus = ['재학', '휴학', '졸업예정', '졸업', '�
 
 export const useSelectDrop = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedOption, setSelectedOption] = useState('');
     const [isTouched, setIsTouched] = useState(false);
 
     const toggleDropDown = () => {
-        if (!isOpen) {
-            setIsTouched(true);
-        }
+        setIsTouched(true);
         setIsOpen((prev) => !prev);
     };
 
     const onClick = (option) => {
-        setSelectedOption(selectedOption === option ? null : option);
+        setSelectedOption(selectedOption === option ? '' : option);
         setIsOpen(false);
     };
 

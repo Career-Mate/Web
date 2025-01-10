@@ -5,6 +5,7 @@ export const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
+    margin-bottom: 20px;
 `;
 
 export const Label = styled.div`
@@ -125,6 +126,7 @@ export const WarningText = styled.p`
     color: #ff5353;
     font-weight: 400;
     font-size: 14px;
+
     z-index: 1;
-    display: ${({ $isTouched, $isOpen, $isSelected }) => ($isTouched && !$isOpen && !$isSelected ? 'flex' : 'hidden')};
+    visibility: ${({ $isTouched, $selectedOption }) => ($isTouched && $selectedOption === '' ? 'visible' : 'hidden')};
 `;

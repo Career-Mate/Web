@@ -1,6 +1,6 @@
 import * as S from './styled/styled.js';
-import dropButton from '../../../assets/interest-job-button.svg';
-import { useSelectDrop } from '../../../hooks/useSelectDrop.js';
+import dropButton from '../../../../assets/interest-job-button.svg';
+import { useSelectDrop } from '../../../../hooks/useSelectDrop.js';
 
 const SelectDropInput = ({ label, width, errorMessage, optionData, boxwidth, boxheight }) => {
     const { isOpen, selectedOption, isTouched, toggleDropDown, onClick } = useSelectDrop();
@@ -15,11 +15,7 @@ const SelectDropInput = ({ label, width, errorMessage, optionData, boxwidth, box
                         <S.DropButton src={dropButton} />
                     </S.DropButtonWrapper>
                 </S.Selector>
-                {isTouched && !selectedOption && (
-                    <S.WarningText $isTouched={isTouched} $isOpen={isOpen} $selectedOption={selectedOption}>
-                        * {errorMessage} 입력해주세요!
-                    </S.WarningText>
-                )}
+
                 {isOpen && (
                     <S.OptionContainer $width={boxwidth} $height={boxheight}>
                         <div className="triangle" />
@@ -38,6 +34,9 @@ const SelectDropInput = ({ label, width, errorMessage, optionData, boxwidth, box
                     </S.OptionContainer>
                 )}
             </S.SelectorWrapper>
+            <S.WarningText $isTouched={isTouched} $selectedOption={selectedOption}>
+                * {errorMessage} 입력해주세요!
+            </S.WarningText>
         </S.InputContainer>
     );
 };
