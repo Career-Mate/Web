@@ -1,18 +1,8 @@
-import styled, { css } from 'styled-components';
-
-const sizeStyles = {
-    large: css`
-        width: 633px;
-        height: 121px;
-    `,
-    small: css`
-        width: 199px;
-        height: 112px;
-    `,
-};
+import styled from 'styled-components';
 
 export const InputContainer = styled.div`
-    ${({ size }) => sizeStyles[size] || sizeStyles.large}
+    width: 633px;
+    height: 121px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -23,12 +13,13 @@ export const InputContainer = styled.div`
 export const Label = styled.label`
     font-weight: 500;
     font-size: 18px;
-    line-height: ${({ size }) => (size === 'large' ? '21px' : '19px')};
+    line-height: 21px;
     color: #000000;
 `;
 
 export const StyledInputWrapper = styled.div`
-    ${({ size }) => (size === 'large' ? 'width: 633px; height: 60px;' : 'width: 199px; height: 60px;')};
+    width: 633px;
+    height: 60px;
     display: flex;
     flex-direction: row;
     align-items: center;
