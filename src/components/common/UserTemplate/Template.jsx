@@ -1,7 +1,7 @@
 import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import useTemplateData from '../../hooks/useTemplateData';
+import useTemplateData from '../../../hooks/useTemplateData';
 import * as S from './styled/styled';
 
 const Template = () => {
