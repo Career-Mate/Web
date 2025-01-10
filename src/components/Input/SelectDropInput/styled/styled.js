@@ -54,7 +54,7 @@ export const DropButton = styled.img`
 
 export const OptionContainer = styled.div`
     width: ${({ $width }) => $width};
-    height: ${({ $height }) => `calc(${$height} - 10px)`};
+    height: ${({ $height }) => `calc(${$height} - 8px)`};
     border-radius: 10px;
     box-sizing: border-box;
     background-color: white;
