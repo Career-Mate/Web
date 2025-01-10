@@ -4,7 +4,7 @@ export const StyledButton = styled.button`
     
     width: ${(props) => props.width || '536px'};
     height: ${(props) => props.height || '85px'};
-    padding: 20px 88px;
+    padding: ${(props) => props.padding || '20px 88px'};
     border-radius: 56px;
     border: none;
     
