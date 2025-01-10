@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const TemplateWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -44,8 +45,8 @@ export const TableCellHeader = styled.div.withConfig({
     width: 45%;
     background: #b6e3cf;
     display: flex;
-    align-items: center;
-    padding: 0 20px;
+    align-items: flex-start;
+    padding: 20px;
     font-weight: 700;
     font-size: 16px;
     color: rgba(0, 0, 0, 0.8);
@@ -67,8 +68,10 @@ export const TableCellData = styled.div.withConfig({
     white-space: normal;
     border-top-right-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
     border-bottom-right-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
+
     textarea {
         width: 100%;
+        height: 20px;
         display: flex;
         border: none;
         font-weight: 500;
@@ -78,8 +81,8 @@ export const TableCellData = styled.div.withConfig({
         outline: none;
         resize: none;
         overflow: hidden;
-        white-space: normal; /* 줄 바꿈 설정 */
-        word-wrap: break-word; /* 긴 단어가 잘리도록 설정 */
-        height: 20px;
+        white-space: normal;
+        word-wrap: break-word;
+        box-sizing: border-box;
     }
 `;
