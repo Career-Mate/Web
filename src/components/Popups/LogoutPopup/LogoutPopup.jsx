@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './styled/styled';
-import SquareButton from '../../Button/SquareButton/SquareButton';
+import SquareButton from '../../common/Button/SquareButton/SquareButton';
 
 const LogoutPopup = ({ onCancel, onLogout }) => {
     return (

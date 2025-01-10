@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styled/styled';
-import loadingIcon from '../../../assets/loader.svg';
-import SquareButton from '../../Button/SquareButton/SquareButton';
+import loadingIcon from '../../../assets/common/loader.svg';
+import SquareButton from '../../common/Button/SquareButton/SquareButton';
 
 const LoadingPopup = ({ text, onCancel }) => {
     return (
