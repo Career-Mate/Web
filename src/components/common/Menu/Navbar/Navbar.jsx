@@ -1,8 +1,7 @@
 import * as S from './styled/styled.js';
 import { useLocation, useNavigate } from 'react-router-dom';
-import logo from '../../../assets/career-mate.svg';
+import logo from '../../../../assets/common/career-mate.svg';
 import LogoutButton from '../../Button/LogoutButton/LogoutButton.jsx';
-import SquareButton from '../../Button/SquareButton/SquareButton.jsx';
 
 const Navbar = () => {
     const navigate = useNavigate();
