@@ -107,7 +107,7 @@ export const Tooltip = styled.div`
 `;
 
 export const TooltipText = styled.div`
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.8);
     line-height: 1.5;

@@ -5,7 +5,8 @@ import useTemplateData from '../../hooks/useTemplateData';
 import * as S from './styled/styled';
 
 const Template = () => {
-    const { tooltipVisible, setTooltipVisible, data, handleInputChange, handleDateChange } = useTemplateData();
+    const { tooltipVisible, setTooltipVisible, data, handleInputChange, handleDateChange, generateTooltipText } =
+        useTemplateData();
 
     return (
         <div>
@@ -28,9 +29,7 @@ const Template = () => {
                                             <FaExclamationCircle />
                                             {tooltipVisible && (
                                                 <S.Tooltip>
-                                                    <S.TooltipText>
-                                                        직무명, 근무기간, 회사명, 주요 성과 및 역할은 꼭 입력해주세요 !
-                                                    </S.TooltipText>
+                                                    <S.TooltipText>{generateTooltipText(section)}</S.TooltipText>
                                                 </S.Tooltip>
                                             )}
                                         </S.IconWrapper>
