@@ -1,4 +1,4 @@
-import useInput from '../../hooks/useInput';
+import useInput from '../../../hooks/useInput';
 import * as S from './styled/styled';
 
 const ProfileInput = ({
