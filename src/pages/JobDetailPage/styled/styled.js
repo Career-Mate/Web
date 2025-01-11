@@ -107,7 +107,7 @@ export const SummaryText = styled.span`
     font-weight: 400;
 `
 
-export const InfoListWrapper = styled.div`
+export const ListWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 70px;

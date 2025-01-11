@@ -1,11 +1,9 @@
 import * as S from "./styled/styled.js";
 import companyImg from "../../assets/JobDetailPage/companyImg.svg" 
 import SquareButton from "../../components/common/Button/SquareButton/SquareButton.jsx";
-import InfoList from "../../components/infoList/infoList.jsx";
-import { data as initialData } from "./data.js";
+import JobDetailList from "../../components/JobDetailList/JobDetailList.jsx";
 import { useState } from "react";
-const JobDetailPage = ()=>{
-    const [data,setData] = useState(initialData);
+const JobDetailPage = ({data})=>{
 
     return (
         <S.Container>
@@ -23,11 +21,11 @@ const JobDetailPage = ()=>{
                     <S.SummaryText>어렵고 복잡한 법률 및 정책 시장을 혁신해 더 많은 사람들에게 혜택을 
                         누리도록 하는 일에 가슴이 뛰는 열정과 능력을 가지신 분들을 찾고 있습니다.</S.SummaryText>
                 </S.SummaryTextWrapper>
-                <S.InfoListWrapper>
+                <S.ListWrapper>
                     {data.map((section,idx)=>(
-                        <InfoList title = {section.title} items = {section.items}></InfoList>
+                        <JobDetailList title = {section.title} items = {section.items} key={idx}></JobDetailList>
                     ))}
-                </S.InfoListWrapper>
+                </S.ListWrapper>
             </S.SummaryWrapper>
             <S.ButtonWrapper>
                 <SquareButton backgroundColor={"green"}>채용공고 자세히 보러가기</SquareButton>
