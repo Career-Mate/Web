@@ -22,9 +22,9 @@ export const PopupContainer = styled.div`
     width: 706px;
     min-width: 400px;
     height: 287px;
-    left: calc(50% - 706px/2);
-    top: calc(50% - 287px/2 - 33px);
-    background: #FFFFFF;
+    left: calc(50% - 706px / 2);
+    top: calc(50% - 287px / 2 - 33px);
+    background: #ffffff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
     border-radius: 20px;
 `;
@@ -96,7 +96,7 @@ export const LoadingText = styled.div`
     flex: none;
     order: 0;
     flex-grow: 0;
-`
+`;
 
 const rotate = keyframes`
     from {

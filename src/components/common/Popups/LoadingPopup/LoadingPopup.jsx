@@ -15,9 +15,9 @@ const LoadingPopup = ({ text, onCancel }) => {
                             <S.LoadingImg src={loadingIcon} />
                         </S.LoadingWrapper>
                     </S.TextWrapper>
-                    <SquareButton width = "95px" height = "48px" padding = "0px"
-                        backgroundColor = "grey" onClick = {onCancel}
-                    >취소</SquareButton>
+                    <SquareButton width="95px" height="48px" padding="0px" backgroundColor="grey" onClick={onCancel}>
+                        취소
+                    </SquareButton>
                 </S.PopupWrapper>
             </S.PopupContainer>
         </S.PopupOverlay>
