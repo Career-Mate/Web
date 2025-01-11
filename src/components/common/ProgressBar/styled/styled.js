@@ -21,9 +21,9 @@ export const RectangleWrapper = styled.div`
 export const Rectangle = styled.div`
     width: 70px;
     height: 16px;
-    background-color:${(props)=>( props.status === "done" ? '#66CCAA' : '#D9D9D9')};
+    background-color:${(props)=>( props.$status === "done" ? '#66CCAA' : '#D9D9D9')};
     ${(props) => {
-        switch (props.type) {
+        switch (props.$type) {
             case 0:
                 return 'border-radius: 5px 0 0 5px;';
             case 4:

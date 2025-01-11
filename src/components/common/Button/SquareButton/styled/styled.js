@@ -9,9 +9,9 @@ const colorPalette = {
 
 export const StyledButton = styled.button`
     
-    width: ${(props) => props.width || '372px'};
-    height: ${(props) => props.height || '59px'};
-    padding: ${(props) => props.padding || '10px 20px'};
+    width: ${(props) => props.$width || '372px'};
+    height: ${(props) => props.$height || '59px'};
+    padding: ${(props) => props.$padding || '10px 20px'};
     border-radius: 10px;
     border: none;
 
@@ -22,7 +22,7 @@ export const StyledButton = styled.button`
     line-height: 24px;
 
     color: white;
-    background-color: ${(props) => colorPalette[props.backgroundColor] || colorPalette["deepgreen"]};
+    background-color: ${(props) => colorPalette[props.$backgroundColor] || colorPalette["deepgreen"]};
     
     &:active {
     transform: scale(0.99);
