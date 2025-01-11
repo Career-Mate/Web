@@ -1,5 +1,5 @@
 import * as S from './styled/styled'
-import check from "../../../assets/JobDetailPage/check.svg";
+import check from "../../assets/JobDetailPage/check.svg"
 
 const InfoList = ({title = "", items = []}) => {
     return(
