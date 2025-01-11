@@ -75,12 +75,10 @@ export const GradientBorder = styled.div`
     position: absolute;
     bottom: 0;
     left: 20;
-    width: calc(100% - 40px); /* 양쪽 패딩 합계 */
+    width: calc(100% - 40px);
     padding: 0 20px;
     height: 4px;
-    box-sizing: border-box; /* 패딩 고려 */
-    margin: 0; /* 불필요한 간격 제거 */
-    padding: 0; /* 패딩 제거 */
+    box-sizing: border-box;
     border-radius: 4px;
     background: linear-gradient(to right, #66ccaa, #a8d5ba);
 `;
