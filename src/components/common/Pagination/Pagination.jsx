@@ -2,9 +2,9 @@ import React from 'react';
 import * as S from './styled/styled';
 
 import firstIcon from '../../../assets/Pagination/arrow-first.svg';
-import prevIcon from '../../../assets/pagination/arrow-prev.svg';
-import nextIcon from '../../../assets/pagination/arrow-next.svg';
-import lastIcon from '../../../assets/pagination/arrow-last.svg';
+import prevIcon from '../../../assets/Pagination/arrow-prev.svg';
+import nextIcon from '../../../assets/Pagination/arrow-next.svg';
+import lastIcon from '../../../assets/Pagination/arrow-last.svg';
 
 const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
     const maxTotalPages = 8;
