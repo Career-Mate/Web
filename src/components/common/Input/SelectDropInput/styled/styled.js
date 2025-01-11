@@ -114,8 +114,8 @@ export const Option = styled.div`
     text-align: center;
     font-size: 12px;
     display: flex;
-    align-items: center; /* 옵션 텍스트의 정렬을 맞춤 */
-    justify-content: center; /* 옵션 텍스트의 정렬을 맞춤 */
+    align-items: center;
+    justify-content: center;
     background-color: ${({ $selected }) => ($selected ? '#EDEDED' : 'inherit')};
     z-index: 10;
 `;
@@ -126,7 +126,6 @@ export const WarningText = styled.p`
     color: #ff5353;
     font-weight: 400;
     font-size: 14px;
-
     z-index: 1;
     visibility: ${({ $isTouched, $selectedOption }) => ($isTouched && $selectedOption === '' ? 'visible' : 'hidden')};
 `;
