@@ -9,8 +9,9 @@ const ProgressBar = ({progression})=>{
                 {Array.from({length: 5}).map((_,i)=>(
                     
                     <S.Rectangle 
-                        type={i}
-                        status = {i<progression ? "done" : "undone"}
+                        $type={i}
+                        key = {i}
+                        $status = {i<progression ? "done" : "undone"}
                     />
                 ))}
             </S.RectangleWrapper>
