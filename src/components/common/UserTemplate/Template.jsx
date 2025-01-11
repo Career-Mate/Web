@@ -1,12 +1,12 @@
 import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import useTemplateData from '../../hooks/useTemplateData';
+import { useTemplateData, userTemplateInitialData } from '../../../hooks/useTemplateData';
 import * as S from './styled/styled';
 
 const Template = () => {
-    const { tooltipVisible, setTooltipVisible, data, handleInputChange, handleDateChange, generateTooltipText } =
-        useTemplateData();
+    const { tooltipVisible, setTooltipVisible, handleInputChange, data, handleDateChange, generateTooltipText } =
+        useTemplateData(userTemplateInitialData);
 
     return (
         <div>
