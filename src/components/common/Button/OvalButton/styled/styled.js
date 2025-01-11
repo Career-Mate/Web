@@ -8,14 +8,15 @@ export const StyledButton = styled.button`
     border-radius: 56px;
     border: none;
     
-    font-family: "Albert Sans";
     text-align: center;
     font-size: 20px;
     font-weight: 400;
-    line-height: 24px;
     
     color: black;
     background-color: ${(props) => props.$backgroundColor || 'white'};
+
+    box-shadow: 0px 0px 10px 0px #00000040;
+
     
     &:active {
     transform: scale(0.99);

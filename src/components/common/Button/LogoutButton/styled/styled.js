@@ -11,7 +11,6 @@ export const LogoutContainer = styled.div`
 export const NameLabel = styled.label`
     font-size: 18px;
     font-weight: 700;
-    line-height: 21.48px;
     text-align: center;
 `
 export const Seperator = styled.label`
