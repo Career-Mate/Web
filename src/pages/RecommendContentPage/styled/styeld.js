@@ -3,14 +3,15 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    width: 100%;
 `
 export const TopContainer = styled.div`
-    width: 1440px;
+    width: inherit;
     height: 230px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 38px;
 `
 export const TextWrapper = styled.div`
@@ -36,6 +37,42 @@ export const Text = styled.span`
 `
 
 export const BottomContainer = styled.div`
-    width: 1440px;
-    height: 736px;
+    width: inherit;
+    height: fit-content;
+    background-color: #EFEFEF;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 56px;
+
+    padding-bottom: 190px;
+`
+export const JobBox = styled.div`
+    width: 509px;
+
+    padding: 18px 46px 18px 46px;
+    
+    border-radius: 20px;
+    border: 4px solid #84D0B1;
+    box-shadow: 0px 0px 6.8px 0px #00000040;
+    box-shadow: 0px 0px 14.5px 0px #00000040 inset;
+    
+    margin-top: 40px;
+    margin-bottom: 56px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    font-weight: 400;
+    font-size: 29px;
+`
+export const CardWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
 `
