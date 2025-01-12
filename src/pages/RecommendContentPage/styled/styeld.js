@@ -58,7 +58,8 @@ export const JobBox = styled.div`
     border: 4px solid #84D0B1;
     box-shadow: 0px 0px 6.8px 0px #00000040;
     box-shadow: 0px 0px 14.5px 0px #00000040 inset;
-    
+    background-color: #FFFFFF;
+
     margin-top: 40px;
     margin-bottom: 56px;
 
