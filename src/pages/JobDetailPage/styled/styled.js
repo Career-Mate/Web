@@ -4,21 +4,25 @@ export const Container = styled.div`
     position: relative;
     height: fit-content;
     width: fit-content;
-    padding: 20px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    box-sizing: border-box;
+    padding: 0 40px;
+    width: 100%;
 `
 
 export const ImgWrapper = styled.div`
-    width : 1349px;
+    width : inherit;
     height : 542px;
     border-radius: 20px;
     background-color: black;
     position: relative;
     overflow: hidden;
     z-index: 1;
+
 `
 export const StyledImg = styled.img`
     width: 100%;
@@ -64,14 +68,14 @@ export const ImgText = styled.span`
 `
 
 export const SummaryWrapper = styled.div`
-    width: 1349px;
+    width: inherit;
     height: fit-content;
     box-shadow: 0px 0px 10px 0px #00000040;
     box-shadow: 0px 0px 7px 0px #00000040 inset;
     background: #FFFFFF;
     border-radius: 20px;
     border: 1px solid #C4C4C4;
-    
+
     position: relative;
     margin-top: -15px;
     z-index: 2;
@@ -80,13 +84,19 @@ export const SummaryWrapper = styled.div`
     flex-direction: column;
     align-items: center;
 
+    box-sizing: border-box;
+    padding: 0 40px;
+
 `
 export const SummaryTextWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 18px;
-    width: 1200px;
+
+    width: inherit;
     height: fit-content;
+
+    box-sizing: border-box;
     padding-bottom: 52px;
     padding-top: 70px;
     padding-left: 29px;
@@ -111,11 +121,11 @@ export const ListWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 70px;
-    width: 1200px;
+    width: inherit;
     height: fit-content;
 
-    padding-top: 40px;
-    padding-bottom: 57px;
+    box-sizing: border-box;
+    padding: 40px 20px 60px 20px;
 `
 
 export const ButtonWrapper = styled.div`
