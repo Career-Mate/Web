@@ -113,7 +113,7 @@ export const FourthTextWrapper = styled.div`
     align-items: center;
     gap: 27px;
     font-size: 20px;
-
+    padding-top: 100px;
     p {
         span {
             color: rgba(42, 157, 143, 1);
