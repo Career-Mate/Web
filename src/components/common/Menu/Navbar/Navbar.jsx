@@ -2,17 +2,15 @@ import * as S from './styled/styled.js';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../../assets/common/career-mate.svg';
 import LogoutButton from '../../Button/LogoutButton/LogoutButton.jsx';
-import { useState } from 'react';
 import SquareButton from '../../Button/SquareButton/SquareButton.jsx';
+import useAuth from '../../../../hooks/useAuth.js';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const [isLogin, setIsLogin] = useState(false);
+    const { isLogin, loginHandler } = useAuth();
 
     const isActive = (path) => location.pathname.startsWith(`/${path}`);
-
-    const loginHandler = () => setIsLogin((prev) => !prev);
 
     return (
         <S.NavbarContainer>
