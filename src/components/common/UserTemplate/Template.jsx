@@ -1,12 +1,18 @@
 import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import useTemplateData from '../../hooks/useTemplateData';
+import { useTemplateData, userTemplateInitialData } from '../../../hooks/useTemplateData';
 import * as S from './styled/styled';
 
 const Template = () => {
-    const { tooltipVisible, setTooltipVisible, data, handleInputChange, handleDateChange, generateTooltipText } =
-        useTemplateData();
+    const { tooltipVisible, setTooltipVisible, handleInputChange, data, handleDateChange, generateTooltipText } =
+        useTemplateData(userTemplateInitialData);
+    const autoResize = (textarea) => {
+        if (textarea) {
+            textarea.style.height = '20px';
+            textarea.style.height = `${textarea.scrollHeight}px`;
+        }
+    };
 
     return (
         <div>
@@ -41,7 +47,7 @@ const Template = () => {
                                 >
                                     {item.type === 'date' ? (
                                         <S.DatePickerRow>
-                                            <S.DateInput>
+                                            <S.DateInput isInline>
                                                 <FaCalendarAlt className="calendar-icon" />
                                                 <DatePicker
                                                     selected={item.startDate}
@@ -58,7 +64,7 @@ const Template = () => {
 
                                             <S.DateDivider>|</S.DateDivider>
 
-                                            <S.DateInput>
+                                            <S.DateInput isInline>
                                                 <FaCalendarAlt className="calendar-icon" />
                                                 <DatePicker
                                                     selected={item.endDate}
@@ -75,11 +81,11 @@ const Template = () => {
                                             </S.DateInput>
                                         </S.DatePickerRow>
                                     ) : (
-                                        <input
-                                            type="text"
+                                        <textarea
                                             value={item.content}
                                             placeholder={item.placeholder}
                                             onChange={(e) => handleInputChange(sectionIndex, itemIndex, e.target.value)}
+                                            onInput={(e) => autoResize(e.target)}
                                         />
                                     )}
                                 </S.TableCellData>
