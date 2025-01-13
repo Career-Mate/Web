@@ -66,6 +66,8 @@ export const Text = styled.div`
 
 export const ButtonWrapper = styled.div`
     display: flex;
+    align-items: flex-end;
+    height: auto;
     align-items: center;
     box-sizing: border-box;
     padding: 10px 0;
