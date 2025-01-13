@@ -1,15 +1,21 @@
 import React from 'react';
 import * as S from './styled/styled';
-import loadingIcon from '../../../assets/common/loader.svg';
-import SquareButton from '../../common/Button/SquareButton/SquareButton';
+import loadingIcon from '../../../../assets/common/loader.svg';
+import SquareButton from '../../Button/SquareButton/SquareButton';
 
-const LoadingPopup = ({ text, onCancel }) => {
+const LoadingPopup = ({ userName, type, onCancel }) => {
+    const text =
+        type === 'template'
+            ? `${userName} 메이트님의 <br /> 관심 직무에 맞는 템플릿을 제공해드릴게요!`
+            : `${userName} 메이트님의 <br /> 관심 직무에 맞는 채용 공고를 추천 중이에요!`;
+
     return (
         <S.PopupOverlay>
             <S.PopupContainer>
                 <S.PopupWrapper>
                     <S.TextWrapper>
-                        <S.StyledText>{text}</S.StyledText>
+                        {/* dangerouslySetInnerHTML을 사용하여 <br /> 태그를 적용 */}
+                        <S.StyledText dangerouslySetInnerHTML={{ __html: text }} />
                         <S.LoadingWrapper>
                             <S.LoadingText>잠시만 기다려 주세요...</S.LoadingText>
                             <S.LoadingImg src={loadingIcon} />
