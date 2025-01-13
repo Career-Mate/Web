@@ -1,27 +1,16 @@
 import styled from 'styled-components';
 
 export const PaginationContainer = styled.div`
-    width: 296px;
+    width: 189px;
     height: 26px;
     bottom: 20px;
-    left: calc(50% - 296px / 2);
+    left: calc(50% - 189px / 2);
     gap: 56px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     position: absolute;
-`;
-
-export const ArrowWrapper = styled.div`
-    width: 68px;
-    height: 21px;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 32px;
 `;
 
 export const ArrowButton = styled.button`
@@ -32,7 +21,6 @@ export const ArrowButton = styled.button`
     align-items: center;
     justify-content: center;
     display: flex;
-    flex-direction: row;
     padding: 0px;
     cursor: pointer;
     opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};

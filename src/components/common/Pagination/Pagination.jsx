@@ -1,61 +1,39 @@
 import React from 'react';
 import * as S from './styled/styled';
 
-import firstIcon from '../../../assets/Pagination/arrow-first.svg';
 import prevIcon from '../../../assets/Pagination/arrow-prev.svg';
 import nextIcon from '../../../assets/Pagination/arrow-next.svg';
-import lastIcon from '../../../assets/Pagination/arrow-last.svg';
 
 const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
-    const maxTotalPages = 8;
-    const maxVisiblePages = 4;
-    const effectiveTotalPages = Math.min(totalPages, maxTotalPages);
-
-    let startPage = Math.max(1, currentPage - maxVisiblePages / 2);
-    startPage = Math.max(1, Math.min(startPage, effectiveTotalPages - maxVisiblePages + 1));
-    let endPage = Math.min(effectiveTotalPages, startPage + maxVisiblePages - 1);
+    let startPage = 1;
+    let endPage = Math.min(2, totalPages);
 
     const handlePageClick = (page) => {
-        if (1 <= page && page <= effectiveTotalPages) {
+        if (1 <= page && page <= endPage) {
             setCurrentPage(page);
         }
     };
 
     return (
         <S.PaginationContainer>
-            <S.ArrowWrapper>
-                <S.ArrowButton onClick={() => handlePageClick(1)} disabled={currentPage === 1}>
-                    <img src={firstIcon} alt="first" />
-                </S.ArrowButton>
+            <S.ArrowButton onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 1}>
+                <img src={prevIcon} alt="prev" />
+            </S.ArrowButton>
 
-                <S.ArrowButton onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 1}>
-                    <img src={prevIcon} alt="prev" />
-                </S.ArrowButton>
-            </S.ArrowWrapper>
-
-            <S.PageWrapper $pageCount={Math.min(maxVisiblePages, effectiveTotalPages)}>
-                {Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i).map((page, index, arr) => (
-                    <S.PageNumber key={page} onClick={() => handlePageClick(page)} $isActive={page === currentPage}>
-                        {page}
+            <S.PageWrapper>
+                <S.PageNumber onClick={() => handlePageClick(1)} $isActive={currentPage === 1}>
+                    1
+                </S.PageNumber>
+                {totalPages > 1 && (
+                    <S.PageNumber onClick={() => handlePageClick(2)} $isActive={currentPage === 2}>
+                        2
                     </S.PageNumber>
-                ))}
+                )}
             </S.PageWrapper>
 
-            <S.ArrowWrapper>
-                <S.ArrowButton
-                    onClick={() => handlePageClick(currentPage + 1)}
-                    disabled={currentPage === effectiveTotalPages}
-                >
-                    <img src={nextIcon} alt="next" />
-                </S.ArrowButton>
-
-                <S.ArrowButton
-                    onClick={() => handlePageClick(effectiveTotalPages)}
-                    disabled={currentPage === effectiveTotalPages}
-                >
-                    <img src={lastIcon} alt="last" />
-                </S.ArrowButton>
-            </S.ArrowWrapper>
+            <S.ArrowButton onClick={() => handlePageClick(currentPage + 1)} disabled={currentPage === endPage}>
+                <img src={nextIcon} alt="next" />
+            </S.ArrowButton>
         </S.PaginationContainer>
     );
 };
