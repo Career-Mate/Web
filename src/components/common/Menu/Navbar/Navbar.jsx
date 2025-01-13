@@ -2,7 +2,7 @@ import * as S from './styled/styled.js';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../../assets/common/career-mate.svg';
 import LogoutButton from '../../Button/LogoutButton/LogoutButton.jsx';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import SquareButton from '../../Button/SquareButton/SquareButton.jsx';
 
 const Navbar = () => {
