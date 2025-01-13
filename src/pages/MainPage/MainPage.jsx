@@ -10,6 +10,27 @@ import InterviewBox from '../../components/MainPage/InterviewBox/InterviewBox';
 import Card from '../../components/MainPage/Card/Card';
 import OvalButton from '../../components/common/Button/OvalButton/OvalButton';
 
+const cards = [
+    {
+        title: '커리어 정리',
+        url: Books,
+        first: '각 직무별로 최적화된 템플릿을 제공',
+        second: '경험을 하여 스스로 느낀 것을 회고하여 정리하도록 도와드려요.',
+    },
+    {
+        title: '맞춤형 채용 공고 추천',
+        url: Search,
+        first: '적합한 채용 공고를 찾기 위한\n시간 낭비는 그만!',
+        second: '커리어 메이트가 커리어 정리 템플릿을 분석하고 딱 맞는 채용 공고를 추천해드립니다.',
+    },
+    {
+        title: '나의 커리어',
+        url: Note,
+        first: '커리어 정리 템플릿을 수정\n스크랩한 채용 공고 확인',
+        second: '나의 커리어 발전 과정을 지속적으로 관리하고 업데이트할 수 있습니다.',
+    },
+];
+
 const MainPage = () => {
     return (
         <S.Container>
@@ -59,24 +80,9 @@ const MainPage = () => {
                     </p>
                 </S.FourthTextWrapper>
                 <S.CardWrapper>
-                    <Card
-                        title={'커리어 정리'}
-                        url={Books}
-                        first="각 직무별로 최적화된 템플릿을 제공"
-                        second="경험을 하여 스스로 느낀 것을 회고하여 정리하도록 도와드려요."
-                    />
-                    <Card
-                        title={'맞춤형 채용 공고 추천'}
-                        url={Search}
-                        first={'적합한 채용 공고를 찾기 위한\n시간 낭비는 그만!'}
-                        second="커리어 메이트가 커리어 정리 템플릿을 분석하고 딱 맞는 채용 공고를 추천해드립니다."
-                    />
-                    <Card
-                        title={'나의 커리어'}
-                        url={Note}
-                        first={'커리어 정리 템플릿을 수정\n스크랩한 채용 공고 확인'}
-                        second="나의 커리어 발전 과정을 지속적으로 관리하고 업데이트할 수 있습니다."
-                    />
+                    {cards.map((card, index) => (
+                        <Card key={index} {...card} />
+                    ))}
                 </S.CardWrapper>
             </S.FourthPage>
             <S.FifthPage>
