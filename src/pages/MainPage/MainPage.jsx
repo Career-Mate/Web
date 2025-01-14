@@ -35,7 +35,7 @@ const MainPage = () => {
     return (
         <S.MainContainer>
             <S.FirstPage>
-                <object type="image/svg+xml" data={Logo}></object>
+                <object width="300px" type="image/svg+xml" data={Logo}></object>
                 <S.FirstTextWrapper>
                     경험 정리부터 지원까지
                     <b>

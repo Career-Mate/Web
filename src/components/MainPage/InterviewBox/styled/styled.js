@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const InterviewBoxContainer = styled.div`
     display: flex;
     flex-direction: ${({ $type }) => ($type === 'left' ? 'row' : 'row-reverse')};
     align-items: center;

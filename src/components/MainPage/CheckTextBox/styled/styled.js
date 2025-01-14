@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const CheckBoxContainer = styled.div`
     display: flex;
     gap: 18px;
     justify-content: space-between;
