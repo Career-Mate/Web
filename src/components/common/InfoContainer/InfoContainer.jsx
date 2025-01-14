@@ -22,7 +22,7 @@ const InfoContainer = ({
 
             <S.ContentWrapper>
                 {mainText && <S.MainText>{mainText}</S.MainText>}
-                {detailText && <S.DetailText>{detailText}</S.DetailText>}
+                {detailText && <S.DetailText dangerouslySetInnerHTML={{ __html: detailText }} />}
 
                 {buttons.length > 0 && (
                     <S.ButtonWrapper>
