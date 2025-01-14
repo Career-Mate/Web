@@ -33,7 +33,7 @@ const cards = [
 
 const MainPage = () => {
     return (
-        <S.Container>
+        <S.MainContainer>
             <S.FirstPage>
                 <object type="image/svg+xml" data={Logo}></object>
                 <S.FirstTextWrapper>
@@ -99,7 +99,7 @@ const MainPage = () => {
                 커리어 시작과 성장 관련한 협업 문의는 언제든 열려있습니다.
                 <S.OtherBox>이메일 문의 | official@careermate.co.kr</S.OtherBox>
             </S.OtherPage>
-        </S.Container>
+        </S.MainContainer>
     );
 };
 
