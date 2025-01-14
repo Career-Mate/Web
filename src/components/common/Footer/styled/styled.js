@@ -6,7 +6,7 @@ export const FooterContainer = styled.footer`
     flex-direction: column;
     position: relative;
     width: 100%;
-    height: 249px;
+    height: 220px;
     background: #f7f8f9;
     border-top: 1px solid #d8d8d8;
     align-items: center;
@@ -17,15 +17,15 @@ export const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 19px;
+    gap: 10px;
     width: 1165px;
-    height: 177px;
+    height: 120px;
 `;
 
 export const Text = styled.div`
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 21px;
     color: #656565;
 `;
@@ -33,7 +33,7 @@ export const Text = styled.div`
 export const Section = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 `;
 
 export const Row = styled.div`
@@ -43,14 +43,14 @@ export const Row = styled.div`
     gap: 16px;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 19px;
     color: #9d9d9d;
 `;
 
 export const Divider = styled.span`
     color: #9d9d9d;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 19px;
 `;
 
@@ -58,7 +58,7 @@ export const Copyright = styled.div`
     color: #9d9d9d;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 10px;
     line-height: 19px;
     text-align: center;
     margin-top: 20px;
