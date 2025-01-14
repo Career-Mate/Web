@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
 import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import Pagination from '../../../components/common/Pagination/Pagination';
+import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 
 const RecommendJobPage = ({ user }) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -57,6 +58,15 @@ const RecommendJobPage = ({ user }) => {
                     </S.BottomCardWrapper>
                 </S.CardWrapper>
                 <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                <OvalButton
+                    width={'280px'}
+                    height={'58px'}
+                    padding={'17px 74px'}
+                    backgroundColor={'#FFFFFF'}
+                    onClick={console.log('콘텐츠 보러 가기')}
+                >
+                    {'콘텐츠 보러 가기'}
+                </OvalButton>
             </S.BottomContainer>
         </S.Container>
     );
