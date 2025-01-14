@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './styled/styled';
-import loadingIcon from '../../../../assets/common/loader.svg';
+import loadingIcon from '../../../../assets/loader.svg';
 import SquareButton from '../../Button/SquareButton/SquareButton';
 
 const LoadingPopup = ({ userName, type, onCancel }) => {
