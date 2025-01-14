@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
 export const InfoContainer = styled.div`
-    position: absolute;
     width: ${(props) => props.$width};
     height: ${(props) => props.$height};
-    top: ${(props) => props.$top};
-    left: ${(props) => props.$left};
-    transform: translate(-50%, -50%);
+    left: 50%;
+    transform: translateX(-50%);
     background: #ffffff;
     border: 1px solid #c4c4c4;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.23);
@@ -15,7 +13,10 @@ export const InfoContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    overflow: visible;
+    margin-top: ${(props) => `calc(${props.$top} * 0.5)`};
+    margin-bottom: ${(props) => `calc(${props.$top} * 0.7)`};
+    position: relative;
 `;
 
 export const Logo = styled.img`
@@ -86,7 +87,7 @@ export const DetailText = styled.p`
 export const ButtonWrapper = styled.div`
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
     width: 100%;
     margin-top: 30px;
 `;

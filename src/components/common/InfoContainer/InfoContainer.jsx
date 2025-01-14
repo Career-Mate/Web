@@ -8,7 +8,6 @@ const InfoContainer = ({
     width,
     height,
     top,
-    left,
     showLogo = false,
     showTitleText = false,
     mainText,
@@ -16,13 +15,13 @@ const InfoContainer = ({
     buttons = [],
 }) => {
     return (
-        <S.InfoContainer $width={width} $height={height} $top={top} $left={left}>
+        <S.InfoContainer $width={width} $height={height} $top={top}>
             {showLogo && <S.Logo src={Logo} alt="Logo" $top={top} />}
             {showTitleText && <S.TitleText $top={top}>프로필 불러오기</S.TitleText>}
 
             <S.ContentWrapper>
                 {mainText && <S.MainText>{mainText}</S.MainText>}
-                {detailText && <S.DetailText>{detailText}</S.DetailText>}
+                {detailText && <S.DetailText dangerouslySetInnerHTML={{ __html: detailText }} />}
 
                 {buttons.length > 0 && (
                     <S.ButtonWrapper>
