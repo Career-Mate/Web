@@ -1,4 +1,4 @@
-import * as S from './styled/styeld';
+import * as S from './styled/styled';
 import ContentCard from '../../components/common/Card/ContentCard/ContentCard'
 const RecommendContentPage = ({ user = '' }) => {
     return (
