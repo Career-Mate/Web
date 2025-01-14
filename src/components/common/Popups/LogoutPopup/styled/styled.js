@@ -10,6 +10,7 @@ export const PopupOverlay = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 `;
 
 export const PopupContainer = styled.div`
@@ -75,7 +76,6 @@ export const Logout = styled.div`
     font-weight: 400;
     font-size: 24px;
     line-height: 29px;
-
     color: #000000;
 `;
 

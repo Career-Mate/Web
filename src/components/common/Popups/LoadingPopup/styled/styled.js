@@ -10,6 +10,7 @@ export const PopupOverlay = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 `;
 
 export const PopupContainer = styled.div`
@@ -22,6 +23,7 @@ export const PopupContainer = styled.div`
     width: 706px;
     min-width: 400px;
     height: 287px;
+    padding-top: 10px;
     left: calc(50% - 706px / 2);
     top: calc(50% - 287px / 2 - 33px);
     background: #ffffff;
