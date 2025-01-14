@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
-    flex-direction: ${({ $type }) => ($type === 'left' ? 'row' : 'row-reverse')}; /* type에 따라 방향 변경 */
+    flex-direction: ${({ $type }) => ($type === 'left' ? 'row' : 'row-reverse')};
     align-items: center;
     justify-content: center;
     position: relative;
@@ -38,8 +38,8 @@ export const ImgWrapper = styled.div`
     width: 297px;
     height: 297px;
     z-index: 2;
-    margin-left: ${({ $type }) => ($type === 'left' ? '20px' : '0')}; /* 양쪽 여백 추가 */
-    margin-right: ${({ $type }) => ($type === 'right' ? '20px' : '0')}; /* 양쪽 여백 추가 */
+    margin-left: ${({ $type }) => ($type === 'left' ? '20px' : '0')};
+    margin-right: ${({ $type }) => ($type === 'right' ? '20px' : '0')};
 
     img {
         width: 100%;
