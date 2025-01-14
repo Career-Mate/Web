@@ -5,8 +5,8 @@ export const InfoContainer = styled.div`
     width: ${(props) => props.$width};
     height: ${(props) => props.$height};
     top: ${(props) => props.$top};
-    left: 50%;
-    transform: translateX(-50%);
+    left: ${(props) => props.$left};
+    transform: translate(-50%, -50%);
     background: #ffffff;
     border: 1px solid #c4c4c4;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.23);
@@ -86,7 +86,7 @@ export const DetailText = styled.p`
 export const ButtonWrapper = styled.div`
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     width: 100%;
     margin-top: 30px;
 `;
