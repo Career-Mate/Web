@@ -2,7 +2,7 @@ import * as S from './styled/styled';
 
 const Card = ({ title, url, first, second }) => {
     return (
-        <S.Container>
+        <S.CardContainer>
             <S.TitleBox>{title}</S.TitleBox>
             <S.ContentWrapper>
                 <S.Img>
@@ -13,7 +13,7 @@ const Card = ({ title, url, first, second }) => {
                     <S.SecondSection>{second}</S.SecondSection>
                 </S.Content>
             </S.ContentWrapper>
-        </S.Container>
+        </S.CardContainer>
     );
 };
 
