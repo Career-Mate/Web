@@ -34,8 +34,8 @@ const Navbar = () => {
                         {isLogin ? (
                             <LogoutButton name={'김단아'} onClick={loginHandler} />
                         ) : (
-                            <SquareButton width={'175px'} height={'38px'} padding={'8px 0'} onClick={loginHandler}>
-                                로그인
+                            <SquareButton width={'124px'} height={'30px'} padding={' 0'} onClick={loginHandler}>
+                                <span style={{ fontSize: '16px' }}>로그인</span>
                             </SquareButton>
                         )}
                     </S.ButtonWrapper>
