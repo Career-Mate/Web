@@ -1,6 +1,6 @@
 import * as S from './styled/styled';
-import Naver from '../../assets/LoginPage/naver.svg';
-import Kakao from '../../assets/LoginPage/kakao.svg';
+import Naver from '../../../assets/LoginPage/naver.svg';
+import Kakao from '../../../assets/LoginPage/kakao.svg';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 
 const LoginPage = () => {
