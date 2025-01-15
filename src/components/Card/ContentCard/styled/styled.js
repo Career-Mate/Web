@@ -4,6 +4,7 @@ export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: ${({ $width }) => $width};
+    background-color: white;
     border: 1px solid #c4c4c4;
     border-radius: 20px;
     box-shadow:
