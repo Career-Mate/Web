@@ -33,7 +33,7 @@ export const LogoWrapper = styled.div`
 `;
 
 export const Logo = styled.img`
-    width: 160px; /* 로고 크기 조정 */
+    width: 160px;
     height: auto;
 `;
 
