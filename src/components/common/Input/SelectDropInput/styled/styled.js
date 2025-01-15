@@ -22,6 +22,7 @@ export const SelectorWrapper = styled.div`
 
 export const Selector = styled.div`
     width: 100%;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,7 +41,6 @@ export const Text = styled.div`
     color: #c4c4c4;
     font-weight: 400;
     font-size: 16px;
-    line-height: 19px;
 `;
 
 export const DropButtonWrapper = styled.div`
@@ -66,6 +66,7 @@ export const OptionContainer = styled.div`
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
+    z-index: 5;
 
     .triangle {
         position: absolute;
