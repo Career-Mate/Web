@@ -76,6 +76,7 @@ export const TextWrapper = styled.div`
     align-self: stretch;
     flex-grow: 0;
 `;
+
 export const MainText = styled.h2`
     font-size: 36px;
     font-weight: 600;
@@ -90,6 +91,7 @@ export const DetailText = styled.p`
     color: #000;
     text-align: center;
     margin-bottom: 20px;
+    white-space: pre-line;
 `;
 
 export const ButtonWrapper = styled.div`
