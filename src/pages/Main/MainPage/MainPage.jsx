@@ -1,10 +1,10 @@
 import * as S from './styled/styled';
-import Logo from '../../assets/common/cm.svg';
-import Boy from '../../assets/MainPage/boy.svg';
-import Girl from '../../assets/MainPage/girl.svg';
-import Books from '../../assets/MainPage/books.svg';
-import Note from '../../assets/MainPage/note.svg';
-import Search from '../../assets/MainPage/search.svg';
+import Logo from '../../../assets/common/cm.svg';
+import Boy from '../../../assets/MainPage/boy.svg';
+import Girl from '../../../assets/MainPage/girl.svg';
+import Books from '../../../assets/MainPage/books.svg';
+import Note from '../../../assets/MainPage/note.svg';
+import Search from '../../../assets/MainPage/search.svg';
 import CheckTextBox from '../../../components/MainPage/CheckTextBox/CheckTextBox';
 import InterviewBox from '../../../components/MainPage/InterviewBox/InterviewBox';
 import Card from '../../../components/MainPage/Card/Card';
