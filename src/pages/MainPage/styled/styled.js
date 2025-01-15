@@ -39,25 +39,22 @@ export const FirstTextWrapper = styled.div`
 
 export const SecondPage = styled.div`
     width: 100%;
-    height: 180vh;
+    height: 150vh;
     background-image: url('/src/assets/MainPage/main-vector.svg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     box-sizing: border-box;
 `;
 
 export const SecondContainer = styled.div`
     height: 100%;
     width: 100%;
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    padding-top: 350px;
+    box-sizing: border-box;
     gap: 80px;
     h1 {
         color: rgba(255, 255, 255, 1);
@@ -115,6 +112,8 @@ export const FourthTextWrapper = styled.div`
     font-size: 20px;
     padding-top: 100px;
     p {
+        margin: 0;
+        padding: 0;
         span {
             color: rgba(42, 157, 143, 1);
             font-weight: 700;
