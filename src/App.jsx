@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import Test from './test/Test';
 import LoginProgressPage from './pages/Main/LoginProgressPage/LoginProgressPage';
 import LoginSuccessPage from './pages/Main/LoginSuccessPage/LoginSuccessPage';
+import MainPage from './pages/Main/MainPage/MainPage';
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <HomePage />,
+                element: <MainPage />,
             },
             {
                 path: 'career',
