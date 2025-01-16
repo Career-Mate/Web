@@ -11,7 +11,7 @@ export const CareerMainPageWrapper = styled.div`
 `;
 
 export const SearchIcon = styled.div`
-    margin: 50px auto;
+    margin: 20px auto;
     img {
         width: 91px;
         height: 133.76px;
