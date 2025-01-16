@@ -16,21 +16,28 @@ const LoginPage = () => {
     }, [code]);
 
     return (
-        <InfoContainer>
-            <S.Container>
-                <S.Text>SNS로 시작하기</S.Text>
-                <S.SocialButtonWrapper>
-                    <S.SocialButton $type="naver" onClick={() => open('naver')}>
-                        <img src={Naver} alt="naver"></img>
-                        네이버로 시작하기
-                    </S.SocialButton>
-                    <S.SocialButton $type="kakao" onClick={() => open('kakao')}>
-                        <img src={Kakao} alt="kakao"></img>
-                        카카오로 시작하기
-                    </S.SocialButton>
-                </S.SocialButtonWrapper>
-            </S.Container>
-        </InfoContainer>
+        <InfoContainer
+            type="logoOnly"
+            width="768px"
+            height="500px"
+            top="300px"
+            showLogo={true}
+            mainText={
+                <S.Container>
+                    <S.Text>SNS로 시작하기</S.Text>
+                    <S.SocialButtonWrapper>
+                        <S.SocialButton $type="naver" onClick={() => open('naver')}>
+                            <img src={Naver} alt="naver"></img>
+                            네이버로 시작하기
+                        </S.SocialButton>
+                        <S.SocialButton $type="kakao" onClick={() => open('kakao')}>
+                            <img src={Kakao} alt="kakao"></img>
+                            카카오로 시작하기
+                        </S.SocialButton>
+                    </S.SocialButtonWrapper>
+                </S.Container>
+            }
+        />
     );
 };
 

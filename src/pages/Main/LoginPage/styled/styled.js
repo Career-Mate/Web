@@ -9,14 +9,17 @@ export const Container = styled.div`
     align-items: center;
     gap: 74px;
 `;
-export const Text = styled.h2`
+
+export const Text = styled.div`
     font-size: 24px;
     font-weight: 700;
 `;
+
 export const SocialButtonWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 22px;
+    font-size: 20px;
 `;
 
 export const SocialButton = styled.div`
