@@ -31,7 +31,7 @@ export const TemplateTable = styled.div`
 export const TableRow = styled.div`
     display: flex;
     width: 100%;
-    height: 64px;
+    height: auto;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
     &:last-child {
@@ -65,12 +65,16 @@ export const TableCellData = styled.div.withConfig({
     background: #ffffff;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 20px;
+    overflow-wrap: break-word;
+    white-space: normal;
     border-top-right-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
     border-bottom-right-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
 
-    input {
+    textarea {
         width: 100%;
+        height: 30px;
+        display: flex;
         border: none;
         font-weight: 500;
         font-size: 16px;
@@ -78,6 +82,11 @@ export const TableCellData = styled.div.withConfig({
         color: rgba(0, 0, 0, 0.8);
         background: none;
         outline: none;
+        resize: none;
+        overflow: hidden;
+        white-space: normal;
+        word-wrap: break-word;
+        box-sizing: border-box;
     }
 `;
 
@@ -133,7 +142,9 @@ export const DatePickerRow = styled.div`
     gap: 20px;
 `;
 
-export const DateInput = styled.div`
+export const DateInput = styled.div.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isInline',
+})`
     display: flex;
     align-items: center;
     gap: 5px;
@@ -145,7 +156,10 @@ export const DateInput = styled.div`
 
     input {
         font-size: 16px;
-        width: 200px;
+        width: ${(props) => (props.isInline ? 'auto' : '200px')};
+        border: none;
+        background: ${(props) => (props.isInline ? 'none' : '#ffffff')};
+        padding: ${(props) => (props.isInline ? '0' : '4px 8px')};
         outline: none;
     }
 `;

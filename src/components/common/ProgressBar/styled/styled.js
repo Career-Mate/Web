@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
 export const BarContainer = styled.div`
-    width: 390px;
-    height: 45px;
+    width: 248px;
+    height: 39px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 10px;
+    align-items: end;
 `
 export const Text = styled.div`
     font-weight: 600;
@@ -13,14 +14,14 @@ export const Text = styled.div`
     color: #66CCAA;
 `
 export const RectangleWrapper = styled.div`
-    width: 390px;
+    width: 248px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    gap: 12px;
 ` 
 export const Rectangle = styled.div`
-    width: 70px;
-    height: 16px;
+    width: 40px;
+    height: 10px;
     background-color:${(props)=>( props.$status === "done" ? '#66CCAA' : '#D9D9D9')};
     ${(props) => {
         switch (props.$type) {
