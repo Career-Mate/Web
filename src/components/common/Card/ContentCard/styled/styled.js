@@ -54,6 +54,7 @@ export const Title = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 600;
     flex-grow: 1;
 `;
 
@@ -73,6 +74,7 @@ export const DeadlineWrapper = styled.div`
 export const Deadline = styled.div`
     color: #ff0000;
     font-size: 20px;
+    font-weight: 600;
     height: 40px;
     display: flex;
     align-items: center;
