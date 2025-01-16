@@ -1,12 +1,16 @@
 import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useTemplateData, userTemplateInitialData } from '../../../hooks/useTemplateData';
+import { useTemplateData } from '../../../hooks/useTemplateData';
+import { jobTemplateData } from './jobTemplateData';
 import * as S from './styled/styled';
 
-const Template = () => {
+const Template = ({ jobType = 'frontend', pageType = 'internExperience' }) => {
+    const initialData = jobTemplateData[pageType]?.[jobType] || [];
+
     const { tooltipVisible, setTooltipVisible, handleInputChange, data, handleDateChange, generateTooltipText } =
-        useTemplateData(userTemplateInitialData);
+        useTemplateData(initialData);
+
     const autoResize = (textarea) => {
         if (textarea) {
             textarea.style.height = '20px';
