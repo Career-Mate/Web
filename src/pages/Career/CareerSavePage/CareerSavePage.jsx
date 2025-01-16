@@ -3,6 +3,7 @@ import InfoContainer from '../../../components/common/InfoContainer/InfoContaine
 import * as S from './styled/styled';
 
 const CareerSavePage = () => {
+    const userName = '김단아';
     const navigate = useNavigate();
 
     const handleNavigation = (path) => {
@@ -18,7 +19,7 @@ const CareerSavePage = () => {
                 top="327.73px"
                 showLogo={true}
                 showTitleText={false}
-                mainText="김단아 메이트님의 커리어가 저장되었습니다."
+                mainText={`${userName} 메이트님의 커리어가 저장되었습니다.`}
                 detailText="저장된 템플릿은 ‘나의 커리어'에서 확인과 수정이 가능해요!"
                 buttons={[
                     {
