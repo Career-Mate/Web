@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import logo from '../../../assets/common/cm.svg';
-// import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
+import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import * as S from './styled/styled';
 
 const CareerSavePage = () => {
@@ -12,18 +11,42 @@ const CareerSavePage = () => {
 
     return (
         <S.CareerSavePageWrapper>
-            <S.LogoWrapper>
-                <img src={logo} alt="CM 로고" />
-            </S.LogoWrapper>
-            <S.InfoContainerWrapper>
-                <h2>김단아 메이트님의 커리어가 저장되었습니다.</h2>
-                <p>저장된 템플릿은 '나의 커리어'에서 확인과 수정이 가능해요!</p>
-                <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '24px' }}>
-                    <button onClick={() => handleNavigation('/mycareer')}>나의 커리어로 이동하기</button>
-                    <button onClick={() => handleNavigation('/')}>메인화면으로 돌아가기</button>
-                    <button onClick={() => handleNavigation('/announcement')}>채용공고 추천받기</button>
-                </div>
-            </S.InfoContainerWrapper>
+            <InfoContainer
+                type="logoWithContent"
+                width="981px"
+                height="393.27px"
+                top="327.73px"
+                showLogo={true}
+                showTitleText={false}
+                mainText="김단아 메이트님의 커리어가 저장되었습니다."
+                detailText="저장된 템플릿은 ‘나의 커리어'에서 확인과 수정이 가능해요!"
+                buttons={[
+                    {
+                        text: '나의 커리어로 이동하기',
+                        width: '280px',
+                        height: '60px',
+                        padding: '0px',
+                        backgroundColor: 'green',
+                        onClick: () => handleNavigation('/mycareer'),
+                    },
+                    {
+                        text: '메인화면으로 돌아가기',
+                        width: '271px',
+                        height: '60px',
+                        padding: '0px',
+                        backgroundColor: 'grey',
+                        onClick: () => handleNavigation('/'),
+                    },
+                    {
+                        text: '채용 공고 추천 받기',
+                        width: '271px',
+                        height: '60px',
+                        padding: '0px',
+                        backgroundColor: 'deepgreen',
+                        onClick: () => handleNavigation('/announcement'),
+                    },
+                ]}
+            />
         </S.CareerSavePageWrapper>
     );
 };
