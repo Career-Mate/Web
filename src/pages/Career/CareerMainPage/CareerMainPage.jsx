@@ -6,7 +6,7 @@ import * as S from './styled/styled';
 
 const CareerMainPage = () => {
     const userName = '김단아';
-    const job = '프론트엔드';
+    const job = '프론트엔드 개발자';
     const [isPopUpVisible, setIsPopUpVisible] = useState(false);
 
     const handleButtonClick = () => {
@@ -45,11 +45,7 @@ const CareerMainPage = () => {
             />
 
             {isPopUpVisible && (
-                <LoadingPopup
-                    text={`${userName} 메이트님 <br/>
-                            ${job} 직무에 맞는 템플릿을 제공해드릴게요!`}
-                    onCancel={handlePopUpCancel}
-                />
+                <LoadingPopup userName={userName} interestJob={job} type="template" onCancel={handlePopUpCancel} />
             )}
         </S.CareerMainPageWrapper>
     );
