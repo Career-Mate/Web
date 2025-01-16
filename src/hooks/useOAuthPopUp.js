@@ -33,14 +33,12 @@ const useOAuthPopUp = () => {
     }, [popUp]);
 
     const fetchToken = useCallback(() => {
-        // Mock 데이터 설정
         const mockResponse = {
             jwt: 'mockJwtToken123456',
             name: 'John Doe',
             email: 'john.doe@example.com',
         };
 
-        //localStorage.setItem('muglog_token', mockResponse.jwt);
         console.log('JWT 토큰: ', mockResponse.jwt);
 
         navigate('/login-success');

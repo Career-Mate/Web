@@ -2,7 +2,7 @@ import * as S from './styled/styled';
 import useOAuthPopUp from '../../../hooks/useOAuthPopUp';
 
 const LoginProgressPage = () => {
-    const { code } = useOAuthPopUp(); // 훅 사용
+    const { code } = useOAuthPopUp();
 
     return (
         <S.ProgressContainer>
