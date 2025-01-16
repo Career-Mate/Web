@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import searchIcon from '../../../assets/common/search-icon.svg';
+import searchIcon from '../../../assets/MainPage/search.svg';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
-import LoadingPopup from '../../../components/Popups/LoadingPopup/LoadingPopup';
+import LoadingPopup from '../../../components/common/Popups/LoadingPopup/LoadingPopup';
 import * as S from './styled/styled';
 
 const CareerMainPage = () => {
