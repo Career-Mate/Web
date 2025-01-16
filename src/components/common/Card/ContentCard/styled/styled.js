@@ -4,6 +4,7 @@ export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: ${({ $width }) => $width};
+    height: 380px;
     background-color: white;
     border: 1px solid #c4c4c4;
     border-radius: 20px;
@@ -11,13 +12,14 @@ export const CardContainer = styled.div`
         2px 2px 5.6px 0px #00000040,
         inset 0px 0px 6.6px 0px #00000040;
     padding: 24px 26px;
-    gap: 10px;
+    gap: ${({ $type }) => ($type ? '10px' : '8px')};
     box-sizing: border-box;
     font-weight: 600;
     font-size: 18px;
 `;
 
 export const CompanyName = styled.div`
+    transform: ${({ $type }) => ($type ? 'none' : 'translateY(-3px)')};
     color: #c4c4c4;
 `;
 
@@ -26,29 +28,33 @@ export const Thumbnail = styled.img`
     height: ${({ $height }) => $height};
     border-radius: 20px;
     object-fit: cover;
+    transform: ${({ $type }) => ($type ? 'none' : 'translateY(-3px)')};
 `;
 
 export const Line = styled.div`
     border-top: 2px dashed #C4C4C4;W
     width: 100%;
+    transform: ${({ $type }) => ($type ? 'none' : 'translateY(-3px)')};
 `;
 
-export const TitleWrapper = styled.div`
+export const ContentWrapper = styled.div`
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
+    flex-direction: column;
     flex-wrap: wrap;
+    flex-grow: 1;
+    gap: ${({ $type }) => ($type ? 'none' : '2px')};
+    transform: ${({ $type }) => ($type ? 'none' : 'translateY(-3px)')};
 `;
 
 export const Title = styled.div`
     word-break: keep-all;
     max-width: 290px;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: ${({ $type }) => ($type ? '2' : '1')};
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex-grow: 1;
 `;
 
 export const DetailButton = styled.div`
@@ -59,7 +65,6 @@ export const DetailButton = styled.div`
 `;
 
 export const DeadlineWrapper = styled.div`
-    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,6 +73,9 @@ export const DeadlineWrapper = styled.div`
 export const Deadline = styled.div`
     color: #ff0000;
     font-size: 20px;
+    height: 40px;
+    display: flex;
+    align-items: center;
 `;
 
 export const ScrapIcon = styled.img`
