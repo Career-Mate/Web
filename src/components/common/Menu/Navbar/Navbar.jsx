@@ -2,10 +2,13 @@ import * as S from './styled/styled.js';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../../assets/common/career-mate.svg';
 import LogoutButton from '../../Button/LogoutButton/LogoutButton.jsx';
+import SquareButton from '../../Button/SquareButton/SquareButton.jsx';
+import useAuth from '../../../../hooks/useAuth.js';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const { isLogin, loginHandler } = useAuth();
 
     const isActive = (path) => location.pathname.startsWith(`/${path}`);
 
@@ -28,7 +31,13 @@ const Navbar = () => {
                         </S.Text>
                     </S.TextWrapper>
                     <S.ButtonWrapper>
-                        <LogoutButton name={'김단아'} />
+                        {isLogin ? (
+                            <LogoutButton name={'김단아'} onClick={loginHandler} />
+                        ) : (
+                            <SquareButton width={'124px'} height={'30px'} padding={' 0'} onClick={loginHandler}>
+                                <span style={{ fontSize: '16px' }}>로그인</span>
+                            </SquareButton>
+                        )}
                     </S.ButtonWrapper>
                 </S.Bar>
             </S.Container>
