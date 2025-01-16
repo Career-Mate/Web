@@ -13,8 +13,8 @@ export const CareerMainPageWrapper = styled.div`
 export const SearchIcon = styled.div`
     margin: 20px auto;
     img {
-        width: 91px;
-        height: 133.76px;
+        width: 120px;
+        height: 120px;
         left: calc(50% - 91px / 2 + 1px);
         top: 250px;
     }
