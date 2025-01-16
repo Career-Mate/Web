@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import logo from '../../../assets/common/cm-logo.svg';
+import logo from '../../../assets/common/cm.svg';
 // import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import * as S from './styled/styled';
 
