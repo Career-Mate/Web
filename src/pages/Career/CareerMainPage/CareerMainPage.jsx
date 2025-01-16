@@ -30,7 +30,7 @@ const CareerMainPage = () => {
                 top="0px"
                 showLogo={false}
                 showTitleText={false}
-                mainText={`${userName} 메이트에게`}
+                mainText={`${userName} 메이트님에게`}
                 detailText={`관심 직무에 맞는 템플릿을 제공하기 위해 프로필 분석이 필요해요!
                 아래 '내 프로필 분석하기'를 클릭해주세요.`}
                 buttons={[
