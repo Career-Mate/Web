@@ -32,10 +32,10 @@ export const textTemplateInitialData = [
 
 export const useTemplateData = (initialData) => {
     const [tooltipVisible, setTooltipVisible] = useState(false);
-    const [data, setData] = useState(initialData);
+    const [data, setData] = useState(JSON.parse(JSON.stringify(initialData)));
 
     useEffect(() => {
-        setData(initialData);
+        setData(JSON.parse(JSON.stringify(initialData)));
     }, [initialData]);
 
     const handleInputChange = (sectionIndex, itemIndex, value) => {

@@ -13,13 +13,11 @@ const InternExperiencePage = () => {
         handleInputChange: handleInputChange1,
         handleDateChange: handleDateChange1,
     } = useTemplateData(jobTemplateData.internExperience.frontend);
-
     const {
         data: frontendData2,
         handleInputChange: handleInputChange2,
         handleDateChange: handleDateChange2,
     } = useTemplateData(jobTemplateData.internExperience.frontend);
-
     const isValid = () => {
         const isTemplateValid = (data) =>
             data.some((section) =>
@@ -30,33 +28,26 @@ const InternExperiencePage = () => {
                     return item.content && item.content.trim() !== '';
                 }),
             );
-
         const isFrontend1Valid = isTemplateValid(frontendData1);
         const isFrontend2Valid = isTemplateValid(frontendData2);
-
         return isFrontend1Valid || isFrontend2Valid;
     };
-
     const handleSave = () => {
         if (!isValid()) {
             alert('템플릿 중 하나라도 1~4번째 행이 모두 입력되어야 합니다!');
             return;
         }
-
         console.log('저장된 데이터 (템플릿1):', frontendData1);
         console.log('저장된 데이터 (템플릿2):', frontendData2);
         alert('저장되었습니다!');
     };
-
     const handleNext = () => {
         if (!isValid()) {
             alert('템플릿 중 하나라도 1~4번째 행이 모두 입력되어야 합니다!');
             return;
         }
-
         navigate('/project-experience');
     };
-
     return (
         <S.PageWrapper>
             <S.HeaderWrapper>
@@ -67,7 +58,6 @@ const InternExperiencePage = () => {
             <S.TemplateWrapper>
                 <Template data={frontendData1} onInputChange={handleInputChange1} onDateChange={handleDateChange1} />
             </S.TemplateWrapper>
-
             <S.TemplateWrapper>
                 <Template data={frontendData2} onInputChange={handleInputChange2} onDateChange={handleDateChange2} />
             </S.TemplateWrapper>
