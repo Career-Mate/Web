@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Template from '../../../components/common/UserTemplate/Template';
 import ProgressBar from '../../../components/common/ProgressBar/ProgressBar';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
@@ -9,6 +10,7 @@ const InternExperiencePage = () => {
     const initialData = jobTemplateData['internExperience']['frontend'];
     const [data, setData] = useState(initialData);
     const [canSave, setCanSave] = useState(false);
+    const navigate = useNavigate();
 
     const checkIfCanSave = () => {
         const isValid = data.some((section) => {
@@ -35,6 +37,10 @@ const InternExperiencePage = () => {
         }
     };
 
+    const handleNext = () => {
+        navigate('/project-experience');
+    };
+
     return (
         <S.PageWrapper>
             <S.HeaderWrapper>
@@ -54,7 +60,7 @@ const InternExperiencePage = () => {
                 <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
                     저장
                 </SquareButton>
-                <SquareButton width="131px" backgroundColor={'lightgreen'}>
+                <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNext}>
                     다음
                 </SquareButton>
             </S.ButtonWrapper>
