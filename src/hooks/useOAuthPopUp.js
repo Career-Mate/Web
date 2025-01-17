@@ -1,23 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useOAuth from './useOAuth';
 
 const useOAuthPopUp = () => {
-    const navigate = useNavigate();
     const [popUp, setPopUp] = useState(null);
     const [code, setCode] = useState(null);
-    const [isLogin, setIsLogin] = useState(localStorage.getItem('isLogin') === 'true');
-
-    const loginHandler = () => {
-        setIsLogin(true);
-        localStorage.setItem('isLogin', 'true');
-        navigate('/login/success');
-    };
-
-    const logoutHandler = () => {
-        setIsLogin(false);
-        localStorage.removeItem('isLogin');
-        navigate('/');
-    };
+    const { fetchToken } = useOAuth();
 
     const OAUTH_REDIRECT_URI = import.meta.env.VITE_OAUTH_REDIRECT_URI;
 
@@ -44,17 +32,6 @@ const useOAuthPopUp = () => {
         if (!popUp) return;
         popUp.close();
     }, [popUp]);
-
-    const fetchToken = useCallback(() => {
-        const mockResponse = {
-            jwt: 'mockJwtToken123456',
-            name: 'John Doe',
-            email: 'john.doe@example.com',
-        };
-
-        console.log('JWT 토큰: ', mockResponse.jwt);
-        loginHandler();
-    }, [loginHandler]);
 
     useEffect(() => {
         if (!window.opener) return;
@@ -85,7 +62,7 @@ const useOAuthPopUp = () => {
         };
     }, [close]);
 
-    return { open, code, popUp, fetchToken, isLogin, logoutHandler };
+    return { open, code, popUp };
 };
 
 export default useOAuthPopUp;
