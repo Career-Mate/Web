@@ -5,6 +5,7 @@ import Test from './test/Test';
 import LoginProgressPage from './pages/Main/LoginProgressPage/LoginProgressPage';
 import LoginSuccessPage from './pages/Main/LoginSuccessPage/LoginSuccessPage';
 import MainPage from './pages/Main/MainPage/MainPage';
+import LoginPage from './pages/Main/LoginPage/LoginPage';
 
 const router = createBrowserRouter([
     {
@@ -36,8 +37,17 @@ const router = createBrowserRouter([
                 element: <Test />,
             },
             {
-                path: 'login-success',
-                element: <LoginSuccessPage />,
+                path: 'login',
+                children: [
+                    {
+                        index: true,
+                        element: <LoginPage />,
+                    },
+                    {
+                        path: 'success',
+                        element: <LoginSuccessPage />,
+                    },
+                ],
             },
         ],
     },
