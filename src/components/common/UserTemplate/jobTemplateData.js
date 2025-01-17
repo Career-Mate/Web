@@ -29,34 +29,6 @@ export const jobTemplateData = {
                     },
                 ],
             },
-            {
-                title: '',
-                items: [
-                    {
-                        label: '직무명',
-                        content: '',
-                        placeholder: '직무명을 입력해주세요',
-                        type: 'text',
-                        required: true,
-                    },
-                    {
-                        label: '근무기간',
-                        content: '',
-                        placeholder: '근무기간을 입력해주세요',
-                        type: 'date',
-                        startDate: null,
-                        endDate: null,
-                    },
-                    { label: '사용 기술', content: '', placeholder: '사용 기술을 입력해주세요', type: 'text' },
-                    { label: '주요 성과 및 역할', content: '', placeholder: '주요 성과를 입력해주세요', type: 'text' },
-                    {
-                        label: '느낀점 / 배운점',
-                        content: '',
-                        placeholder: '느낀점/배운점을 입력해주세요',
-                        type: 'text',
-                    },
-                ],
-            },
         ],
         backend: [
             {
