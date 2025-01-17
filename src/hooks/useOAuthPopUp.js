@@ -5,6 +5,17 @@ const useOAuthPopUp = () => {
     const navigate = useNavigate();
     const [popUp, setPopUp] = useState(null);
     const [code, setCode] = useState(null);
+    const isLogin = localStorage.getItem('isLogin') === 'true';
+
+    const loginHandler = () => {
+        localStorage.setItem('isLogin', 'true');
+        navigate('/login/success');
+    };
+
+    const logoutHandler = () => {
+        localStorage.removeItem('isLogin');
+        navigate('/');
+    };
 
     const OAUTH_REDIRECT_URI = import.meta.env.VITE_OAUTH_REDIRECT_URI;
 
@@ -40,9 +51,8 @@ const useOAuthPopUp = () => {
         };
 
         console.log('JWT 토큰: ', mockResponse.jwt);
-
-        navigate('/login-success');
-    });
+        loginHandler();
+    }, [loginHandler]);
 
     useEffect(() => {
         if (!window.opener) return;
@@ -62,6 +72,7 @@ const useOAuthPopUp = () => {
             const { code } = event.data;
             if (code) {
                 setCode(code);
+                fetchToken();
                 close();
             }
         };
@@ -72,7 +83,7 @@ const useOAuthPopUp = () => {
         };
     }, [close]);
 
-    return { open, code, popUp, fetchToken };
+    return { open, code, popUp, fetchToken, isLogin, logoutHandler };
 };
 
 export default useOAuthPopUp;
