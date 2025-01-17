@@ -142,7 +142,9 @@ export const DatePickerRow = styled.div`
     gap: 20px;
 `;
 
-export const DateInput = styled.div`
+export const DateInput = styled.div.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isInline',
+})`
     display: flex;
     align-items: center;
     gap: 5px;
