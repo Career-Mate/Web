@@ -18,7 +18,8 @@ export const ContentWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    width: 1165px;
+    width: 100%;
+    max-width: 1165px;
     height: 120px;
 `;
 
