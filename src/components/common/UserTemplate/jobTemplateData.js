@@ -2,7 +2,7 @@ export const jobTemplateData = {
     internExperience: {
         frontend: [
             {
-                title: '1. 인턴 경험',
+                title: '',
                 items: [
                     {
                         label: '직무명',

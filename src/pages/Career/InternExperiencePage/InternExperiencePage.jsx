@@ -6,7 +6,10 @@ import * as S from './styled/styled';
 const InternExperiencePage = () => {
     return (
         <S.PageWrapper>
-            <ProgressBar progression={1} />
+            <S.HeaderWrapper>
+                <S.Title>1. 인턴 경험</S.Title>
+                <ProgressBar progression={1} />
+            </S.HeaderWrapper>
 
             <S.TemplateWrapper>
                 <Template jobType="frontend" pageType="internExperience" />
