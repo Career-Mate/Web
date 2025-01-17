@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styled/styled';
 import SquareButton from '../Button/SquareButton/SquareButton';
-import Logo from '../../../assets/common/logo.svg';
+import Logo from '../../../assets/common/cm.svg';
 
 const InfoContainer = ({
     type,
@@ -16,12 +16,16 @@ const InfoContainer = ({
 }) => {
     return (
         <S.InfoContainer $width={width} $height={height} $top={top}>
-            {showLogo && <S.Logo src={Logo} alt="Logo" $top={top} />}
+            {showLogo && (
+                <S.LogoWrapper>
+                    <S.Logo src={Logo} alt="Logo" $top={top} />
+                </S.LogoWrapper>
+            )}
             {showTitleText && <S.TitleText $top={top}>프로필 불러오기</S.TitleText>}
 
             <S.ContentWrapper>
                 {mainText && <S.MainText>{mainText}</S.MainText>}
-                {detailText && <S.DetailText dangerouslySetInnerHTML={{ __html: detailText }} />}
+                {detailText && <S.DetailText>{detailText}</S.DetailText>}
 
                 {buttons.length > 0 && (
                     <S.ButtonWrapper>

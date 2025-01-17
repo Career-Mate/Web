@@ -19,14 +19,22 @@ export const InfoContainer = styled.div`
     position: relative;
 `;
 
-export const Logo = styled.img`
+export const LogoWrapper = styled.div`
     position: absolute;
-    top: calc(-1 * 170px / 2);
+    top: -80px;
     left: 50%;
     transform: translateX(-50%);
-    width: 170px;
-    height: 170px;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 10;
+`;
+
+export const Logo = styled.img`
+    width: 160px;
+    height: auto;
 `;
 
 export const TitleText = styled.div`
@@ -68,6 +76,7 @@ export const TextWrapper = styled.div`
     align-self: stretch;
     flex-grow: 0;
 `;
+
 export const MainText = styled.h2`
     font-size: 36px;
     font-weight: 600;
@@ -82,6 +91,7 @@ export const DetailText = styled.p`
     color: #000;
     text-align: center;
     margin-bottom: 20px;
+    white-space: pre-line;
 `;
 
 export const ButtonWrapper = styled.div`
