@@ -5,14 +5,16 @@ const useOAuthPopUp = () => {
     const navigate = useNavigate();
     const [popUp, setPopUp] = useState(null);
     const [code, setCode] = useState(null);
-    const isLogin = localStorage.getItem('isLogin') === 'true';
+    const [isLogin, setIsLogin] = useState(localStorage.getItem('isLogin') === 'true');
 
     const loginHandler = () => {
+        setIsLogin(true);
         localStorage.setItem('isLogin', 'true');
         navigate('/login/success');
     };
 
     const logoutHandler = () => {
+        setIsLogin(false);
         localStorage.removeItem('isLogin');
         navigate('/');
     };

@@ -3,12 +3,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../../assets/common/career-mate.svg';
 import LogoutButton from '../../Button/LogoutButton/LogoutButton.jsx';
 import SquareButton from '../../Button/SquareButton/SquareButton.jsx';
-import useAuth from '../../../../hooks/useAuth.js';
+import useOAuthPopUp from '../../../../hooks/useOAuthPopUp.js';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { isLogin, loginHandler } = useAuth();
+    const { isLogin, logoutHandler } = useOAuthPopUp();
 
     const isActive = (path) => location.pathname.startsWith(`/${path}`);
 
@@ -32,9 +32,14 @@ const Navbar = () => {
                     </S.TextWrapper>
                     <S.ButtonWrapper>
                         {isLogin ? (
-                            <LogoutButton name={'김단아'} onClick={loginHandler} />
+                            <LogoutButton name={'김단아'} onClick={logoutHandler} />
                         ) : (
-                            <SquareButton width={'124px'} height={'30px'} padding={' 0'} onClick={loginHandler}>
+                            <SquareButton
+                                width={'124px'}
+                                height={'30px'}
+                                padding={'0'}
+                                onClick={() => navigate('/login')}
+                            >
                                 <span style={{ fontSize: '16px' }}>로그인</span>
                             </SquareButton>
                         )}
