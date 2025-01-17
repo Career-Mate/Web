@@ -2,9 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import { useEffect } from 'react';
 import useOAuthPopUp from '../../../hooks/useOAuthPopUp';
+import useOAuth from '../../../hooks/useOAuth';
 
 const LoginSuccessPage = () => {
-    const { isLogin } = useOAuthPopUp();
+    const { isLogin } = useOAuth();
     const userName = '김단아';
     const navigate = useNavigate();
 

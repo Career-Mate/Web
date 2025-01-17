@@ -4,9 +4,11 @@ import Kakao from '../../../assets/LoginPage/kakao.svg';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import useOAuthPopUp from '../../../hooks/useOAuthPopUp';
 import { useEffect } from 'react';
+import useOAuth from '../../../hooks/useOAuth';
 
 const LoginPage = () => {
-    const { open, code, fetchToken } = useOAuthPopUp();
+    const { open, code } = useOAuthPopUp();
+    const { fetchToken } = useOAuth();
 
     useEffect(() => {
         if (code) {
