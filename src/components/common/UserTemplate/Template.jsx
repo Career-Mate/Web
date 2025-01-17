@@ -5,11 +5,11 @@ import { useTemplateData } from '../../../hooks/useTemplateData';
 import { jobTemplateData } from './jobTemplateData';
 import * as S from './styled/styled';
 
-const Template = ({ jobType = 'frontend', pageType = 'internExperience' }) => {
+const Template = ({ jobType = 'frontend', pageType = 'internExperience', onDataChange }) => {
     const initialData = jobTemplateData[pageType]?.[jobType] || [];
 
     const { tooltipVisible, setTooltipVisible, handleInputChange, data, handleDateChange, generateTooltipText } =
-        useTemplateData(initialData);
+        useTemplateData(initialData, onDataChange);
 
     const autoResize = (textarea) => {
         if (textarea) {

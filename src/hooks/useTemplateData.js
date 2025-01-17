@@ -30,7 +30,7 @@ export const textTemplateInitialData = [
     },
 ];
 
-export const useTemplateData = (initialData) => {
+export const useTemplateData = (initialData, onDataChange) => {
     const [tooltipVisible, setTooltipVisible] = useState(false);
     const [data, setData] = useState(JSON.parse(JSON.stringify(initialData)));
 
@@ -39,23 +39,21 @@ export const useTemplateData = (initialData) => {
     }, [initialData]);
 
     const handleInputChange = (sectionIndex, itemIndex, value) => {
-        const updatedData = [...data];
+        const updatedData = JSON.parse(JSON.stringify(data));
         updatedData[sectionIndex].items[itemIndex].content = value;
         setData(updatedData);
+        onDataChange(updatedData);
     };
 
     const handleDateChange = (sectionIndex, itemIndex, date, isStartDate) => {
-        const updatedData = [...data];
+        const updatedData = JSON.parse(JSON.stringify(data));
         if (isStartDate) {
             updatedData[sectionIndex].items[itemIndex].startDate = date;
-
-            if (updatedData[sectionIndex].items[itemIndex].endDate < date) {
-                updatedData[sectionIndex].items[itemIndex].endDate = null;
-            }
         } else {
             updatedData[sectionIndex].items[itemIndex].endDate = date;
         }
         setData(updatedData);
+        onDataChange(updatedData);
     };
 
     const generateTooltipText = (section) => {
