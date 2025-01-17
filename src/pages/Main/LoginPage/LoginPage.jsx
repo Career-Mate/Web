@@ -10,8 +10,8 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (code) {
-            console.log('받은 인증 코드:', code);
             fetchToken();
+            console.log('받은 인증 코드:', code);
         }
     }, [code]);
 
