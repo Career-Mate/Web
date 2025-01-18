@@ -17,7 +17,7 @@ export const StyledButton = styled.button`
         transition: transform 0.1s ease-in-out;
 
         &:active {
-            transform: scale(0.95); /* 텍스트만 축소 */
+            transform: scale(0.95);
         }
     }
 
