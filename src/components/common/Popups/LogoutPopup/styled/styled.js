@@ -10,6 +10,7 @@ export const PopupOverlay = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 `;
 
 export const PopupContainer = styled.div`
@@ -18,11 +19,12 @@ export const PopupContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 26px;
     position: absolute;
     width: 584px;
-    height: 225px;
-    left: calc(50% - 584px / 2 - 18px);
+    min-width: 290px;
+    height: 221px;
+    left: calc(50% - 584px / 2);
     top: calc(50% - 225px / 2 - 75.5px);
     background: #ffffff;
     border: 1px solid #c4c4c4;
@@ -38,7 +40,7 @@ export const PopupWrapper = styled.div`
     align-items: center;
     align-content: flex-end;
     padding: 0px;
-    gap: 18px;
+    gap: 26px;
     width: 496px;
     height: 211px;
 `;
@@ -49,12 +51,12 @@ export const TextWrapper = styled.div`
     align-items: flex-start;
     padding: 0px;
     gap: 18px;
-    width: 497px;
+    width: 496px;
     height: 83px;
 `;
 
 export const StyledText = styled.div`
-    width: 520px;
+    width: 496px;
     height: 36px;
     font-style: normal;
     font-weight: 700;
@@ -67,22 +69,24 @@ export const Logout = styled.div`
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 0px;
     gap: 10px;
-    width: 497px;
+    width: 496px;
     height: 29px;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 29px;
-
     color: #000000;
 `;
 
 export const ButtonWrapper = styled.div`
+    width: 206px;
+    height: 48px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
+    gap: 16px;
     margin-top: 10px;
     margin-bottom: 15px;
 `;

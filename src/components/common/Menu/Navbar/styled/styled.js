@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const NavbarContainer = styled.div`
     display: flex;
     margin-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     box-sizing: border-box;
     flex-direction: column;
     justify-self: center;
@@ -37,11 +37,11 @@ export const LogoWrapper = styled.div`
 export const Logo = styled.img`
     width: 100%;
     max-height: 150px;
+    margin-left: 10px;
     cursor: pointer;
     object-fit: cover;
-    clip-path: inset(20% 0 25% 0);
     position: relative;
-    transform: translateY(23%);
+    transform: translateY(-23%);
 `;
 
 export const TextWrapper = styled.div`
@@ -66,6 +66,8 @@ export const Text = styled.div`
 
 export const ButtonWrapper = styled.div`
     display: flex;
+    align-items: flex-end;
+    height: auto;
     align-items: center;
     box-sizing: border-box;
     padding: 10px 0;
@@ -75,8 +77,7 @@ export const GradientBorder = styled.div`
     position: absolute;
     bottom: 0;
     left: 20;
-    width: calc(100% - 40px);
-    padding: 0 20px;
+    width: calc(100% - 60px);
     height: 4px;
     box-sizing: border-box;
     border-radius: 4px;
