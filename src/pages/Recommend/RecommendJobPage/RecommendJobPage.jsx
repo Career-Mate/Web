@@ -18,10 +18,6 @@ const RecommendJobPage = ({ user }) => {
 
     const groupedContents = divideArray(user.contents, 3);
 
-    useEffect(() => {
-        console.log('userData 확인:', user.contents);
-    }, [user]);
-
     return (
         <S.Container>
             <S.TopContainer>
