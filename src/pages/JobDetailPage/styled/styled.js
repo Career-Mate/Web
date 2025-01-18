@@ -17,7 +17,7 @@ export const ComponentContainer = styled.div`
 
     box-sizing: border-box;
     padding: 0 40px;
-    width: 75%;
+    width: 80%;
     margin-top: 40px;
 `
 
