@@ -7,7 +7,6 @@ const RecommendMainPage = ({ userName }) => {
             width="768px"
             height="486px"
             top="271px"
-            left={`calc(50% - 384px)`}
             showLogo={false}
             showTitleText={false}
             mainText="김단아 메이트님에게"
