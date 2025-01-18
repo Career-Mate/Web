@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import HomePage from './pages/HomePage';
-import RecommendMainPage from './pages/Recommend/RecommnedMainPage/RecommendMainPage';
 import Test from './test/Test';
 import MainPage from './pages/Main/MainPage/MainPage';
 
@@ -20,7 +19,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'announcement',
-                element: <RecommendMainPage />,
+                element: <HomePage />,
             },
             {
                 path: 'mycareer',
