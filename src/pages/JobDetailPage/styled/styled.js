@@ -140,7 +140,7 @@ export const SummaryText = styled.span`
 export const ListWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 70px;
+    gap: 40px;
     width: inherit;
     height: fit-content;
 
