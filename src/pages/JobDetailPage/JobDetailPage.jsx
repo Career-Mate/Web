@@ -11,7 +11,13 @@ const JobDetailPage = ({data})=>{
                 <S.StyledImg src = {companyImg}/>
                 <S.StyledImgOverlay/>
                 <S.ImgTextWrapper>
-                    <S.ImgTitle>코딧(CODITcorp.)</S.ImgTitle>
+                    <S.ImgTitleWrapper>
+                        <S.ImgTitle>코딧(CODITcorp.)</S.ImgTitle>
+                        <S.Hyperlink href="https://thecodit.com/kr-ko" target="_blank" rel="noopener noreferrer">
+                            기업정보 자세히 보기 &gt;
+                        </S.Hyperlink>
+                    </S.ImgTitleWrapper>
+                    
                     <S.ImgText>📍 서울 영등포구</S.ImgText>
                 </S.ImgTextWrapper>
             </S.ImgWrapper>
@@ -28,8 +34,8 @@ const JobDetailPage = ({data})=>{
                 </S.ListWrapper>
             </S.SummaryWrapper>
             <S.ButtonWrapper>
-                <SquareButton backgroundColor={"green"}>채용공고 자세히 보러가기</SquareButton>
                 <SquareButton backgroundColor={"grey"}>이전으로 돌아가기</SquareButton>
+                <SquareButton backgroundColor={"green"}>채용공고 자세히 보러가기</SquareButton>
             </S.ButtonWrapper>
         </S.Container>
     )

@@ -58,10 +58,22 @@ export const ImgTextWrapper = styled.div`
     color: white;
     z-index: 2;
 `
+export const ImgTitleWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 20px;
+`
 export const ImgTitle = styled.span`
     font-size: 36px;
     font-weight: 800;
 `
+export const Hyperlink = styled.a`
+    text-decoration: underline;
+    font-weight: 400;
+    color: #F7F8F9;
+`
+
 export const ImgText = styled.span`
     font-size: 20px;
     font-weight: 400;
