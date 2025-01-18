@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { jobTemplateData } from '../../../components/common/UserTemplate/jobTemplateData';
+import { jobTemplateData } from '../../../data/jobTemplateData';
 
 export const useInternExperience = () => {
     const initialData = jobTemplateData['internExperience']['frontend'];

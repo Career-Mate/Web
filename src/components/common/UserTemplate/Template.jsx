@@ -2,7 +2,7 @@ import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useTemplateData } from '../../../hooks/useTemplateData';
-import { jobTemplateData } from './jobTemplateData';
+import { jobTemplateData } from '../../../data/jobTemplateData';
 import * as S from './styled/styled';
 
 const Template = ({ jobType = 'frontend', pageType = 'internExperience', onDataChange }) => {
