@@ -1,9 +1,15 @@
 import styled from 'styled-components'
+export const PageContainer = styled.div`
+    width: 100%;
+    height: fit-content;
 
-export const Container = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
+export const ComponentContainer = styled.div`
     position: relative;
     height: fit-content;
-    width: fit-content;
 
     display: flex;
     flex-direction: column;
@@ -11,7 +17,7 @@ export const Container = styled.div`
 
     box-sizing: border-box;
     padding: 0 40px;
-    width: 100%;
+    width: 75%;
     margin-top: 40px;
 `
 
@@ -26,7 +32,7 @@ export const ImgWrapper = styled.div`
 
 `
 export const StyledImg = styled.img`
-    width: 100%;
+    width: auto;
     height: auto;
     border-radius: 20px;
     position: absolute;
@@ -95,7 +101,7 @@ export const SummaryWrapper = styled.div`
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
 
     box-sizing: border-box;
     padding: 0 40px;
@@ -106,7 +112,7 @@ export const SummaryTextWrapper = styled.div`
     flex-direction: column;
     gap: 18px;
 
-    width: inherit;
+    width: fit-content;
     height: fit-content;
 
     box-sizing: border-box;
@@ -115,6 +121,7 @@ export const SummaryTextWrapper = styled.div`
     padding-left: 29px;
     padding-right: 29px;
     border-bottom: 3px solid #EFEFEF;
+
 `
 export const Highlight = styled.span`
     font-weight: 700;
