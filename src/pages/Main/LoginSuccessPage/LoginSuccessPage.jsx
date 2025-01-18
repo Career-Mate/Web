@@ -9,10 +9,6 @@ const LoginSuccessPage = () => {
     const userName = '김단아';
     const navigate = useNavigate();
 
-    useEffect(() => {
-        console.log('로그인 상태:', isLogin);
-    }, [isLogin]);
-
     return (
         <>
             {isLogin === true ? (
