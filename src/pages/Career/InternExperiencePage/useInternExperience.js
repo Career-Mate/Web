@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { jobTemplateData } from '../../../components/common/UserTemplate/jobTemplateData';
 
 export const useInternExperience = () => {
     const initialData = jobTemplateData['internExperience']['frontend'];
     const [data, setData] = useState(initialData);
     const [canSave, setCanSave] = useState(false);
-    const navigate = useNavigate();
 
     const checkIfCanSave = () => {
         const isValid = data.some((section) => {
@@ -33,15 +31,10 @@ export const useInternExperience = () => {
         }
     };
 
-    const handleNext = () => {
-        navigate('/project-experience');
-    };
-
     return {
         data,
         setData,
         canSave,
         handleSave,
-        handleNext,
     };
 };

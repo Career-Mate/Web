@@ -5,9 +5,14 @@ import * as S from './styled/styled';
 import { useInternExperience } from './useInternExperience';
 import useProgressBar from '../../../hooks/useProgressBar';
 
-const InternExperiencePage = () => {
-    const { data, setData, canSave, handleSave, handleNext } = useInternExperience();
+const InternExperiencePage = ({ setActiveScreen }) => {
+    const { data, setData, canSave, handleSave } = useInternExperience();
     const { progression, nextSummaryProgress } = useProgressBar(1);
+
+    const handleNextClick = () => {
+        nextSummaryProgress();
+        setActiveScreen(1);
+    };
 
     return (
         <S.PageWrapper>
@@ -28,7 +33,7 @@ const InternExperiencePage = () => {
                 <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
                     저장
                 </SquareButton>
-                <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={nextSummaryProgress}>
+                <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
                     다음
                 </SquareButton>
             </S.ButtonWrapper>

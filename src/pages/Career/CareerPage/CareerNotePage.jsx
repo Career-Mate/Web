@@ -9,7 +9,7 @@ const CareerNotePage = () => {
     const renderScreen = () => {
         switch (activeScreen) {
             case 0:
-                return <InternExperiencePage />;
+                return <InternExperiencePage setActiveScreen={setActiveScreen} />;
             case 1:
                 return <HomePage />;
             case 2:
