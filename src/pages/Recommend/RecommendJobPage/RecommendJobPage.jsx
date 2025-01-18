@@ -1,7 +1,7 @@
 import * as S from './styled/styled';
 import { useState, useEffect } from 'react';
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
-import JobBox from '../../../components/Recommend/JobBox/Jobbox';
+import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import Pagination from '../../../components/common/Pagination/Pagination';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 
