@@ -8,3 +8,5 @@ const InfoContainer = ({ children }) => {
         </S.InfoContainer>
     );
 };
+
+export default InfoContainer;
