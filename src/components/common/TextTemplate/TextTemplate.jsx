@@ -1,5 +1,6 @@
 import * as S from './styled/styled';
 import { useTemplateData, textTemplateInitialData } from '../../../hooks/useTemplateData';
+import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
 const TextTemplate = () => {
     const { handleInputChange, data } = useTemplateData(textTemplateInitialData);
@@ -38,6 +39,9 @@ const TextTemplate = () => {
                             </S.TableRow>
                         ))}
                     </S.TemplateTable>
+                    <S.ButtonWrapper>
+                        <UnderlineButton>전체 삭제하기</UnderlineButton>
+                    </S.ButtonWrapper>
                 </S.TemplateWrapper>
             ))}
         </div>
