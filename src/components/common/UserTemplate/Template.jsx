@@ -3,10 +3,18 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useTemplateData, userTemplateInitialData } from '../../../hooks/useTemplateData';
 import * as S from './styled/styled';
+import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
 const Template = () => {
-    const { tooltipVisible, setTooltipVisible, handleInputChange, data, handleDateChange, generateTooltipText } =
-        useTemplateData(userTemplateInitialData);
+    const {
+        tooltipVisible,
+        setTooltipVisible,
+        handleInputChange,
+        data,
+        handleDateChange,
+        generateTooltipText,
+        clearAll,
+    } = useTemplateData(userTemplateInitialData);
     const autoResize = (textarea) => {
         if (textarea) {
             textarea.style.height = '20px';
@@ -92,6 +100,9 @@ const Template = () => {
                             </S.TableRow>
                         ))}
                     </S.TemplateTable>
+                    <S.ButtonWrapper>
+                        <UnderlineButton onClick={clearAll}>전체 삭제하기</UnderlineButton>
+                    </S.ButtonWrapper>
                 </S.TemplateWrapper>
             ))}
         </div>

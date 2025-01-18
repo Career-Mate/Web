@@ -3,7 +3,7 @@ import { useTemplateData, textTemplateInitialData } from '../../../hooks/useTemp
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
 const TextTemplate = () => {
-    const { handleInputChange, data } = useTemplateData(textTemplateInitialData);
+    const { handleInputChange, data, clearAll } = useTemplateData(textTemplateInitialData);
     const autoResize = (textarea) => {
         if (textarea) {
             textarea.style.height = '20px';
@@ -40,7 +40,7 @@ const TextTemplate = () => {
                         ))}
                     </S.TemplateTable>
                     <S.ButtonWrapper>
-                        <UnderlineButton>전체 삭제하기</UnderlineButton>
+                        <UnderlineButton onClick={clearAll}>전체 삭제하기</UnderlineButton>
                     </S.ButtonWrapper>
                 </S.TemplateWrapper>
             ))}
