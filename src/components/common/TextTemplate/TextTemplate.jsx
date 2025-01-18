@@ -1,8 +1,8 @@
 import * as S from './styled/styled';
-import { useTemplateData, textTemplateInitialData } from '../../../hooks/useTemplateData';
+import { useTemplateData } from '../../../hooks/useTemplateData';
 
-const TextTemplate = () => {
-    const { handleInputChange, data } = useTemplateData(textTemplateInitialData);
+const TextTemplate = ({initialData}) => {
+    const { handleInputChange, data } = useTemplateData(initialData);
     const autoResize = (textarea) => {
         if (textarea) {
             textarea.style.height = '20px';

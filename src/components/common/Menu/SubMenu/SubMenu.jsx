@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import * as S from './styled/styled.js';
 
-const SubMenu = () => {
+const SubMenu = ({onSelect}) => {
     const [activeButton, setActiveButton] = useState(0);
 
     const handleButtonClick = (flag) => {
         setActiveButton(flag);
+        onSelect(flag);
     };
 
     return (
