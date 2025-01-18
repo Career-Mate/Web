@@ -31,7 +31,8 @@ const SmartPlannerPage = () => {
                                         <S.TooltipText>
                                             SMART 방법이 더 궁금하다면
                                             <br />
-                                            <S.Hyperlink href="https://www.tableau.com/ko-kr/learn/articles/smart-goals-criteria">
+                                            <S.Hyperlink href="https://www.tableau.com/ko-kr/learn/articles/smart-goals-criteria"
+                                                target="_blank" rel="noopener noreferrer">
                                                 이 콘텐츠
                                             </S.Hyperlink>
                                             를 참고해보세요!
