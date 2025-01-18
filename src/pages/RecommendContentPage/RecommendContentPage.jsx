@@ -1,5 +1,6 @@
 import * as S from './styled/styled';
 import ContentCard from '../../components/common/Card/ContentCard/ContentCard';
+import JobBox from '../../components/Recommend/JobBox/JobBox';
 
 const RecommendContentPage = ({user}) => {
     return (
@@ -14,7 +15,7 @@ const RecommendContentPage = ({user}) => {
                 </S.TextWrapper>
             </S.TopContainer>
             <S.BottomContainer>
-                <S.JobBox>직무 | {user.job}</S.JobBox>
+                <JobBox job={user.job}/>
                 <S.CardWrapper>
                     {user.contentNames.map((name, index) => (
                         <ContentCard key={index} contentName={name} />
