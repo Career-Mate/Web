@@ -12,6 +12,7 @@ export const Container = styled.div`
     box-sizing: border-box;
     padding: 0 40px;
     width: 100%;
+    margin-top: 40px;
 `
 
 export const ImgWrapper = styled.div`
