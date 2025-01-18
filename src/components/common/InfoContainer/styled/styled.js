@@ -1,30 +1,23 @@
 import styled from 'styled-components';
 
 export const InfoContainer = styled.div`
-    width: ${(props) => props.$width};
-    height: ${(props) => props.$height};
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     background: #ffffff;
     border: 1px solid #c4c4c4;
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.23);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: visible;
-    margin-top: ${(props) => `calc(${props.$top} * 0.5)`};
-    margin-bottom: ${(props) => `calc(${props.$top} * 0.7)`};
-    position: relative;
+    padding: 20px;
+    display: inline-block;
+    max-width: 60vw;
+    max-height: 60vh;
+    overflow: auto;
 `;
 
-export const LogoWrapper = styled.div`
-    position: absolute;
-    top: -80px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
+export const ContainerContent = styled.div`
     padding: 20px;
     display: flex;
     align-items: center;
@@ -33,7 +26,7 @@ export const LogoWrapper = styled.div`
 `;
 
 export const Logo = styled.img`
-    width: 160px;
+    width: 160px; /* 로고 크기 조정 */
     height: auto;
 `;
 
@@ -76,7 +69,6 @@ export const TextWrapper = styled.div`
     align-self: stretch;
     flex-grow: 0;
 `;
-
 export const MainText = styled.h2`
     font-size: 36px;
     font-weight: 600;
@@ -91,7 +83,6 @@ export const DetailText = styled.p`
     color: #000;
     text-align: center;
     margin-bottom: 20px;
-    white-space: pre-line;
 `;
 
 export const ButtonWrapper = styled.div`
