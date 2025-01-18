@@ -23,7 +23,6 @@ export const useInternExperience = () => {
     }, [data]);
 
     const handleSave = () => {
-        console.log('Final data:', JSON.stringify(data, null, 2));
         if (!canSave) {
             alert('필수 항목을 모두 입력해주세요!');
         } else {
