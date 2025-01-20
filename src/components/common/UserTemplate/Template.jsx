@@ -1,11 +1,13 @@
 import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useTemplateData, userTemplateInitialData } from '../../../hooks/useTemplateData';
+import { useTemplateData } from '../../../hooks/useTemplateData';
+import { jobTemplateData } from '../../../data/jobTemplateData';
 import * as S from './styled/styled';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
-const Template = () => {
+const Template = ({ jobType = 'frontend', pageType = 'internExperience', onDataChange }) => {
+    const initialData = jobTemplateData[pageType]?.[jobType] || [];
     const {
         tooltipVisible,
         setTooltipVisible,
@@ -14,7 +16,8 @@ const Template = () => {
         handleDateChange,
         generateTooltipText,
         clearAll,
-    } = useTemplateData(userTemplateInitialData);
+    } = useTemplateData(initialData, onDataChange);
+
     const autoResize = (textarea) => {
         if (textarea) {
             textarea.style.height = '20px';
@@ -101,7 +104,7 @@ const Template = () => {
                         ))}
                     </S.TemplateTable>
                     <S.ButtonWrapper>
-                        <UnderlineButton onClick={clearAll}>전체 삭제하기</UnderlineButton>
+                        <UnderlineButton onClick={clearAll}>전체 내용 삭제하기</UnderlineButton>
                     </S.ButtonWrapper>
                 </S.TemplateWrapper>
             ))}
