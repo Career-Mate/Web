@@ -1,6 +1,6 @@
 import * as S from './styled/styled';
-import ContentCard from '../../components/common/Card/ContentCard/ContentCard';
-import JobBox from '../../components/Recommend/JobBox/JobBox';
+import ContentCard from '../../../components/common/Card/ContentCard/ContentCard';
+import JobBox from '../../../components/Recommend/JobBox/JobBox';
 
 const RecommendContentPage = ({user}) => {
     return (
