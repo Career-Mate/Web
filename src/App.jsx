@@ -7,6 +7,7 @@ import MainPage from './pages/Main/MainPage/MainPage';
 import CareerNotePage from './pages/Career/CareerPage/CareerNotePage';
 import CareerSavePage from './pages/Career/CareerSavePage/CareerSavePage';
 import CareerMainPage from './pages/Career/CareerMainPage/CareerMainPage';
+import ProfileSettingPage from './pages/Main/ProfileSettingPage/ProfileSettingPage';
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <MainPage />,
+            },
+            {
+                path: 'profile',
+                element: <ProfileSettingPage />,
             },
             {
                 path: 'career',
