@@ -1,9 +1,14 @@
 import * as S from "./styled/styled.js";
-import companyImg from "../../assets/JobDetailPage/companyImg.svg" 
-import SquareButton from "../../components/common/Button/SquareButton/SquareButton.jsx";
-import JobDetailList from "../../components/JobDetailList/JobDetailList.jsx";
-import { useState } from "react";
+import companyImg from "../../../assets/JobDetailPage/companyImg.svg" 
+import SquareButton from "../../../components/common/Button/SquareButton/SquareButton.jsx";
+import JobDetailList from "../../../components/Recommend/JobDetailList/JobDetailList.jsx";
+import { useNavigate } from "react-router-dom";
+
 const JobDetailPage = ({data})=>{
+    const navigate = useNavigate(); // useNavigate 훅 호출
+    const handlePrevNavigation = () => {
+      navigate("/target-path"); // '/target-path'로 이동
+    };
 
     return (
         <S.PageContainer>
@@ -35,7 +40,7 @@ const JobDetailPage = ({data})=>{
                 </S.ListWrapper>
             </S.SummaryWrapper>
             <S.ButtonWrapper>
-                <SquareButton backgroundColor={"grey"}>이전으로 돌아가기</SquareButton>
+                <SquareButton backgroundColor={"grey"} onClick={handlePrevNavigation}>이전으로 돌아가기</SquareButton>
                 <SquareButton backgroundColor={"green"}>채용공고 자세히 보러가기</SquareButton>
             </S.ButtonWrapper>
         </S.ComponentContainer>
