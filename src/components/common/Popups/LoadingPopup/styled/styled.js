@@ -10,6 +10,7 @@ export const PopupOverlay = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 `;
 
 export const PopupContainer = styled.div`
@@ -17,14 +18,15 @@ export const PopupContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 26px;
     position: absolute;
-    width: 706px;
+    width: 757px;
     min-width: 400px;
-    height: 287px;
-    left: calc(50% - 706px/2);
-    top: calc(50% - 287px/2 - 33px);
-    background: #FFFFFF;
+    height: fit-content;
+    padding-top: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
     border-radius: 20px;
 `;
@@ -35,8 +37,8 @@ export const PopupWrapper = styled.div`
     align-items: flex-end;
     padding: 32px 44px;
     gap: 26px;
-    width: 618px;
-    height: 193px;
+    width: 669px;
+    height: fit-content;
     flex: none;
     order: 0;
     align-self: stretch;
@@ -49,8 +51,8 @@ export const TextWrapper = styled.div`
     align-items: flex-start;
     padding: 0px;
     gap: 18px;
-    width: 618px;
-    height: 119px;
+    width: 669px;
+    height: fit-content;
     flex: none;
     order: 0;
     align-self: stretch;
@@ -58,8 +60,8 @@ export const TextWrapper = styled.div`
 `;
 
 export const StyledText = styled.div`
-    width: 618px;
-    height: 72px;
+    width: 669px;
+    height: fit-content;
     font-style: normal;
     font-weight: 700;
     font-size: 30px;
@@ -69,6 +71,7 @@ export const StyledText = styled.div`
     order: 0;
     align-self: stretch;
     flex-grow: 0;
+    white-space: pre-line;
 `;
 
 export const LoadingWrapper = styled.div`
@@ -77,8 +80,8 @@ export const LoadingWrapper = styled.div`
     align-items: center;
     padding: 0px;
     gap: 10px;
-    width: 618px;
-    height: 29px;
+    width: 669px;
+    height: fit-content;
     flex: none;
     order: 1;
     align-self: stretch;
@@ -96,7 +99,7 @@ export const LoadingText = styled.div`
     flex: none;
     order: 0;
     flex-grow: 0;
-`
+`;
 
 const rotate = keyframes`
     from {
