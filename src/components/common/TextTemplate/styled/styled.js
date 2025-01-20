@@ -86,3 +86,10 @@ export const TableCellData = styled.div.withConfig({
         box-sizing: border-box;
     }
 `;
+
+export const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+`;
