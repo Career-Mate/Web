@@ -115,6 +115,19 @@ export const useTemplateData = (initialData) => {
         return `${labels}은 꼭 입력해주세요!`;
     };
 
+    const clearAll = () => {
+        const clearedData = data.map((section) => ({
+            ...section,
+            items: section.items.map((item) => ({
+                ...item,
+                content: '',
+                startDate: null,
+                endDate: null,
+            })),
+        }));
+        setData(clearedData);
+    };
+
     return {
         tooltipVisible,
         setTooltipVisible,
@@ -122,6 +135,7 @@ export const useTemplateData = (initialData) => {
         handleInputChange,
         handleDateChange,
         generateTooltipText,
+        clearAll,
     };
 };
 
