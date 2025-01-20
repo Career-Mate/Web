@@ -44,7 +44,7 @@ const CareerSavePage = () => {
                         height: '60px',
                         padding: '0px',
                         backgroundColor: 'deepgreen',
-                        onClick: () => handleNavigation('/announcement'),
+                        onClick: () => handleNavigation('/recommend'),
                     },
                 ]}
             />
