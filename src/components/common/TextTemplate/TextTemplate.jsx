@@ -1,9 +1,12 @@
 import * as S from './styled/styled';
-import { useTemplateData, textTemplateInitialData } from '../../../hooks/useTemplateData';
+import { useTemplateData } from '../../../hooks/useTemplateData';
+import { textTemplateData } from '../../../data/textTemplateData';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
-const TextTemplate = () => {
-    const { handleInputChange, data, clearAll } = useTemplateData(textTemplateInitialData);
+const TextTemplate = ({ onDataChange }) => {
+    const initialData = textTemplateData;
+    const { handleInputChange, data, clearAll } = useTemplateData(initialData, onDataChange);
+
     const autoResize = (textarea) => {
         if (textarea) {
             textarea.style.height = '20px';
