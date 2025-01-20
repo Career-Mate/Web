@@ -3,6 +3,7 @@ import RootLayout from './layout/RootLayout';
 import HomePage from './pages/HomePage';
 import Test from './test/Test';
 import MainPage from './pages/Main/MainPage/MainPage';
+import CareerSavePage from './pages/Career/CareerSavePage/CareerSavePage';
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: 'career',
                 element: <HomePage />,
+            },
+            {
+                path: 'career/save',
+                element: <CareerSavePage />,
             },
             {
                 path: 'announcement',
