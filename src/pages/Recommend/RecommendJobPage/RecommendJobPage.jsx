@@ -1,5 +1,6 @@
 import * as S from './styled/styled';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
 import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import Pagination from '../../../components/common/Pagination/Pagination';
@@ -9,6 +10,8 @@ const RecommendJobPage = ({ user }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
     const totalPages = Math.ceil(user.contents.length / itemsPerPage);
+
+    const navigate = useNavigate();
 
     const divideArray = (arr, size) => {
         return Array.from({ length: Math.ceil(arr.length / size) }, (_, index) =>
@@ -60,7 +63,7 @@ const RecommendJobPage = ({ user }) => {
                         height={'58px'}
                         padding={'17px 74px'}
                         backgroundColor={'#FFFFFF'}
-                        onClick={console.log('콘텐츠 보러 가기')}
+                        onClick={() => navigate('../recommend/content')}
                     >
                         {'콘텐츠 보러 가기'}
                     </OvalButton>
