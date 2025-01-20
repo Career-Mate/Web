@@ -5,11 +5,10 @@ export const SettingContainer = styled.div`
     flex-direction: column;
     align-items: center;
     width: 633px;
-    gap: 65px;
+    gap: 10px;
 `;
 
 export const InputWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
 `;
