@@ -5,6 +5,7 @@ import RecommendMainPage from './pages/Recommend/RecommnedMainPage/RecommendMain
 import Test from './test/Test';
 import MainPage from './pages/Main/MainPage/MainPage';
 import CareerNotePage from './pages/Career/CareerPage/CareerNotePage';
+import CareerSavePage from './pages/Career/CareerSavePage/CareerSavePage';
 import CareerMainPage from './pages/Career/CareerMainPage/CareerMainPage';
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: 'career/note',
                 element: <CareerNotePage />,
+            },
+            {
+                path: 'career/save',
+                element: <CareerSavePage />,
             },
             {
                 path: 'announcement',
