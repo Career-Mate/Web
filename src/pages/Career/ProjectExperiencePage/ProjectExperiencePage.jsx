@@ -7,11 +7,16 @@ import useProgressBar from '../../../hooks/useProgressBar';
 
 const ProjectExperiencePage = ({ setActiveScreen }) => {
     const { data, setData, canSave, handleSave } = useProjectExperience();
-    const { progression, prevSummaryProgress, nextSummaryProgress } = useProgressBar(1);
+    const { progression, prevSummaryProgress, nextSummaryProgress } = useProgressBar(2);
+
+    const handlePrevClick = () => {
+        prevSummaryProgress();
+        setActiveScreen(0);
+    };
 
     const handleNextClick = () => {
         nextSummaryProgress();
-        setActiveScreen(1);
+        setActiveScreen(2);
     };
 
     return (
@@ -32,6 +37,9 @@ const ProjectExperiencePage = ({ setActiveScreen }) => {
             <S.ButtonWrapper>
                 <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
                     저장
+                </SquareButton>
+                <SquareButton width="131px" backgroundColor={'grey'} onClick={handlePrevClick}>
+                    이전
                 </SquareButton>
                 <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
                     다음
