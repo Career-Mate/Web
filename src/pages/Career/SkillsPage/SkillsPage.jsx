@@ -30,7 +30,11 @@ const SkillsPage = ({ setActiveScreen }) => {
             </S.HeaderWrapper>
 
             <S.TemplateWrapper>
-                <TextTemplate data={data} onDataChange={(updatedData) => setData(updatedData)} />
+                <TextTemplate
+                    data={data}
+                    onDataChange={(updatedData) => setData(updatedData)}
+                    TableCellHeader={S.SkillsPageTableCellHeader}
+                />
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>

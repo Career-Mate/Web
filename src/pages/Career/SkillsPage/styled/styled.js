@@ -1,4 +1,11 @@
 import styled from 'styled-components';
+import { TableCellHeader as OriginalTableCellHeader } from '../../../../components/common/TextTemplate/styled/styled';
+
+export const SkillsPageTableCellHeader = styled(OriginalTableCellHeader)`
+    width: 17%;
+    align-items: center;
+    justify-content: center;
+`;
 
 export const HeaderWrapper = styled.div`
     display: flex;
