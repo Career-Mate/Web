@@ -3,9 +3,9 @@ import { useTemplateData } from '../../../hooks/useTemplateData';
 import { textTemplateData } from '../../../data/textTemplateData';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
-const TextTemplate = ({ onDataChange }) => {
+const TextTemplate = ({ data: externalData, onDataChange, TableCellHeader }) => {
     const initialData = textTemplateData;
-    const { handleInputChange, data, clearAll } = useTemplateData(initialData, onDataChange);
+    const { handleInputChange, data, clearAll } = useTemplateData(externalData || initialData, onDataChange);
 
     const autoResize = (textarea) => {
         if (textarea) {
@@ -22,12 +22,12 @@ const TextTemplate = ({ onDataChange }) => {
                     <S.TemplateTable>
                         {section.items.map((item, itemIndex) => (
                             <S.TableRow key={itemIndex}>
-                                <S.TableCellHeader
+                                <TableCellHeader
                                     isFirstRow={itemIndex === 0}
                                     isLastRow={itemIndex === section.items.length - 1}
                                 >
                                     {item.label}
-                                </S.TableCellHeader>
+                                </TableCellHeader>
                                 <S.TableCellData
                                     isFirstRow={itemIndex === 0}
                                     isLastRow={itemIndex === section.items.length - 1}
@@ -43,7 +43,7 @@ const TextTemplate = ({ onDataChange }) => {
                         ))}
                     </S.TemplateTable>
                     <S.ButtonWrapper>
-                        <UnderlineButton onClick={clearAll}>전체 내용 삭제하기</UnderlineButton>
+                        <UnderlineButton onClick={() => clearAll(sectionIndex)}>전체 내용 삭제하기</UnderlineButton>
                     </S.ButtonWrapper>
                 </S.TemplateWrapper>
             ))}

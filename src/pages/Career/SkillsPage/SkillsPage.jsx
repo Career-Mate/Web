@@ -1,35 +1,39 @@
-import Template from '../../../components/common/UserTemplate/Template';
+import TextTemplate from '../../../components/common/TextTemplate/TextTemplate';
 import ProgressBar from '../../../components/common/ProgressBar/ProgressBar';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import * as S from './styled/styled';
-import { useInternExperience } from './useInternExperience';
+import { useSkills } from './useSkills';
 import useProgressBar from '../../../hooks/useProgressBar';
 
-const InternExperiencePage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave } = useInternExperience();
-    const { progression, nextSummaryProgress } = useProgressBar(1);
+const SkillsPage = ({ setActiveScreen }) => {
+    const { data, setData, canSave, handleSave } = useSkills();
+    const { progression, prevSummaryProgress, nextSummaryProgress } = useProgressBar(4);
+
+    const handlePrevClick = () => {
+        prevSummaryProgress();
+        setActiveScreen(2);
+    };
 
     const handleNextClick = () => {
         nextSummaryProgress();
-        setActiveScreen(1);
+        setActiveScreen(4);
     };
 
     return (
         <S.PageWrapper>
             <S.HeaderWrapper>
                 <S.TitleGroup>
-                    <S.Title>1. 인턴 경험</S.Title>
+                    <S.Title>4. 보유 기술 및 업무 성향</S.Title>
                     <S.Subtitle>※ 최대 2개까지 작성할 수 있어요.</S.Subtitle>
                 </S.TitleGroup>
                 <ProgressBar progression={progression} />
             </S.HeaderWrapper>
 
             <S.TemplateWrapper>
-                <Template
-                    jobType="frontend"
-                    pageType="internExperience"
+                <TextTemplate
                     data={data}
                     onDataChange={(updatedData) => setData(updatedData)}
+                    TableCellHeader={S.SkillsPageTableCellHeader}
                 />
             </S.TemplateWrapper>
 
@@ -37,12 +41,17 @@ const InternExperiencePage = ({ setActiveScreen }) => {
                 <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
                     저장
                 </SquareButton>
-                <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
-                    다음
-                </SquareButton>
+                <div>
+                    <SquareButton width="131px" backgroundColor={'grey'} onClick={handlePrevClick}>
+                        이전
+                    </SquareButton>
+                    <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
+                        다음
+                    </SquareButton>
+                </div>
             </S.ButtonWrapper>
         </S.PageWrapper>
     );
 };
 
-export default InternExperiencePage;
+export default SkillsPage;
