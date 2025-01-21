@@ -104,7 +104,7 @@ const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: e
                         ))}
                     </S.TemplateTable>
                     <S.ButtonWrapper>
-                        <UnderlineButton onClick={clearAll}>전체 내용 삭제하기</UnderlineButton>
+                        <UnderlineButton onClick={() => clearAll(sectionIndex)}>전체 내용 삭제하기</UnderlineButton>
                     </S.ButtonWrapper>
                 </S.TemplateWrapper>
             ))}
