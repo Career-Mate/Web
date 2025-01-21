@@ -1,8 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSetting';
 import * as S from './styled/styled';
 
 const ProfileSettingPage = () => {
+    const navigate = useNavigate();
+
     return (
         <S.ProfileContainer>
             <InfoContainer
@@ -13,7 +16,7 @@ const ProfileSettingPage = () => {
                 mainText={
                     <S.SettingsWrapper>
                         <S.SettingText>기본 정보를 입력해주세요!</S.SettingText>
-                        <ProfileSetting />
+                        <ProfileSetting buttonText={'프로필 설정하기'} onClick={() => navigate('/profile/success')} />
                     </S.SettingsWrapper>
                 }
             />
