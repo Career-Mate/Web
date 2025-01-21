@@ -26,7 +26,7 @@ const router = createBrowserRouter([
                 element: <CareerNotePage />,
             },
             {
-                path: 'career/save',
+                path: 'career/success',
                 element: <CareerSavePage />,
             },
             {

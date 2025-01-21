@@ -5,7 +5,6 @@ import ProjectExperiencePage from '../ProjectExperiencePage/ProjectExperiencePag
 import OtherExperiencePage from '../OtherExperiencePage/OtherExperiencePage';
 import SkillsPage from '../SkillsPage/SkillsPage';
 import FinalSummaryPage from '../FinalSummaryPage/FinalSummaryPage';
-import CareerSavePage from '../CareerSavePage/CareerSavePage';
 import CareerMainPage from '../CareerMainPage/CareerMainPage';
 
 const CareerNotePage = () => {
@@ -23,8 +22,6 @@ const CareerNotePage = () => {
                 return <SkillsPage setActiveScreen={setActiveScreen} />;
             case 4:
                 return <FinalSummaryPage setActiveScreen={setActiveScreen} />;
-            case 5:
-                return <CareerSavePage setActiveScreen={setActiveScreen} />;
             default:
                 return <CareerMainPage />;
         }

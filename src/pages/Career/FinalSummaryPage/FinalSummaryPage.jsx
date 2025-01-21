@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import TextTemplate from '../../../components/common/TextTemplate/TextTemplate';
 import ProgressBar from '../../../components/common/ProgressBar/ProgressBar';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
@@ -7,8 +8,9 @@ import useProgressBar from '../../../hooks/useProgressBar';
 import { TableCellHeader } from '../../../components/common/TextTemplate/styled/styled';
 
 const FinalSummaryPage = ({ setActiveScreen }) => {
+    const navigate = useNavigate();
     const { data, setData, handleSave } = useFinalSummary();
-    const { progression, prevSummaryProgress, nextSummaryProgress } = useProgressBar(5);
+    const { progression, prevSummaryProgress } = useProgressBar(5);
 
     const handlePrevClick = () => {
         prevSummaryProgress();
@@ -16,8 +18,7 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
     };
 
     const handleNextClick = () => {
-        nextSummaryProgress();
-        setActiveScreen(5);
+        navigate('/career/success');
     };
 
     return (
