@@ -1,4 +1,4 @@
-import * as S from './styled/styled.js';
+import * as S from '../styled/styled.js';
 import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
