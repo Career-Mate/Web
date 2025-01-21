@@ -4,6 +4,7 @@ import { useState } from 'react';
 import InternExperiencePage from '../InternExperiencePage/InternExperiencePage';
 import ProjectExperiencePage from '../ProjectExperiencePage/ProjectExperiencePage';
 import OtherExperiencePage from '../OtherExperiencePage/OtherExperiencePage';
+import SkillsPage from '../SkillsPage/SkillsPage';
 
 const CareerNotePage = () => {
     const [activeScreen, setActiveScreen] = useState(0);
@@ -17,7 +18,7 @@ const CareerNotePage = () => {
             case 2:
                 return <OtherExperiencePage setActiveScreen={setActiveScreen} />;
             case 3:
-                return <HomePage />;
+                return <SkillsPage setActiveScreen={setActiveScreen} />;
             case 4:
                 return <HomePage />;
             default:
