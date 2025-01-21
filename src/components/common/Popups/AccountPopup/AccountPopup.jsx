@@ -18,7 +18,7 @@ const AccountPopup = ({ type, onCancel, onConfirm }) => {
                             width="95px"
                             height="48px"
                             padding="0px"
-                            backgroundColor="grey"
+                            backgroundColor={type === '로그아웃' ? 'grey' : 'green'}
                             onClick={onCancel}
                         >
                             취소
@@ -27,7 +27,7 @@ const AccountPopup = ({ type, onCancel, onConfirm }) => {
                             width="130px"
                             height="48px"
                             padding="0px"
-                            backgroundColor="green"
+                            backgroundColor={type === '로그아웃' ? 'green' : 'grey'}
                             onClick={onConfirm}
                         >
                             {type}
