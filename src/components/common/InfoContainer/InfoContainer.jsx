@@ -21,7 +21,7 @@ const InfoContainer = ({
                     <S.Logo src={Logo} alt="Logo" $top={top} />
                 </S.LogoWrapper>
             )}
-            {showTitleText && <S.TitleText $top={top}>프로필 불러오기</S.TitleText>}
+            {showTitleText && <S.TitleText $top={top}>프로필 설정하기</S.TitleText>}
 
             <S.ContentWrapper>
                 {mainText && <S.MainText>{mainText}</S.MainText>}
