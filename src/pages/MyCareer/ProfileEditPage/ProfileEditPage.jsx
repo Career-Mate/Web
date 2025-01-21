@@ -23,7 +23,7 @@ const ProfileEditPage = () => {
                 <S.NoticeDetail>{userName} 님의 정보를 수정해주세요!</S.NoticeDetail>
             </S.NoticeWrapper>
             <S.ContentWrapper>
-                <ProfileSetting />
+                <ProfileSetting buttonText={'프로필 저장하기'} onClick={() => console.log('프로필 저장')} />
                 <UnderlineButton fontSize={'16px'} onClick={handlePopUpOpen}>
                     회원 탈퇴
                 </UnderlineButton>
