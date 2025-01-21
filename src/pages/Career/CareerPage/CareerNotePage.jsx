@@ -1,7 +1,8 @@
 import * as S from './styled/styled';
 import HomePage from '../../HomePage';
-import InternExperiencePage from '../InternExperiencePage/InternExperiencePage';
 import { useState } from 'react';
+import InternExperiencePage from '../InternExperiencePage/InternExperiencePage';
+import ProjectExperiencePage from '../ProjectExperiencePage/ProjectExperiencePage';
 
 const CareerNotePage = () => {
     const [activeScreen, setActiveScreen] = useState(0);
@@ -11,7 +12,7 @@ const CareerNotePage = () => {
             case 0:
                 return <InternExperiencePage setActiveScreen={setActiveScreen} />;
             case 1:
-                return <HomePage />;
+                return <ProjectExperiencePage setActiveScreen={setActiveScreen} />;
             case 2:
                 return <HomePage />;
             case 3:
