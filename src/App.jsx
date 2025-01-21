@@ -2,11 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import HomePage from './pages/HomePage';
 import RecommendMainPage from './pages/Recommend/RecommnedMainPage/RecommendMainPage';
-import RecommendContentPage from './pages/Recommend/RecommendContentPage/RecommendContentPage';
-import RecommendJobPage from './pages/Recommend/RecommendJobPage/RecommendJobPage';
-// import JobDetailPage from './pages/Recommend/JobDetailPage/JobDetailPage';
-import { userData as recommendContentUserData } from './pages/Recommend/RecommendContentPage/userData';
-import recommendJobUserData from './pages/Recommend/RecommendJobPage/userData';
+import RecommendRouter from './pages/Recommend/RecommendRouter';
 import Test from './test/Test';
 import MainPage from './pages/Main/MainPage/MainPage';
 import CareerNotePage from './pages/Career/CareerPage/CareerNotePage';
@@ -39,17 +35,9 @@ const router = createBrowserRouter([
                 element: <RecommendMainPage />,
             },
             {
-                path: 'recommend/content',
-                element: <RecommendContentPage user={recommendContentUserData} />,
+                path: 'recommend/:op',
+                element: <RecommendRouter />,
             },
-            {
-                path: 'recommend/job',
-                element: <RecommendJobPage user={recommendJobUserData} />,
-            },
-            // {
-            //     path: 'recommend/detail',
-            //     element: <JobDetailPage />,
-            // },
             {
                 path: 'mycareer',
                 element: <HomePage />,
