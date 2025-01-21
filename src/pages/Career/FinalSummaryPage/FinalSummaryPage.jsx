@@ -7,7 +7,7 @@ import useProgressBar from '../../../hooks/useProgressBar';
 import { TableCellHeader } from '../../../components/common/TextTemplate/styled/styled';
 
 const FinalSummaryPage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave } = useFinalSummary();
+    const { data, setData, handleSave } = useFinalSummary();
     const { progression, prevSummaryProgress, nextSummaryProgress } = useProgressBar(5);
 
     const handlePrevClick = () => {
@@ -39,7 +39,7 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
-                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
+                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave}>
                     저장
                 </SquareButton>
                 <div>

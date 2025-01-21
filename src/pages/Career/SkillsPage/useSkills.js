@@ -24,7 +24,7 @@ export const useSkills = () => {
 
     const handleSave = () => {
         if (!canSave) {
-            alert('필수 항목을 모두 입력해주세요!');
+            alert('항목을 모두 입력해주세요!');
         } else {
             alert('저장되었습니다.');
             setData([...data]);
