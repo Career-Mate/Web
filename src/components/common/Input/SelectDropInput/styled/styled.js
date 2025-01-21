@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const InputContainer = styled.div`
     width: ${({ $width }) => $width};
+    height: 121px;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -11,6 +12,7 @@ export const InputContainer = styled.div`
 export const Label = styled.div`
     font-size: 18px;
     font-weight: 500;
+    line-height: 21px;
 `;
 
 export const SelectorWrapper = styled.div`
@@ -20,14 +22,16 @@ export const SelectorWrapper = styled.div`
 
 export const Selector = styled.div`
     width: 100%;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: inherit;
+    background-color: white;
     border: 1px solid #c4c4c4;
     border-radius: 10px;
     padding: 20px 29px;
     box-sizing: border-box;
+    cursor: pointer;
     box-shadow: ${({ $isOpen }) => ($isOpen ? '0px 0px 5px #71B6FF' : 'none')};
 `;
 
@@ -44,7 +48,6 @@ export const DropButtonWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    cursor: pointer;
 `;
 
 export const DropButton = styled.img`
@@ -63,6 +66,7 @@ export const OptionContainer = styled.div`
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
+    z-index: 5;
 
     .triangle {
         position: absolute;
@@ -126,6 +130,7 @@ export const WarningText = styled.p`
     color: #ff5353;
     font-weight: 400;
     font-size: 14px;
+    line-height: 17px;
     z-index: 1;
     visibility: ${({ $isTouched, $selectedOption }) => ($isTouched && $selectedOption === '' ? 'visible' : 'hidden')};
 `;
