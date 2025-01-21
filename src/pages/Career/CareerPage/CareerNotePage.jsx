@@ -1,10 +1,12 @@
 import * as S from './styled/styled';
-import HomePage from '../../HomePage';
 import { useState } from 'react';
 import InternExperiencePage from '../InternExperiencePage/InternExperiencePage';
 import ProjectExperiencePage from '../ProjectExperiencePage/ProjectExperiencePage';
 import OtherExperiencePage from '../OtherExperiencePage/OtherExperiencePage';
 import SkillsPage from '../SkillsPage/SkillsPage';
+import FinalSummaryPage from '../FinalSummaryPage/FinalSummaryPage';
+import CareerSavePage from '../CareerSavePage/CareerSavePage';
+import CareerMainPage from '../CareerMainPage/CareerMainPage';
 
 const CareerNotePage = () => {
     const [activeScreen, setActiveScreen] = useState(0);
@@ -20,9 +22,11 @@ const CareerNotePage = () => {
             case 3:
                 return <SkillsPage setActiveScreen={setActiveScreen} />;
             case 4:
-                return <HomePage />;
+                return <FinalSummaryPage setActiveScreen={setActiveScreen} />;
+            case 5:
+                return <CareerSavePage setActiveScreen={setActiveScreen} />;
             default:
-                return <HomePage />;
+                return <CareerMainPage />;
         }
     };
 
