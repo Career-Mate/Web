@@ -1,6 +1,6 @@
 import SubMenu from '../../../components/common/Menu/SubMenu/SubMenu';
 import * as S from './styled/styled';
-import { useTemplateData, SmartPlannerInitialData } from '../../../hooks/useTemplateData';
+import { useTemplateData } from '../../../hooks/useTemplateData';
 import BookIcon from '../../../assets/common/bookIcon.svg';
 import { GrCircleQuestion } from 'react-icons/gr';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';

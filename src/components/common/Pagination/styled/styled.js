@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const PaginationContainer = styled.div`
     width: 296px;
     height: 26px;
-    bottom: 20px;
     left: calc(50% - 296px / 2);
     gap: 56px;
     display: flex;

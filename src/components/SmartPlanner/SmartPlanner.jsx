@@ -1,4 +1,4 @@
-import { SmartPlannerInitialData } from '../../hooks/useTemplateData';
+import {SmartPlannerInitialData} from '../../data/smartTemplateData.js'
 import ProfileInput from '../common/Input/ProfileInput';
 import CalendarInput from '../common/Input/CalendarInput/CalendarInput';
 import TextTemplate from "../common/TextTemplate/TextTemplate"

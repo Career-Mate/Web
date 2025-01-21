@@ -1,8 +1,12 @@
 import * as S from './styled/styled';
 import { useTemplateData } from '../../../hooks/useTemplateData';
+import { textTemplateData } from '../../../data/textTemplateData';
+import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
-const TextTemplate = ({initialData}) => {
-    const { handleInputChange, data } = useTemplateData(initialData);
+const TextTemplate = ({ onDataChange }) => {
+    const initialData = textTemplateData;
+    const { handleInputChange, data, clearAll } = useTemplateData(initialData, onDataChange);
+
     const autoResize = (textarea) => {
         if (textarea) {
             textarea.style.height = '20px';
@@ -38,6 +42,9 @@ const TextTemplate = ({initialData}) => {
                             </S.TableRow>
                         ))}
                     </S.TemplateTable>
+                    <S.ButtonWrapper>
+                        <UnderlineButton onClick={clearAll}>전체 내용 삭제하기</UnderlineButton>
+                    </S.ButtonWrapper>
                 </S.TemplateWrapper>
             ))}
         </div>

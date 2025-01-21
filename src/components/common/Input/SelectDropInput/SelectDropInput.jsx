@@ -1,5 +1,6 @@
 import * as S from './styled/styled.js';
-import dropButton from '../../../../assets/interest-job-button.svg';
+import dropButton from '../../../../assets/SelectDrop/interest-job-button.svg';
+import upButton from '../../../../assets/SelectDrop/interest-job-button-up.svg';
 import { useSelectDrop } from '../../../../hooks/useSelectDrop.js';
 
 const SelectDropInput = ({ label, width, errorMessage, optionData, boxwidth, boxheight }) => {
@@ -9,10 +10,10 @@ const SelectDropInput = ({ label, width, errorMessage, optionData, boxwidth, box
         <S.InputContainer $width={width}>
             <S.Label>{label}</S.Label>
             <S.SelectorWrapper>
-                <S.Selector $isOpen={isOpen}>
+                <S.Selector $isOpen={isOpen} onClick={toggleDropDown}>
                     {selectedOption || <S.Text>{label}</S.Text>}
-                    <S.DropButtonWrapper onClick={toggleDropDown}>
-                        <S.DropButton src={dropButton} />
+                    <S.DropButtonWrapper>
+                        <S.DropButton src={isOpen ? upButton : dropButton} />
                     </S.DropButtonWrapper>
                 </S.Selector>
 
