@@ -4,7 +4,7 @@ import * as S from './styled/styled';
 import { academicStatus, educationalStatus, jobData } from '../../../hooks/useSelectDrop';
 import SquareButton from '../Button/SquareButton/SquareButton';
 
-const ProfileSetting = () => {
+const ProfileSetting = ({ onClick, buttonText }) => {
     return (
         <S.SettingContainer>
             <S.InputWrapper>
@@ -36,8 +36,8 @@ const ProfileSetting = () => {
                 />
                 <ProfileInput label={'이메일'} type="email" placeholder={'이메일을 입력하세요'} />
             </S.InputWrapper>
-            <SquareButton width={'375px'} height={'60px'}>
-                프로필 설정하기
+            <SquareButton width={'375px'} height={'60px'} onClick={onClick}>
+                {buttonText}
             </SquareButton>
         </S.SettingContainer>
     );
