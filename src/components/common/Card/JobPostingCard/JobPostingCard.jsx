@@ -4,7 +4,7 @@ import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
 import { useState } from 'react';
 
-const JobPostingCard = ({ companyName, deadline, contentName, thumbnail, scrap }) => {
+const JobPostingCard = ({ companyName, deadline, contentName, thumbnail, scrap, onClick }) => {
     const [isScrap, setIsScrap] = useState(scrap);
 
     const handleClick = () => {
@@ -24,7 +24,9 @@ const JobPostingCard = ({ companyName, deadline, contentName, thumbnail, scrap }
             <S.Line $type={false} />
             <S.ContentWrapper $type={false}>
                 <S.Title $type={false}>{contentName}</S.Title>
-                <S.DetailButton $type={false}>공고 보기 &gt;</S.DetailButton>
+                <S.DetailButton $type={false} onClick={onClick}>
+                    공고 보기 &gt;
+                </S.DetailButton>
                 <S.DeadlineWrapper>
                     <S.Deadline>{deadline}</S.Deadline>
                     <S.ScrapIcon
