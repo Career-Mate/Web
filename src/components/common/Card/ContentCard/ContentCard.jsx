@@ -1,10 +1,10 @@
-import * as S from './styled/styled.js';
+import * as S from '../styled/styled.js';
 import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
 import { useState } from 'react';
 
-const ContentCard = ({ contentName, thumbnail, scrap }) => {
+const ContentCard = ({ contentName, thumbnail, scrap, onClick }) => {
     const [isScrap, setIsScrap] = useState(scrap);
 
     const handleClick = () => {
@@ -24,7 +24,9 @@ const ContentCard = ({ contentName, thumbnail, scrap }) => {
             <S.ContentWrapper $type={true}>
                 <S.Title $type={true}>{contentName}</S.Title>
                 <S.DeadlineWrapper>
-                    <S.DetailButton $type={true}>자세히 보기 &gt;</S.DetailButton>
+                    <S.DetailButton $type={true} onClick={onClick}>
+                        자세히 보기 &gt;
+                    </S.DetailButton>
                     <S.ScrapIcon
                         src={isScrap ? scrapCheckedIcon : scrapUncheckedIcon}
                         alt="스크랩 아이콘"
