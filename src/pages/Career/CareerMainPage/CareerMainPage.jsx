@@ -1,16 +1,21 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import searchIcon from '../../../assets/MainPage/search.svg';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import LoadingPopup from '../../../components/common/Popups/LoadingPopup/LoadingPopup';
 import * as S from './styled/styled';
 
 const CareerMainPage = () => {
+    const navigate = useNavigate();
     const userName = '김단아';
     const job = '프론트엔드 개발자';
     const [isPopUpVisible, setIsPopUpVisible] = useState(false);
 
     const handleButtonClick = () => {
         setIsPopUpVisible(true);
+        setTimeout(() => {
+            navigate('/career/note');
+        }, 1500);
     };
 
     const handlePopUpCancel = () => {
