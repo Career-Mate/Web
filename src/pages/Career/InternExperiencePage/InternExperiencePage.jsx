@@ -25,6 +25,7 @@ const InternExperiencePage = ({ setActiveScreen }) => {
                 <Template
                     jobType="frontend"
                     pageType="internExperience"
+                    data={data}
                     onDataChange={(updatedData) => setData(updatedData)}
                 />
             </S.TemplateWrapper>

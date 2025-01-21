@@ -6,7 +6,7 @@ import { jobTemplateData } from '../../../data/jobTemplateData';
 import * as S from './styled/styled';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
-const Template = ({ jobType = 'frontend', pageType = 'internExperience', onDataChange }) => {
+const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: externalData, onDataChange }) => {
     const initialData = jobTemplateData[pageType]?.[jobType] || [];
     const {
         tooltipVisible,
@@ -16,7 +16,7 @@ const Template = ({ jobType = 'frontend', pageType = 'internExperience', onDataC
         handleDateChange,
         generateTooltipText,
         clearAll,
-    } = useTemplateData(initialData, onDataChange);
+    } = useTemplateData(externalData || initialData, onDataChange);
 
     const autoResize = (textarea) => {
         if (textarea) {

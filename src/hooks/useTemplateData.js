@@ -45,6 +45,7 @@ export const useTemplateData = (initialData, onDataChange) => {
             })),
         }));
         setData(clearedData);
+        onDataChange(clearedData);
     };
 
     return {

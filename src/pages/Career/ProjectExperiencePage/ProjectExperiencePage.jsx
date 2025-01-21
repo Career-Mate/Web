@@ -30,6 +30,7 @@ const ProjectExperiencePage = ({ setActiveScreen }) => {
                 <Template
                     jobType="frontend"
                     pageType="projectExperience"
+                    data={data}
                     onDataChange={(updatedData) => setData(updatedData)}
                 />
             </S.TemplateWrapper>
