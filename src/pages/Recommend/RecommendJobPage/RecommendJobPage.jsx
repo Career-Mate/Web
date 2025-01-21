@@ -63,7 +63,7 @@ const RecommendJobPage = ({ user }) => {
                         height={'58px'}
                         padding={'17px 74px'}
                         backgroundColor={'#FFFFFF'}
-                        onClick={() => navigate('../recommend/content')}
+                        onClick={() => navigate('/recommend/content')}
                     >
                         {'콘텐츠 보러 가기'}
                     </OvalButton>
