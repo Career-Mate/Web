@@ -17,7 +17,10 @@ const InternExperiencePage = ({ setActiveScreen }) => {
     return (
         <S.PageWrapper>
             <S.HeaderWrapper>
-                <S.Title>1. 인턴 경험</S.Title>
+                <S.TitleGroup>
+                    <S.Title>1. 인턴 경험</S.Title>
+                    <S.Subtitle>※ 최대 2개까지 작성할 수 있어요.</S.Subtitle>
+                </S.TitleGroup>
                 <ProgressBar progression={progression} />
             </S.HeaderWrapper>
 

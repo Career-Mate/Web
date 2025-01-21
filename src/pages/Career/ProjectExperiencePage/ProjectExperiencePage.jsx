@@ -22,7 +22,10 @@ const ProjectExperiencePage = ({ setActiveScreen }) => {
     return (
         <S.PageWrapper>
             <S.HeaderWrapper>
-                <S.Title>2. 프로젝트 경험</S.Title>
+                <S.TitleGroup>
+                    <S.Title>2. 프로젝트 경험</S.Title>
+                    <S.Subtitle>※ 최대 2개까지 작성할 수 있어요.</S.Subtitle>
+                </S.TitleGroup>
                 <ProgressBar progression={progression} />
             </S.HeaderWrapper>
 
