@@ -1,5 +1,5 @@
 import * as S from './styled/styled';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import InternExperiencePage from '../InternExperiencePage/InternExperiencePage';
 import ProjectExperiencePage from '../ProjectExperiencePage/ProjectExperiencePage';
 import OtherExperiencePage from '../OtherExperiencePage/OtherExperiencePage';
@@ -9,6 +9,9 @@ import CareerMainPage from '../CareerMainPage/CareerMainPage';
 
 const CareerNotePage = () => {
     const [activeScreen, setActiveScreen] = useState(0);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [activeScreen]);
 
     const renderScreen = () => {
         switch (activeScreen) {
