@@ -3,6 +3,7 @@ import HomePage from '../../HomePage';
 import { useState } from 'react';
 import InternExperiencePage from '../InternExperiencePage/InternExperiencePage';
 import ProjectExperiencePage from '../ProjectExperiencePage/ProjectExperiencePage';
+import OtherExperiencePage from '../OtherExperiencePage/OtherExperiencePage';
 
 const CareerNotePage = () => {
     const [activeScreen, setActiveScreen] = useState(0);
@@ -14,7 +15,7 @@ const CareerNotePage = () => {
             case 1:
                 return <ProjectExperiencePage setActiveScreen={setActiveScreen} />;
             case 2:
-                return <HomePage />;
+                return <OtherExperiencePage setActiveScreen={setActiveScreen} />;
             case 3:
                 return <HomePage />;
             case 4:

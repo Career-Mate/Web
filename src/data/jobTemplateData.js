@@ -276,4 +276,163 @@ export const jobTemplateData = {
             },
         ],
     },
+
+    otherExperience: {
+        frontend: [
+            {
+                title: '',
+                items: [
+                    {
+                        label: '활동명',
+                        content: '',
+                        placeholder: '활동명을 입력해주세요',
+                        type: 'text',
+                        required: true,
+                    },
+                    {
+                        label: '기간',
+                        content: '',
+                        placeholder: '기간을 입력해주세요',
+                        type: 'date',
+                        startDate: null,
+                        endDate: null,
+                    },
+                    {
+                        label: '주요 성과 및 역할',
+                        content: '',
+                        placeholder: '주요 성과 및 역할을 입력해주세요',
+                        type: 'text',
+                    },
+                    {
+                        label: '나에게 의미 있었던 점',
+                        content: '',
+                        placeholder: '나에게 의미 있었던 점을 입력해주세요',
+                        type: 'text',
+                    },
+                    {
+                        label: '내가 성장한 부분',
+                        content: '',
+                        placeholder: '내가 성장한 부분을 입력해주세요',
+                        type: 'text',
+                    },
+                ],
+            },
+            {
+                title: '',
+                items: [
+                    {
+                        label: '활동명',
+                        content: '',
+                        placeholder: '활동명을 입력해주세요',
+                        type: 'text',
+                        required: true,
+                    },
+                    {
+                        label: '기간',
+                        content: '',
+                        placeholder: '기간을 입력해주세요',
+                        type: 'date',
+                        startDate: null,
+                        endDate: null,
+                    },
+                    {
+                        label: '주요 성과 및 역할',
+                        content: '',
+                        placeholder: '주요 성과 및 역할을 입력해주세요',
+                        type: 'text',
+                    },
+                    {
+                        label: '나에게 의미 있었던 점',
+                        content: '',
+                        placeholder: '나에게 의미 있었던 점을 입력해주세요',
+                        type: 'text',
+                    },
+                    {
+                        label: '내가 성장한 부분',
+                        content: '',
+                        placeholder: '내가 성장한 부분을 입력해주세요',
+                        type: 'text',
+                    },
+                ],
+            },
+        ],
+        backend: [
+            {
+                title: '',
+                items: [
+                    {
+                        label: '활동명',
+                        content: '',
+                        placeholder: '활동명을 입력해주세요',
+                        type: 'text',
+                        required: true,
+                    },
+                    {
+                        label: '기간',
+                        content: '',
+                        placeholder: '기간을 입력해주세요',
+                        type: 'date',
+                        startDate: null,
+                        endDate: null,
+                    },
+                    {
+                        label: '주요 성과 및 역할',
+                        content: '',
+                        placeholder: '주요 성과 및 역할을 입력해주세요',
+                        type: 'text',
+                    },
+                    {
+                        label: '나에게 의미 있었던 점',
+                        content: '',
+                        placeholder: '나에게 의미 있었던 점을 입력해주세요',
+                        type: 'text',
+                    },
+                    {
+                        label: '내가 성장한 부분',
+                        content: '',
+                        placeholder: '내가 성장한 부분을 입력해주세요',
+                        type: 'text',
+                    },
+                ],
+            },
+            {
+                title: '',
+                items: [
+                    {
+                        label: '활동명',
+                        content: '',
+                        placeholder: '활동명을 입력해주세요',
+                        type: 'text',
+                        required: true,
+                    },
+                    {
+                        label: '기간',
+                        content: '',
+                        placeholder: '기간을 입력해주세요',
+                        type: 'date',
+                        startDate: null,
+                        endDate: null,
+                    },
+                    {
+                        label: '주요 성과 및 역할',
+                        content: '',
+                        placeholder: '주요 성과 및 역할을 입력해주세요',
+                        type: 'text',
+                    },
+                    {
+                        label: '나에게 의미 있었던 점',
+                        content: '',
+                        placeholder: '나에게 의미 있었던 점을 입력해주세요',
+                        type: 'text',
+                    },
+                    {
+                        label: '내가 성장한 부분',
+                        content: '',
+                        placeholder: '내가 성장한 부분을 입력해주세요',
+                        type: 'text',
+                    },
+                ],
+            },
+        ],
+    },
 };
