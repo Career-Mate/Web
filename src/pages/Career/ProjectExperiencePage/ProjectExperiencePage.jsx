@@ -38,12 +38,14 @@ const ProjectExperiencePage = ({ setActiveScreen }) => {
                 <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
                     저장
                 </SquareButton>
-                <SquareButton width="131px" backgroundColor={'grey'} onClick={handlePrevClick}>
-                    이전
-                </SquareButton>
-                <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
-                    다음
-                </SquareButton>
+                <div>
+                    <SquareButton width="131px" backgroundColor={'grey'} onClick={handlePrevClick}>
+                        이전
+                    </SquareButton>
+                    <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
+                        다음
+                    </SquareButton>
+                </div>
             </S.ButtonWrapper>
         </S.PageWrapper>
     );
