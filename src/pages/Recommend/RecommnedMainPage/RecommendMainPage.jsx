@@ -15,7 +15,7 @@ const RecommendMainPage = () => {
         setIsPopupOpen(true);
         setTimeout(() => {
             setIsPopupOpen(false);
-            navigate('/recommend/content');
+            navigate('/recommend/job');
         }, 1000);
     };
 
@@ -46,7 +46,7 @@ const RecommendMainPage = () => {
                         height: '60px',
                         backgroundColor: 'deepgreen',
                         onClick: () => {
-                            navigate('/recommend/job');
+                            handleOpenPopup();
                         },
                     },
                     {
@@ -55,7 +55,7 @@ const RecommendMainPage = () => {
                         height: '60px',
                         backgroundColor: 'green',
                         onClick: () => {
-                            handleOpenPopup();
+                            navigate('/recommend/content');
                         },
                     },
                 ]}
