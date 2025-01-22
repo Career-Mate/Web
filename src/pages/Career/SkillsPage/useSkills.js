@@ -9,9 +9,6 @@ export const useSkills = () => {
     const checkIfCanSave = () => {
         const isValid = data.some((section) => {
             return section.items.slice(0, 4).every((item) => {
-                if (item.type === 'date') {
-                    return item.startDate !== null && item.endDate !== null;
-                }
                 return item.content.trim().length > 0;
             });
         });
