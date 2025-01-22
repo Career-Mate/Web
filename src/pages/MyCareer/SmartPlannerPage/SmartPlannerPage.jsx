@@ -1,18 +1,18 @@
-import SubMenu from '../../../components/common/Menu/SubMenu/SubMenu';
 import * as S from './styled/styled';
-import { useTemplateData } from '../../../hooks/useTemplateData';
 import BookIcon from '../../../assets/common/bookIcon.svg';
 import { GrCircleQuestion } from 'react-icons/gr';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import SmartPlanner from '../../../components/SmartPlanner/SmartPlanner';
+import { useSmartPlanner } from '../../../components/SmartPlanner/useSmartPlanner';
 import { useState } from 'react';
 
 const SmartPlannerPage = () => {
-    const { tooltipVisible, setTooltipVisible } = useTemplateData();
+    const [tooltipVisible, setTooltipVisible] = useState(false)
     const [page, setPage] = useState(0);
     const pageChange = (num) => {
         setPage((prev) => prev + num);
     };
+    const { data, setData, canSave, handleSave } = useSmartPlanner();
     return (
         <S.MainContainer>
             {page == 0 ? (
@@ -47,15 +47,15 @@ const SmartPlannerPage = () => {
                             }
                         </S.Text>
                     </S.TextWrapper>
-                    <SmartPlanner />
+                    <SmartPlanner data ={data} onDataChange={setData} />
                 </>
             ) : (
-                <SmartPlanner />
+                <SmartPlanner data ={data} onDataChange={setData} />
             )}
 
             {page == 0 ? (
                 <S.ButtonWrapper>
-                    <SquareButton width={'131px'} height={'60px'} padding={'18px 48px'} backgroundColor={'deepgreen'}>
+                    <SquareButton width={'131px'} height={'60px'} padding={'18px 48px'} backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
                         저장
                     </SquareButton>
                     <SquareButton

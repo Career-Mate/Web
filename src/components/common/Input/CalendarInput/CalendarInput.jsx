@@ -3,19 +3,17 @@ import { FaCalendarAlt } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useState, useRef } from 'react';
-const CalendarInput = ({ label }) => {
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+const CalendarInput = ({  label, startDate, endDate, onStartDateChange, onEndDateChange }) => {
     const [inputValue, setInputValue] = useState('');
 
     const datePickerRef = useRef(null);
 
     const handleDateChange = (dates) => {
         const [start, end] = dates;
-        setStartDate(start);
-        setEndDate(end);
+        if (start) onStartDateChange(start);
+        if (end) onEndDateChange(end);
         if (start && end) {
-            setInputValue(start.toLocaleDateString() + " ~ " + end.toLocaleDateString()); // Format date and set as input value
+            setInputValue(start.toLocaleDateString() + " ~ " + end.toLocaleDateString());
         }
     };
     return (

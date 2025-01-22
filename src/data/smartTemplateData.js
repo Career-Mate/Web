@@ -1,12 +1,16 @@
 export const SmartPlannerInitialData = [
     {
+        activityName: '',
+        goalPeriod: {
+            startDate: null,
+            endDate: null,
+        },
         title: 'SMART 기법',
         items: [
             {
                 label: '구체적인 목표(Specific)',
                 content: '',
                 placeholder: '내용을 입력해주세요',
-
                 required: true,
             },
             {
@@ -36,4 +40,4 @@ export const SmartPlannerInitialData = [
             },
         ],
     },
-]
+];

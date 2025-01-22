@@ -8,6 +8,7 @@ import MainPage from './pages/Main/MainPage/MainPage';
 import CareerNotePage from './pages/Career/CareerPage/CareerNotePage';
 import CareerSavePage from './pages/Career/CareerSavePage/CareerSavePage';
 import CareerMainPage from './pages/Career/CareerMainPage/CareerMainPage';
+import MyCareerPage from './pages/MyCareer/MyCareerPage/MyCareerPage';
 
 const router = createBrowserRouter([
     {
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'mycareer',
-                element: <HomePage />,
+                element: <MyCareerPage />,
             },
             {
                 path: 'test',
