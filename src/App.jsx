@@ -9,6 +9,7 @@ import CareerNotePage from './pages/Career/CareerPage/CareerNotePage';
 import CareerSavePage from './pages/Career/CareerSavePage/CareerSavePage';
 import CareerMainPage from './pages/Career/CareerMainPage/CareerMainPage';
 import MyCareerPage from './pages/MyCareer/MyCareerPage/MyCareerPage';
+import SmartPlannerPage from './pages/MyCareer/SmartPlannerPage/SmartPlannerPage';
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,24 @@ const router = createBrowserRouter([
             {
                 path: 'mycareer',
                 element: <MyCareerPage />,
+                children: [
+                    {
+                        index: true,
+                        element: <HomePage />,
+                    },
+                    {
+                        path: 'career-form',
+                        element: <HomePage />,
+                    },
+                    {
+                        path: 'saved-content',
+                        element: <HomePage />,
+                    },
+                    {
+                        path: 'smart-planner',
+                        element: <SmartPlannerPage />,
+                    },
+                ],
             },
             {
                 path: 'test',
