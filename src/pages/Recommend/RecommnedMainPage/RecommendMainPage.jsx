@@ -13,6 +13,10 @@ const RecommendMainPage = () => {
 
     const handleOpenPopup = () => {
         setIsPopupOpen(true);
+        setTimeout(() => {
+            setIsPopupOpen(false);
+            navigate('/recommend/content');
+        }, 1000);
     };
 
     const handleClosePopup = () => {
@@ -52,7 +56,6 @@ const RecommendMainPage = () => {
                         backgroundColor: 'green',
                         onClick: () => {
                             handleOpenPopup();
-                            navigate('/recommend/content');
                         },
                     },
                 ]}
