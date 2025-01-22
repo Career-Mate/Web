@@ -69,12 +69,10 @@ export const Tooltip = styled.div`
         z-index: -1;
     }
     
-    /* 초기 상태에서 숨김 */
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.2s ease, visibility 0s 0.2s;
 
-    /* 마우스 올릴 때 보이게 설정 */
     ${TooltipWrapper}:hover & {
         visibility: visible;
         opacity: 1;
