@@ -23,7 +23,7 @@ const Navbar = () => {
                         <S.Text $active={isActive('career')} onClick={() => navigate(`career`)}>
                             커리어 정리하기
                         </S.Text>
-                        <S.Text $active={isActive('announcement')} onClick={() => navigate(`announcement`)}>
+                        <S.Text $active={isActive('recommend')} onClick={() => navigate(`recommend`)}>
                             추천 공고
                         </S.Text>
                         <S.Text $active={isActive('mycareer')} onClick={() => navigate(`mycareer`)}>
