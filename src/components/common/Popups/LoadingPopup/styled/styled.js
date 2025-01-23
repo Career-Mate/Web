@@ -18,7 +18,7 @@ export const PopupContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     width: 757px;
     min-width: 400px;
     height: fit-content;
