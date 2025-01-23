@@ -17,7 +17,7 @@ const RecommendMainPage = () => {
         timeoutId.current = setTimeout(() => {
             handleClosePopup();
             navigate('/recommend/job');
-        }, 1000);
+        }, 1500);
     };
 
     const handleClosePopup = () => {
