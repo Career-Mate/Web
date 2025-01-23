@@ -41,7 +41,7 @@ const JobDetailPage = ({data})=>{
             </S.SummaryWrapper>
             <S.ButtonWrapper>
                 <SquareButton backgroundColor={"grey"} onClick={handlePrevNavigation}>이전으로 돌아가기</SquareButton>
-                <SquareButton backgroundColor={"green"}>채용공고 자세히 보러가기</SquareButton>
+                <SquareButton backgroundColor={"deepgreen"}>채용공고 자세히 보러가기</SquareButton>
             </S.ButtonWrapper>
         </S.ComponentContainer>
         </S.PageContainer>

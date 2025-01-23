@@ -89,8 +89,7 @@ export const ImgText = styled.span`
 export const SummaryWrapper = styled.div`
     width: inherit;
     height: fit-content;
-    box-shadow: 0px 0px 10px 0px #00000040;
-    box-shadow: 0px 0px 7px 0px #00000040 inset;
+    box-shadow: 0px 0px 10px 0px #00000040, 0px 0px 7px 0px #00000040 inset;
     background: #FFFFFF;
     border-radius: 20px;
     border: 1px solid #C4C4C4;
@@ -116,10 +115,7 @@ export const SummaryTextWrapper = styled.div`
     height: fit-content;
 
     box-sizing: border-box;
-    padding-bottom: 52px;
-    padding-top: 70px;
-    padding-left: 29px;
-    padding-right: 29px;
+    padding: 70px 29px 52px 29px;
     border-bottom: 3px solid #EFEFEF;
 
 `
