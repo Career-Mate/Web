@@ -62,4 +62,9 @@ export const ButtonWrapper = styled.div`
     width: 100%;
     max-width: 976px;
     padding: 50px 0;
+
+    & > div {
+        display: flex;
+        gap: 15px;
+    }
 `;

@@ -2,33 +2,35 @@ import React from 'react';
 import * as S from './styled/styled';
 import SquareButton from '../../Button/SquareButton/SquareButton';
 
-const LogoutPopup = ({ onCancel, onLogout }) => {
+const AccountPopup = ({ type, onCancel, onConfirm }) => {
     return (
         <S.PopupOverlay>
             <S.PopupContainer>
                 <S.PopupWrapper>
                     <S.TextWrapper>
-                        <S.StyledText>로그아웃</S.StyledText>
-                        <S.Logout>정말 로그아웃 하시겠어요?</S.Logout>
+                        <S.StyledText>{type}</S.StyledText>
+                        <S.Account>
+                            {type === '로그아웃' ? '정말 로그아웃 하시겠어요?' : '정말 탈퇴하시겠어요?'}
+                        </S.Account>
                     </S.TextWrapper>
                     <S.ButtonWrapper>
                         <SquareButton
                             width="95px"
                             height="48px"
-                            padding="12px 40x"
-                            backgroundColor="grey"
+                            padding="0px"
+                            backgroundColor={type === '로그아웃' ? 'grey' : 'green'}
                             onClick={onCancel}
                         >
                             취소
                         </SquareButton>
                         <SquareButton
-                            width="95px"
+                            width="130px"
                             height="48px"
                             padding="0px"
-                            backgroundColor="green"
-                            onClick={onLogout}
+                            backgroundColor={type === '로그아웃' ? 'green' : 'grey'}
+                            onClick={onConfirm}
                         >
-                            로그아웃
+                            {type}
                         </SquareButton>
                     </S.ButtonWrapper>
                 </S.PopupWrapper>
@@ -37,4 +39,4 @@ const LogoutPopup = ({ onCancel, onLogout }) => {
     );
 };
 
-export default LogoutPopup;
+export default AccountPopup;

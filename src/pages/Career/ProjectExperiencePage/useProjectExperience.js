@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { jobTemplateData } from '../../../data/jobTemplateData';
 
-export const useInternExperience = () => {
-    const initialData = jobTemplateData['internExperience']['frontend'];
+export const useProjectExperience = () => {
+    const initialData = jobTemplateData['projectExperience']['frontend'];
     const [data, setData] = useState(initialData);
     const [canSave, setCanSave] = useState(false);
 

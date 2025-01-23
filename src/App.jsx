@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import HomePage from './pages/HomePage';
 import RecommendMainPage from './pages/Recommend/RecommnedMainPage/RecommendMainPage';
+import RecommendRouter from './pages/Recommend/RecommendRouter';
 import Test from './test/Test';
 import MainPage from './pages/Main/MainPage/MainPage';
 import CareerNotePage from './pages/Career/CareerPage/CareerNotePage';
@@ -36,12 +37,16 @@ const router = createBrowserRouter([
                 element: <CareerNotePage />,
             },
             {
-                path: 'career/save',
+                path: 'career/success',
                 element: <CareerSavePage />,
             },
             {
-                path: 'announcement',
+                path: 'recommend',
                 element: <RecommendMainPage />,
+            },
+            {
+                path: 'recommend/:op',
+                element: <RecommendRouter />,
             },
             {
                 path: 'mycareer',

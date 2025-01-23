@@ -20,6 +20,7 @@ export const PopupContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 26px;
+    padding-top: 5px;
     position: absolute;
     width: 584px;
     min-width: 290px;
@@ -62,7 +63,7 @@ export const StyledText = styled.div`
     color: #000000;
 `;
 
-export const Logout = styled.div`
+export const Account = styled.div`
     display: flex;
     flex-direction: row;
     align-items: flex-start;

@@ -1,25 +1,32 @@
 import * as S from './styled/styled';
-import HomePage from '../../HomePage';
+import { useState, useEffect } from 'react';
 import InternExperiencePage from '../InternExperiencePage/InternExperiencePage';
-import { useState } from 'react';
+import ProjectExperiencePage from '../ProjectExperiencePage/ProjectExperiencePage';
+import OtherExperiencePage from '../OtherExperiencePage/OtherExperiencePage';
+import SkillsPage from '../SkillsPage/SkillsPage';
+import FinalSummaryPage from '../FinalSummaryPage/FinalSummaryPage';
+import CareerMainPage from '../CareerMainPage/CareerMainPage';
 
 const CareerNotePage = () => {
     const [activeScreen, setActiveScreen] = useState(0);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [activeScreen]);
 
     const renderScreen = () => {
         switch (activeScreen) {
             case 0:
                 return <InternExperiencePage setActiveScreen={setActiveScreen} />;
             case 1:
-                return <HomePage />;
+                return <ProjectExperiencePage setActiveScreen={setActiveScreen} />;
             case 2:
-                return <HomePage />;
+                return <OtherExperiencePage setActiveScreen={setActiveScreen} />;
             case 3:
-                return <HomePage />;
+                return <SkillsPage setActiveScreen={setActiveScreen} />;
             case 4:
-                return <HomePage />;
+                return <FinalSummaryPage setActiveScreen={setActiveScreen} />;
             default:
-                return <HomePage />;
+                return <CareerMainPage />;
         }
     };
 
