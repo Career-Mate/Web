@@ -170,3 +170,10 @@ export const DateDivider = styled.span`
     color: #d9d9d9;
     padding-right: 20px;
 `;
+
+export const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+`;

@@ -20,6 +20,7 @@ export const PopupContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 26px;
+    padding-top: 5px;
     position: absolute;
     width: 584px;
     min-width: 290px;
@@ -34,15 +35,12 @@ export const PopupContainer = styled.div`
 
 export const PopupWrapper = styled.div`
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    align-items: center;
-    align-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
     padding: 0px;
     gap: 26px;
     width: 496px;
-    height: 211px;
+    height: 157px;
 `;
 
 export const TextWrapper = styled.div`
@@ -65,7 +63,7 @@ export const StyledText = styled.div`
     color: #000000;
 `;
 
-export const Logout = styled.div`
+export const Account = styled.div`
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -87,6 +85,4 @@ export const ButtonWrapper = styled.div`
     justify-content: center;
     align-items: center;
     gap: 16px;
-    margin-top: 10px;
-    margin-bottom: 15px;
 `;
