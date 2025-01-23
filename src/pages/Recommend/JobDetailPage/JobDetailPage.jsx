@@ -5,10 +5,14 @@ import JobDetailList from "../../../components/Recommend/JobDetailList/JobDetail
 import { useNavigate } from "react-router-dom";
 
 const JobDetailPage = ({data})=>{
-    const navigate = useNavigate(); // useNavigate 훅 호출
+    const navigate = useNavigate(); 
     const handlePrevNavigation = () => {
-      navigate("/target-path"); // '/target-path'로 이동
+        navigate("/target-path");
     };
+    const handleJobRecruitNavigation = () => {
+        navigate("/target-path");
+    };
+
 
     return (
         <S.PageContainer>
@@ -41,7 +45,7 @@ const JobDetailPage = ({data})=>{
             </S.SummaryWrapper>
             <S.ButtonWrapper>
                 <SquareButton backgroundColor={"grey"} onClick={handlePrevNavigation}>이전으로 돌아가기</SquareButton>
-                <SquareButton backgroundColor={"deepgreen"}>채용공고 자세히 보러가기</SquareButton>
+                <SquareButton backgroundColor={"deepgreen"} onClick={handleJobRecruitNavigation}>채용공고 자세히 보러가기</SquareButton>
             </S.ButtonWrapper>
         </S.ComponentContainer>
         </S.PageContainer>
