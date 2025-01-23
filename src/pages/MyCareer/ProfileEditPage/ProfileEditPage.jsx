@@ -2,7 +2,7 @@ import { useState } from 'react';
 import UnderlineButton from '../../../components/common/Button/UnderlineButton/UnderlineButton';
 import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSetting';
 import * as S from './styled/styled';
-import LogoutPopup from '../../../components/common/Popups/LogoutPopup/LogoutPopup';
+import AccountPopUp from '../../../components/common/Popups/AccountPopUp/AccountPopUp';
 
 const ProfileEditPage = () => {
     const userName = '김단아';
@@ -28,7 +28,7 @@ const ProfileEditPage = () => {
                     회원 탈퇴
                 </UnderlineButton>
             </S.ContentWrapper>
-            {isPopUp && <LogoutPopup userName={userName} onCancel={handlePopUpClose} />}
+            {isPopUp && <AccountPopUp type={'회원 탈퇴'} onCancel={handlePopUpClose} />}
         </S.EditContainer>
     );
 };
