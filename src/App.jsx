@@ -50,7 +50,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: 'career-form',
-                        element: <HomePage />,
+                        element: <CareerNotePage/>,
                     },
                     {
                         path: 'saved-content',

@@ -29,7 +29,7 @@ const SubMenu = () => {
     };
 
     return (
-        <S.Conatiner>
+        <S.Container>
             <S.ButtonWrapper>
                 <S.Button $isActive={activeButton === 0} onClick={() => handleButtonClick(0,'/mycareer')}>
                     프로필 수정
@@ -44,7 +44,7 @@ const SubMenu = () => {
                     SMART 커리어 플래너
                 </S.Button>
             </S.ButtonWrapper>
-        </S.Conatiner>
+        </S.Container>
     );
 };
 

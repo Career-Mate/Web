@@ -1,18 +1,17 @@
-import styled from "styled-components";
-import SpeechBubble from "../../../../assets/common/speechBubble.svg";
-
+import styled from 'styled-components';
+import SpeechBubble from '../../../../assets/common/speech-bubble.svg';
 
 export const MainContainer = styled.div`
     height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 60px;
-`
-export const TextWrapper = styled.div`
+`;
+export const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap:25px;
-`
+    gap: 25px;
+`;
 export const Title = styled.div`
     display: flex;
     flex-direction: row;
@@ -20,25 +19,37 @@ export const Title = styled.div`
     gap: 10px;
     font-weight: 600;
     font-size: 24px;
-`
+`;
 export const Icon = styled.img`
     width: 32px;
     height: 32px;
-`
+`;
+export const TextWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+`;
+
 export const Text = styled.div`
     font-weight: 400;
     font-size: 16px;
     white-space: pre-line;
     line-height: 2;
-`
-
+`;
+export const Subtitle = styled.span`
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 10px;
+    color: #c4c8ce;
+    text-align: center;
+    margin-left: 20px;
+`;
 export const TooltipWrapper = styled.span`
     margin-left: 5px;
     font-size: 16px;
     color: grey;
     cursor: pointer;
     position: relative;
-
 `;
 export const Tooltip = styled.div`
     position: absolute;
@@ -52,7 +63,7 @@ export const Tooltip = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     text-align: center;
 
     &::before {
@@ -68,17 +79,18 @@ export const Tooltip = styled.div`
         background-position: center 75%;
         z-index: -1;
     }
-    
+
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.2s ease, visibility 0s 0.2s;
+    transition:
+        opacity 0.2s ease,
+        visibility 0s 0.2s;
 
     ${TooltipWrapper}:hover & {
         visibility: visible;
         opacity: 1;
         transition: opacity 0.2s ease;
     }
-
 `;
 export const TooltipText = styled.p`
     font-size: 11px;
@@ -100,10 +112,10 @@ export const InputContainer = styled.div`
     height: fit-content;
     display: flex;
     flex-direction: column;
-`
+`;
 export const ButtonWrapper = styled.div`
     display: flex;
     flex-direction: row;
     gap: 18px;
     justify-content: end;
-`
+`;
