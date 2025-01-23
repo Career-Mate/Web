@@ -1,7 +1,7 @@
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import LoadingPopup from '../../../components/common/Popups/LoadingPopup/LoadingPopup';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const RecommendMainPage = () => {
     const userName = '김단아';
@@ -10,16 +10,18 @@ const RecommendMainPage = () => {
     const navigate = useNavigate();
 
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const timeoutId = useRef(null);
 
     const handleOpenPopup = () => {
         setIsPopupOpen(true);
-        setTimeout(() => {
-            setIsPopupOpen(false);
+        timeoutId.current = setTimeout(() => {
+            handleClosePopup();
             navigate('/recommend/job');
         }, 1000);
     };
 
     const handleClosePopup = () => {
+        clearTimeout(timeoutId.current);
         setIsPopupOpen(false);
     };
 
