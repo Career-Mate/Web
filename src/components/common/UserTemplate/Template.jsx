@@ -1,6 +1,7 @@
 import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useMemo } from 'react';
 import { useTemplateData } from '../../../hooks/useTemplateData';
 import { jobTemplateData } from '../../../data/jobTemplateData';
 import * as S from './styled/styled';
@@ -11,12 +12,14 @@ const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: e
     const {
         tooltipVisible,
         setTooltipVisible,
-        handleInputChange,
         data,
+        handleInputChange,
         handleDateChange,
         generateTooltipText,
         clearAll,
     } = useTemplateData(externalData || initialData, onDataChange);
+
+    const memoizedData = useMemo(() => data, [data]);
 
     const autoResize = (textarea) => {
         if (textarea) {
@@ -27,7 +30,7 @@ const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: e
 
     return (
         <div>
-            {data.map((section, sectionIndex) => (
+            {memoizedData.map((section, sectionIndex) => (
                 <S.TemplateWrapper key={sectionIndex}>
                     <S.TemplateTitle>{section.title}</S.TemplateTitle>
                     <S.TemplateTable>
@@ -61,27 +64,13 @@ const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: e
                                             <S.DateInput isInline>
                                                 <FaCalendarAlt className="calendar-icon" />
                                                 <DatePicker
-                                                    selected={
-                                                        item.startDate instanceof Date &&
-                                                        !isNaN(item.startDate.getTime())
-                                                            ? item.startDate
-                                                            : null
-                                                    }
+                                                    selected={item.startDate}
                                                     onChange={(date) =>
                                                         handleDateChange(sectionIndex, itemIndex, date, true)
                                                     }
                                                     selectsStart
-                                                    startDate={
-                                                        item.startDate instanceof Date &&
-                                                        !isNaN(item.startDate.getTime())
-                                                            ? item.startDate
-                                                            : null
-                                                    }
-                                                    endDate={
-                                                        item.endDate instanceof Date && !isNaN(item.endDate.getTime())
-                                                            ? item.endDate
-                                                            : null
-                                                    }
+                                                    startDate={item.startDate}
+                                                    endDate={item.endDate}
                                                     placeholderText="시작 날짜를 선택해주세요"
                                                     dateFormat="yyyy년 MM월 dd일"
                                                 />
@@ -92,32 +81,14 @@ const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: e
                                             <S.DateInput isInline>
                                                 <FaCalendarAlt className="calendar-icon" />
                                                 <DatePicker
-                                                    selected={
-                                                        item.endDate instanceof Date && !isNaN(item.endDate.getTime())
-                                                            ? item.endDate
-                                                            : null
-                                                    }
+                                                    selected={item.endDate}
                                                     onChange={(date) =>
                                                         handleDateChange(sectionIndex, itemIndex, date, false)
                                                     }
                                                     selectsEnd
-                                                    startDate={
-                                                        item.startDate instanceof Date &&
-                                                        !isNaN(item.startDate.getTime())
-                                                            ? item.startDate
-                                                            : null
-                                                    }
-                                                    endDate={
-                                                        item.endDate instanceof Date && !isNaN(item.endDate.getTime())
-                                                            ? item.endDate
-                                                            : null
-                                                    }
-                                                    minDate={
-                                                        item.startDate instanceof Date &&
-                                                        !isNaN(item.startDate.getTime())
-                                                            ? item.startDate
-                                                            : null
-                                                    }
+                                                    startDate={item.startDate}
+                                                    endDate={item.endDate}
+                                                    minDate={item.startDate}
                                                     placeholderText="종료 날짜를 선택해주세요"
                                                     dateFormat="yyyy년 MM월 dd일"
                                                 />
