@@ -6,9 +6,9 @@ export const academicStatus = ['재학', '휴학', '졸업', '수료'];
 
 export const educationalStatus = ['중학교 이하', '고등학교', '전문대학', '대학교', '석사', '박사'];
 
-export const useSelectDrop = () => {
+export const useSelectDrop = (defaultValue) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedOption, setSelectedOption] = useState(defaultValue);
     const [isTouched, setIsTouched] = useState(false);
 
     const toggleDropDown = () => {
