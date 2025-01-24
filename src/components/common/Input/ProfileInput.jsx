@@ -6,9 +6,9 @@ const ProfileInput = ({
     placeholder,
     errorMessage = `${label}을 입력해주세요!`,
     type = 'text',
-    defaultValue = '',
+    value,
+    onChange,
 }) => {
-    const { value, onChange } = useInput(defaultValue);
     const showError = value === '';
 
     return (
