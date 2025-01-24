@@ -3,7 +3,7 @@ import { useTemplateData } from '../../../hooks/useTemplateData';
 import { textTemplateData } from '../../../data/textTemplateData';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
-const TextTemplate = ({ data: externalData, onDataChange, TableCellHeader }) => {
+const TextTemplate = ({ data: externalData, onDataChange }) => {
     const initialData = textTemplateData;
     const { handleInputChange, data, clearAll } = useTemplateData(externalData || initialData, onDataChange);
 
@@ -22,12 +22,13 @@ const TextTemplate = ({ data: externalData, onDataChange, TableCellHeader }) => 
                     <S.TemplateTable>
                         {section.items.map((item, itemIndex) => (
                             <S.TableRow key={itemIndex}>
-                                <TableCellHeader
+                                <S.TableCellHeader
+                                    data-component="TableCellHeader"
                                     isFirstRow={itemIndex === 0}
                                     isLastRow={itemIndex === section.items.length - 1}
                                 >
                                     {item.label}
-                                </TableCellHeader>
+                                </S.TableCellHeader>
                                 <S.TableCellData
                                     isFirstRow={itemIndex === 0}
                                     isLastRow={itemIndex === section.items.length - 1}

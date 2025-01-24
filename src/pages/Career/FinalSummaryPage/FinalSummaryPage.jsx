@@ -5,7 +5,6 @@ import SquareButton from '../../../components/common/Button/SquareButton/SquareB
 import * as S from './styled/styled';
 import { useFinalSummary } from './useFinalSummary';
 import useProgressBar from '../../../hooks/useProgressBar';
-import { TableCellHeader } from '../../../components/common/TextTemplate/styled/styled';
 
 const FinalSummaryPage = ({ setActiveScreen }) => {
     const navigate = useNavigate();
@@ -32,11 +31,7 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
             </S.HeaderWrapper>
 
             <S.TemplateWrapper>
-                <TextTemplate
-                    data={data}
-                    onDataChange={(updatedData) => setData(updatedData)}
-                    TableCellHeader={TableCellHeader}
-                />
+                <TextTemplate data={data} onDataChange={(updatedData) => setData(updatedData)} />
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
