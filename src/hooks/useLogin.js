@@ -26,7 +26,7 @@ const useLogin = () => {
         navigate('/');
     };
 
-    return { isLogin, fetchToken, loginHandler, logoutHandler };
+    return { isLogin, loginHandler, logoutHandler };
 };
 
 export default useLogin;

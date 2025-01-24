@@ -4,7 +4,7 @@ import useLogin from './useLogin';
 const useLoginPopUp = () => {
     const [popUp, setPopUp] = useState(null);
     const [code, setCode] = useState(null);
-    const { fetchToken } = useLogin();
+    const { loginHandler } = useLogin();
 
     const OAUTH_REDIRECT_URI = import.meta.env.VITE_OAUTH_REDIRECT_URI;
 
@@ -50,7 +50,7 @@ const useLoginPopUp = () => {
             const { code } = event.data;
             if (code) {
                 setCode(code);
-                fetchToken();
+                loginHandler();
                 close();
             }
         };

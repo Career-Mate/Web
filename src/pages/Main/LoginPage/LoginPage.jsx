@@ -4,15 +4,12 @@ import Kakao from '../../../assets/LoginPage/kakao.svg';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import useLoginPopUp from '../../../hooks/useLoginPopUp';
 import { useEffect } from 'react';
-import useLogin from '../../../hooks/useLogin';
 
 const LoginPage = () => {
     const { open, code } = useLoginPopUp();
-    const { fetchToken } = useLogin();
 
     useEffect(() => {
         if (code) {
-            fetchToken();
             console.log('받은 인증 코드:', code);
         }
     }, [code]);
