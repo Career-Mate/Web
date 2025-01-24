@@ -1,9 +1,9 @@
 import * as S from './styled/styled';
-import useOAuthPopUp from '../../../hooks/useOAuthPopUp';
+import useLoginPopUp from '../../../hooks/useLoginPopUp';
 import Logo from '../../../assets/common/cm.svg';
 
 const LoginProgressPage = () => {
-    const { code } = useOAuthPopUp();
+    const { code } = useLoginPopUp();
 
     return (
         <S.ProgressContainer>

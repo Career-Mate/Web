@@ -3,13 +3,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../../assets/common/career-mate.svg';
 import LogoutButton from '../../Button/LogoutButton/LogoutButton.jsx';
 import SquareButton from '../../Button/SquareButton/SquareButton.jsx';
-import useOAuth from '../../../../hooks/useOAuth.js';
+import useLogin from '../../../../hooks/useLogin.js';
 import { useEffect } from 'react';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { isLogin, logoutHandler } = useOAuth();
+    const { isLogin, logoutHandler } = useLogin();
 
     const isActive = (path) => location.pathname.startsWith(`/${path}`);
 

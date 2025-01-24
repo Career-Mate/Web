@@ -2,13 +2,13 @@ import * as S from './styled/styled';
 import Naver from '../../../assets/LoginPage/naver.svg';
 import Kakao from '../../../assets/LoginPage/kakao.svg';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
-import useOAuthPopUp from '../../../hooks/useOAuthPopUp';
+import useLoginPopUp from '../../../hooks/useLoginPopUp';
 import { useEffect } from 'react';
-import useOAuth from '../../../hooks/useOAuth';
+import useLogin from '../../../hooks/useLogin';
 
 const LoginPage = () => {
-    const { open, code } = useOAuthPopUp();
-    const { fetchToken } = useOAuth();
+    const { open, code } = useLoginPopUp();
+    const { fetchToken } = useLogin();
 
     useEffect(() => {
         if (code) {
