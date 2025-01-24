@@ -35,7 +35,6 @@ export const Text = styled.span`
     font-size: 18px;
     font-weight: 400;
 `
-
 export const BottomContainer = styled.div`
     width: inherit;
     height: fit-content;
@@ -45,35 +44,12 @@ export const BottomContainer = styled.div`
     flex-direction: column;
     align-items: center;
 
-    gap: 56px;
-
-    padding-bottom: 190px;
-`
-export const JobBox = styled.div`
-    width: 509px;
-
-    padding: 18px 46px 18px 46px;
-    
-    border-radius: 20px;
-    border: 4px solid #84D0B1;
-    box-shadow: 0px 0px 6.8px 0px #00000040, inset 0px 0px 14.5px 0px #00000040;
-
-    background-color: #FFFFFF;
-
-    margin-top: 40px;
-    margin-bottom: 56px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-
-    font-weight: 400;
-    font-size: 29px;
+    padding-bottom: 50px;
 `
 export const CardWrapper = styled.div`
     display: flex;
     flex-direction: row;
     gap: 25px;
+    padding-bottom: 75px;
+
 `
