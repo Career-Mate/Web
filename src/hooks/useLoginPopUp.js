@@ -1,11 +1,10 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useOAuth from './useOAuth';
+import useLogin from './useLogin';
 
-const useOAuthPopUp = () => {
+const useLoginPopUp = () => {
     const [popUp, setPopUp] = useState(null);
     const [code, setCode] = useState(null);
-    const { fetchToken } = useOAuth();
+    const { fetchToken } = useLogin();
 
     const OAUTH_REDIRECT_URI = import.meta.env.VITE_OAUTH_REDIRECT_URI;
 
@@ -65,4 +64,4 @@ const useOAuthPopUp = () => {
     return { open, code, popUp };
 };
 
-export default useOAuthPopUp;
+export default useLoginPopUp;
