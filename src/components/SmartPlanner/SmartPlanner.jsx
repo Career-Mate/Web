@@ -7,7 +7,6 @@ import useTemplateData from '../../hooks/useTemplateData';
 import { useEffect } from 'react';
 
 const SmartPlanner = ({ data, onDataChange }) => {
-
     const handleInputChange = (sectionIndex, value) => {
         const updatedData = [...data];
         updatedData[sectionIndex].activityName = value;
@@ -24,10 +23,11 @@ const SmartPlanner = ({ data, onDataChange }) => {
         onDataChange(updatedData);
     };
 
-    //삭제 예정
-    useEffect(() => {
-        console.log("Template data updated:",data);
-    }, [data]);
+    const handleDateInputChange = (sectionIndex, value) => {
+        const updatedData = [...data];
+        updatedData[sectionIndex].goalPeriod.textDate = value;
+        onDataChange(updatedData);
+    };
 
     return (
         <S.Container>
@@ -36,16 +36,16 @@ const SmartPlanner = ({ data, onDataChange }) => {
                     label={'활동명'}
                     placeholder={'활동명을 입력하세요'}
                     defaultValue={data[0]?.activityName || ''}
-                    onChange={
-                        (e) => handleInputChange(0, e.target.value)
-                    }
+                    onChange={(e) => handleInputChange(0, e.target.value)}
                 />
                 <CalendarInput
                     label="목표 달성 기간"
                     startDate={data[0]?.goalPeriod?.startDate || null}
                     endDate={data[0]?.goalPeriod?.endDate || null}
+                    textDate={data[0]?.goalPeriod?.textDate || ''}
                     onStartDateChange={(date) => handleDateChange(0, true, date)}
                     onEndDateChange={(date) => handleDateChange(0, false, date)}
+                    onDateInputChange={(value) => handleDateInputChange(0, value)}
                 />
             </S.InputContainer>
             <TextTemplate
