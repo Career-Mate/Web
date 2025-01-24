@@ -61,13 +61,27 @@ const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: e
                                             <S.DateInput isInline>
                                                 <FaCalendarAlt className="calendar-icon" />
                                                 <DatePicker
-                                                    selected={item.startDate}
+                                                    selected={
+                                                        item.startDate instanceof Date &&
+                                                        !isNaN(item.startDate.getTime())
+                                                            ? item.startDate
+                                                            : null
+                                                    }
                                                     onChange={(date) =>
                                                         handleDateChange(sectionIndex, itemIndex, date, true)
                                                     }
                                                     selectsStart
-                                                    startDate={item.startDate}
-                                                    endDate={item.endDate}
+                                                    startDate={
+                                                        item.startDate instanceof Date &&
+                                                        !isNaN(item.startDate.getTime())
+                                                            ? item.startDate
+                                                            : null
+                                                    }
+                                                    endDate={
+                                                        item.endDate instanceof Date && !isNaN(item.endDate.getTime())
+                                                            ? item.endDate
+                                                            : null
+                                                    }
                                                     placeholderText="시작 날짜를 선택해주세요"
                                                     dateFormat="yyyy년 MM월 dd일"
                                                 />
@@ -78,14 +92,32 @@ const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: e
                                             <S.DateInput isInline>
                                                 <FaCalendarAlt className="calendar-icon" />
                                                 <DatePicker
-                                                    selected={item.endDate}
+                                                    selected={
+                                                        item.endDate instanceof Date && !isNaN(item.endDate.getTime())
+                                                            ? item.endDate
+                                                            : null
+                                                    }
                                                     onChange={(date) =>
                                                         handleDateChange(sectionIndex, itemIndex, date, false)
                                                     }
                                                     selectsEnd
-                                                    startDate={item.startDate}
-                                                    endDate={item.endDate}
-                                                    minDate={item.startDate}
+                                                    startDate={
+                                                        item.startDate instanceof Date &&
+                                                        !isNaN(item.startDate.getTime())
+                                                            ? item.startDate
+                                                            : null
+                                                    }
+                                                    endDate={
+                                                        item.endDate instanceof Date && !isNaN(item.endDate.getTime())
+                                                            ? item.endDate
+                                                            : null
+                                                    }
+                                                    minDate={
+                                                        item.startDate instanceof Date &&
+                                                        !isNaN(item.startDate.getTime())
+                                                            ? item.startDate
+                                                            : null
+                                                    }
                                                     placeholderText="종료 날짜를 선택해주세요"
                                                     dateFormat="yyyy년 MM월 dd일"
                                                 />

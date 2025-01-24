@@ -2,10 +2,28 @@ import { useState, useEffect } from 'react';
 
 export const useTemplateData = (initialData, onDataChange) => {
     const [tooltipVisible, setTooltipVisible] = useState(false);
-    const [data, setData] = useState(JSON.parse(JSON.stringify(initialData)));
+
+    const [data, setData] = useState(() => {
+        return initialData.map((section) => ({
+            ...section,
+            items: section.items.map((item) => ({
+                ...item,
+                startDate: item.startDate ? new Date(item.startDate) : null,
+                endDate: item.endDate ? new Date(item.endDate) : null,
+            })),
+        }));
+    });
 
     useEffect(() => {
-        setData(JSON.parse(JSON.stringify(initialData)));
+        const parsedData = initialData.map((section) => ({
+            ...section,
+            items: section.items.map((item) => ({
+                ...item,
+                startDate: item.startDate ? new Date(item.startDate) : null,
+                endDate: item.endDate ? new Date(item.endDate) : null,
+            })),
+        }));
+        setData(parsedData);
     }, [initialData]);
 
     const handleInputChange = (sectionIndex, itemIndex, value) => {
@@ -16,6 +34,10 @@ export const useTemplateData = (initialData, onDataChange) => {
     };
 
     const handleDateChange = (sectionIndex, itemIndex, date, isStartDate) => {
+        if (!(date instanceof Date && !isNaN(date))) {
+            return;
+        }
+
         const updatedData = JSON.parse(JSON.stringify(data));
         if (isStartDate) {
             updatedData[sectionIndex].items[itemIndex].startDate = date;
