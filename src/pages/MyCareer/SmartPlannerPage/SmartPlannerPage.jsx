@@ -1,5 +1,5 @@
 import * as S from './styled/styled';
-import BookIcon from '../../../assets/common/bookIcon.svg';
+import BookIcon from '../../../assets/common/book-icon.svg';
 import { GrCircleQuestion } from 'react-icons/gr';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import SmartPlanner from '../../../components/SmartPlanner/SmartPlanner';
