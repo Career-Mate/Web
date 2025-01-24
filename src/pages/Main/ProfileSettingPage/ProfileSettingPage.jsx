@@ -2,9 +2,22 @@ import { useNavigate } from 'react-router-dom';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSetting';
 import * as S from './styled/styled';
+import { profileEmptyData } from '../../../data/profileData';
+import { useProfile } from '../../../hooks/useProfile';
 
 const ProfileSettingPage = () => {
     const navigate = useNavigate();
+    const { canSave, profile, handleProfileChange, handleProfileFieldChange } = useProfile(profileEmptyData); // useProfileEdit 사용
+
+    const handleSave = () => {
+        if (canSave) {
+            const updatedProfile = handleProfileChange();
+            console.log(updatedProfile);
+            navigate('/profile/success');
+        } else {
+            alert('모든 항목을 입력해주세요!');
+        }
+    };
 
     return (
         <S.ProfileContainer>
@@ -16,7 +29,12 @@ const ProfileSettingPage = () => {
                 mainText={
                     <S.SettingsWrapper>
                         <S.SettingText>기본 정보를 입력해주세요!</S.SettingText>
-                        <ProfileSetting buttonText={'프로필 설정하기'} onClick={() => navigate('/profile/success')} />
+                        <ProfileSetting
+                            profile={profile}
+                            buttonText={'프로필 설정하기'}
+                            onSave={handleSave}
+                            onChange={handleProfileFieldChange}
+                        />
                     </S.SettingsWrapper>
                 }
             />
