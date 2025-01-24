@@ -1,19 +1,10 @@
-import { useState } from 'react';
-import { textTemplateData } from '../../../data/textTemplateData';
+import { useCareerSummary } from '../../../hooks/useCareerSummary';
 
 export const useFinalSummary = () => {
-    const initialData = textTemplateData['summary']['frontend'];
-    const [data, setData] = useState(initialData);
-
-    const handleSave = () => {
-        alert('저장되었습니다.');
-        setData([...data]);
-    };
-
-    return {
-        data,
-        setData,
-        canSave: true,
-        handleSave,
-    };
+    return useCareerSummary({
+        DataType: 'summary',
+        JobType: 'frontend',
+        isTextTemplate: true,
+        skipValidation: true,
+    });
 };
