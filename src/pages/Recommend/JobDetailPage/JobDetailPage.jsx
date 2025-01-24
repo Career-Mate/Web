@@ -1,5 +1,5 @@
 import * as S from "./styled/styled.js";
-import companyImg from "../../../assets/JobDetailPage/companyImg.svg" 
+import companyImg from "../../../assets/JobDetailPage/company.svg" 
 import SquareButton from "../../../components/common/Button/SquareButton/SquareButton.jsx";
 import JobDetailList from "../../../components/Recommend/JobDetailList/JobDetailList.jsx";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ const JobDetailPage = ({data})=>{
         <S.PageContainer>
         <S.ComponentContainer>
             <S.ImgWrapper>
-                <S.StyledImg src = {companyImg}/>
+                <S.StyledImg src = {data.companyImg||companyImg}/>
                 <S.StyledImgOverlay/>
                 <S.ImgTextWrapper>
                     <S.ImgTitleWrapper>
