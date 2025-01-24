@@ -9,7 +9,7 @@ const ProfileSetting = ({ buttonText, onSave, profile, onChange }) => {
         <S.SettingContainer>
             <S.InputWrapper>
                 <ProfileInput
-                    value={profile.name}
+                    defaultValue={profile.name}
                     label={'이름'}
                     placeholder={'이름을 입력하세요'}
                     onChange={(e) => onChange('name', e.target.value)}
@@ -25,7 +25,7 @@ const ProfileSetting = ({ buttonText, onSave, profile, onChange }) => {
                     onChange={(value) => onChange('educationalStatus', value)}
                 />
                 <ProfileInput
-                    value={profile.department}
+                    defaultValue={profile.department}
                     label={'학과'}
                     placeholder={'학과'}
                     errorMessage={'학과를 입력해주세요!'}
@@ -52,7 +52,7 @@ const ProfileSetting = ({ buttonText, onSave, profile, onChange }) => {
                     onChange={(value) => onChange('interestJob', value)}
                 />
                 <ProfileInput
-                    value={profile.email}
+                    defaultValue={profile.email}
                     label={'이메일'}
                     type="email"
                     placeholder={'이메일을 입력하세요'}
