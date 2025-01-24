@@ -7,10 +7,10 @@ import { useNavigate } from "react-router-dom";
 const JobDetailPage = ({data})=>{
     const navigate = useNavigate(); 
     const handlePrevNavigation = () => {
-        navigate("/target-path");
+        navigate(-1);
     };
     const handleJobRecruitNavigation = () => {
-        navigate("/target-path");
+        window.open("https://your-target-url.com", "_blank", "noopener,noreferrer");
     };
 
 
