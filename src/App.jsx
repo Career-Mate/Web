@@ -12,6 +12,7 @@ import ProfileSettingPage from './pages/Main/ProfileSettingPage/ProfileSettingPa
 import ProfileSuccessPage from './pages/Main/ProfileSuccessPage/ProfileSuccessPage';
 import MyCareerPage from './pages/MyCareer/MyCareerPage/MyCareerPage';
 import SmartPlannerPage from './pages/MyCareer/SmartPlannerPage/SmartPlannerPage';
+import ProfileEditPage from './pages/MyCareer/ProfileEditPage/ProfileEditPage';
 
 const router = createBrowserRouter([
     {
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <HomePage />,
+                        element: <ProfileEditPage />,
                     },
                     {
                         path: 'career-form',
