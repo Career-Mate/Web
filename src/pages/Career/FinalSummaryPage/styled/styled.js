@@ -6,7 +6,6 @@ export const HeaderWrapper = styled.div`
     align-items: center;
     width: 100%;
     max-width: 976px;
-    margin-top: 50px;
 `;
 
 export const TitleGroup = styled.div`
@@ -38,7 +37,6 @@ export const PageWrapper = styled.div`
     gap: 10px;
     width: 100%;
     min-height: 100vh;
-    padding: 20px 0;
 `;
 
 export const ProgressBarWrapper = styled.div`

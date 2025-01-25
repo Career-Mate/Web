@@ -1,11 +1,13 @@
 import * as S from './styled/styled';
+import { useMemo } from 'react';
 import { useTemplateData } from '../../../hooks/useTemplateData';
 import { textTemplateData } from '../../../data/textTemplateData';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
-const TextTemplate = ({ data: externalData, onDataChange, TableCellHeader }) => {
-    const initialData = textTemplateData;
+const TextTemplate = ({ jobType = 'frontend', pageType = 'skills', data: externalData, onDataChange }) => {
+    const initialData = textTemplateData[pageType]?.[jobType] || [];
     const { handleInputChange, data, clearAll } = useTemplateData(externalData || initialData, onDataChange);
+    const memoizedData = useMemo(() => data, [data]);
 
     const autoResize = (textarea) => {
         if (textarea) {
@@ -16,18 +18,19 @@ const TextTemplate = ({ data: externalData, onDataChange, TableCellHeader }) => 
 
     return (
         <div>
-            {data.map((section, sectionIndex) => (
+            {memoizedData.map((section, sectionIndex) => (
                 <S.TemplateWrapper key={sectionIndex}>
                     <S.TemplateTitle>{section.title}</S.TemplateTitle>
                     <S.TemplateTable>
                         {section.items.map((item, itemIndex) => (
                             <S.TableRow key={itemIndex}>
-                                <TableCellHeader
+                                <S.TableCellHeader
+                                    data-component="TableCellHeader"
                                     isFirstRow={itemIndex === 0}
                                     isLastRow={itemIndex === section.items.length - 1}
                                 >
                                     {item.label}
-                                </TableCellHeader>
+                                </S.TableCellHeader>
                                 <S.TableCellData
                                     isFirstRow={itemIndex === 0}
                                     isLastRow={itemIndex === section.items.length - 1}

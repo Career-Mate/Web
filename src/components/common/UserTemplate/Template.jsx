@@ -1,6 +1,7 @@
 import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useMemo } from 'react';
 import { useTemplateData } from '../../../hooks/useTemplateData';
 import { jobTemplateData } from '../../../data/jobTemplateData';
 import * as S from './styled/styled';
@@ -11,12 +12,14 @@ const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: e
     const {
         tooltipVisible,
         setTooltipVisible,
-        handleInputChange,
         data,
+        handleInputChange,
         handleDateChange,
         generateTooltipText,
         clearAll,
     } = useTemplateData(externalData || initialData, onDataChange);
+
+    const memoizedData = useMemo(() => data, [data]);
 
     const autoResize = (textarea) => {
         if (textarea) {
@@ -27,7 +30,7 @@ const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: e
 
     return (
         <div>
-            {data.map((section, sectionIndex) => (
+            {memoizedData.map((section, sectionIndex) => (
                 <S.TemplateWrapper key={sectionIndex}>
                     <S.TemplateTitle>{section.title}</S.TemplateTitle>
                     <S.TemplateTable>
