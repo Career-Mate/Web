@@ -7,7 +7,7 @@ export const PageContainer = styled.div`
     gap: 10px;
     width: 100%;
     min-height: 100vh;
-    padding: 20px 0;
+    padding: 50px 0;
 `;
 
 export const MainContainer = styled.div`
