@@ -26,7 +26,7 @@ const LoginSuccessPage = () => {
                             height: '60px',
                             padding: '18px',
                             backgroundColor: 'rgba(43, 157, 143, 1)',
-                            onClick: () => console.log('커리어 정리하기기'),
+                            onClick: () => navigate('/profile'),
                         },
                     ]}
                 />
