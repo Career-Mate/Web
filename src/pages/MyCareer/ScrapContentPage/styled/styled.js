@@ -28,6 +28,12 @@ export const PinIcon = styled.img`
     height: 32px;
 `;
 
+export const TextWrapper = styled.div`
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+`;
+
 export const Title = styled.span`
     font-size: 24px;
     font-weight: 600;
@@ -44,6 +50,7 @@ export const ScrollArea = styled.div`
     gap: 43px;
     overflow-x: auto;
     padding-bottom: 20px;
+    height: 405px;
 
     &::-webkit-scrollbar {
         height: 8px;
@@ -64,9 +71,14 @@ export const Line = styled.div`
     border-top: 2px dashed #c4c4c4;
 `;
 
-export const ButtonContainer = styled.div`
+export const EmptyMessage = styled.div`
+    width: 912px;
+    height: 405px;
+    color: #c4c8ce;
+    font-weight: 500;
+    font-size: 32px;
     display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-    max-width: 912px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 `;

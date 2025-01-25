@@ -22,9 +22,6 @@ const RecommendJobPage = ({ user }) => {
 
     const currentContents = user.contents.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-    const topRowContents = currentContents.slice(0, 3);
-    const bottomRowContents = currentContents.slice(3, 6);
-
     return (
         <S.Container>
             <S.TopContainer>
@@ -42,12 +39,12 @@ const RecommendJobPage = ({ user }) => {
                     {currentContents.map((content, index) => (
                         <JobPostingCard
                             key={index}
-                            id={(currentPage - 1) * itemsPerPage + index} // 고유 ID 생성
+                            id={(currentPage - 1) * itemsPerPage + index}
                             companyName={content.companyName || '정보 없음'}
                             deadline={content.deadline || '마감일 없음'}
                             contentName={content.contentName || '채용 정보 없음'}
-                            isScraped={scrapStatus[(currentPage - 1) * itemsPerPage + index]} // 스크랩 상태 전달
-                            onScrapToggle={() => toggleScrap((currentPage - 1) * itemsPerPage + index)} // 스크랩 토글 함수
+                            isScraped={scrapStatus[(currentPage - 1) * itemsPerPage + index]}
+                            onScrapToggle={() => toggleScrap((currentPage - 1) * itemsPerPage + index)}
                             onClick={() => navigate('/recommend/detail')}
                         />
                     ))}
