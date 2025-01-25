@@ -2,13 +2,18 @@ import * as S from '../styled/styled.js';
 import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
-import { useState } from 'react';
+import useScrapStore from '../../../../hooks/useScrapStore.js';
 
-const ContentCard = ({ contentName, thumbnail, scrap, onClick }) => {
-    const [isScrap, setIsScrap] = useState(scrap);
+const ContentCard = ({ id, contentName, thumbnail, onClick }) => {
+    const { scrapContents, addScrapContent, removeScrapContent } = useScrapStore();
+    const isScrap = scrapContents.some((content) => content.id === id);
 
     const handleClick = () => {
-        setIsScrap(!isScrap);
+        if (isScrap) {
+            removeScrapContent(id);
+        } else {
+            addScrapContent({ id, contentName, thumbnail, onClick });
+        }
     };
 
     return (

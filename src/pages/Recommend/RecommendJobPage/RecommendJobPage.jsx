@@ -1,5 +1,5 @@
 import * as S from './styled/styled';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
 import JobBox from '../../../components/Recommend/JobBox/JobBox';
@@ -13,13 +13,17 @@ const RecommendJobPage = ({ user }) => {
 
     const navigate = useNavigate();
 
-    const divideArray = (arr, size) => {
-        return Array.from({ length: Math.ceil(arr.length / size) }, (_, index) =>
-            arr.slice(index * size, index * size + size),
-        );
+    const initialScrapStatus = user.contents.map(() => false);
+    const [scrapStatus, setScrapStatus] = useState(initialScrapStatus);
+
+    const toggleScrap = (index) => {
+        setScrapStatus((prev) => prev.map((status, i) => (i === index ? !status : status)));
     };
 
-    const groupedContents = divideArray(user.contents, 3);
+    const currentContents = user.contents.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+    const topRowContents = currentContents.slice(0, 3);
+    const bottomRowContents = currentContents.slice(3, 6);
 
     return (
         <S.Container>
@@ -35,28 +39,18 @@ const RecommendJobPage = ({ user }) => {
             <S.BottomContainer>
                 <JobBox job={user.job} />
                 <S.CardWrapper>
-                    <S.TopCardWrapper>
-                        {groupedContents[currentPage * 2 - 2]?.map((content, index) => (
-                            <JobPostingCard
-                                key={index}
-                                companyName={content.companyName || '정보 없음'}
-                                deadline={content.deadline || '마감일 없음'}
-                                contentName={content.contentName || '채용 정보 없음'}
-                                onClick={() => navigate('/recommend/detail')}
-                            />
-                        ))}
-                    </S.TopCardWrapper>
-                    <S.BottomCardWrapper>
-                        {groupedContents[currentPage * 2 - 1]?.map((content, index) => (
-                            <JobPostingCard
-                                key={index}
-                                companyName={content.companyName || '정보 없음'}
-                                deadline={content.deadline || '마감일 없음'}
-                                contentName={content.contentName || '채용 정보 없음'}
-                                onClick={() => navigate('/recommend/detail')}
-                            />
-                        ))}
-                    </S.BottomCardWrapper>
+                    {currentContents.map((content, index) => (
+                        <JobPostingCard
+                            key={index}
+                            id={(currentPage - 1) * itemsPerPage + index} // 고유 ID 생성
+                            companyName={content.companyName || '정보 없음'}
+                            deadline={content.deadline || '마감일 없음'}
+                            contentName={content.contentName || '채용 정보 없음'}
+                            isScraped={scrapStatus[(currentPage - 1) * itemsPerPage + index]} // 스크랩 상태 전달
+                            onScrapToggle={() => toggleScrap((currentPage - 1) * itemsPerPage + index)} // 스크랩 토글 함수
+                            onClick={() => navigate('/recommend/detail')}
+                        />
+                    ))}
                 </S.CardWrapper>
                 <S.ActionWrapper>
                     <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />

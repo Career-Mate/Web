@@ -53,34 +53,8 @@ export const BottomContainer = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    width: 100%;
-    max-width: 1282px;
-`;
-
-export const TopCardWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 0px;
-    gap: 41px;
-    width: 100%;
-    max-width: 1282px;
-`;
-
-export const BottomCardWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 41px;
     width: 100%;
     max-width: 1282px;

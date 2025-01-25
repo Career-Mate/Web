@@ -3,8 +3,11 @@ import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPo
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import pin from '../../../assets/common/pin.svg';
 import * as S from './styled/styled';
+import useScrapStore from '../../../hooks/useScrapStore';
 
 const ScrapContentPage = () => {
+    const { scrapContents, scrapJobs } = useScrapStore();
+
     return (
         <S.Container>
             <S.ContentContainer>
@@ -15,12 +18,20 @@ const ScrapContentPage = () => {
                     </S.Title>
                 </S.TitleWrapper>
                 <S.ScrollArea>
-                    {[1, 2].map((_, index) => (
-                        <ContentCard key={index} />
+                    {scrapContents.map((content) => (
+                        <ContentCard
+                            key={content.id}
+                            id={content.id}
+                            contentName={content.contentName}
+                            thumbnail={content.thumbnail}
+                            onClick={content.onClick}
+                        />
                     ))}
                 </S.ScrollArea>
             </S.ContentContainer>
+
             <S.Line />
+
             <S.JobContainer>
                 <S.TitleWrapper>
                     <S.PinIcon src={pin} alt="pin icon" />
@@ -29,8 +40,15 @@ const ScrapContentPage = () => {
                     </S.Title>
                 </S.TitleWrapper>
                 <S.ScrollArea>
-                    {[1, 2, 3, 4].map((_, index) => (
-                        <JobPostingCard key={index} />
+                    {scrapJobs.map((job) => (
+                        <JobPostingCard
+                            key={job.id}
+                            id={job.id}
+                            companyName={job.companyName}
+                            deadline={job.deadline}
+                            contentName={job.contentName}
+                            thumnail={job.thumbnail}
+                        />
                     ))}
                 </S.ScrollArea>
             </S.JobContainer>

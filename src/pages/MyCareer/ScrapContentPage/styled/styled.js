@@ -60,8 +60,7 @@ export const ScrollArea = styled.div`
 
 export const Line = styled.div`
     height: 2px;
-    width: 100%;
-    max-width: 912px;
+    width: 912px;
     border-top: 2px dashed #c4c4c4;
 `;
 

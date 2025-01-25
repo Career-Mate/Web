@@ -18,7 +18,7 @@ const RecommendContentPage = ({ user }) => {
                 <JobBox job={user.job} />
                 <S.CardWrapper>
                     {user.contentNames.map((name, index) => (
-                        <ContentCard key={index} contentName={name} />
+                        <ContentCard key={index} id={index} contentName={name} />
                     ))}
                 </S.CardWrapper>
             </S.BottomContainer>

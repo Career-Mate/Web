@@ -2,13 +2,18 @@ import * as S from '../styled/styled';
 import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
-import { useState } from 'react';
+import useScrapStore from '../../../../hooks/useScrapStore';
 
-const JobPostingCard = ({ companyName, deadline, contentName, thumbnail, scrap, onClick }) => {
-    const [isScrap, setIsScrap] = useState(scrap);
+const JobPostingCard = ({ id, companyName, deadline, contentName, thumbnail, onClick }) => {
+    const { scrapJobs, addScrapJob, removeScrapJob } = useScrapStore();
+    const isScrap = scrapJobs.some((job) => job.id === id);
 
     const handleClick = () => {
-        setIsScrap(!isScrap);
+        if (isScrap) {
+            removeScrapJob(id);
+        } else {
+            addScrapJob({ id, companyName, deadline, contentName, thumbnail, onClick });
+        }
     };
 
     return (
