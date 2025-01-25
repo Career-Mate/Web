@@ -7,7 +7,7 @@ import { useProfile } from '../../../hooks/useProfile';
 
 const ProfileSettingPage = () => {
     const navigate = useNavigate();
-    const { canSave, profile, handleProfileChange, handleProfileFieldChange } = useProfile(profileEmptyData); // useProfileEdit 사용
+    const { canSave, profile, handleProfileChange, handleProfileFieldChange } = useProfile(profileEmptyData);
 
     const handleSave = () => {
         if (canSave) {
