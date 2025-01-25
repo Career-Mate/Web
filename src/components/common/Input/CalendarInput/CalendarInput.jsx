@@ -1,31 +1,24 @@
+import React, { useRef } from 'react';
 import * as S from './styled/styled';
 import { FaCalendarAlt } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useState, useRef, useEffect } from 'react';
-const CalendarInput = ({ label, startDate, endDate, onStartDateChange, onEndDateChange }) => {
-    const [inputValue, setInputValue] = useState('');
 
-    const StartdatePickerRef = useRef(null);
-    const EnddatePickerRef = useRef(null);
+const CalendarInput = React.memo(({ label, startDate, endDate, onStartDateChange, onEndDateChange }) => {
+    const startDatePickerRef = useRef(null);
+    const endDatePickerRef = useRef(null);
+    console.log('CalendarInput 렌더링');
+    const isDateObject = (date) => date instanceof Date && !isNaN(date);
 
-    const handleDateChange = (dates) => {
-        const [start, end] = dates;
-        if (start) onStartDateChange(start);
-        if (end) onEndDateChange(end);
-        if (start && end) {
-            setInputValue(start.toLocaleDateString() + ' ~ ' + end.toLocaleDateString());
-        }
-    };
     return (
         <S.InputContainer>
             <S.Label>{label}</S.Label>
             <S.StyledInputWrapper>
                 <S.DateInput isInline>
-                    <FaCalendarAlt className="calendar-icon" onClick={()=>StartdatePickerRef.current.setFocus()}/>
+                    <FaCalendarAlt className="calendar-icon" onClick={() => startDatePickerRef.current.setFocus()} />
                     <DatePicker
-                        ref={StartdatePickerRef}
-                        selected={startDate}
+                        ref={startDatePickerRef}
+                        selected={isDateObject(startDate) ? startDate : null}
                         onChange={(date) => onStartDateChange(date)}
                         startDate={startDate}
                         endDate={endDate}
@@ -34,12 +27,14 @@ const CalendarInput = ({ label, startDate, endDate, onStartDateChange, onEndDate
                         dateFormat="yyyy년 MM월 dd일"
                     />
                 </S.DateInput>
+
                 <S.DateDivider>|</S.DateDivider>
+
                 <S.DateInput isInline>
-                    <FaCalendarAlt className="calendar-icon" onClick={()=>EnddatePickerRef.current.setFocus()} />
+                    <FaCalendarAlt className="calendar-icon" onClick={() => endDatePickerRef.current.setFocus()} />
                     <DatePicker
-                        ref={EnddatePickerRef}
-                        selected={endDate}
+                        ref={endDatePickerRef}
+                        selected={isDateObject(endDate) ? endDate : null}
                         onChange={(date) => onEndDateChange(date)}
                         startDate={startDate}
                         endDate={endDate}
@@ -52,6 +47,6 @@ const CalendarInput = ({ label, startDate, endDate, onStartDateChange, onEndDate
             </S.StyledInputWrapper>
         </S.InputContainer>
     );
-};
+});
 
 export default CalendarInput;
