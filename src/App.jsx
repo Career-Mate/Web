@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import HomePage from './pages/HomePage';
 import RecommendMainPage from './pages/Recommend/RecommnedMainPage/RecommendMainPage';
-import RecommendContentPage from './pages/Recommend/RecommnedMainPage/RecommendMainPage';
+import RecommendContentPage from './pages/Recommend/RecommendContentPage/RecommendContentPage';
 import RecommendJobPage from './pages/Recommend/RecommendJobPage/RecommendJobPage';
 import JobDetailPage from './pages/Recommend/JobDetailPage/JobDetailPage';
 import { userData as recommendContentData } from './data/recommendContentData';
