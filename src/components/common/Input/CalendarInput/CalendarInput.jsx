@@ -7,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 const CalendarInput = React.memo(({ label, startDate, endDate, onStartDateChange, onEndDateChange }) => {
     const startDatePickerRef = useRef(null);
     const endDatePickerRef = useRef(null);
-    console.log('CalendarInput 렌더링');
+    
     const isDateObject = (date) => date instanceof Date && !isNaN(date);
 
     return (
