@@ -2,7 +2,7 @@ import * as S from '../styled/styled';
 import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
-import useScrapStore from '../../../../hooks/useScrapStore';
+import useScrapStore from '../../../../store/useScrapStore';
 
 const JobPostingCard = ({ id, companyName, deadline, contentName, thumbnail, onClick }) => {
     const { scrapJobs, addScrapJob, removeScrapJob } = useScrapStore();

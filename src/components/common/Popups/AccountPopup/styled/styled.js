@@ -21,12 +21,13 @@ export const PopupContainer = styled.div`
     align-items: center;
     gap: 26px;
     padding-top: 5px;
-    position: absolute;
+    position: fixed;
     width: 584px;
     min-width: 290px;
     height: 221px;
-    left: calc(50% - 584px / 2);
-    top: calc(50% - 225px / 2 - 75.5px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #ffffff;
     border: 1px solid #c4c4c4;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.6);

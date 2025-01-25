@@ -3,7 +3,7 @@ import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPo
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import pin from '../../../assets/common/pin.svg';
 import * as S from './styled/styled';
-import useScrapStore from '../../../hooks/useScrapStore';
+import useScrapStore from '../../../store/useScrapStore';
 
 const ScrapContentPage = () => {
     const { scrapContents, scrapJobs } = useScrapStore();
