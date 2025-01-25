@@ -45,7 +45,7 @@ export const TableCellHeader = styled.div.withConfig({
     width: 45%;
     background: #b6e3cf;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     padding: 20px;
     font-weight: 700;
     font-size: 16px;
@@ -71,7 +71,7 @@ export const TableCellData = styled.div.withConfig({
 
     textarea {
         width: 100%;
-        height: 20px;
+        height: 30px;
         display: flex;
         border: none;
         font-weight: 500;
