@@ -32,7 +32,7 @@ export const Thumbnail = styled.img`
 `;
 
 export const Line = styled.div`
-    border-top: 2px dashed #C4C4C4;W
+    border-top: 2px dashed #c4c4c4;
     width: 100%;
     transform: ${({ $type }) => ($type ? 'none' : 'translateY(-3px)')};
 `;

@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import HomePage from './pages/HomePage';
 import RecommendMainPage from './pages/Recommend/RecommnedMainPage/RecommendMainPage';
+import RecommendRouter from './pages/Recommend/RecommendRouter';
 import Test from './test/Test';
 import LoginProgressPage from './pages/Main/LoginProgressPage/LoginProgressPage';
 import LoginSuccessPage from './pages/Main/LoginSuccessPage/LoginSuccessPage';
@@ -10,6 +11,8 @@ import LoginPage from './pages/Main/LoginPage/LoginPage';
 import CareerNotePage from './pages/Career/CareerPage/CareerNotePage';
 import CareerSavePage from './pages/Career/CareerSavePage/CareerSavePage';
 import CareerMainPage from './pages/Career/CareerMainPage/CareerMainPage';
+import MyCareerPage from './pages/MyCareer/MyCareerPage/MyCareerPage';
+import SmartPlannerPage from './pages/MyCareer/SmartPlannerPage/SmartPlannerPage';
 
 const router = createBrowserRouter([
     {
@@ -46,16 +49,38 @@ const router = createBrowserRouter([
                 element: <CareerNotePage />,
             },
             {
-                path: 'career/save',
+                path: 'career/success',
                 element: <CareerSavePage />,
             },
             {
-                path: 'announcement',
+                path: 'recommend',
                 element: <RecommendMainPage />,
             },
             {
+                path: 'recommend/:op',
+                element: <RecommendRouter />,
+            },
+            {
                 path: 'mycareer',
-                element: <HomePage />,
+                element: <MyCareerPage />,
+                children: [
+                    {
+                        index: true,
+                        element: <HomePage />,
+                    },
+                    {
+                        path: 'career-form',
+                        element: <CareerNotePage/>,
+                    },
+                    {
+                        path: 'saved-content',
+                        element: <HomePage />,
+                    },
+                    {
+                        path: 'smart-planner',
+                        element: <SmartPlannerPage />,
+                    },
+                ],
             },
             {
                 path: 'test',

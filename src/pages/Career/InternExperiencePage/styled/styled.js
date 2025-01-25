@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const HeaderWrapper = styled.div`
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -10,11 +9,26 @@ export const HeaderWrapper = styled.div`
     margin-top: 50px;
 `;
 
+export const TitleGroup = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+`;
+
 export const Title = styled.h1`
     font-size: 26px;
     font-weight: 700;
     color: #000;
     margin: 0;
+`;
+
+export const Subtitle = styled.p`
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 10px;
+    color: #c4c8ce;
+    text-align: center;
+    margin-left: 20px;
 `;
 
 export const PageWrapper = styled.div`
