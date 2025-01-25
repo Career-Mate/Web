@@ -26,7 +26,16 @@ const Footer = () => {
                         <span>통신판매업신고: 제2025-서울구로-0000호</span>
                     </S.Row>
                 </S.Section>
-                <S.Copyright>@CareerMate. All rights reserved.</S.Copyright>
+                <S.Copyright>
+                    @CareerMate. All rights reserved. Icons by.{' '}
+                    <S.Link href="https://icons8.com" target="_blank" rel="noopener noreferrer">
+                        icons8.com
+                    </S.Link>
+                    ,{' '}
+                    <S.Link href="https://flaticon.com" target="_blank" rel="noopener noreferrer">
+                        flaticon.com
+                    </S.Link>
+                </S.Copyright>
             </S.ContentWrapper>
         </S.FooterContainer>
     );
