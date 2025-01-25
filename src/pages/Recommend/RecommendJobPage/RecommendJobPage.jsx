@@ -21,6 +21,10 @@ const RecommendJobPage = ({ user }) => {
 
     const groupedContents = divideArray(user.contents, 3);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [currentPage]);
+
     return (
         <S.Container>
             <S.TopContainer>
