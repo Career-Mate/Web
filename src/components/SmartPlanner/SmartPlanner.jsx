@@ -1,7 +1,6 @@
 import ProfileInput from '../common/Input/ProfileInput';
 import CalendarInput from '../common/Input/CalendarInput/CalendarInput';
 import TextTemplate from '../common/TextTemplate/TextTemplate';
-import { TableCellHeader } from '../common/TextTemplate/styled/styled';
 import { useEffect } from 'react';
 import * as S from './styled/styled';
 
@@ -46,9 +45,7 @@ const SmartPlanner = ({ data, onDataChange }) => {
             </S.InputContainer>
             <TextTemplate
                 data={data}
-                onDataChange={(updateData) => onDataChange(updateData)}
-                TableCellHeader={TableCellHeader}
-            />
+                onDataChange={(updateData) => onDataChange(updateData)}/>
         </S.Container>
     );
 };

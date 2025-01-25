@@ -3,16 +3,11 @@ import { FaCalendarAlt } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useState, useRef, useEffect } from 'react';
-const CalendarInput = ({
-    label,
-    startDate,
-    endDate,
-    onStartDateChange,
-    onEndDateChange,
-}) => {
+const CalendarInput = ({ label, startDate, endDate, onStartDateChange, onEndDateChange }) => {
     const [inputValue, setInputValue] = useState('');
 
-    const datePickerRef = useRef(null);
+    const StartdatePickerRef = useRef(null);
+    const EnddatePickerRef = useRef(null);
 
     const handleDateChange = (dates) => {
         const [start, end] = dates;
@@ -22,35 +17,38 @@ const CalendarInput = ({
             setInputValue(start.toLocaleDateString() + ' ~ ' + end.toLocaleDateString());
         }
     };
-    const handleDateSelect = ()=>{
-        onStartDateChange(null);
-        onEndDateChange(null);
-        datePickerRef.current.setFocus()
-    }
     return (
         <S.InputContainer>
             <S.Label>{label}</S.Label>
             <S.StyledInputWrapper>
-                <S.StyledInput
-                    type="text"
-                    placeholder="목표 달성 기간을 입력하세요"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onClick={handleDateSelect}
-                    
-                />
-                <DatePicker
-                    ref={datePickerRef}
-                    selected={startDate}
-                    onChange={handleDateChange}
-                    startDate={startDate}
-                    endDate={endDate}
-                    selectsRange
-                    placeholderText="목표 달성 기간을 입력하세요"
-                    dateFormat="yyyy/MM/dd"
-                    customInput={<S.CustomDatePicker />}
-                />
-                <FaCalendarAlt className="calendar-icon" onClick={handleDateSelect} />
+                <S.DateInput isInline>
+                    <FaCalendarAlt className="calendar-icon" onClick={()=>StartdatePickerRef.current.setFocus()}/>
+                    <DatePicker
+                        ref={StartdatePickerRef}
+                        selected={startDate}
+                        onChange={(date) => onStartDateChange(date)}
+                        startDate={startDate}
+                        endDate={endDate}
+                        selectsStart
+                        placeholderText="시작 날짜를 선택해주세요"
+                        dateFormat="yyyy년 MM월 dd일"
+                    />
+                </S.DateInput>
+                <S.DateDivider>|</S.DateDivider>
+                <S.DateInput isInline>
+                    <FaCalendarAlt className="calendar-icon" onClick={()=>EnddatePickerRef.current.setFocus()} />
+                    <DatePicker
+                        ref={EnddatePickerRef}
+                        selected={endDate}
+                        onChange={(date) => onEndDateChange(date)}
+                        startDate={startDate}
+                        endDate={endDate}
+                        minDate={startDate}
+                        selectsEnd
+                        placeholderText="종료 날짜를 선택해주세요"
+                        dateFormat="yyyy년 MM월 dd일"
+                    />
+                </S.DateInput>
             </S.StyledInputWrapper>
         </S.InputContainer>
     );
