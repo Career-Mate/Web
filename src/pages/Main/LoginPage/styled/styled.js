@@ -20,6 +20,11 @@ export const SocialButtonWrapper = styled.div`
     flex-direction: column;
     gap: 22px;
     font-size: 20px;
+
+    a {
+        font-style: none;
+        text-decoration: none;
+    }
 `;
 
 export const SocialButton = styled.div`
@@ -35,4 +40,5 @@ export const SocialButton = styled.div`
     height: 57px;
     border-radius: 5px;
     cursor: pointer;
+    font-style: none;
 `;

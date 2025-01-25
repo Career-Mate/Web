@@ -22,6 +22,10 @@ const RecommendJobPage = ({ user }) => {
 
     const currentContents = user.contents.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [currentPage]);
+
     return (
         <S.Container>
             <S.TopContainer>

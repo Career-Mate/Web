@@ -49,7 +49,7 @@ export const BottomContainer = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 56px;
-    padding-bottom: 190px;
+    padding-bottom: 100px;
 `;
 
 export const CardWrapper = styled.div`
@@ -66,6 +66,7 @@ export const ActionWrapper = styled.div`
     align-items: center;
     width: 100%;
     max-width: 1200px;
+    padding-top: 50px;
 
     & > :nth-child(2) {
         margin-left: auto;

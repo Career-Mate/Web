@@ -25,14 +25,18 @@ const LoginPage = () => {
                 <S.Container>
                     <S.Text>SNS로 시작하기</S.Text>
                     <S.SocialButtonWrapper>
-                        <S.SocialButton $type="naver" onClick={() => open('naver')}>
-                            <img src={Naver} alt="naver"></img>
-                            네이버로 시작하기
-                        </S.SocialButton>
-                        <S.SocialButton $type="kakao" onClick={() => open('kakao')}>
-                            <img src={Kakao} alt="kakao"></img>
-                            카카오로 시작하기
-                        </S.SocialButton>
+                        <a href="/oauth2/authorization/naver">
+                            <S.SocialButton $type="naver">
+                                <img src={Naver} alt="naver"></img>
+                                네이버로 시작하기
+                            </S.SocialButton>
+                        </a>
+                        <a href="/oauth2/authorization/kakao">
+                            <S.SocialButton $type="kakao">
+                                <img src={Kakao} alt="kakao"></img>
+                                카카오로 시작하기
+                            </S.SocialButton>
+                        </a>
                     </S.SocialButtonWrapper>
                 </S.Container>
             }

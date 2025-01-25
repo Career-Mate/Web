@@ -16,7 +16,6 @@ export const BoxContainer = styled.div`
     align-items: center;
     text-align: center;
     justify-content: center;
-    font-weight: 400;
-    font-size: 29px;
-    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+    font-weight: 600;
+    font-size: 30px;
 `;
