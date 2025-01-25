@@ -4,14 +4,24 @@ import HomePage from './pages/HomePage';
 import RecommendMainPage from './pages/Recommend/RecommnedMainPage/RecommendMainPage';
 import RecommendRouter from './pages/Recommend/RecommendRouter';
 import Test from './test/Test';
+import LoginProgressPage from './pages/Main/LoginProgressPage/LoginProgressPage';
+import LoginSuccessPage from './pages/Main/LoginSuccessPage/LoginSuccessPage';
 import MainPage from './pages/Main/MainPage/MainPage';
+import LoginPage from './pages/Main/LoginPage/LoginPage';
 import CareerNotePage from './pages/Career/CareerPage/CareerNotePage';
 import CareerSavePage from './pages/Career/CareerSavePage/CareerSavePage';
 import CareerMainPage from './pages/Career/CareerMainPage/CareerMainPage';
+import ProfileSettingPage from './pages/Main/ProfileSettingPage/ProfileSettingPage';
+import ProfileSuccessPage from './pages/Main/ProfileSuccessPage/ProfileSuccessPage';
 import MyCareerPage from './pages/MyCareer/MyCareerPage/MyCareerPage';
 import SmartPlannerPage from './pages/MyCareer/SmartPlannerPage/SmartPlannerPage';
+import ProfileEditPage from './pages/MyCareer/ProfileEditPage/ProfileEditPage';
 
 const router = createBrowserRouter([
+    {
+        path: import.meta.env.VITE_OAUTH_REDIRECT_ENDPOINT,
+        element: <LoginProgressPage />,
+    },
     {
         path: '/',
         element: <RootLayout />,
@@ -19,6 +29,27 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <MainPage />,
+            },
+            {
+                path: 'login',
+                children: [
+                    {
+                        index: true,
+                        element: <LoginPage />,
+                    },
+                    {
+                        path: 'success',
+                        element: <LoginSuccessPage />,
+                    },
+                ],
+            },
+            {
+                path: 'profile',
+                element: <ProfileSettingPage />,
+            },
+            {
+                path: 'profile/success',
+                element: <ProfileSuccessPage />,
             },
             {
                 path: 'career',
@@ -46,11 +77,11 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <HomePage />,
+                        element: <ProfileEditPage />,
                     },
                     {
                         path: 'career-form',
-                        element: <CareerNotePage/>,
+                        element: <CareerNotePage />,
                     },
                     {
                         path: 'saved-content',
