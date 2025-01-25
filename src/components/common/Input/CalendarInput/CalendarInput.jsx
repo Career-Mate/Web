@@ -7,40 +7,26 @@ const CalendarInput = ({
     label,
     startDate,
     endDate,
-    textDate,
     onStartDateChange,
     onEndDateChange,
-    onDateInputChange,
 }) => {
     const [inputValue, setInputValue] = useState('');
 
     const datePickerRef = useRef(null);
 
-    useEffect(() => {
-        if (startDate && endDate) {
-            setInputValue(`${startDate.toLocaleDateString()} ~ ${endDate.toLocaleDateString()}`);
-        } else if (textDate && textDate.trim() !== '') {
-            setInputValue(textDate);
-        }
-    }, [startDate, endDate, textDate]);
-
     const handleDateChange = (dates) => {
         const [start, end] = dates;
         if (start) onStartDateChange(start);
         if (end) onEndDateChange(end);
-        onDateInputChange('');
         if (start && end) {
             setInputValue(start.toLocaleDateString() + ' ~ ' + end.toLocaleDateString());
         }
     };
-    const handleInputChange = (e) => {
-        const value = e.target.value;
-        onDateInputChange(value);
-        setInputValue(value);
+    const handleDateSelect = ()=>{
         onStartDateChange(null);
         onEndDateChange(null);
-    };
-
+        datePickerRef.current.setFocus()
+    }
     return (
         <S.InputContainer>
             <S.Label>{label}</S.Label>
@@ -49,7 +35,9 @@ const CalendarInput = ({
                     type="text"
                     placeholder="목표 달성 기간을 입력하세요"
                     value={inputValue}
-                    onChange={handleInputChange}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onClick={handleDateSelect}
+                    
                 />
                 <DatePicker
                     ref={datePickerRef}
@@ -62,7 +50,7 @@ const CalendarInput = ({
                     dateFormat="yyyy/MM/dd"
                     customInput={<S.CustomDatePicker />}
                 />
-                <FaCalendarAlt className="calendar-icon" onClick={() => datePickerRef.current.setFocus()} />
+                <FaCalendarAlt className="calendar-icon" onClick={handleDateSelect} />
             </S.StyledInputWrapper>
         </S.InputContainer>
     );
