@@ -23,7 +23,7 @@ const ProfileEditPage = () => {
             const updatedProfile = handleProfileChange();
             console.log(updatedProfile);
         } else {
-            alert('모든 항목을 입력해주세요!');
+            alert('항목을 모두 입력해주세요!');
         }
     };
 

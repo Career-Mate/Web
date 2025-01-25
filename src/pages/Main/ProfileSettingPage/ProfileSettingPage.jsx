@@ -15,7 +15,7 @@ const ProfileSettingPage = () => {
             console.log(updatedProfile);
             navigate('/profile/success');
         } else {
-            alert('모든 항목을 입력해주세요!');
+            alert('항목을 모두 입력해주세요!');
         }
     };
 
