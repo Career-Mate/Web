@@ -8,8 +8,11 @@ import MainPage from './pages/Main/MainPage/MainPage';
 import CareerNotePage from './pages/Career/CareerPage/CareerNotePage';
 import CareerSavePage from './pages/Career/CareerSavePage/CareerSavePage';
 import CareerMainPage from './pages/Career/CareerMainPage/CareerMainPage';
+import ProfileSettingPage from './pages/Main/ProfileSettingPage/ProfileSettingPage';
+import ProfileSuccessPage from './pages/Main/ProfileSuccessPage/ProfileSuccessPage';
 import MyCareerPage from './pages/MyCareer/MyCareerPage/MyCareerPage';
 import SmartPlannerPage from './pages/MyCareer/SmartPlannerPage/SmartPlannerPage';
+import ProfileEditPage from './pages/MyCareer/ProfileEditPage/ProfileEditPage';
 
 const router = createBrowserRouter([
     {
@@ -19,6 +22,14 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <MainPage />,
+            },
+            {
+                path: 'profile',
+                element: <ProfileSettingPage />,
+            },
+            {
+                path: 'profile/success',
+                element: <ProfileSuccessPage />,
             },
             {
                 path: 'career',
@@ -46,11 +57,11 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <HomePage />,
+                        element: <ProfileEditPage />,
                     },
                     {
                         path: 'career-form',
-                        element: <CareerNotePage/>,
+                        element: <CareerNotePage />,
                     },
                     {
                         path: 'saved-content',
