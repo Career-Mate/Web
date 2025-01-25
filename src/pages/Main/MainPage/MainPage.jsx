@@ -2,8 +2,8 @@ import * as S from './styled/styled';
 import Logo from '../../../assets/common/cm.svg';
 import Boy from '../../../assets/MainPage/boy.svg';
 import Girl from '../../../assets/MainPage/girl.svg';
-import Books from '../../../assets/MainPage/books.svg';
-import Note from '../../../assets/MainPage/note.svg';
+import BookMark from '../../../assets/MainPage/book-mark.svg';
+import File from '../../../assets/MainPage/file.svg';
 import Search from '../../../assets/MainPage/search.svg';
 import CheckTextBox from '../../../components/MainPage/CheckTextBox/CheckTextBox';
 import InterviewBox from '../../../components/MainPage/InterviewBox/InterviewBox';
@@ -13,7 +13,7 @@ import OvalButton from '../../../components/common/Button/OvalButton/OvalButton'
 const cards = [
     {
         title: '커리어 정리',
-        url: Books,
+        url: File,
         first: '각 직무별로 최적화된 템플릿을 제공',
         second: '경험을 하여 스스로 느낀 것을 회고하여 정리하도록 도와드려요.',
     },
@@ -25,7 +25,7 @@ const cards = [
     },
     {
         title: '나의 커리어',
-        url: Note,
+        url: BookMark,
         first: '커리어 정리 템플릿을 수정\n스크랩한 채용 공고 확인',
         second: '나의 커리어 발전 과정을 지속적으로 관리하고 업데이트할 수 있습니다.',
     },
