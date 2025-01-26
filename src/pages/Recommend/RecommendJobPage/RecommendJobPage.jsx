@@ -77,7 +77,7 @@ const RecommendJobPage = ({ user }) => {
                             companyName={content.companyName || '정보 없음'}
                             deadline={content.deadline}
                             contentName={content.contentName || '채용 정보 없음'}
-                            onClick={() => navigate('/recommend/detail')}
+                            onClick={() => navigate(`/recommend/detail/${content.id}`)}
                         />
                     ))}
                 </S.CardWrapper>
