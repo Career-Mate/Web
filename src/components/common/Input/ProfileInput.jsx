@@ -1,21 +1,25 @@
 import useInput from '../../../hooks/useInput';
 import * as S from './styled/styled';
+import React, { useState } from 'react';
 
-const ProfileInput = ({
+const ProfileInput = React.memo(({
     label,
     placeholder,
     errorMessage = `${label}을 입력해주세요!`,
     type = 'text',
     defaultValue = '',
-    onChange: externalOnChange,
+    onBlur: externalOnBlur,
 }) => {
-    const { value, onChange: internalOnChange } = useInput(defaultValue);
-    const showError = value === '';
+    const [value, setValue] = useState(defaultValue);
+    const showError = value.trim() === '';
 
     const handleChange = (e) => {
-        internalOnChange(e);
-        if (externalOnChange) {
-            externalOnChange(e);
+        setValue(e.target.value);
+    };
+
+    const handleBlur = () => {
+        if (externalOnBlur) {
+            externalOnBlur(value);
         }
     };
 
@@ -23,11 +27,17 @@ const ProfileInput = ({
         <S.InputContainer>
             <S.Label>{label}</S.Label>
             <S.StyledInputWrapper>
-                <S.StyledInput type={type} placeholder={placeholder} value={value} onChange={handleChange} />
+                <S.StyledInput
+                    type={type}
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                />
             </S.StyledInputWrapper>
             {showError && <S.ErrorMessage>* {errorMessage}</S.ErrorMessage>}
         </S.InputContainer>
     );
-};
+});
 
 export default ProfileInput;
