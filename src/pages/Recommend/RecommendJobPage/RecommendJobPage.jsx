@@ -5,21 +5,41 @@ import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPo
 import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import Pagination from '../../../components/common/Pagination/Pagination';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
+import DeadlineButton from '../../../components/common/Button/DeadlineButton/DeadlineButton';
 
 const RecommendJobPage = ({ user }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
-    const totalPages = Math.ceil(user.contents.length / itemsPerPage);
 
     const navigate = useNavigate();
 
-    const divideArray = (arr, size) => {
-        return Array.from({ length: Math.ceil(arr.length / size) }, (_, index) =>
-            arr.slice(index * size, index * size + size),
-        );
+    const [sortType, setSortType] = useState('전체');
+
+    const initialScrapStatus = user.contents.map(() => false);
+    const [scrapStatus, setScrapStatus] = useState(initialScrapStatus);
+
+    const getDeadlineValue = (deadline) => {
+        if (deadline === 'D-DAY') return 0;
+        if (deadline.startsWith('D-')) return parseInt(deadline.split('-')[1], 10);
     };
 
-    const groupedContents = divideArray(user.contents, 3);
+    const getSortedContents = () => {
+        if (sortType === '마감 빠른 순') {
+            return [...user.contents].sort((a, b) => getDeadlineValue(a.deadline) - getDeadlineValue(b.deadline));
+        }
+        if (sortType === '마감 늦은 순') {
+            return [...user.contents].sort((a, b) => getDeadlineValue(b.deadline) - getDeadlineValue(a.deadline));
+        }
+        return user.contents;
+    };
+
+    const sortedContents = getSortedContents();
+    const totalPages = Math.ceil(sortedContents.length / itemsPerPage);
+    const currentContents = sortedContents.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+    const toggleScrap = (index) => {
+        setScrapStatus((prev) => prev.map((status, i) => (i === index ? !status : status)));
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -38,29 +58,37 @@ const RecommendJobPage = ({ user }) => {
             </S.TopContainer>
             <S.BottomContainer>
                 <JobBox job={user.job} />
+                <S.DeadlineWrapper>
+                    <DeadlineButton isSelected={sortType === '전체'} onClick={() => setSortType('전체')}>
+                        전체
+                    </DeadlineButton>
+                    <DeadlineButton
+                        isSelected={sortType === '마감 빠른 순'}
+                        onClick={() => setSortType('마감 빠른 순')}
+                    >
+                        마감 빠른 순
+                    </DeadlineButton>
+                    <DeadlineButton
+                        isSelected={sortType === '마감 늦은 순'}
+                        onClick={() => setSortType('마감 늦은 순')}
+                    >
+                        마감 늦은 순
+                    </DeadlineButton>
+                </S.DeadlineWrapper>
+
                 <S.CardWrapper>
-                    <S.TopCardWrapper>
-                        {groupedContents[currentPage * 2 - 2]?.map((content, index) => (
-                            <JobPostingCard
-                                key={index}
-                                companyName={content.companyName || '정보 없음'}
-                                deadline={content.deadline || '마감일 없음'}
-                                contentName={content.contentName || '채용 정보 없음'}
-                                onClick={() => navigate('/recommend/detail')}
-                            />
-                        ))}
-                    </S.TopCardWrapper>
-                    <S.BottomCardWrapper>
-                        {groupedContents[currentPage * 2 - 1]?.map((content, index) => (
-                            <JobPostingCard
-                                key={index}
-                                companyName={content.companyName || '정보 없음'}
-                                deadline={content.deadline || '마감일 없음'}
-                                contentName={content.contentName || '채용 정보 없음'}
-                                onClick={() => navigate('/recommend/detail')}
-                            />
-                        ))}
-                    </S.BottomCardWrapper>
+                    {currentContents.map((content, index) => (
+                        <JobPostingCard
+                            key={index}
+                            id={(currentPage - 1) * itemsPerPage + index}
+                            companyName={content.companyName || '정보 없음'}
+                            deadline={content.deadline}
+                            contentName={content.contentName || '채용 정보 없음'}
+                            isScraped={scrapStatus[(currentPage - 1) * itemsPerPage + index]}
+                            onScrapToggle={() => toggleScrap((currentPage - 1) * itemsPerPage + index)}
+                            onClick={() => navigate('/recommend/detail')}
+                        />
+                    ))}
                 </S.CardWrapper>
                 <S.ActionWrapper>
                     <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
