@@ -22,11 +22,6 @@ const SmartPlanner = ({ data, onDataChange }) => {
         onDataChange(updatedData);
     }, [data, onDataChange]);
 
-    //삭제 예정
-    useEffect(() => {
-        console.log("Template data updated:",data);
-    }, [data]);
-
     return (
         <S.Container>
             <S.InputContainer>
