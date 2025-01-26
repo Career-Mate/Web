@@ -5,7 +5,7 @@ import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPo
 import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import Pagination from '../../../components/common/Pagination/Pagination';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
-import DeadlineButton from '../../../components/common/Button/DeadlineButton/DeadlineButton'; // 버튼 컴포넌트
+import DeadlineButton from '../../../components/common/Button/DeadlineButton/DeadlineButton';
 
 const RecommendJobPage = ({ user }) => {
     const [currentPage, setCurrentPage] = useState(1);
