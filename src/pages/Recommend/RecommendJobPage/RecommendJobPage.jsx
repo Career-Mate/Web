@@ -1,5 +1,5 @@
 import * as S from './styled/styled';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
 import JobBox from '../../../components/Recommend/JobBox/JobBox';
