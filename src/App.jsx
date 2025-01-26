@@ -85,7 +85,7 @@ const router = createBrowserRouter([
                         element: <RecommendJobPage user={recommendJobData} />,
                     },
                     {
-                        path: 'detail',
+                        path: 'detail/:id',
                         element: <JobDetailPage data={initialData} />,
                     },
                 ],

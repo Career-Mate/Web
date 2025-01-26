@@ -21,7 +21,7 @@ const ScrapContentPage = () => {
 
     return (
         <S.Container>
-            <S.ContentContainer>
+            <S.Wrapper>
                 <S.TitleWrapper>
                     <S.PinIcon src={pin} alt="pin icon" />
                     <S.TextWrapper>
@@ -48,11 +48,11 @@ const ScrapContentPage = () => {
                         <S.EmptyMessage>스크랩한 콘텐츠가 없어요!</S.EmptyMessage>
                     )}
                 </S.ScrollArea>
-            </S.ContentContainer>
+            </S.Wrapper>
 
             <S.Line />
 
-            <S.JobContainer>
+            <S.Wrapper>
                 <S.TitleWrapper>
                     <S.PinIcon src={pin} alt="pin icon" />
                     <S.TextWrapper>
@@ -80,7 +80,7 @@ const ScrapContentPage = () => {
                         <S.EmptyMessage>스크랩한 채용 공고가 없어요!</S.EmptyMessage>
                     )}
                 </S.ScrollArea>
-            </S.JobContainer>
+            </S.Wrapper>
         </S.Container>
     );
 };

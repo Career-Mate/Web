@@ -2,15 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div``;
 
-export const ContentContainer = styled.div`
+export const Wrapper = styled.div`
     padding-bottom: 20px;
-    width: 100%;
-    max-width: 1200px;
-`;
-
-export const JobContainer = styled.div`
-    padding-top: 20px;
-    padding-bottom: 200px;
     width: 100%;
     max-width: 1200px;
 `;

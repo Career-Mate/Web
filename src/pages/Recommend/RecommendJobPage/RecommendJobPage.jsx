@@ -36,11 +36,11 @@ const RecommendJobPage = ({ user }) => {
                     {currentContents.map((content, index) => (
                         <JobPostingCard
                             key={index}
-                            id={(currentPage - 1) * itemsPerPage + index}
+                            id={content.id}
                             companyName={content.companyName || '정보 없음'}
                             deadline={content.deadline || '마감일 없음'}
                             contentName={content.contentName || '채용 정보 없음'}
-                            onClick={() => navigate('/recommend/detail')}
+                            onClick={() => navigate(`/recommend/detail/${content.id}`)}
                         />
                     ))}
                 </S.CardWrapper>
