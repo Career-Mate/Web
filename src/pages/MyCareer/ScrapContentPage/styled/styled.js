@@ -62,6 +62,7 @@ export const Line = styled.div`
     height: 2px;
     width: 912px;
     border-top: 2px dashed #c4c4c4;
+    padding-bottom: 30px;
 `;
 
 export const EmptyMessage = styled.div`
