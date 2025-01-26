@@ -48,8 +48,19 @@ export const BottomContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 56px;
+
     padding-bottom: 100px;
+`;
+
+export const DeadlineWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 40px;
+    width: fit-content;
+    height: 40px;
+    left: 50%;
 `;
 
 export const CardWrapper = styled.div`
@@ -58,6 +69,7 @@ export const CardWrapper = styled.div`
     gap: 41px;
     width: 100%;
     max-width: 1282px;
+    padding-bottom: 30px;
 `;
 
 export const ActionWrapper = styled.div`
