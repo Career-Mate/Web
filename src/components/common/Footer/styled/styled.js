@@ -64,3 +64,12 @@ export const Copyright = styled.div`
     text-align: center;
     margin-top: 20px;
 `;
+
+export const Link = styled.a`
+    color: #9d9d9d;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+`;

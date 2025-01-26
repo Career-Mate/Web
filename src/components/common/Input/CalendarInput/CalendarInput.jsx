@@ -1,71 +1,52 @@
+import React, { useRef } from 'react';
 import * as S from './styled/styled';
 import { FaCalendarAlt } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useState, useRef, useEffect } from 'react';
-const CalendarInput = ({
-    label,
-    startDate,
-    endDate,
-    textDate,
-    onStartDateChange,
-    onEndDateChange,
-    onDateInputChange,
-}) => {
-    const [inputValue, setInputValue] = useState('');
 
-    const datePickerRef = useRef(null);
-
-    useEffect(() => {
-        if (startDate && endDate) {
-            setInputValue(`${startDate.toLocaleDateString()} ~ ${endDate.toLocaleDateString()}`);
-        } else if (textDate && textDate.trim() !== '') {
-            setInputValue(textDate);
-        }
-    }, [startDate, endDate, textDate]);
-
-    const handleDateChange = (dates) => {
-        const [start, end] = dates;
-        if (start) onStartDateChange(start);
-        if (end) onEndDateChange(end);
-        onDateInputChange('');
-        if (start && end) {
-            setInputValue(start.toLocaleDateString() + ' ~ ' + end.toLocaleDateString());
-        }
-    };
-    const handleInputChange = (e) => {
-        const value = e.target.value;
-        onDateInputChange(value);
-        setInputValue(value);
-        onStartDateChange(null);
-        onEndDateChange(null);
-    };
+const CalendarInput = React.memo(({ label, startDate, endDate, onStartDateChange, onEndDateChange }) => {
+    const startDatePickerRef = useRef(null);
+    const endDatePickerRef = useRef(null);
+    
+    const isDateObject = (date) => date instanceof Date && !isNaN(date);
 
     return (
         <S.InputContainer>
             <S.Label>{label}</S.Label>
             <S.StyledInputWrapper>
-                <S.StyledInput
-                    type="text"
-                    placeholder="목표 달성 기간을 입력하세요"
-                    value={inputValue}
-                    onChange={handleInputChange}
-                />
-                <DatePicker
-                    ref={datePickerRef}
-                    selected={startDate}
-                    onChange={handleDateChange}
-                    startDate={startDate}
-                    endDate={endDate}
-                    selectsRange
-                    placeholderText="목표 달성 기간을 입력하세요"
-                    dateFormat="yyyy/MM/dd"
-                    customInput={<S.CustomDatePicker />}
-                />
-                <FaCalendarAlt className="calendar-icon" onClick={() => datePickerRef.current.setFocus()} />
+                <S.DateInput isInline>
+                    <FaCalendarAlt className="calendar-icon" onClick={() => startDatePickerRef.current.setFocus()} />
+                    <DatePicker
+                        ref={startDatePickerRef}
+                        selected={isDateObject(startDate) ? startDate : null}
+                        onChange={(date) => onStartDateChange(date)}
+                        startDate={startDate}
+                        endDate={endDate}
+                        selectsStart
+                        placeholderText="시작 날짜를 선택해주세요"
+                        dateFormat="yyyy년 MM월 dd일"
+                    />
+                </S.DateInput>
+
+                <S.DateDivider>|</S.DateDivider>
+
+                <S.DateInput isInline>
+                    <FaCalendarAlt className="calendar-icon" onClick={() => endDatePickerRef.current.setFocus()} />
+                    <DatePicker
+                        ref={endDatePickerRef}
+                        selected={isDateObject(endDate) ? endDate : null}
+                        onChange={(date) => onEndDateChange(date)}
+                        startDate={startDate}
+                        endDate={endDate}
+                        minDate={startDate}
+                        selectsEnd
+                        placeholderText="종료 날짜를 선택해주세요"
+                        dateFormat="yyyy년 MM월 dd일"
+                    />
+                </S.DateInput>
             </S.StyledInputWrapper>
         </S.InputContainer>
     );
-};
+});
 
 export default CalendarInput;

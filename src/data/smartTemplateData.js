@@ -2,7 +2,6 @@ export const SmartPlannerInitialData = [
     {
         activityName: '',
         goalPeriod: {
-            textDate: '',
             startDate: null,
             endDate: null,
         },

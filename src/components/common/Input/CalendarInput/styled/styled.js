@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const InputContainer = styled.div`
     width: 633px;
@@ -37,32 +37,27 @@ export const StyledInputWrapper = styled.div`
         cursor: pointer;
     }
 `;
-export const StyledInput = styled.input`
-    width: 100%;
-    border: none;
-    outline: none;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    &::placeholder {
-        color: #c4c4c4;
+
+export const DateInput = styled.div.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isInline',
+})`
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    input {
+        font-size: 16px;
+        width: ${(props) => (props.isInline ? 'auto' : '200px')};
+        border: none;
+        background: ${(props) => (props.isInline ? 'none' : '#ffffff')};
+        padding: ${(props) => (props.isInline ? '0' : '4px 8px')};
+        outline: none;
     }
 `;
 
-
-export const CustomDatePicker = styled.input`
-    width: 0px;
-    height: 0px;
-    border: none;
-    background-color: transparent;
-    &:focus {
-        outline: none;
-        border: none;
-        box-shadow: none
-    }
-    &:active {
-        outline: none;
-        box-shadow: none;
-        border: none;
-    }
-`
+export const DateDivider = styled.span`
+    font-size: 16px;
+    font-weight: 500;
+    color: #d9d9d9;
+    padding-right: 20px;
+`;
