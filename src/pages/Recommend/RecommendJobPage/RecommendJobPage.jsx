@@ -13,13 +13,6 @@ const RecommendJobPage = ({ user }) => {
 
     const navigate = useNavigate();
 
-    const initialScrapStatus = user.contents.map(() => false);
-    const [scrapStatus, setScrapStatus] = useState(initialScrapStatus);
-
-    const toggleScrap = (index) => {
-        setScrapStatus((prev) => prev.map((status, i) => (i === index ? !status : status)));
-    };
-
     const currentContents = user.contents.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     useEffect(() => {
@@ -47,8 +40,6 @@ const RecommendJobPage = ({ user }) => {
                             companyName={content.companyName || '정보 없음'}
                             deadline={content.deadline || '마감일 없음'}
                             contentName={content.contentName || '채용 정보 없음'}
-                            isScraped={scrapStatus[(currentPage - 1) * itemsPerPage + index]}
-                            onScrapToggle={() => toggleScrap((currentPage - 1) * itemsPerPage + index)}
                             onClick={() => navigate('/recommend/detail')}
                         />
                     ))}
