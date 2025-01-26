@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const RecommendContentPage = ({ user }) => {
     const navigate = useNavigate();
+
     return (
         <S.Container>
             <S.TopContainer>
@@ -21,10 +22,17 @@ const RecommendContentPage = ({ user }) => {
                 <JobBox job={user.job} />
                 <S.CardWrapper>
                     {user.contentNames.map((name, index) => (
-                        <ContentCard key={index} contentName={name} />
+                        <ContentCard key={index} id={index} contentName={name} />
                     ))}
                 </S.CardWrapper>
-                <OvalButton width={'280px'} height={'58px'} padding={"17x 74px"} onClick={()=>navigate('/recommend/job')}>추천 공고 보러 가기</OvalButton>
+                <OvalButton
+                    width={'280px'}
+                    height={'58px'}
+                    padding={'17x 74px'}
+                    onClick={() => navigate('/recommend/job')}
+                >
+                    추천 공고 보러 가기
+                </OvalButton>
             </S.BottomContainer>
         </S.Container>
     );

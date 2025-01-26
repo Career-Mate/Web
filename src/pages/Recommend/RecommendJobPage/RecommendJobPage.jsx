@@ -15,9 +15,6 @@ const RecommendJobPage = ({ user }) => {
 
     const [sortType, setSortType] = useState('전체');
 
-    const initialScrapStatus = user.contents.map(() => false);
-    const [scrapStatus, setScrapStatus] = useState(initialScrapStatus);
-
     const getDeadlineValue = (deadline) => {
         if (deadline === 'D-DAY') return 0;
         if (deadline.startsWith('D-')) return parseInt(deadline.split('-')[1], 10);
@@ -36,10 +33,6 @@ const RecommendJobPage = ({ user }) => {
     const sortedContents = getSortedContents();
     const totalPages = Math.ceil(sortedContents.length / itemsPerPage);
     const currentContents = sortedContents.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
-    const toggleScrap = (index) => {
-        setScrapStatus((prev) => prev.map((status, i) => (i === index ? !status : status)));
-    };
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -79,14 +72,12 @@ const RecommendJobPage = ({ user }) => {
                 <S.CardWrapper>
                     {currentContents.map((content, index) => (
                         <JobPostingCard
-                            key={index}
-                            id={(currentPage - 1) * itemsPerPage + index}
+                            key={content.id}
+                            id={content.id}
                             companyName={content.companyName || '정보 없음'}
                             deadline={content.deadline}
                             contentName={content.contentName || '채용 정보 없음'}
-                            isScraped={scrapStatus[(currentPage - 1) * itemsPerPage + index]}
-                            onScrapToggle={() => toggleScrap((currentPage - 1) * itemsPerPage + index)}
-                            onClick={() => navigate('/recommend/detail')}
+                            onClick={() => navigate(`/recommend/detail/${content.id}`)}
                         />
                     ))}
                 </S.CardWrapper>
@@ -106,5 +97,4 @@ const RecommendJobPage = ({ user }) => {
         </S.Container>
     );
 };
-
 export default RecommendJobPage;
