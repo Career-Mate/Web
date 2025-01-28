@@ -7,16 +7,22 @@ import { useProfile } from '../../../hooks/useProfile';
 
 const ProfileSettingPage = () => {
     const navigate = useNavigate();
-    const { canSave, profile, handleProfileChange, handleProfileFieldChange } = useProfile(profileEmptyData);
+    const { canSave, emailError, profile, handleProfileChange, handleProfileFieldChange } =
+        useProfile(profileEmptyData);
 
     const handleSave = () => {
-        if (canSave) {
-            const updatedProfile = handleProfileChange();
-            console.log(updatedProfile);
-            navigate('/profile/success');
-        } else {
+        if (!canSave) {
             alert('항목을 모두 입력해주세요!');
+            return;
         }
+
+        if (emailError) {
+            alert('유효한 이메일 주소를 입력하세요.');
+            return;
+        }
+        const updatedProfile = handleProfileChange();
+        console.log(updatedProfile);
+        navigate('/profile/success');
     };
 
     return (

@@ -8,7 +8,8 @@ import { useProfile } from '../../../hooks/useProfile';
 
 const ProfileEditPage = () => {
     const [isPopUp, setIsPopUp] = useState(false);
-    const { canSave, profile, handleProfileChange, handleProfileFieldChange } = useProfile(profileInitialData); // useProfileEdit 사용
+    const { canSave, emailError, profile, handleProfileChange, handleProfileFieldChange } =
+        useProfile(profileInitialData);
 
     const handlePopUpOpen = () => {
         setIsPopUp(true);
@@ -19,12 +20,17 @@ const ProfileEditPage = () => {
     };
 
     const handleSave = () => {
-        if (canSave) {
-            const updatedProfile = handleProfileChange();
-            console.log(updatedProfile);
-        } else {
+        if (!canSave) {
             alert('항목을 모두 입력해주세요!');
+            return;
         }
+
+        if (emailError) {
+            alert('유효한 이메일 주소를 입력하세요.');
+            return;
+        }
+        const updatedProfile = handleProfileChange();
+        console.log(updatedProfile);
     };
 
     return (
