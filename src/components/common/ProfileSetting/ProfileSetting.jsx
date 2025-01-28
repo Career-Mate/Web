@@ -12,7 +12,7 @@ const ProfileSetting = ({ buttonText, onSave, profile, onChange }) => {
                     defaultValue={profile.name}
                     label={'이름'}
                     placeholder={'이름을 입력하세요'}
-                    onChange={(e) => onChange('name', e.target.value)}
+                    onBlur={(value) => onChange('name', value)}
                 />
                 <SelectDropInput
                     label="학력"
@@ -29,7 +29,7 @@ const ProfileSetting = ({ buttonText, onSave, profile, onChange }) => {
                     label={'학과'}
                     placeholder={'학과'}
                     errorMessage={'학과를 입력해주세요!'}
-                    onChange={(e) => onChange('department', e.target.value)}
+                    onBlur={(value) => onChange('department', value)}
                 />
                 <SelectDropInput
                     label="수료 상태"
@@ -56,7 +56,7 @@ const ProfileSetting = ({ buttonText, onSave, profile, onChange }) => {
                     label={'이메일'}
                     type="email"
                     placeholder={'이메일을 입력하세요'}
-                    onChange={(e) => onChange('email', e.target.value)}
+                    onBlur={(value) => onChange('email', value)}
                 />
             </S.InputWrapper>
             <SquareButton width={'375px'} height={'60px'} onClick={() => onSave(profile)}>
