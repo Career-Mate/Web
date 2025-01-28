@@ -10,7 +10,7 @@ const ProfileSettingPage = () => {
     const { canSave, emailError, profile, handleProfileChange, handleProfileFieldChange } =
         useProfile(profileEmptyData);
 
-    const handleSave = () => {
+    const handleSave = async () => {
         if (!canSave) {
             alert('항목을 모두 입력해주세요!');
             return;
@@ -20,9 +20,30 @@ const ProfileSettingPage = () => {
             alert('유효한 이메일 주소를 입력하세요.');
             return;
         }
+
         const updatedProfile = handleProfileChange();
         console.log(updatedProfile);
-        navigate('/profile/success');
+        try {
+            const response = await fetch(`${import.meta.env.VITE_BACK_URL}/member/profile`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedProfile),
+            });
+
+            if (!response.ok) {
+                throw new Error('프로필 저장 실패');
+            }
+
+            const responseData = await response.json();
+            console.log('저장 성공:', responseData);
+
+            navigate('/profile/success');
+        } catch (error) {
+            alert('프로필 저장에 실패했습니다. 다시 시도해주세요.');
+            console.error('오류 발생:', error);
+        }
     };
 
     return (

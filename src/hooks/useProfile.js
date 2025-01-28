@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { educationLevel, educationStatus, jobData } from '../data/profileData';
 
 export const useProfile = (initialData) => {
     const [profile, setProfile] = useState(initialData);
@@ -12,20 +13,24 @@ export const useProfile = (initialData) => {
 
     const checkIfCanSave = () => {
         const isComplete = Object.entries(profile).every(([key, value]) => value.trim() !== '');
-        setCanSave(isComplete && !emailError);
+        const isEmail = isValidEmail(profile.email);
+        setCanSave(isComplete);
+        setEmailError(!isEmail);
     };
 
     useEffect(() => {
-        if (profile.email && !isValidEmail(profile.email)) {
-            setEmailError(true);
-        } else {
-            setEmailError(false);
-        }
         checkIfCanSave();
     }, [profile]);
 
     const handleProfileChange = () => {
-        return profile;
+        const transformProfile = {
+            ...profile,
+            educationLevel: educationLevel.find((item) => item.label === profile.educationLevel)?.value || '',
+            educationStatus: educationStatus.find((item) => item.label === profile.educationStatus)?.value || '',
+            job: jobData.find((item) => item.label === profile.job)?.id || '',
+        };
+
+        return transformProfile;
     };
 
     const handleProfileFieldChange = (field, value) => {
