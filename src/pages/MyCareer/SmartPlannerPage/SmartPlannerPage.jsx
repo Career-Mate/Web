@@ -3,7 +3,7 @@ import BookIcon from '../../../assets/common/book-icon.svg';
 import { GrCircleQuestion } from 'react-icons/gr';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import SmartPlanner from '../../../components/SmartPlanner/SmartPlanner';
-import { useSmartPlanner } from '../../../components/SmartPlanner/useSmartPlanner';
+import { useSmartPlanner, useFetchPlanner, useCreatePlanner, useUpdatePlanner } from '../../../components/SmartPlanner/useSmartPlanner';
 import { useState } from 'react';
 
 const SmartPlannerPage = () => {
@@ -13,7 +13,7 @@ const SmartPlannerPage = () => {
         setPage((prev) => prev + num);
     };
     const { data, setData, canSave, handleSave } = useSmartPlanner();
-
+    const { data: planner, isLoading, error } = useFetchPlanner();
     const renderTooltip = () => (
         <S.TooltipWrapper onMouseEnter={() => setTooltipVisible(true)} onMouseLeave={() => setTooltipVisible(false)}>
             <GrCircleQuestion />
@@ -54,10 +54,10 @@ const SmartPlannerPage = () => {
                         </S.Text>
                     </S.TextWrapper>
                 </S.TextContainer>
-                <SmartPlanner data={data} onDataChange={setData} />
+                <SmartPlanner data={data} onDataChange={setData} page={page} />
             </>
         ) : (
-            <SmartPlanner data={data} onDataChange={setData} />
+            <SmartPlanner data={data} onDataChange={setData} page={page}/>
         );
     const renderButtons = () => (
         <S.ButtonWrapper>
