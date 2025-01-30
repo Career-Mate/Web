@@ -5,11 +5,31 @@ import * as S from './styled/styled';
 import AccountPopUp from '../../../components/common/Popups/AccountPopUp/AccountPopUp';
 import { profileInitialData } from '../../../data/profileData';
 import { useProfile } from '../../../hooks/useProfile';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { getProfile, modifyProfile } from '../../../api/profileApi';
+import { useAuthStore } from '../../../store/authStore';
 
 const ProfileEditPage = () => {
     const [isPopUp, setIsPopUp] = useState(false);
-    const { canSave, emailError, profile, handleProfileChange, handleProfileFieldChange } =
-        useProfile(profileInitialData);
+    const { fetchUser } = useAuthStore();
+    const { data, isLoading, isError, error } = useQuery({
+        queryKey: ['profile'],
+        queryFn: getProfile,
+        onSuccess: (data) => {
+            fetchUser(data);
+        },
+    });
+    const { canSave, emailError, profile, handleProfileFieldChange } = useProfile(profileInitialData);
+
+    const mutation = useMutation({
+        mutationFn: modifyProfile,
+        onSuccess: () => {
+            fetchUser(profile);
+        },
+        onError: (error) => {
+            console.error(error);
+        },
+    });
 
     const handlePopUpOpen = () => {
         setIsPopUp(true);
@@ -18,6 +38,14 @@ const ProfileEditPage = () => {
     const handlePopUpClose = () => {
         setIsPopUp(false);
     };
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (isError) {
+        return <div>Error: {error.message}</div>;
+    }
 
     const handleSave = () => {
         if (!canSave) {
@@ -29,8 +57,7 @@ const ProfileEditPage = () => {
             alert('유효한 이메일 주소를 입력하세요.');
             return;
         }
-        const updatedProfile = handleProfileChange();
-        console.log(updatedProfile);
+        mutation.mutate(profile);
     };
 
     return (
