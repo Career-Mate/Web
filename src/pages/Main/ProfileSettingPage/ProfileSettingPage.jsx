@@ -4,11 +4,23 @@ import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSet
 import * as S from './styled/styled';
 import { profileEmptyData } from '../../../data/profileData';
 import { useProfile } from '../../../hooks/useProfile';
+import { useMutation } from '@tanstack/react-query';
+import { saveProfile } from '../../../api/profileApi';
 
 const ProfileSettingPage = () => {
     const navigate = useNavigate();
-    const { canSave, emailError, profile, handleProfileChange, handleProfileFieldChange } =
-        useProfile(profileEmptyData);
+    const { canSave, emailError, profile, handleProfileFieldChange } = useProfile(profileEmptyData);
+
+    const mutation = useMutation({
+        mutationFn: saveProfile,
+        onSuccess: () => {
+            navigate('/profile/success');
+        },
+        onError: (error) => {
+            alert('프로필 저장에 실패했습니다. 다시 시도해주세요.');
+            console.log(error);
+        },
+    });
 
     const handleSave = async () => {
         if (!canSave) {
@@ -21,29 +33,7 @@ const ProfileSettingPage = () => {
             return;
         }
 
-        const updatedProfile = handleProfileChange();
-        console.log(updatedProfile);
-        try {
-            const response = await fetch(`${import.meta.env.VITE_BACK_URL}/member/profile`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updatedProfile),
-            });
-
-            if (!response.ok) {
-                throw new Error('프로필 저장 실패');
-            }
-
-            const responseData = await response.json();
-            console.log('저장 성공:', responseData);
-
-            navigate('/profile/success');
-        } catch (error) {
-            alert('프로필 저장에 실패했습니다. 다시 시도해주세요.');
-            console.error('오류 발생:', error);
-        }
+        mutation.mutate(profile);
     };
 
     return (
