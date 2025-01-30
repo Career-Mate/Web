@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { SmartPlannerInitialData } from '../../data/smartTemplateData';
-import { fetchPlanner, createPlanner, updatePlanner } from './smartPlannerApi';
-import { useQuery,useQueryClient, useMutation } from '@tanstack/react-query';
+import { SmartPlannerInitialData } from '../data/smartTemplateData';
+
 export const useSmartPlanner = () => {
     const [data, setData] = useState(SmartPlannerInitialData);
     const [canSave, setCanSave] = useState(false);
@@ -38,32 +37,19 @@ export const useSmartPlanner = () => {
     };
 };
 
-export const useFetchPlanner = () => {
-    return useQuery({
-        queryKey: ['planner'],
-        queryFn: fetchPlanner,
-        staleTime: 1000 * 60 * 5,
-    });
+export const handleInputChange = (data, onDataChange, sectionIndex, value) => {
+    const updatedData = [...data];
+    if (updatedData[sectionIndex].activityName === value) return;
+    updatedData[sectionIndex].activityName = value;
+    onDataChange(updatedData);
 };
 
-export const useCreatePlanner = () => {
-    const queryClient = useQueryClient();
-
-    return useMutation({
-        mutationFn: createPlanner,
-        onSuccess: () => {
-            queryClient.invalidateQueries(['planner']);
-        },
-    });
-};
-
-export const useUpdatePlanner = () => {
-    const queryClient = useQueryClient();
-
-    return useMutation({
-        mutationFn: updatePlanner,
-        onSuccess: () => {
-            queryClient.invalidateQueries(['planner']);
-        },
-    });
+export const handleDateChange = (data, onDataChange, sectionIndex, isStartDate, date) => {
+    const updatedData = [...data];
+    if (isStartDate) {
+        updatedData[sectionIndex].goalPeriod.startDate = date;
+    } else {
+        updatedData[sectionIndex].goalPeriod.endDate = date;
+    }
+    onDataChange(updatedData);
 };
