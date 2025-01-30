@@ -16,6 +16,10 @@ export const useAuthStore = create(
                     isLogin: false,
                     user: null,
                 }),
+            fetchUser: (userData) =>
+                set({
+                    user: userData,
+                }),
         }),
         {
             name: 'authStorage',

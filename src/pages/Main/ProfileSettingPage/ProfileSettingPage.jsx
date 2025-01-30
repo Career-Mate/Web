@@ -6,19 +6,22 @@ import { profileEmptyData } from '../../../data/profileData';
 import { useProfile } from '../../../hooks/useProfile';
 import { useMutation } from '@tanstack/react-query';
 import { saveProfile } from '../../../api/profileApi';
+import { useAuthStore } from '../../../store/authStore';
 
 const ProfileSettingPage = () => {
     const navigate = useNavigate();
     const { canSave, emailError, profile, handleProfileFieldChange } = useProfile(profileEmptyData);
+    const { fetchUser } = useAuthStore();
 
     const mutation = useMutation({
         mutationFn: saveProfile,
         onSuccess: () => {
+            fetchUser(profile);
             navigate('/profile/success');
         },
         onError: (error) => {
             alert('프로필 저장에 실패했습니다. 다시 시도해주세요.');
-            console.log(error);
+            console.error(error);
         },
     });
 
