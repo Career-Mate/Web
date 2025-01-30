@@ -1,11 +1,17 @@
-import { fetchPlanner, createPlanner, updatePlanner } from './SmartPlannerApi';
-import { useQuery,useQueryClient, useMutation } from '@tanstack/react-query';
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
+import { fetchPlanner, createPlanner, updatePlanner } from "./SmartPlannerApi";
+
+const QUERY_KEY_PLANNER = "planner";
 
 export const useFetchPlanner = () => {
     return useQuery({
-        queryKey: ['planner'],
+        queryKey: [QUERY_KEY_PLANNER],
         queryFn: fetchPlanner,
         staleTime: 1000 * 60 * 5,
+        onError: (error) => {
+            console.error("Error fetching planner data:", error.message);
+            alert("플래너 데이터를 불러오는 중 오류가 발생했습니다.");
+        },
     });
 };
 
@@ -15,7 +21,12 @@ export const useCreatePlanner = () => {
     return useMutation({
         mutationFn: createPlanner,
         onSuccess: () => {
-            queryClient.invalidateQueries(['planner']);
+            queryClient.invalidateQueries([QUERY_KEY_PLANNER]);
+            alert("플래너가 성공적으로 생성되었습니다.");
+        },
+        onError: (error) => {
+            console.error("Error creating planner:", error.message);
+            alert("플래너 생성 중 오류가 발생했습니다.");
         },
     });
 };
@@ -26,7 +37,12 @@ export const useUpdatePlanner = () => {
     return useMutation({
         mutationFn: updatePlanner,
         onSuccess: () => {
-            queryClient.invalidateQueries(['planner']);
+            queryClient.invalidateQueries([QUERY_KEY_PLANNER]);
+            alert("플래너가 성공적으로 업데이트되었습니다.");
+        },
+        onError: (error) => {
+            console.error("Error updating planner:", error.message);
+            alert("플래너 업데이트 중 오류가 발생했습니다.");
         },
     });
 };

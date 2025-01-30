@@ -1,13 +1,31 @@
 import { useState, useEffect } from 'react';
 import { SmartPlannerInitialData } from '../data/smartTemplateData';
+import { useUpdatePlanner } from '../apis/smartPlanner/useSmartPlannerApi';
+import { mapPlannerDataToState, mapStateToPlannerData } from '../utils/smartPlanner/plannerMappers';
 
 export const useSmartPlanner = () => {
     const [data, setData] = useState(SmartPlannerInitialData);
     const [canSave, setCanSave] = useState(false);
+    const {mutate: updatePlanner} = useUpdatePlanner();
+    // const updatedPlannerData = {
+    //     activityName: '',
+    //     startTime: '',
+    //     endTime: '',
+    //     specifics: '',
+    //     measurable: '',
+    //     achievable: '',
+    //     relevant: '',
+    //     timeBound: '',
+    //     otherPlans: '',
+    // };
 
     const checkIfCanSave = () => {
         const isValid = data.some((section) => {
-            if(section.activityName === "" || section.goalPeriod.startDate === null || section.goalPeriod.endDate === null)
+            if (
+                section.activityName === '' ||
+                section.goalPeriod.startDate === null ||
+                section.goalPeriod.endDate === null
+            )
                 return false;
             return section.items.slice(0, 5).every((item) => {
                 return item.content.trim().length > 0;
@@ -24,8 +42,9 @@ export const useSmartPlanner = () => {
         if (!canSave) {
             alert('항목을 모두 입력해주세요!');
         } else {
-            alert('저장되었습니다.');
             setData([...data]);
+            const updatedPlannerData = mapStateToPlannerData(data);
+            updatePlanner(updatedPlannerData);
         }
     };
 
@@ -37,19 +56,11 @@ export const useSmartPlanner = () => {
     };
 };
 
-export const handleInputChange = (data, onDataChange, sectionIndex, value) => {
-    const updatedData = [...data];
-    if (updatedData[sectionIndex].activityName === value) return;
-    updatedData[sectionIndex].activityName = value;
-    onDataChange(updatedData);
-};
-
-export const handleDateChange = (data, onDataChange, sectionIndex, isStartDate, date) => {
-    const updatedData = [...data];
-    if (isStartDate) {
-        updatedData[sectionIndex].goalPeriod.startDate = date;
-    } else {
-        updatedData[sectionIndex].goalPeriod.endDate = date;
-    }
-    onDataChange(updatedData);
+export const usePlannerDataEffect = (isSuccess, planner, setData) => {
+    useEffect(() => {
+        if (isSuccess && planner) {
+            const plannerData = planner?.data;
+            setData((prevData) => mapPlannerDataToState(plannerData, prevData));
+        }
+    }, [isSuccess, planner, setData]);
 };

@@ -2,7 +2,7 @@ import ProfileInput from '../common/Input/ProfileInput';
 import CalendarInput from '../common/Input/CalendarInput/CalendarInput';
 import TextTemplate from '../common/TextTemplate/TextTemplate';
 import React from 'react';
-import { handleDateChange, handleInputChange } from '../../hooks/useSmartPlanner';
+import { handleDateChange, handleInputChange } from "../../utils/SmartPlanner/plannerHandler"
 import * as S from './styled/styled';
 
 const SmartPlanner = ({ data, onDataChange, page }) => {

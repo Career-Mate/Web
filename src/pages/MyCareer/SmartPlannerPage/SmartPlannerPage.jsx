@@ -3,8 +3,8 @@ import BookIcon from '../../../assets/common/book-icon.svg';
 import { GrCircleQuestion } from 'react-icons/gr';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import SmartPlanner from '../../../components/SmartPlanner/SmartPlanner';
-import { useSmartPlanner } from '../../../hooks/useSmartPlanner';
-import { useFetchPlanner, useCreatePlanner, useUpdatePlanner } from '../../../apis/smartPlanner/useSmartPlannerApi';
+import { useSmartPlanner, usePlannerDataEffect } from '../../../hooks/useSmartPlanner';
+import { useFetchPlanner } from '../../../apis/smartPlanner/useSmartPlannerApi';
 import { useState,useEffect } from 'react';
 
 const SmartPlannerPage = () => {
@@ -15,29 +15,9 @@ const SmartPlannerPage = () => {
     };
     const { data, setData, canSave, handleSave } = useSmartPlanner();
     const { data: planner, isLoading, error, isSuccess } = useFetchPlanner();
-    console.log(planner);
-    console.log("플래너 정보: " + planner?.data.activityName);
 
-    useEffect(() => {
-        if (isSuccess && planner) {
-            const plannerData = planner?.data;
-            setData(prevData => {
-                const updatedData = [...prevData];
-                updatedData[0].activityName = plannerData.activityName;
-                updatedData[0].items[0].content = plannerData.specifics;
-                updatedData[0].items[1].content = plannerData.measurable;
-                updatedData[0].items[2].content = plannerData.achievable;
-                updatedData[0].items[3].content = plannerData.relevant;
-                updatedData[0].items[4].content = plannerData.timeBound;
-                updatedData[0].items[5].content = plannerData.otherPlans;
-                updatedData[0].goalPeriod.startDate = new Date(plannerData.startTime);
-                updatedData[0].goalPeriod.endDate = new Date(plannerData.endTime);
-                return updatedData;
-            });
-        }
-    }, [isSuccess, planner]);
-
-    console.log(data);
+    usePlannerDataEffect(isSuccess,planner,setData);
+    
     const renderTooltip = () => (
         <S.TooltipWrapper onMouseEnter={() => setTooltipVisible(true)} onMouseLeave={() => setTooltipVisible(false)}>
             <GrCircleQuestion />
