@@ -1,6 +1,6 @@
 import useInput from '../../../hooks/useInput';
 import * as S from './styled/styled';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ProfileInput = React.memo(({
     label,
@@ -11,6 +11,11 @@ const ProfileInput = React.memo(({
     onBlur: externalOnBlur,
 }) => {
     const [value, setValue] = useState(defaultValue);
+
+    useEffect(() => {
+        setValue(defaultValue);
+    }, [defaultValue]);
+    
     const showError = value.trim() === '';
 
     const handleChange = (e) => {
