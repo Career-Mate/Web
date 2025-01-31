@@ -13,13 +13,27 @@ export const mapPlannerDataToState = (plannerData, prevData) => {
         otherPlans 
     } = plannerData;
 
+    const parseDate = (dateStr) => {
+        if (!dateStr) return null;
+    
+        const date = new Date(dateStr);
+        return new Date(Date.UTC(
+            date.getFullYear(), 
+            date.getMonth(), 
+            date.getDate(), 
+            date.getHours(), 
+            date.getMinutes(), 
+            date.getSeconds()
+        ));
+    };
+
     const updatedData = [...prevData];
     updatedData[0] = {
         ...updatedData[0],
         activityName,
         goalPeriod: {
-            startDate: startTime == null ? null : new Date(startTime),
-            endDate: endTime == null ? null : new Date(endTime),
+            startDate: parseDate(startTime),
+            endDate: parseDate(endTime),
         },
         items: updatedData[0].items.map((item, index) => ({
             ...item,

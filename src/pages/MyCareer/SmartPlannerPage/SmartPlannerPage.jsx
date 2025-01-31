@@ -12,6 +12,7 @@ const SmartPlannerPage = () => {
     const [page, setPage] = useState(0);
     const pageChange = (num) => {
         setPage((prev) => prev + num);
+        window.scrollTo(0, 0);
     };
     const { data, setData, canSave, handleSave } = useSmartPlanner();
     const { data: planner, error, isSuccess, isError } = useFetchPlanner();

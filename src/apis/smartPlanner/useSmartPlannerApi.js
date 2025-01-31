@@ -39,6 +39,8 @@ export const useUpdatePlanner = () => {
         onSuccess: () => {
             queryClient.invalidateQueries([QUERY_KEY_PLANNER]);
             alert("플래너가 성공적으로 업데이트되었습니다.");
+            window.location.reload();
+            window.scrollTo(0, 0);
         },
         onError: (error) => {
             console.error("Error updating planner:", error.message);
