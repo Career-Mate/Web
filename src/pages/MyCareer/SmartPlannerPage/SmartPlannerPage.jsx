@@ -14,10 +14,10 @@ const SmartPlannerPage = () => {
         setPage((prev) => prev + num);
     };
     const { data, setData, canSave, handleSave } = useSmartPlanner();
-    const { data: planner, isLoading, error, isSuccess } = useFetchPlanner();
+    const { data: planner, error, isSuccess, isError } = useFetchPlanner();
 
-    usePlannerDataEffect(isSuccess,planner,setData);
-    
+    usePlannerDataEffect(isSuccess, planner, setData, isError, error);
+    console.log(data);
     const renderTooltip = () => (
         <S.TooltipWrapper onMouseEnter={() => setTooltipVisible(true)} onMouseLeave={() => setTooltipVisible(false)}>
             <GrCircleQuestion />

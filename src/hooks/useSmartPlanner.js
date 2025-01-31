@@ -1,23 +1,12 @@
 import { useState, useEffect } from 'react';
 import { SmartPlannerInitialData } from '../data/smartTemplateData';
-import { useUpdatePlanner } from '../apis/smartPlanner/useSmartPlannerApi';
+import { useCreatePlanner, useUpdatePlanner } from '../apis/smartPlanner/useSmartPlannerApi';
 import { mapPlannerDataToState, mapStateToPlannerData } from '../utils/smartPlanner/plannerMappers';
 
 export const useSmartPlanner = () => {
     const [data, setData] = useState(SmartPlannerInitialData);
     const [canSave, setCanSave] = useState(false);
     const {mutate: updatePlanner} = useUpdatePlanner();
-    // const updatedPlannerData = {
-    //     activityName: '',
-    //     startTime: '',
-    //     endTime: '',
-    //     specifics: '',
-    //     measurable: '',
-    //     achievable: '',
-    //     relevant: '',
-    //     timeBound: '',
-    //     otherPlans: '',
-    // };
 
     const checkIfCanSave = () => {
         const isValid = data.some((section) => {
@@ -56,11 +45,30 @@ export const useSmartPlanner = () => {
     };
 };
 
-export const usePlannerDataEffect = (isSuccess, planner, setData) => {
+export const usePlannerDataEffect = (isSuccess, planner, setData, isError, error) => {
+    const { mutate: createPlanner, isLoading: isCreating } = useCreatePlanner();
+
+    const initialPlannerData = {
+        activityName: '',
+        startTime: null,
+        endTime: null,
+        specifics: '',
+        measurable: '',
+        achievable: '',
+        relevant: '',
+        timeBound: '',
+        otherPlans: '',
+    };
+
     useEffect(() => {
+        if (isError && error?.response?.status === 400 && !isCreating) {
+            createPlanner(initialPlannerData);
+            return;
+        }
+
         if (isSuccess && planner) {
             const plannerData = planner?.data;
             setData((prevData) => mapPlannerDataToState(plannerData, prevData));
         }
-    }, [isSuccess, planner, setData]);
+    }, [isSuccess, planner, setData, isError, error, createPlanner, isCreating]);
 };

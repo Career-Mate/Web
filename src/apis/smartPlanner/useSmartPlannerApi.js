@@ -5,12 +5,12 @@ const QUERY_KEY_PLANNER = "planner";
 
 export const useFetchPlanner = () => {
     return useQuery({
-        queryKey: [QUERY_KEY_PLANNER],
+        queryKey: ["planner"],
         queryFn: fetchPlanner,
         staleTime: 1000 * 60 * 5,
+        retry: false,
         onError: (error) => {
-            console.error("Error fetching planner data:", error.message);
-            alert("플래너 데이터를 불러오는 중 오류가 발생했습니다.");
+            console.error("React Query Error:", error);
         },
     });
 };
@@ -22,7 +22,7 @@ export const useCreatePlanner = () => {
         mutationFn: createPlanner,
         onSuccess: () => {
             queryClient.invalidateQueries([QUERY_KEY_PLANNER]);
-            alert("플래너가 성공적으로 생성되었습니다.");
+            console.log("플래너 생성");
         },
         onError: (error) => {
             console.error("Error creating planner:", error.message);

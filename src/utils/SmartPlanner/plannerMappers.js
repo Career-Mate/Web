@@ -18,8 +18,8 @@ export const mapPlannerDataToState = (plannerData, prevData) => {
         ...updatedData[0],
         activityName,
         goalPeriod: {
-            startDate: new Date(startTime),
-            endDate: new Date(endTime),
+            startDate: startTime == null ? null : new Date(startTime),
+            endDate: endTime == null ? null : new Date(endTime),
         },
         items: updatedData[0].items.map((item, index) => ({
             ...item,

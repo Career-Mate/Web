@@ -6,7 +6,7 @@ export const fetchPlanner = async () => {
         return response.data;
     } catch (error) {
         console.error("Error fetching planner data:", error);
-        throw new Error(error.response?.data?.message || "Failed to fetch planner data");
+        throw error;
     }
 };
 
