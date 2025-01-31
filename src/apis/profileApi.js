@@ -1,7 +1,5 @@
-import axios from 'axios';
 import { educationLevel, educationStatus, jobData } from '../data/profileData';
-
-const API_BASE_URL = import.meta.env.VITE_BACK_URL;
+import apiClient from './axiosInstance';
 
 const transformProfileData = (profile) => ({
     ...profile,
@@ -20,31 +18,19 @@ const transformProfileResponse = (responseData) => ({
 export const saveProfile = async (profile) => {
     const transformData = transformProfileData(profile);
     console.log(transformData);
-    const response = await axios.post(`${API_BASE_URL}/member/profile`, transformData, {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+    const response = await apiClient.post('/member/profile', transformData);
     return response.data;
 };
 
 export const modifyProfile = async (profile) => {
     const transformData = transformProfileData(profile);
     console.log(transformData);
-    const response = await axios.patch(`${API_BASE_URL}/member/modify`, transformData, {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+    const response = await apiClient.patch('/member/modify', transformData);
     return response.data;
 };
 
 export const getProfile = async () => {
-    const response = await axios.get(`${API_BASE_URL}/member`, {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+    const response = await apiClient.get('/member');
     const transformedData = transformProfileResponse(response.data);
     return transformedData;
 };

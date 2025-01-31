@@ -6,7 +6,7 @@ import AccountPopUp from '../../../components/common/Popups/AccountPopUp/Account
 import { profileInitialData } from '../../../data/profileData';
 import { useProfile } from '../../../hooks/useProfile';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { getProfile, modifyProfile } from '../../../api/profileApi';
+import { getProfile, modifyProfile } from '../../../apis/profileApi';
 import { useAuthStore } from '../../../store/authStore';
 
 const ProfileEditPage = () => {

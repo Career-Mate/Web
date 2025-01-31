@@ -5,7 +5,7 @@ import * as S from './styled/styled';
 import { profileEmptyData } from '../../../data/profileData';
 import { useProfile } from '../../../hooks/useProfile';
 import { useMutation } from '@tanstack/react-query';
-import { saveProfile } from '../../../api/profileApi';
+import { saveProfile } from '../../../apis/profileApi';
 import { useAuthStore } from '../../../store/authStore';
 
 const ProfileSettingPage = () => {
