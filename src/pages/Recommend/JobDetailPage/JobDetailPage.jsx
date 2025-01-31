@@ -3,6 +3,7 @@ import companyImg from '../../../assets/JobDetailPage/company.svg';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton.jsx';
 import JobDetailList from '../../../components/Recommend/JobDetailList/JobDetailList.jsx';
 import { useNavigate } from 'react-router-dom';
+import { useFetchDetail } from '../../../apis/JobDetail/useJobDetailApi.js';
 
 const JobDetailPage = ({ data }) => {
     const navigate = useNavigate();
@@ -12,7 +13,8 @@ const JobDetailPage = ({ data }) => {
     const handleJobRecruitNavigation = () => {
         window.open('https://your-target-url.com', '_blank', 'noopener,noreferrer');
     };
-
+    const {data: detail, error, isLoading, isSuccess, isError} = useFetchDetail(1);
+    console.log("detail",detail);
     return (
         <S.PageContainer>
             <S.ComponentContainer>

@@ -1,4 +1,5 @@
 import apiClient from "../axiosInstance";
+import { useQuery } from "@tanstack/react-query";
 
 const fetchDetail = async ({recruitId}) => {
     try {
@@ -16,6 +17,7 @@ export const useFetchDetail = (recruitId)=>{
         queryKey : ['detail',recruitId],
         cacheTime: 1000 * 60 * 5,
         staleTime : 1000 * 60 * 5,
+        retry: false,
         onError: (error) => {
             console.error("React Query Error:", error);
         },
