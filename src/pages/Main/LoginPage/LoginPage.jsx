@@ -4,7 +4,7 @@ import Kakao from '../../../assets/LoginPage/kakao.svg';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 
 const LoginPage = () => {
-    const apiURL = `${import.meta.env.VITE_BACK_URL}/oauth2/authorization`;
+    const apiURL = `${import.meta.env.VITE_API_BASE_URL}/oauth2/authorization`;
 
     return (
         <InfoContainer
