@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { educationLevel, educationStatus, jobData } from '../data/profileData';
 
 export const useProfile = (initialData) => {
     const [profile, setProfile] = useState(initialData);
