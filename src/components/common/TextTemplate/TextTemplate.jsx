@@ -1,12 +1,10 @@
 import * as S from './styled/styled';
 import { useMemo } from 'react';
-import { useTemplateData } from '../../../hooks/useTemplateData';
-import { textTemplateData } from '../../../data/textTemplateData';
+import { useTemplateData } from '../../../apis/CareerTemplate/useTemplateData'; // ✅ API 연동
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
-const TextTemplate = ({ jobType = 'frontend', pageType = 'skills', data: externalData, onDataChange }) => {
-    const initialData = textTemplateData[pageType]?.[jobType] || [];
-    const { handleInputChange, data, clearAll } = useTemplateData(externalData || initialData, onDataChange);
+const TextTemplate = ({ pageType, onDataChange }) => {
+    const { handleInputChange, data, clearAll } = useTemplateData(pageType);
     const memoizedData = useMemo(() => data, [data]);
 
     const autoResize = (textarea) => {
@@ -25,7 +23,6 @@ const TextTemplate = ({ jobType = 'frontend', pageType = 'skills', data: externa
                         {section.items.map((item, itemIndex) => (
                             <S.TableRow key={itemIndex}>
                                 <S.TableCellHeader
-                                    data-component="TableCellHeader"
                                     isFirstRow={itemIndex === 0}
                                     isLastRow={itemIndex === section.items.length - 1}
                                 >

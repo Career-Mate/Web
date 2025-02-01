@@ -2,13 +2,11 @@ import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useMemo } from 'react';
-import { useTemplateData } from '../../../hooks/useTemplateData';
-import { jobTemplateData } from '../../../data/jobTemplateData';
+import { useTemplateData } from '../../../apis/CareerTemplate/useTemplateData';
 import * as S from './styled/styled';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
-const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: externalData, onDataChange }) => {
-    const initialData = jobTemplateData[pageType]?.[jobType] || [];
+const Template = ({ pageType, onDataChange }) => {
     const {
         tooltipVisible,
         setTooltipVisible,
@@ -17,7 +15,7 @@ const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: e
         handleDateChange,
         generateTooltipText,
         clearAll,
-    } = useTemplateData(externalData || initialData, onDataChange);
+    } = useTemplateData(pageType);
 
     const memoizedData = useMemo(() => data, [data]);
 
@@ -75,9 +73,7 @@ const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: e
                                                     dateFormat="yyyy년 MM월 dd일"
                                                 />
                                             </S.DateInput>
-
                                             <S.DateDivider>|</S.DateDivider>
-
                                             <S.DateInput isInline>
                                                 <FaCalendarAlt className="calendar-icon" />
                                                 <DatePicker
