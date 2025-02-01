@@ -3,12 +3,12 @@ import TextTemplate from '../../../components/common/TextTemplate/TextTemplate';
 import ProgressBar from '../../../components/common/ProgressBar/ProgressBar';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import * as S from './styled/styled';
-import { useFinalSummary } from './useFinalSummary';
+import useTemplateData from '../../../apis/CareerTemplate/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
 
 const FinalSummaryPage = ({ setActiveScreen }) => {
     const navigate = useNavigate();
-    const { data, setData, handleSave } = useFinalSummary();
+    const { data, setData, handleSave } = useTemplateData('SUMMARY');
     const { progression, prevSummaryProgress } = useProgressBar(5);
 
     const handlePrevClick = () => {
@@ -25,13 +25,13 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
             <S.HeaderWrapper>
                 <S.TitleGroup>
                     <S.Title>5. 최종 정리</S.Title>
-                    <S.Subtitle>※ 최대 2개까지 작성할 수 있어요.</S.Subtitle>
+                    <S.Subtitle>※ 최종 확인 후 저장해주세요.</S.Subtitle>
                 </S.TitleGroup>
                 <ProgressBar progression={progression} />
             </S.HeaderWrapper>
 
             <S.TemplateWrapper>
-                <TextTemplate data={data} onDataChange={(updatedData) => setData(updatedData)} />
+                <TextTemplate pageType="SUMMARY" onDataChange={(updatedData) => setData(updatedData)} />
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
@@ -43,7 +43,7 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
                         이전
                     </SquareButton>
                     <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
-                        다음
+                        완료
                     </SquareButton>
                 </div>
             </S.ButtonWrapper>
