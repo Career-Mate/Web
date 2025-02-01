@@ -1,5 +1,5 @@
 export const mapRecommendJobData = (apiData) => {
-    if (!apiData || apiData.status !== 0 || !apiData.data) {
+    if (!apiData || apiData.status !== 200 || !apiData.data) {
         console.error('Invalid API response:', apiData);
         return { jobs: [], hasNext: false };
     }

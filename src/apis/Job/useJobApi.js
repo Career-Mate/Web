@@ -4,11 +4,11 @@ import { mapRecommendJobData } from '../../utils/mapRecommendJobData';
 
 const QUERY_KEY_RECOMMEND_JOBS = 'recommendJobs';
 
-export const useFetchRecommendJobs = (page) => {
+export const useFetchRecommendJobs = (page, sortType) => {
     return useQuery({
-        queryKey: [QUERY_KEY_RECOMMEND_JOBS, page],
+        queryKey: [QUERY_KEY_RECOMMEND_JOBS, page, sortType],
         queryFn: async () => {
-            const apiData = await fetchRecommendJobs(page);
+            const apiData = await fetchRecommendJobs(page, sortType);
             return mapRecommendJobData(apiData);
         },
         staleTime: 1000 * 60 * 60 * 12,
