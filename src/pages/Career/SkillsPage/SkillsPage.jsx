@@ -29,9 +29,11 @@ const SkillsPage = ({ setActiveScreen }) => {
                 <ProgressBar progression={progression} />
             </S.HeaderWrapper>
 
-            <S.TemplateWrapper>
-                <TextTemplate pageType="TECHNICAL_SKILLS" onDataChange={(updatedData) => setData(updatedData)} />
-            </S.TemplateWrapper>
+            <S.SkillsPageTemplateWrapper>
+                <S.TemplateWrapper>
+                    <TextTemplate pageType="TECHNICAL_SKILLS" onDataChange={(updatedData) => setData(updatedData)} />
+                </S.TemplateWrapper>
+            </S.SkillsPageTemplateWrapper>
 
             <S.ButtonWrapper>
                 <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>

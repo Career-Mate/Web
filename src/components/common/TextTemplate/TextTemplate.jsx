@@ -1,6 +1,6 @@
 import * as S from './styled/styled';
 import { useMemo } from 'react';
-import { useTemplateData } from '../../../apis/CareerTemplate/useTemplateData'; // ✅ API 연동
+import { useTemplateData } from '../../../apis/CareerTemplate/useTemplateData';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
 const TextTemplate = ({ pageType, onDataChange }) => {
@@ -23,6 +23,7 @@ const TextTemplate = ({ pageType, onDataChange }) => {
                         {section.items.map((item, itemIndex) => (
                             <S.TableRow key={itemIndex}>
                                 <S.TableCellHeader
+                                    data-component="TableCellHeader"
                                     isFirstRow={itemIndex === 0}
                                     isLastRow={itemIndex === section.items.length - 1}
                                 >
