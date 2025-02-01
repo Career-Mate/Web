@@ -6,12 +6,17 @@ import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import Pagination from '../../../components/common/Pagination/Pagination';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 import DeadlineButton from '../../../components/common/Button/DeadlineButton/DeadlineButton';
+import { useFetchRecommendJobs } from '../../../apis/Job/useJobApi';
 
 const RecommendJobPage = ({ user }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
     const navigate = useNavigate();
+
+    const { data, isLoading, error } = useFetchRecommendJobs(currentPage);
+    const jobData = data ? data.jobs : [];
+    const hasNext = data ? data.hasNext : false;
 
     const [sortType, setSortType] = useState('전체');
 
@@ -22,12 +27,12 @@ const RecommendJobPage = ({ user }) => {
 
     const getSortedContents = () => {
         if (sortType === '마감 빠른 순') {
-            return [...user.contents].sort((a, b) => getDeadlineValue(a.deadline) - getDeadlineValue(b.deadline));
+            return [...jobData].sort((a, b) => getDeadlineValue(a.deadline) - getDeadlineValue(b.deadline));
         }
         if (sortType === '마감 늦은 순') {
-            return [...user.contents].sort((a, b) => getDeadlineValue(b.deadline) - getDeadlineValue(a.deadline));
+            return [...jobData].sort((a, b) => getDeadlineValue(b.deadline) - getDeadlineValue(a.deadline));
         }
-        return user.contents;
+        return jobData;
     };
 
     const sortedContents = getSortedContents();
