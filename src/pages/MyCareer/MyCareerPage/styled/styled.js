@@ -3,11 +3,9 @@ import styled from 'styled-components';
 export const PageContainer = styled.div`
     margin-top: 85px;
     margin-bottom: 110px;
-
     display: flex;
     flex-direction: row;
     gap: 60px;
-
     width: 100%;
     height: fit-content;
 `;
