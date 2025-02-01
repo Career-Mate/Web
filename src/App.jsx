@@ -9,7 +9,6 @@ import { userData as recommendContentData } from './data/recommendContentData';
 import recommendJobData from './data/recommendJobData';
 import { data as initialData } from './data/JobDetailMockData';
 import Test from './test/Test';
-import LoginProgressPage from './pages/Main/LoginProgressPage/LoginProgressPage';
 import LoginSuccessPage from './pages/Main/LoginSuccessPage/LoginSuccessPage';
 import MainPage from './pages/Main/MainPage/MainPage';
 import LoginPage from './pages/Main/LoginPage/LoginPage';
@@ -24,10 +23,6 @@ import SmartPlannerPage from './pages/MyCareer/SmartPlannerPage/SmartPlannerPage
 import ProfileEditPage from './pages/MyCareer/ProfileEditPage/ProfileEditPage';
 
 const router = createBrowserRouter([
-    {
-        path: import.meta.env.VITE_OAUTH_REDIRECT_ENDPOINT,
-        element: <LoginProgressPage />,
-    },
     {
         path: '/',
         element: <RootLayout />,
