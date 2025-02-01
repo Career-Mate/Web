@@ -1,5 +1,5 @@
-import { educationLevel, educationStatus, jobData } from '../data/profileData';
-import apiClient from './axiosInstance';
+import { educationLevel, educationStatus, jobData } from '../../data/profileData';
+import apiClient from '../axiosInstance';
 
 const transformProfileData = (profile) => ({
     ...profile,

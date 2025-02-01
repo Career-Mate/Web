@@ -1,29 +1,14 @@
-import { useNavigate } from 'react-router-dom';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSetting';
 import * as S from './styled/styled';
 import { profileEmptyData } from '../../../data/profileData';
 import { useProfile } from '../../../hooks/useProfile';
-import { useMutation } from '@tanstack/react-query';
-import { saveProfile } from '../../../apis/profileApi';
-import { useAuthStore } from '../../../store/authStore';
+import { useSaveProfile } from '../../../apis/profile/useProfileApi';
 
 const ProfileSettingPage = () => {
-    const navigate = useNavigate();
     const { canSave, emailError, profile, handleProfileFieldChange } = useProfile(profileEmptyData);
-    const { fetchUser } = useAuthStore();
 
-    const mutation = useMutation({
-        mutationFn: saveProfile,
-        onSuccess: () => {
-            fetchUser(profile);
-            navigate('/profile/success');
-        },
-        onError: (error) => {
-            alert('프로필 저장에 실패했습니다. 다시 시도해주세요.');
-            console.error(error);
-        },
-    });
+    const mutation = useSaveProfile();
 
     const handleSave = async () => {
         if (!canSave) {
