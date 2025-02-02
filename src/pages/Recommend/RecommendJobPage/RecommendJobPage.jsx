@@ -6,33 +6,28 @@ import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import Pagination from '../../../components/common/Pagination/Pagination';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 import DeadlineButton from '../../../components/common/Button/DeadlineButton/DeadlineButton';
+import { useFetchRecruits } from '../../../apis/useFetchRecruits';
 
 const RecommendJobPage = ({ user }) => {
+
+    const apiSortType = ["POSTING_DESC","DEADLINE_ASC","DEADLINE_DESC"];
+    const [sortType, setSortType] = useState(0);
+
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
+    const {data: recruits, error, isError, isSuccess} = useFetchRecruits(currentPage,itemsPerPage, apiSortType[sortType]);
 
+    const recruitsResult = recruits?.data?.result;
+    
     const navigate = useNavigate();
 
-    const [sortType, setSortType] = useState('전체');
 
-    const getDeadlineValue = (deadline) => {
-        if (deadline === 'D-DAY') return 0;
-        if (deadline.startsWith('D-')) return parseInt(deadline.split('-')[1], 10);
-    };
-
-    const getSortedContents = () => {
-        if (sortType === '마감 빠른 순') {
-            return [...user.contents].sort((a, b) => getDeadlineValue(a.deadline) - getDeadlineValue(b.deadline));
-        }
-        if (sortType === '마감 늦은 순') {
-            return [...user.contents].sort((a, b) => getDeadlineValue(b.deadline) - getDeadlineValue(a.deadline));
-        }
-        return user.contents;
-    };
-
-    const sortedContents = getSortedContents();
-    const totalPages = Math.ceil(sortedContents.length / itemsPerPage);
-    const currentContents = sortedContents.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    // const totalPages = Math.ceil(sortedContents.length / itemsPerPage);
+    const totalPages = 2;
+    const SortPageHandler = (sortType)=>{
+        setSortType(sortType);
+        setCurrentPage(1);
+    } 
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -52,32 +47,32 @@ const RecommendJobPage = ({ user }) => {
             <S.BottomContainer>
                 <JobBox job={user.job} />
                 <S.DeadlineWrapper>
-                    <DeadlineButton isSelected={sortType === '전체'} onClick={() => setSortType('전체')}>
+                    <DeadlineButton isSelected={sortType === 0} onClick={() => SortPageHandler(0)}>
                         전체
                     </DeadlineButton>
                     <DeadlineButton
-                        isSelected={sortType === '마감 빠른 순'}
-                        onClick={() => setSortType('마감 빠른 순')}
+                        isSelected={sortType === 1}
+                        onClick={() => SortPageHandler(1)}
                     >
                         마감 빠른 순
                     </DeadlineButton>
                     <DeadlineButton
-                        isSelected={sortType === '마감 늦은 순'}
-                        onClick={() => setSortType('마감 늦은 순')}
+                        isSelected={sortType === 2}
+                        onClick={() => SortPageHandler(2)}
                     >
                         마감 늦은 순
                     </DeadlineButton>
                 </S.DeadlineWrapper>
 
                 <S.CardWrapper>
-                    {currentContents.map((content, index) => (
+                    {recruitsResult?.map((content, index) => (
                         <JobPostingCard
-                            key={content.id}
-                            id={content.id}
+                            key={content.recruitId}
+                            id={content.recruitId}
                             companyName={content.companyName || '정보 없음'}
-                            deadline={content.deadline}
-                            contentName={content.contentName || '채용 정보 없음'}
-                            onClick={() => navigate(`/recommend/detail/${content.id}`)}
+                            deadline={content.deadLine}
+                            contentName={content.title || '채용 정보 없음'}
+                            onClick={() => navigate(`/recommend/detail/${content.recruitId}`)}
                         />
                     ))}
                 </S.CardWrapper>
