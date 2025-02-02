@@ -21,3 +21,21 @@ export const handleDateChange = (data, onDataChange, sectionIndex, isStartDate, 
     const updatedData = updateSectionData(data, sectionIndex, "goalPeriod", updatedGoalPeriod);
     onDataChange(updatedData);
 };
+
+export const handleClearAll = (onDataChange,page) => {
+    onDataChange((prevData) => {
+        const newData = [...prevData];
+
+        newData[page] = {
+            ...newData[page],
+            activityName: '',
+            goalPeriod: { startDate: null, endDate: null },
+            items: newData[page].items.map((item) => ({
+                ...item,
+                content: '',
+            })),
+        };
+
+        return newData;
+    });
+};

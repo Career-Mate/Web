@@ -15,10 +15,13 @@ const SmartPlannerPage = () => {
         window.scrollTo(0, 0);
     };
     const { data, setData, canSave, handleSave } = useSmartPlanner();
-    const { data: planner, error, isSuccess, isError } = useFetchPlanner();
+    const { data: plannerData, error, isSuccess, isError } = useFetchPlanner();
 
-    usePlannerDataEffect(isSuccess, planner, setData, isError, error);
+    const planners = plannerData?.data?.planners;
+    console.log(plannerData?.data);
     console.log(data);
+    usePlannerDataEffect(isSuccess, planners, setData, isError, error);
+    
     const renderTooltip = () => (
         <S.TooltipWrapper onMouseEnter={() => setTooltipVisible(true)} onMouseLeave={() => setTooltipVisible(false)}>
             <GrCircleQuestion />
@@ -40,7 +43,7 @@ const SmartPlannerPage = () => {
             )}
         </S.TooltipWrapper>
     );
-    const renderPageContent = () =>
+    const renderTitleContent = () =>
         page === 0 ? (
             <>
                 <S.TextContainer>
@@ -59,11 +62,8 @@ const SmartPlannerPage = () => {
                         </S.Text>
                     </S.TextWrapper>
                 </S.TextContainer>
-                <SmartPlanner data={data} onDataChange={setData} page={page} />
             </>
-        ) : (
-            <SmartPlanner data={data} onDataChange={setData} page={page}/>
-        );
+        ) : null;
     const renderButtons = () => (
         <S.ButtonWrapper>
             <SquareButton
@@ -102,7 +102,8 @@ const SmartPlannerPage = () => {
 
     return (
         <S.MainContainer>
-            {renderPageContent()}
+            {renderTitleContent()}
+            <SmartPlanner data={data} onDataChange={setData} page={page}/>
             {renderButtons()}
         </S.MainContainer>
     );

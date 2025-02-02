@@ -1,63 +1,68 @@
 export const mapPlannerDataToState = (plannerData, prevData) => {
     if (!plannerData) return prevData;
 
-    const { 
-        activityName, 
-        startTime, 
-        endTime, 
-        specifics, 
-        measurable, 
-        achievable, 
-        relevant, 
-        timeBound, 
-        otherPlans 
-    } = plannerData;
-
     const parseDate = (dateStr) => {
         if (!dateStr) return null;
-    
         const date = new Date(dateStr);
         return new Date(Date.UTC(
-            date.getFullYear(), 
-            date.getMonth(), 
-            date.getDate(), 
-            date.getHours(), 
-            date.getMinutes(), 
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate(),
+            date.getHours(),
+            date.getMinutes(),
             date.getSeconds()
         ));
     };
 
-    const updatedData = [...prevData];
-    updatedData[0] = {
-        ...updatedData[0],
-        activityName,
-        goalPeriod: {
-            startDate: parseDate(startTime),
-            endDate: parseDate(endTime),
-        },
-        items: updatedData[0].items.map((item, index) => ({
-            ...item,
-            content: [
-                specifics,
-                measurable,
-                achievable,
-                relevant,
-                timeBound,
-                otherPlans,
-            ][index] || item.content,
-        })),
-    };
+    return plannerData.map((dataItem, index) => {
+        const {
+            activityName,
+            startTime,
+            endTime,
+            specifics,
+            measurable,
+            achievable,
+            relevant,
+            timeBound,
+            otherPlans
+        } = dataItem;
 
-    return updatedData;
+        const prevItem = prevData[index];
+
+        return {
+            ...prevItem,
+            activityName,
+            goalPeriod: {
+                startDate: parseDate(startTime),
+                endDate: parseDate(endTime),
+            },
+            items: prevItem.items.map((item, idx) => ({
+                ...item,
+                content: [
+                    specifics,
+                    measurable,
+                    achievable,
+                    relevant,
+                    timeBound,
+                    otherPlans,
+                ][idx] || item.content,
+            })),
+        };
+    });
 };
-export const mapStateToPlannerData = (data) => ({
-    activityName: data[0].activityName,
-    startTime: data[0].goalPeriod.startDate.toISOString(),
-    endTime: data[0].goalPeriod.endDate.toISOString(),
-    specifics: data[0].items[0].content,
-    measurable: data[0].items[1].content,
-    achievable: data[0].items[2].content,
-    relevant: data[0].items[3].content,
-    timeBound: data[0].items[4].content,
-    otherPlans: data[0].items[5].content,
-});
+
+export const mapStateToPlannerData = (data) => {
+        return{ 
+            planners: data.map((planner) => ({
+                activityName: planner.activityName,
+                startTime: planner.goalPeriod.startDate ? planner.goalPeriod.startDate.toISOString() : null,
+                endTime: planner.goalPeriod.endDate ? planner.goalPeriod.endDate.toISOString() : null,
+                specifics: planner.items[0]?.content || '',
+                measurable: planner.items[1]?.content || '',
+                achievable: planner.items[2]?.content || '',
+                relevant: planner.items[3]?.content || '',
+                timeBound: planner.items[4]?.content || '',
+                otherPlans: planner.items[5]?.content || '',
+            }))
+    };
+};

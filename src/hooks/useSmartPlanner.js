@@ -27,12 +27,14 @@ export const useSmartPlanner = () => {
         checkIfCanSave();
     }, [data]);
 
-    const handleSave = () => {
+    const handleSave = (page) => {
         if (!canSave) {
             alert('항목을 모두 입력해주세요!');
         } else {
             setData([...data]);
+            console.log("map전 data",data);
             const updatedPlannerData = mapStateToPlannerData(data);
+            console.log("updatePlannerData",updatedPlannerData);
             updatePlanner(updatedPlannerData);
         }
     };
@@ -67,8 +69,8 @@ export const usePlannerDataEffect = (isSuccess, planner, setData, isError, error
         }
 
         if (isSuccess && planner) {
-            const plannerData = planner?.data;
-            setData((prevData) => mapPlannerDataToState(plannerData, prevData));
+
+            setData((prevData) => mapPlannerDataToState(planner, prevData));
         }
     }, [isSuccess, planner, setData, isError, error, createPlanner, isCreating]);
 };
