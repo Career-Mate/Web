@@ -3,7 +3,7 @@ import { useTemplateStore } from '../store/useTemplateStore';
 import { useJobStore } from '../store/useJobStore';
 
 export const useTemplateData = (templateType) => {
-    const { data, isLoading, isError, fetchTemplateData, handleInputChange, handleDateChange, handleSave, canSave } =
+    const { data, isLoading, isError, fetchTemplateData, handleInputChange, handleDateChange, handleSave, canSave, clearAll } =
         useTemplateStore();
 
     const jobType = useJobStore((state) => state.jobType);
@@ -22,6 +22,7 @@ export const useTemplateData = (templateType) => {
         canSave,
         isLoading,
         isError,
+        clearAll,
     };
 };
 

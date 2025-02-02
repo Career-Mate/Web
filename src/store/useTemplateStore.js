@@ -120,6 +120,25 @@ export const useTemplateStore = create((set, get) => ({
             alert('데이터 저장에 실패했습니다.');
         }
     },
+
+    clearAll: (sectionIndex) => {
+        set((state) => {
+            const newData = [...state.data];
+
+            if (newData[sectionIndex]?.items) {
+                newData[sectionIndex].items = newData[sectionIndex].items.map((item) => ({
+                    ...item,
+                    content: '',
+                    startDate: null,
+                    endDate: null,
+                }));
+            }
+
+            return { data: newData };
+        });
+
+        get().checkIfCanSave();
+    },
 }));
 
 window.useTemplateStore = useTemplateStore;

@@ -49,18 +49,17 @@ export const fetchExistingAnswers = async (templateType) => {
 // 새 커리어 데이터 저장 API
 export const saveTemplateData = async (data) => {
     try {
-        console.log("📌 API 요청 데이터:", JSON.stringify(data, null, 2)); // 🔹 전송 데이터 확인
+        console.log('API 요청 데이터:', JSON.stringify(data, null, 2));
 
         const response = await apiClient.post('/answers', data);
-        console.log("✅ 저장 성공:", response.data);
+        console.log('저장 성공:', response.data);
 
         return response.data;
     } catch (error) {
-        console.error("❌ 데이터 저장 실패:", error.response?.data || error.message);
+        console.error('데이터 저장 실패:', error.response?.data || error.message);
         throw error;
     }
 };
-
 
 // 기존 커리어 데이터 수정 API
 export const updateTemplateData = async (data) => {
