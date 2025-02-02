@@ -22,6 +22,7 @@ const RecommendJobPage = ({ user }) => {
 
     const navigate = useNavigate();
     const { data } = useFetchRecommendJobs(currentPage, SORT_TYPES[sortType]);
+    console.log('API 응답 데이터:', data); // ✅ 데이터가 undefined인지 확인
     const jobData = data ? data.jobs : [];
     const hasNext = data ? data.hasNext : false;
 

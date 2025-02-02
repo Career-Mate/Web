@@ -5,7 +5,7 @@ export const mapRecommendJobData = (apiData) => {
     }
 
     return {
-        jobs: apiData.data.result.map((job) => ({
+        jobs: apiData.data.result.recruitThumbNailInfoDTOList.map((job) => ({
             id: job.recruitId,
             companyName: job.companyName || '회사 정보 없음',
             contentName: job.title || '채용 정보 없음',
