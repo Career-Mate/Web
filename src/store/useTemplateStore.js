@@ -20,7 +20,7 @@ export const useTemplateStore = create((set, get) => ({
                 items: (template.questionDTOList || []).map((q) => ({
                     questionId: q.questionId,
                     label: q.content,
-                    type: q.order === 3 ? 'date' : 'text',
+                    type: ['기간', '근무기간'].includes(q.content) ? 'date' : 'text',
                     isRequired: q.isRequired,
                     placeholder: templateType === 'SUMMARY' ? '내용을 입력해주세요' : `${q.content}을 입력해주세요.`,
                     content: '',
