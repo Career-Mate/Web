@@ -8,16 +8,9 @@ import * as S from './styled/styled';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
 const Template = ({ pageType, onDataChange }) => {
-    console.log(`현재 페이지 타입: ${pageType}`);
     useFetchUserJobType();
-
-    // jobType 가져오기
     const jobType = useJobStore((state) => state.jobType);
-    console.log(`선택된 직무: ${jobType}`);
-
     const [tooltipVisible, setTooltipVisible] = useState(false);
-
-    // API에서 데이터 가져오기
     const {
         data: templateData,
         handleInputChange,

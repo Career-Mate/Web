@@ -1,11 +1,19 @@
 import * as S from './styled/styled';
 import { useMemo } from 'react';
 import { useTemplateData } from '../../../apis/CareerTemplate/useTemplateData';
+import { useJobStore, useFetchUserJobType } from '../../../store/useJobStore';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
 const TextTemplate = ({ pageType, onDataChange }) => {
-    const { handleInputChange, data, clearAll } = useTemplateData(pageType);
-    const memoizedData = useMemo(() => data, [data]);
+    useFetchUserJobType();
+    const jobType = useJobStore((state) => state.jobType);
+    const { handleInputChange, data: templateData, clearAll, isLoading, isError } = useTemplateData(pageType, jobType);
+
+    const memoizedData = useMemo(() => {
+        return templateData.length >= 2
+            ? templateData
+            : [...templateData, ...Array(2 - templateData.length).fill({ items: [] })];
+    }, [templateData]);
 
     const autoResize = (textarea) => {
         if (textarea) {
@@ -13,6 +21,14 @@ const TextTemplate = ({ pageType, onDataChange }) => {
             textarea.style.height = `${textarea.scrollHeight}px`;
         }
     };
+
+    if (isLoading) {
+        return <p>로딩 중...</p>;
+    }
+
+    if (isError) {
+        return <p>데이터를 불러오는 데 실패했습니다. 다시 시도해주세요.</p>;
+    }
 
     return (
         <div>
