@@ -9,6 +9,7 @@ export const fetchRecommendJobs = async (page = 1, sortType = 'POSTING_DESC') =>
                 recruitSortType: sortType,
             },
         });
+
         return response.data;
     } catch (error) {
         console.error('fetch job error: ', error);

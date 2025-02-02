@@ -21,8 +21,7 @@ const RecommendJobPage = ({ user }) => {
     const itemsPerPage = 6;
 
     const navigate = useNavigate();
-
-    const { data } = useFetchRecommendJobs(currentPage, SORT_TYPES[sortType] ?? 'POSTING_DESC');
+    const { data } = useFetchRecommendJobs(currentPage, SORT_TYPES[sortType]);
     const jobData = data ? data.jobs : [];
     const hasNext = data ? data.hasNext : false;
 
@@ -69,6 +68,7 @@ const RecommendJobPage = ({ user }) => {
                             companyName={content.companyName || '정보 없음'}
                             deadline={content.deadline}
                             contentName={content.contentName || '채용 정보 없음'}
+                            jobType={user.job}
                             onClick={() => navigate(`/recommend/detail/${content.id}`)}
                         />
                     ))}
