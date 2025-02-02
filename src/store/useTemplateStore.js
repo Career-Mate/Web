@@ -66,7 +66,6 @@ export const useTemplateStore = create((set, get) => ({
             );
             return { data: newData };
         });
-
         get().checkIfCanSave();
     },
 
@@ -84,7 +83,6 @@ export const useTemplateStore = create((set, get) => ({
             );
             return { data: newData };
         });
-
         get().checkIfCanSave();
     },
 
@@ -112,8 +110,30 @@ export const useTemplateStore = create((set, get) => ({
             return;
         }
 
+        const formatDate = (date) => {
+            if (!date) return '';
+            const d = new Date(date);
+            return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+        };
+
+        const requestData = {
+            answerList: get().data.map((section, index) => ({
+                sequence: index + 1,
+                answerInfoList: section.items.map((item) => ({
+                    questionId: item.questionId,
+                    content:
+                        item.type === 'date'
+                            ? `${formatDate(item.startDate)}${item.startDate && item.endDate ? '~' : ''}${formatDate(item.endDate)}`
+                            : (item.content ?? ''),
+                })),
+            })),
+        };
+
+        console.log('API 요청 데이터 (수정됨):', JSON.stringify(requestData, null, 2));
+
         try {
-            await saveTemplateData(get().data);
+            const response = await saveTemplateData(requestData);
+            console.log('저장 성공:', response);
             alert('저장되었습니다.');
         } catch (error) {
             console.error('데이터 저장 실패:', error);
