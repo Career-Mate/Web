@@ -7,7 +7,6 @@ import RecommendJobPage from './pages/Recommend/RecommendJobPage/RecommendJobPag
 import JobDetailPage from './pages/Recommend/JobDetailPage/JobDetailPage';
 import { userData as recommendContentData } from './data/recommendContentData';
 import recommendJobData from './data/recommendJobData';
-import { data as initialData } from './data/JobDetailMockData';
 import Test from './test/Test';
 import LoginProgressPage from './pages/Main/LoginProgressPage/LoginProgressPage';
 import LoginSuccessPage from './pages/Main/LoginSuccessPage/LoginSuccessPage';

@@ -2,13 +2,14 @@ import * as S from './styled/styled.js';
 import companyImg from '../../../assets/JobDetailPage/company.svg';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton.jsx';
 import JobDetailList from '../../../components/Recommend/JobDetailList/JobDetailList.jsx';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useFetchDetail } from '../../../apis/JobDetail/useJobDetailApi.js';
 import { mapJobDetailData } from '../../../uitils/JobDetailList/JobDetailMapper.js';
 import { useState,useEffect } from 'react';
 
 const JobDetailPage = () => {
-    const {data: detail, error, isLoading, isSuccess: apiSuccess, isError} = useFetchDetail(1);
+    const {id} = useParams();
+    const {data: detail, error, isLoading, isSuccess: apiSuccess, isError} = useFetchDetail(id);
     const [isSuccess, setIsSuccess] = useState(false);
 
     const navigate = useNavigate();
