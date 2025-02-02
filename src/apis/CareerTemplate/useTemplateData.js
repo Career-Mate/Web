@@ -42,7 +42,7 @@ export const useTemplateData = (templateType, jobType) => {
                     label: q.content,
                     type: q.order === 3 ? 'date' : 'text',
                     isRequired: q.isRequired,
-                    placeholder: `${q.content}을 입력해주세요.`,
+                    placeholder: templateType === 'SUMMARY' ? '내용을 입력해주세요' : `${q.content}을 입력해주세요.`,
                     content: '',
                     startDate: null,
                     endDate: null,
