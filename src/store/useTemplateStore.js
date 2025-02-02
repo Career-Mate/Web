@@ -41,7 +41,7 @@ export const useTemplateStore = create((set, get) => ({
             let finalData = processedAnswersData.length > 0 ? processedAnswersData : processedTemplateData;
 
             while (finalData.length < 2) {
-                finalData.push({ items: processedTemplateData[0]?.items || [] });
+                finalData.push({ items: [...processedTemplateData[0]?.items] });
             }
 
             set({ data: finalData, isLoading: false, isError: false });
@@ -54,8 +54,16 @@ export const useTemplateStore = create((set, get) => ({
 
     handleInputChange: (sectionIndex, itemIndex, value) => {
         set((state) => {
-            const newData = [...state.data];
-            newData[sectionIndex].items[itemIndex].content = value;
+            const newData = state.data.map((section, sIndex) =>
+                sIndex === sectionIndex
+                    ? {
+                          ...section,
+                          items: section.items.map((item, iIndex) =>
+                              iIndex === itemIndex ? { ...item, content: value } : item,
+                          ),
+                      }
+                    : section,
+            );
             return { data: newData };
         });
 
@@ -64,12 +72,16 @@ export const useTemplateStore = create((set, get) => ({
 
     handleDateChange: (sectionIndex, itemIndex, date, isStartDate) => {
         set((state) => {
-            const newData = [...state.data];
-            if (isStartDate) {
-                newData[sectionIndex].items[itemIndex].startDate = date;
-            } else {
-                newData[sectionIndex].items[itemIndex].endDate = date;
-            }
+            const newData = state.data.map((section, sIndex) =>
+                sIndex === sectionIndex
+                    ? {
+                          ...section,
+                          items: section.items.map((item, iIndex) =>
+                              iIndex === itemIndex ? { ...item, [isStartDate ? 'startDate' : 'endDate']: date } : item,
+                          ),
+                      }
+                    : section,
+            );
             return { data: newData };
         });
 
