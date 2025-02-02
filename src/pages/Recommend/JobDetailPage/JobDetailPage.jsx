@@ -4,32 +4,51 @@ import SquareButton from '../../../components/common/Button/SquareButton/SquareB
 import JobDetailList from '../../../components/Recommend/JobDetailList/JobDetailList.jsx';
 import { useNavigate } from 'react-router-dom';
 import { useFetchDetail } from '../../../apis/JobDetail/useJobDetailApi.js';
+import { mapJobDetailData } from '../../../uitils/JobDetailList/JobDetailMapper.js';
+import { useState,useEffect } from 'react';
 
-const JobDetailPage = ({ data }) => {
+const JobDetailPage = () => {
+    const {data: detail, error, isLoading, isSuccess: apiSuccess, isError} = useFetchDetail(1);
+    const [isSuccess, setIsSuccess] = useState(false);
+
     const navigate = useNavigate();
     const handlePrevNavigation = () => {
         navigate(-1);
     };
     const handleJobRecruitNavigation = () => {
-        window.open('https://your-target-url.com', '_blank', 'noopener,noreferrer');
+        window.open(detail?.data?.recruitUrl, '_blank', 'noopener,noreferrer');
     };
-    const {data: detail, error, isLoading, isSuccess, isError} = useFetchDetail(1);
-    console.log("detail",detail);
+    
+    useEffect(() => {
+        if (detail) {
+            setIsSuccess(true);
+        }
+    }, [detail]);
+    
+    if (isLoading) {
+        return <div>데이터 로딩 중...</div>;
+    }
+    
+    if (error || !isSuccess) {
+        return <div>데이터를 불러올 수 없습니다.</div>;
+    }
+    
+    const detailListData = mapJobDetailData(detail);
+
     return (
         <S.PageContainer>
             <S.ComponentContainer>
                 <S.ImgWrapper>
-                    <S.StyledImg src={data.companyImg || companyImg} />
+                    <S.StyledImg src={companyImg} />
                     <S.StyledImgOverlay />
                     <S.ImgTextWrapper>
                         <S.ImgTitleWrapper>
-                            <S.ImgTitle>코딧(CODITcorp.)</S.ImgTitle>
-                            <S.Hyperlink href="https://thecodit.com/kr-ko" target="_blank" rel="noopener noreferrer">
+                            <S.ImgTitle>{detail?.data?.companyName}</S.ImgTitle>
+                            <S.Hyperlink href={detail?.data?.companyInfoUrl} target="_blank" rel="noopener noreferrer">
                                 기업정보 자세히 보기 &gt;
                             </S.Hyperlink>
                         </S.ImgTitleWrapper>
-
-                        <S.ImgText>📍 서울 영등포구</S.ImgText>
+                        <S.ImgText>📍 {detail?.data?.region}</S.ImgText>
                     </S.ImgTextWrapper>
                 </S.ImgWrapper>
                 <S.SummaryWrapper>
@@ -44,8 +63,8 @@ const JobDetailPage = ({ data }) => {
                         </S.SummaryText>
                     </S.SummaryTextWrapper>
                     <S.ListWrapper>
-                        {data.map((section, idx) => (
-                            <JobDetailList title={section.title} items={section.items} key={idx}></JobDetailList>
+                        {detailListData.map((section, idx) => (
+                            <JobDetailList title={section.title} content={section.content} key={idx}></JobDetailList>
                         ))}
                     </S.ListWrapper>
                 </S.SummaryWrapper>

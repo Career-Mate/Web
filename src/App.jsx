@@ -86,7 +86,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: 'detail/:id',
-                        element: <JobDetailPage data={initialData} />,
+                        element: <JobDetailPage  />,
                     },
                 ],
             },
