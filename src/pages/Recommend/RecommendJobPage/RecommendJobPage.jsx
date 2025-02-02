@@ -6,33 +6,28 @@ import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import Pagination from '../../../components/common/Pagination/Pagination';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 import DeadlineButton from '../../../components/common/Button/DeadlineButton/DeadlineButton';
+import { useFetchRecommendJobs } from '../../../apis/Job/useJobApi';
+
+const SORT_TYPES = {
+    전체: 'POSTING_DESC',
+    '마감 빠른 순': 'DEADLINE_ASC',
+    '마감 늦은 순': 'DEADLINE_DESC',
+};
 
 const RecommendJobPage = ({ user }) => {
     const [currentPage, setCurrentPage] = useState(1);
+    const [sortType, setSortType] = useState('전체');
+
     const itemsPerPage = 6;
 
     const navigate = useNavigate();
+    const { data } = useFetchRecommendJobs(currentPage, SORT_TYPES[sortType]);
+    console.log('API 응답 데이터:', data); // ✅ 데이터가 undefined인지 확인
+    const jobData = data ? data.jobs : [];
+    const hasNext = data ? data.hasNext : false;
 
-    const [sortType, setSortType] = useState('전체');
-
-    const getDeadlineValue = (deadline) => {
-        if (deadline === 'D-DAY') return 0;
-        if (deadline.startsWith('D-')) return parseInt(deadline.split('-')[1], 10);
-    };
-
-    const getSortedContents = () => {
-        if (sortType === '마감 빠른 순') {
-            return [...user.contents].sort((a, b) => getDeadlineValue(a.deadline) - getDeadlineValue(b.deadline));
-        }
-        if (sortType === '마감 늦은 순') {
-            return [...user.contents].sort((a, b) => getDeadlineValue(b.deadline) - getDeadlineValue(a.deadline));
-        }
-        return user.contents;
-    };
-
-    const sortedContents = getSortedContents();
-    const totalPages = Math.ceil(sortedContents.length / itemsPerPage);
-    const currentContents = sortedContents.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    const totalPages = Math.ceil(jobData.length / itemsPerPage);
+    const currentContents = jobData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -52,21 +47,18 @@ const RecommendJobPage = ({ user }) => {
             <S.BottomContainer>
                 <JobBox job={user.job} />
                 <S.DeadlineWrapper>
-                    <DeadlineButton isSelected={sortType === '전체'} onClick={() => setSortType('전체')}>
-                        전체
-                    </DeadlineButton>
-                    <DeadlineButton
-                        isSelected={sortType === '마감 빠른 순'}
-                        onClick={() => setSortType('마감 빠른 순')}
-                    >
-                        마감 빠른 순
-                    </DeadlineButton>
-                    <DeadlineButton
-                        isSelected={sortType === '마감 늦은 순'}
-                        onClick={() => setSortType('마감 늦은 순')}
-                    >
-                        마감 늦은 순
-                    </DeadlineButton>
+                    {Object.keys(SORT_TYPES).map((type) => (
+                        <DeadlineButton
+                            key={type}
+                            isSelected={sortType === type}
+                            onClick={() => {
+                                setCurrentPage(1);
+                                setSortType(type);
+                            }}
+                        >
+                            {type}
+                        </DeadlineButton>
+                    ))}
                 </S.DeadlineWrapper>
 
                 <S.CardWrapper>
@@ -77,6 +69,7 @@ const RecommendJobPage = ({ user }) => {
                             companyName={content.companyName || '정보 없음'}
                             deadline={content.deadline}
                             contentName={content.contentName || '채용 정보 없음'}
+                            jobType={user.job}
                             onClick={() => navigate(`/recommend/detail/${content.id}`)}
                         />
                     ))}
