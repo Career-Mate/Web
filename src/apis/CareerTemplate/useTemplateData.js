@@ -13,13 +13,15 @@ export const useTemplateData = (templateType, jobType) => {
     } = useQuery({
         queryKey: ['template', templateType, jobType],
         queryFn: async () => {
-            console.log(`📌 템플릿 데이터 요청: templateType=${templateType}, jobType=${jobType}`);
+            console.log(`템플릿 데이터 요청: templateType=${templateType}, jobType=${jobType}`);
             const response = await fetchTemplate(templateType, jobType);
-            console.log('📌 템플릿 데이터 응답:', response);
+            console.log('템플릿 데이터 응답:', response);
             return response;
         },
         staleTime: 1000 * 60 * 5,
+        enabled: !!jobType,
     });
+
 
     // 기존 답변 데이터 불러오기
     const {
