@@ -99,10 +99,6 @@ const router = createBrowserRouter([
                         element: <ProfileEditPage />,
                     },
                     {
-                        path: 'career-form',
-                        element: <CareerNotePage />,
-                    },
-                    {
                         path: 'saved-content',
                         element: <ScrapContentPage />,
                     },
