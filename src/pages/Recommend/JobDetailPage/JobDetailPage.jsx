@@ -53,16 +53,6 @@ const JobDetailPage = () => {
                     </S.ImgTextWrapper>
                 </S.ImgWrapper>
                 <S.SummaryWrapper>
-                    <S.SummaryTextWrapper>
-                        <S.SummaryTitle>
-                            <S.Highlight>코딧(CODIT)</S.Highlight>은 기술을 통해 법률 및 정책 정보를 누구나 알기 쉽게
-                            제공하는 기업입니다.
-                        </S.SummaryTitle>
-                        <S.SummaryText>
-                            어렵고 복잡한 법률 및 정책 시장을 혁신해 더 많은 사람들에게 혜택을 누리도록 하는 일에 가슴이
-                            뛰는 열정과 능력을 가지신 분들을 찾고 있습니다.
-                        </S.SummaryText>
-                    </S.SummaryTextWrapper>
                     <S.ListWrapper>
                         {detailListData.map((section, idx) => (
                             <JobDetailList title={section.title} content={section.content} key={idx}></JobDetailList>
