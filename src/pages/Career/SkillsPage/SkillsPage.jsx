@@ -2,7 +2,7 @@ import TextTemplate from '../../../components/common/TextTemplate/TextTemplate';
 import ProgressBar from '../../../components/common/ProgressBar/ProgressBar';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import * as S from './styled/styled';
-import useTemplateData from '../../../apis/CareerTemplate/useTemplateData';
+import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
 
 const SkillsPage = ({ setActiveScreen }) => {

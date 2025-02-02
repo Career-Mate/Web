@@ -1,6 +1,6 @@
 import * as S from './styled/styled';
 import { useMemo } from 'react';
-import { useTemplateData } from '../../../apis/CareerTemplate/useTemplateData';
+import { useTemplateData } from '../../../hooks/useTemplateData';
 import { useJobStore, useFetchUserJobType } from '../../../store/useJobStore';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
