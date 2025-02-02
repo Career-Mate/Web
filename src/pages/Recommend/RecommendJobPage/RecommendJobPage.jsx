@@ -26,22 +26,6 @@ const RecommendJobPage = ({ user }) => {
     const jobData = data ? data.jobs : [];
     const hasNext = data ? data.hasNext : false;
 
-    // const getDeadlineValue = (deadline) => {
-    //     if (deadline === 'D-DAY') return 0;
-    //     if (deadline.startsWith('D-')) return parseInt(deadline.split('-')[1], 10);
-    // };
-
-    // const getSortedContents = () => {
-    //     if (sortType === '마감 빠른 순') {
-    //         return [...jobData].sort((a, b) => getDeadlineValue(a.deadline) - getDeadlineValue(b.deadline));
-    //     }
-    //     if (sortType === '마감 늦은 순') {
-    //         return [...jobData].sort((a, b) => getDeadlineValue(b.deadline) - getDeadlineValue(a.deadline));
-    //     }
-    //     return jobData;
-    // };
-
-    // const sortedContents = getSortedContents();
     const totalPages = Math.ceil(jobData.length / itemsPerPage);
     const currentContents = jobData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 

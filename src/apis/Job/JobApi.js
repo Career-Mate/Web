@@ -4,8 +4,8 @@ export const fetchRecommendJobs = async (page = 1, sortType = 'POSTING_DESC') =>
     try {
         const response = await apiClient.get('/recruits', {
             params: {
-                page: 1,
-                size: 12,
+                page: page,
+                size: 6,
                 recruitSortType: sortType,
             },
         });

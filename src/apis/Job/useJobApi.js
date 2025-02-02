@@ -11,7 +11,7 @@ export const useFetchRecommendJobs = (page, sortType) => {
             const apiData = await fetchRecommendJobs(page, sortType);
             return mapRecommendJobData(apiData);
         },
-        staleTime: 1000 * 60 * 60 * 12,
+        staleTime: 1000, // %%%%%
         retry: false,
         onError: (error) => {
             console.error('useFetchRecommendJob error:', error);
