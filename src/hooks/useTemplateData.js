@@ -3,7 +3,9 @@ import { useTemplateStore } from '../store/useTemplateStore';
 import { useJobStore } from '../store/useJobStore';
 
 export const useTemplateData = (templateType) => {
-    const { data, isLoading, isError, fetchTemplateData, handleInputChange, handleDateChange } = useTemplateStore();
+    const { data, isLoading, isError, fetchTemplateData, handleInputChange, handleDateChange, handleSave, canSave } =
+        useTemplateStore();
+
     const jobType = useJobStore((state) => state.jobType);
 
     useEffect(() => {
@@ -16,6 +18,8 @@ export const useTemplateData = (templateType) => {
         data,
         handleInputChange,
         handleDateChange,
+        handleSave,
+        canSave,
         isLoading,
         isError,
     };

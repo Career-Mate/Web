@@ -8,7 +8,7 @@ import useProgressBar from '../../../hooks/useProgressBar';
 
 const FinalSummaryPage = ({ setActiveScreen }) => {
     const navigate = useNavigate();
-    const { data, setData, handleSave } = useTemplateData('SUMMARY');
+    const { data, setData, handleSave, canSave } = useTemplateData('SUMMARY');
     const { progression, prevSummaryProgress } = useProgressBar(5);
 
     const handlePrevClick = () => {
@@ -25,7 +25,7 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
             <S.HeaderWrapper>
                 <S.TitleGroup>
                     <S.Title>5. 최종 정리</S.Title>
-                    <S.Subtitle>※ 최종 확인 후 저장해주세요.</S.Subtitle>
+                    <S.Subtitle>※ 최대 2개까지 작성할 수 있어요.</S.Subtitle>
                 </S.TitleGroup>
                 <ProgressBar progression={progression} />
             </S.HeaderWrapper>
@@ -35,7 +35,7 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
-                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave}>
+                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
                     저장
                 </SquareButton>
                 <div>
