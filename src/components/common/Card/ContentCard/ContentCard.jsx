@@ -8,7 +8,7 @@ const ContentCard = ({ id, contentName, thumbnail, onClick }) => {
     const { scrapContents, addScrapContent, removeScrapContent } = useScrapStore();
     const isScrap = scrapContents.some((content) => content.id === id);
 
-    const handleClick = () => {
+    const handleScrap = () => {
         if (isScrap) {
             removeScrapContent(id);
         } else {
@@ -35,7 +35,7 @@ const ContentCard = ({ id, contentName, thumbnail, onClick }) => {
                     <S.ScrapIcon
                         src={isScrap ? scrapCheckedIcon : scrapUncheckedIcon}
                         alt="스크랩 아이콘"
-                        onClick={handleClick}
+                        onClick={handleScrap}
                     />
                 </S.DeadlineWrapper>
             </S.ContentWrapper>

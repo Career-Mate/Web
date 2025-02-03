@@ -42,6 +42,7 @@ const RecommendContentPage = ({ user }) => {
                             key={content.id}
                             id={content.id}
                             contentName={content.contentName}
+                            thumbnail={content.thumbnail}
                             isScrapped={content.isScrapped}
                         />
                     ))}
