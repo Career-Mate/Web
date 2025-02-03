@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { fetchTemplate, fetchExistingAnswers, saveTemplateData } from '../apis/CareerTemplate/templateAPI';
+import { fetchTemplate, fetchExistingAnswers, saveTemplateData } from '../apis/CareerTemplate/templateApi';
 
 export const useTemplateStore = create((set, get) => ({
     data: [],
