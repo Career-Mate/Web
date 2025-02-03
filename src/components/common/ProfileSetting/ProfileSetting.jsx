@@ -1,7 +1,7 @@
 import ProfileInput from '../Input/ProfileInput';
 import SelectDropInput from '../Input/SelectDropInput/SelectDropInput';
 import * as S from './styled/styled';
-import { educationLevel, educationStatus, jobData } from '../../../data/profileData';
+import { educationLevel, educationStatus, jobData } from '../../../utils/Profile/ProfileMapper';
 import SquareButton from '../Button/SquareButton/SquareButton';
 
 const ProfileSetting = ({ buttonText, onSave, profile, onChange }) => {
