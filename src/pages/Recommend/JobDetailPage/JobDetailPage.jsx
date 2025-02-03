@@ -4,7 +4,7 @@ import SquareButton from '../../../components/common/Button/SquareButton/SquareB
 import JobDetailList from '../../../components/Recommend/JobDetailList/JobDetailList.jsx';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFetchDetail } from '../../../apis/JobDetail/useJobDetailApi.js';
-import { mapJobDetailData } from '../../../uitils/JobDetailList/JobDetailMapper.js';
+import { mapJobDetailData } from '../../../utils/JobDetailList/JobDetailMapper.js';
 import { useState,useEffect } from 'react';
 
 const JobDetailPage = () => {
