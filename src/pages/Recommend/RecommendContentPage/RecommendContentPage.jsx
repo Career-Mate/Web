@@ -21,6 +21,7 @@ const RecommendContentPage = ({ user }) => {
         };
 
         loadContents();
+        window.scrollTo(0, 0);
     }, []);
 
     return (
