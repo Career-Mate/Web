@@ -116,11 +116,21 @@ export const useTemplateStore = create((set, get) => ({
             return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
         };
 
+        const questionIdMapping = {
+            90: 31,
+            91: 32,
+            92: 33,
+            93: 34,
+            94: 35,
+            95: 36,
+            96: 37,
+        };
+
         const requestData = {
             answerGroupDTOList: get().data.map((section, index) => ({
                 sequence: index + 1,
                 answerInfoDTOList: section.items.map((item) => ({
-                    questionId: item.questionId,
+                    questionId: questionIdMapping[item.questionId] || item.questionId,
                     content:
                         item.type === 'date'
                             ? `${formatDate(item.startDate)}${item.startDate && item.endDate ? '~' : ''}${formatDate(item.endDate)}`
@@ -129,10 +139,12 @@ export const useTemplateStore = create((set, get) => ({
             })),
         };
 
-        console.log('API 요청 데이터 (수정됨):', JSON.stringify(requestData, null, 2));
+        const formData = new FormData();
+        const jsonBlob = new Blob([JSON.stringify(requestData)], { type: 'application/json' });
+        formData.append('data', jsonBlob);
 
         try {
-            const response = await saveTemplateData(requestData);
+            const response = await saveTemplateData(formData);
             console.log('저장 성공:', response);
             alert('저장되었습니다.');
         } catch (error) {
