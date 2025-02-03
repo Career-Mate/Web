@@ -21,6 +21,7 @@ const RecommendContentPage = ({ user }) => {
         };
 
         loadContents();
+        window.scrollTo(0, 0);
     }, []);
 
     return (
@@ -42,7 +43,8 @@ const RecommendContentPage = ({ user }) => {
                             key={content.id}
                             id={content.id}
                             contentName={content.contentName}
-                            isScrapped={content.isScrapped}
+                            thumbnail={content.thumbnail}
+                            url={content.url}
                         />
                     ))}
                 </S.CardWrapper>

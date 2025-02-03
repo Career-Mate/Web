@@ -1,6 +1,6 @@
 import * as S from './styled/styled';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
 import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import Pagination from '../../../components/common/Pagination/Pagination';
@@ -15,7 +15,9 @@ const SORT_TYPES = {
 };
 
 const RecommendJobPage = ({ user }) => {
-    const [currentPage, setCurrentPage] = useState(1);
+    const location = useLocation();
+
+    const [currentPage, setCurrentPage] = useState(location.state?.page || 1);
     const [sortType, setSortType] = useState('전체');
 
     const navigate = useNavigate();
@@ -66,7 +68,9 @@ const RecommendJobPage = ({ user }) => {
                             deadline={content.deadline}
                             contentName={content.contentName}
                             jobType={jobName}
-                            onClick={() => navigate(`/recommend/detail/${content.id}`)}
+                            onClick={() =>
+                                navigate(`/recommend/detail/${content.id}`, { state: { page: currentPage } })
+                            }
                         />
                     ))}
                 </S.CardWrapper>
