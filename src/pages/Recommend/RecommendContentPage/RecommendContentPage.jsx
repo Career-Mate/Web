@@ -3,9 +3,25 @@ import ContentCard from '../../../components/common/Card/ContentCard/ContentCard
 import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { fetchContents } from '../../../apis/Content/ContentApi';
 
 const RecommendContentPage = ({ user }) => {
     const navigate = useNavigate();
+    const [contents, setContents] = useState([]);
+
+    useEffect(() => {
+        const loadContents = async () => {
+            try {
+                const data = await fetchContents();
+                setContents(data.contents);
+            } catch (error) {
+                console.error('콘텐츠 데이터를 가져오는 중 오류 발생:', error);
+            }
+        };
+
+        loadContents();
+    }, []);
 
     return (
         <S.Container>
@@ -21,8 +37,13 @@ const RecommendContentPage = ({ user }) => {
             <S.BottomContainer>
                 <JobBox job={user.job} />
                 <S.CardWrapper>
-                    {user.contentNames.map((name, index) => (
-                        <ContentCard key={index} id={index} contentName={name} />
+                    {contents.map((content) => (
+                        <ContentCard
+                            key={content.id}
+                            id={content.id}
+                            contentName={content.contentName}
+                            isScrapped={content.isScrapped}
+                        />
                     ))}
                 </S.CardWrapper>
                 <OvalButton
