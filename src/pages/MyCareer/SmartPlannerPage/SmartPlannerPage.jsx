@@ -14,8 +14,8 @@ const SmartPlannerPage = () => {
         setPage((prev) => prev + num);
         window.scrollTo(0, 0);
     };
-    const { data, setData, canSave, handleSave } = useSmartPlanner();
     const { data: plannerData, error, isSuccess, isError } = useFetchPlanner();
+    const { data, setData, handleSave, checkPageCanSave } = useSmartPlanner();
 
     const planners = plannerData?.data?.planners;
     console.log(plannerData?.data);
@@ -71,8 +71,8 @@ const SmartPlannerPage = () => {
                 height="60px"
                 padding="18px 48px"
                 backgroundColor="deepgreen"
-                onClick={handleSave}
-                disabled={!canSave}
+                onClick={()=>handleSave(page)}
+                disabled={!checkPageCanSave(page)}
             >
                 저장
             </SquareButton>
