@@ -31,7 +31,7 @@ export const useTemplateStore = create((set, get) => ({
 
             const processedAnswersData = (answersResponse?.data || []).map((answer) => ({
                 sequence: answer.sequence,
-                items: answer.answerList.map((a) => ({
+                items: answer.answerInfoDTOList.map((a) => ({
                     questionId: a.questionId,
                     label: a.questionName,
                     content: a.content,
@@ -117,9 +117,9 @@ export const useTemplateStore = create((set, get) => ({
         };
 
         const requestData = {
-            answerList: get().data.map((section, index) => ({
+            answerGroupDTOList: get().data.map((section, index) => ({
                 sequence: index + 1,
-                answerInfoList: section.items.map((item) => ({
+                answerInfoDTOList: section.items.map((item) => ({
                     questionId: item.questionId,
                     content:
                         item.type === 'date'
