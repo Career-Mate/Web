@@ -15,33 +15,29 @@ export const useSaveProfile = () => {
         },
         onError: (error) => {
             alert('프로필 저장에 실패했습니다. 다시 시도해주세요.');
-            console.error(error);
         },
     });
 };
 
-export const useEditProfile = (profile) => {
+export const useEditProfile = () => {
     const { fetchUser } = useAuthStore();
 
     return useMutation({
         mutationFn: modifyProfile,
-        onSuccess: () => {
-            fetchUser(profile);
+        onSuccess: (data) => {
+            fetchUser(data);
         },
         onError: (error) => {
-            console.error(error);
+            alert('프로필 수정에 실패했습니다. 다시 시도해주세요.');
         },
     });
 };
 
 export const useFetchProfile = () => {
-    const { fetchUser } = useAuthStore();
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['profile'],
         queryFn: getProfile,
-        onSuccess: (data) => {
-            fetchUser(data);
-        },
+        retry: 1,
     });
     return { data, isLoading, isError, error };
 };

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import UnderlineButton from '../../../components/common/Button/UnderlineButton/UnderlineButton';
 import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSetting';
 import * as S from './styled/styled';
@@ -9,11 +9,17 @@ import { useEditProfile, useFetchProfile } from '../../../apis/profile/useProfil
 
 const ProfileEditPage = () => {
     const [isPopUp, setIsPopUp] = useState(false);
-    const { user } = useAuthStore();
-    const { isLoading, isError, error } = useFetchProfile();
-    const { canSave, emailError, profile, handleProfileFieldChange } = useProfile(user);
+    const { fetchUser } = useAuthStore();
+    const { data, isLoading, isError, error } = useFetchProfile();
+    const { canSave, emailError, profile, handleProfileFieldChange } = useProfile();
 
-    const mutation = useEditProfile(profile);
+    useEffect(() => {
+        if (data) {
+            fetchUser(data);
+        }
+    }, [data]);
+
+    const mutation = useEditProfile();
 
     const handlePopUpOpen = () => {
         setIsPopUp(true);
@@ -47,8 +53,8 @@ const ProfileEditPage = () => {
     return (
         <S.EditContainer>
             <S.NoticeWrapper>
-                <S.NoticeTitle>{user.name} 님의 프로필</S.NoticeTitle>
-                <S.NoticeDetail>{user.name} 님의 정보를 수정해주세요!</S.NoticeDetail>
+                <S.NoticeTitle>{profile.name} 님의 프로필</S.NoticeTitle>
+                <S.NoticeDetail>{profile.name} 님의 정보를 수정해주세요!</S.NoticeDetail>
             </S.NoticeWrapper>
             <S.ContentWrapper>
                 <ProfileSetting

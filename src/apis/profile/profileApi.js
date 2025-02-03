@@ -12,25 +12,23 @@ const transformProfileResponse = (responseData) => ({
     ...responseData,
     educationLevel: educationLevel.find((item) => item.value === responseData.educationLevel)?.label || '',
     educationStatus: educationStatus.find((item) => item.value === responseData.educationStatus)?.label || '',
-    job: jobData.find((item) => item.id === responseData.job)?.label || '',
+    job: responseData.job.name,
 });
 
 export const saveProfile = async (profile) => {
     const transformData = transformProfileData(profile);
-    console.log(transformData);
     const response = await apiClient.post('/member/profile', transformData);
-    return response.data;
+    return transformProfileResponse(response.data.data);
 };
 
 export const modifyProfile = async (profile) => {
     const transformData = transformProfileData(profile);
-    console.log(transformData);
     const response = await apiClient.patch('/member/modify', transformData);
-    return response.data;
+    return transformProfileResponse(response.data.data);
 };
 
 export const getProfile = async () => {
     const response = await apiClient.get('/member');
-    const transformedData = transformProfileResponse(response.data);
+    const transformedData = transformProfileResponse(response.data.data);
     return transformedData;
 };

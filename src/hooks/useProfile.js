@@ -1,9 +1,18 @@
 import { useState, useEffect } from 'react';
+import { useAuthStore } from '../store/authStore';
+import { profileEmptyData } from '../data/profileData';
 
-export const useProfile = (initialData) => {
-    const [profile, setProfile] = useState(initialData);
+export const useProfile = () => {
+    const [profile, setProfile] = useState(profileEmptyData);
     const [canSave, setCanSave] = useState(false);
     const [emailError, setEmailError] = useState(false);
+    const { user } = useAuthStore();
+
+    useEffect(() => {
+        if (user) {
+            setProfile(user);
+        }
+    }, [user]);
 
     const isValidEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -11,7 +20,9 @@ export const useProfile = (initialData) => {
     };
 
     const checkIfCanSave = () => {
-        const isComplete = Object.entries(profile).every(([key, value]) => value.trim() !== '');
+        const isComplete = Object.entries(profile).every(([key, value]) => {
+            return typeof value === 'string' && value.trim() !== '';
+        });
         const isEmail = isValidEmail(profile.email);
         setCanSave(isComplete);
         setEmailError(!isEmail);
