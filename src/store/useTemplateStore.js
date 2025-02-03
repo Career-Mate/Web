@@ -1,18 +1,27 @@
 import { create } from 'zustand';
-import { fetchTemplate, fetchExistingAnswers, saveTemplateData } from '../apis/CareerTemplate/templateApi';
+import {
+    fetchTemplate,
+    fetchExistingAnswers,
+    fetchCompletionStatus,
+    saveTemplateData,
+    updateTemplateData,
+} from '../apis/CareerTemplate/templateApi';
 
 export const useTemplateStore = create((set, get) => ({
     data: [],
+    templateType: '',
     isLoading: false,
     isError: false,
     canSave: false,
+    hasExistingData: false,
 
     fetchTemplateData: async (templateType, jobType) => {
         if (!jobType) return;
 
-        set({ isLoading: true });
+        set({ isLoading: true, templateType });
 
         try {
+            const isComplete = await fetchCompletionStatus(templateType);
             const templateResponse = await fetchTemplate(templateType, jobType);
             const answersResponse = await fetchExistingAnswers(templateType, jobType);
 
@@ -44,7 +53,12 @@ export const useTemplateStore = create((set, get) => ({
                 finalData.push({ items: [...processedTemplateData[0]?.items] });
             }
 
-            set({ data: finalData, isLoading: false, isError: false });
+            set({
+                data: finalData,
+                isLoading: false,
+                isError: false,
+                hasExistingData: isComplete,
+            });
             get().checkIfCanSave();
         } catch (error) {
             console.error('템플릿 데이터 불러오기 실패:', error);
@@ -116,21 +130,11 @@ export const useTemplateStore = create((set, get) => ({
             return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
         };
 
-        const questionIdMapping = {
-            90: 31,
-            91: 32,
-            92: 33,
-            93: 34,
-            94: 35,
-            95: 36,
-            96: 37,
-        };
-
         const requestData = {
             answerGroupDTOList: get().data.map((section, index) => ({
                 sequence: index + 1,
                 answerInfoDTOList: section.items.map((item) => ({
-                    questionId: questionIdMapping[item.questionId] || item.questionId,
+                    questionId: item.questionId,
                     content:
                         item.type === 'date'
                             ? `${formatDate(item.startDate)}${item.startDate && item.endDate ? '~' : ''}${formatDate(item.endDate)}`
@@ -144,12 +148,36 @@ export const useTemplateStore = create((set, get) => ({
         formData.append('data', jsonBlob);
 
         try {
-            const response = await saveTemplateData(formData);
+            const { templateType } = get();
+            const isComplete = await fetchCompletionStatus(templateType);
+            set({ hasExistingData: isComplete });
+
+            let response;
+            if (isComplete) {
+                response = await updateTemplateData(formData);
+            } else {
+                response = await saveTemplateData(formData);
+                set({ hasExistingData: true });
+            }
+
             console.log('저장 성공:', response);
             alert('저장되었습니다.');
         } catch (error) {
             console.error('데이터 저장 실패:', error);
-            alert('데이터 저장에 실패했습니다.');
+
+            if (error.response?.status === 400 && error.response?.data?.code === 'EAN001') {
+                try {
+                    const response = await updateTemplateData(formData);
+                    console.log('수정 성공:', response);
+                    alert('수정되었습니다.');
+                    set({ hasExistingData: true });
+                } catch (patchError) {
+                    console.error('데이터 수정 실패:', patchError);
+                    alert('데이터 수정에 실패했습니다.');
+                }
+            } else {
+                alert('데이터 저장에 실패했습니다.');
+            }
         }
     },
 
