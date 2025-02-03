@@ -4,7 +4,7 @@ import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
 import useScrapStore from '../../../../store/useScrapStore.js';
 
-const ContentCard = ({ id, contentName, thumbnail, onClick }) => {
+const ContentCard = ({ id, contentName, thumbnail, url }) => {
     const { scrapContents, addScrapContent, removeScrapContent } = useScrapStore();
     const isScrap = scrapContents.some((content) => content.id === id);
 
@@ -12,7 +12,7 @@ const ContentCard = ({ id, contentName, thumbnail, onClick }) => {
         if (isScrap) {
             removeScrapContent(id);
         } else {
-            addScrapContent({ id, contentName, thumbnail, onClick });
+            addScrapContent({ id, contentName, thumbnail, url });
         }
     };
 
@@ -29,7 +29,7 @@ const ContentCard = ({ id, contentName, thumbnail, onClick }) => {
             <S.ContentWrapper $type={true}>
                 <S.Title $type={true}>{contentName}</S.Title>
                 <S.DeadlineWrapper>
-                    <S.DetailButton $type={true} onClick={onClick}>
+                    <S.DetailButton $type={true} onClick={() => window.open(url, '_blank')}>
                         자세히 보기 &gt;
                     </S.DetailButton>
                     <S.ScrapIcon
