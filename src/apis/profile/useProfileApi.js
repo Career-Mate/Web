@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { getProfile, modifyProfile, saveProfile } from '../../apis/profile/profileApi';
+import { getProfile, modifyProfile, saveProfile } from './profileApi';
 import { useAuthStore } from '../../store/authStore';
 import { useNavigate } from 'react-router-dom';
 

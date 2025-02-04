@@ -5,7 +5,7 @@ import * as S from './styled/styled';
 import AccountPopUp from '../../../components/common/Popups/AccountPopUp/AccountPopUp';
 import { useProfile } from '../../../hooks/useProfile';
 import { useAuthStore } from '../../../store/authStore';
-import { useEditProfile, useFetchProfile } from '../../../apis/profile/useProfileApi';
+import { useEditProfile, useFetchProfile } from '../../../apis/Profile/useProfileApi';
 
 const ProfileEditPage = () => {
     const [isPopUp, setIsPopUp] = useState(false);
