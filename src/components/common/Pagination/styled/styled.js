@@ -38,7 +38,7 @@ export const ArrowButton = styled.button`
     pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
 `;
 
-export const PageWrapper = styled.div`
+export const PageNumberWrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;

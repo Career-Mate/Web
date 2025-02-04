@@ -7,7 +7,6 @@ import RecommendJobPage from './pages/Recommend/RecommendJobPage/RecommendJobPag
 import JobDetailPage from './pages/Recommend/JobDetailPage/JobDetailPage';
 import { userData as recommendContentData } from './data/recommendContentData';
 import recommendJobData from './data/recommendJobData';
-import { data as initialData } from './data/JobDetailMockData';
 import Test from './test/Test';
 import LoginSuccessPage from './pages/Main/LoginSuccessPage/LoginSuccessPage';
 import MainPage from './pages/Main/MainPage/MainPage';
@@ -81,7 +80,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: 'detail/:id',
-                        element: <JobDetailPage data={initialData} />,
+                        element: <JobDetailPage  />,
                     },
                 ],
             },
@@ -92,10 +91,6 @@ const router = createBrowserRouter([
                     {
                         index: true,
                         element: <ProfileEditPage />,
-                    },
-                    {
-                        path: 'career-form',
-                        element: <CareerNotePage />,
                     },
                     {
                         path: 'saved-content',
