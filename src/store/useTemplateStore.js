@@ -148,13 +148,17 @@ export const useTemplateStore = create((set, get) => ({
         formData.append('data', jsonBlob);
 
         try {
-            const { templateType } = get();
-            const isComplete = await fetchCompletionStatus(templateType);
-            set({ hasExistingData: isComplete });
+            const { templateType, hasExistingData } = get();
+
+            let isComplete = hasExistingData;
+            if (!hasExistingData) {
+                isComplete = await fetchCompletionStatus(templateType);
+            }
 
             let response;
             if (isComplete) {
                 response = await updateTemplateData(formData);
+                set({ hasExistingData: true });
             } else {
                 response = await saveTemplateData(formData);
                 set({ hasExistingData: true });
