@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 100%;
+    width: 1280px;
     padding-bottom: 20px;
+    margin: 0 auto;
 `;
 
 export const TitleContainer = styled.div`
@@ -10,7 +11,8 @@ export const TitleContainer = styled.div`
     align-items: flex-end;
     justify-content: center;
     gap: 2px;
-    width: 1200px;
+    width: 100%;
+    max-width: 1280px;
     position: relative;
     white-space: nowrap;
     border-bottom: 2px solid #ddd;
@@ -67,21 +69,20 @@ export const Highlight = styled.span`
 `;
 
 export const CardWrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 1200px;
-    margin-top: 10px;
-    padding-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     row-gap: 30px;
-    column-gap: 20px;
+    column-gap: 50px;
+    width: 100%;
+    max-width: 1280px;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    justify-content: center;
 `;
 
 export const EmptyMessage = styled.p`
-    width: 912px;
-    height: 405px;
+    width: 1280px;
+    min-height: 420px;
     color: #c4c8ce;
     font-weight: 500;
     font-size: 32px;
@@ -92,7 +93,24 @@ export const EmptyMessage = styled.p`
 `;
 
 export const ButtonContainer = styled.div`
-    padding-top: 50px;
+    padding-top: 100px;
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    position: relative;
+
+    & > *:only-child {
+        margin-left: auto;
+    }
+
+    & > :nth-child(1):nth-last-child(2) {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    & > :nth-child(2):nth-last-child(1) {
+        margin-left: auto;
+    }
 `;
