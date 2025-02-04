@@ -71,7 +71,7 @@ const SmartPlannerPage = () => {
                 height="60px"
                 padding="18px 48px"
                 backgroundColor="deepgreen"
-                onClick={()=>handleSave(page)}
+                onClick={()=>handleSave(planners, page)}
                 disabled={!checkPageCanSave(page)}
             >
                 저장
