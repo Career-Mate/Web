@@ -51,7 +51,10 @@ export const saveTemplateData = async (data) => {
     try {
         console.log('API 요청 데이터:', JSON.stringify(data, null, 2));
 
-        const response = await apiClient.post('/answers', data);
+        const response = await apiClient.post('/answers', data, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+        });
+
         console.log('저장 성공:', response.data);
 
         return response.data;
@@ -64,7 +67,14 @@ export const saveTemplateData = async (data) => {
 // 기존 커리어 데이터 수정 API
 export const updateTemplateData = async (data) => {
     try {
-        await apiClient.patch('/answers', data);
+        console.log('PATCH 요청 데이터:', data);
+
+        const response = await apiClient.patch('/answers', data, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+        });
+
+        console.log('수정 성공:', response.data);
+        return response.data;
     } catch (error) {
         console.error('데이터 수정 실패:', error.response?.data || error.message);
         throw error;
