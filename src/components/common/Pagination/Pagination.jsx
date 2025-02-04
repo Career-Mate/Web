@@ -7,9 +7,13 @@ import firstIcon from '../../../assets/Pagination/arrow-first.svg';
 import lastIcon from '../../../assets/Pagination/arrow-last.svg';
 
 const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
-    let startPage = 1;
     let maxVisiblePages = 4;
+
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2 - 1));
     let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    if (endPage - startPage < maxVisiblePages - 1) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
 
     const handlePageClick = (page) => {
         if (1 <= page && page <= totalPages) {
