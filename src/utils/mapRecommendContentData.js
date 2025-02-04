@@ -12,6 +12,5 @@ export const mapRecommendContentData = (apiData) => {
             thumbnail: content.photo,
             isScrapped: content.isScrapped,
         })),
-        hasNext: apiData.data.hasNext,
     };
 };
