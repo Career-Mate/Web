@@ -1,5 +1,5 @@
 import * as S from './styled/styled';
-import { useMemo, useState } from 'react';
+import { useMemo, useState,useEffect,useRef } from 'react';
 import { useTemplateData } from '../../../hooks/useTemplateData';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
@@ -7,6 +7,7 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll }) => {
     const { handleInputChange, data } = useTemplateData(externalData, onDataChange);
     const memoizedData = useMemo(() => data, [data]);
     const [localValues, setLocalValues] = useState({});
+    const textareaRefs = useRef([]);
 
     const autoResize = (textarea) => {
         if (textarea) {
@@ -14,6 +15,9 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll }) => {
             textarea.style.height = `${textarea.scrollHeight}px`;
         }
     };
+    useEffect(() => {
+        textareaRefs.current.forEach((textarea) => autoResize(textarea));
+    }, [data])
 
     const handleChange = (sectionIndex, itemIndex, value) => {
         setLocalValues((prev) => ({
@@ -56,7 +60,8 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll }) => {
                                         isLastRow={itemIndex === section.items.length - 1}
                                     >
                                         <textarea
-                                            value={localValues[key] ?? item.content} // 🔹 입력 중이면 localValue, 없으면 item.content
+                                            value={localValues[key] ?? item.content}
+                                            ref={(el) => textareaRefs.current.push(el)}
                                             placeholder={item.placeholder}
                                             onChange={(e) => {
                                                 handleChange(sectionIndex, itemIndex, e.target.value);

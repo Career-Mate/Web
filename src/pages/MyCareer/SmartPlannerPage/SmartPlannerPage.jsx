@@ -18,8 +18,6 @@ const SmartPlannerPage = () => {
     const { data, setData, handleSave, checkPageCanSave } = useSmartPlanner();
 
     const planners = plannerData?.data?.planners;
-    console.log(plannerData?.data);
-    console.log(data);
     usePlannerDataEffect(isSuccess, planners, setData, isError, error);
     
     const renderTooltip = () => (
