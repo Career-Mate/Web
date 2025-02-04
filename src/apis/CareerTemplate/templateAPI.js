@@ -17,10 +17,13 @@ export const fetchTemplate = async (templateType, jobType) => {
 };
 
 // 커리어 작성 진행 상태 조회 API
-export const fetchCompletionStatus = async () => {
+export const fetchCompletionStatus = async (templateType) => {
     try {
         const response = await apiClient.get('/answers/completion-status');
-        return response.data?.isComplete ?? false;
+        const statusList = response.data?.data?.answerCompletionStatusInfoDTOList || [];
+        const isComplete = statusList.find((item) => item.templateType === templateType)?.isComplete ?? false;
+
+        return isComplete;
     } catch (error) {
         console.error('커리어 작성 상태 조회 실패:', error.response?.data || error.message);
         return false;
