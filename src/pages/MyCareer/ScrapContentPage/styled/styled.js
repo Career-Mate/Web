@@ -82,7 +82,7 @@ export const CardWrapper = styled.div`
 
 export const EmptyMessage = styled.p`
     width: 1280px;
-    min-height: 420px;
+    min-height: 460px;
     color: #c4c8ce;
     font-weight: 500;
     font-size: 32px;
@@ -90,6 +90,7 @@ export const EmptyMessage = styled.p`
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin: 0px;
 `;
 
 export const ButtonContainer = styled.div`
