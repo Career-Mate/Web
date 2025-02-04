@@ -9,6 +9,7 @@ import CheckTextBox from '../../../components/MainPage/CheckTextBox/CheckTextBox
 import InterviewBox from '../../../components/MainPage/InterviewBox/InterviewBox';
 import Card from '../../../components/MainPage/Card/Card';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
+import { useNavigate } from 'react-router-dom';
 
 const cards = [
     {
@@ -32,6 +33,7 @@ const cards = [
 ];
 
 const MainPage = () => {
+    const navigate = useNavigate();
     return (
         <S.MainContainer>
             <S.FirstPage>
@@ -89,7 +91,7 @@ const MainPage = () => {
                 <S.FifthText>
                     커리어의 시작과 성장 과정을 <span>커리어 메이트</span>가 응원합니다!
                 </S.FifthText>
-                <OvalButton>로그인하고 프로필 설정하기</OvalButton>
+                <OvalButton onClick={() => navigate('/login')}>로그인하고 프로필 설정하기</OvalButton>
             </S.FifthPage>
             <S.DashedLine>
                 <line x1="20%" y1="5" x2="80%" y2="5" />
