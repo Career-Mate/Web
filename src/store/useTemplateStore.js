@@ -185,7 +185,7 @@ export const useTemplateStore = create((set, get) => ({
         }
     },
 
-    clearAll: (sectionIndex) => {
+    clearAll: async (sectionIndex) => {
         set((state) => {
             const newData = [...state.data];
 
@@ -202,6 +202,27 @@ export const useTemplateStore = create((set, get) => ({
         });
 
         get().checkIfCanSave();
+
+        try {
+            const requestData = {
+                answerGroupDTOList: get().data.map((section, index) => ({
+                    sequence: index + 1,
+                    answerInfoDTOList: section.items.map((item) => ({
+                        questionId: item.questionId,
+                        content: '',
+                    })),
+                })),
+            };
+
+            const formData = new FormData();
+            const jsonBlob = new Blob([JSON.stringify(requestData)], { type: 'application/json' });
+            formData.append('data', jsonBlob);
+
+            await updateTemplateData(formData);
+            console.log('전체 내용 삭제 및 업데이트 성공');
+        } catch (error) {
+            console.error('전체 내용 삭제 요청 실패: ', error);
+        }
     },
 }));
 
