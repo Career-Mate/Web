@@ -5,7 +5,7 @@ import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
 import { postScrapContent, deleteScrapContent } from '../../../../apis/Scrap/Content/ContentScrapApi.js';
 import { useState } from 'react';
 
-const ContentCard = ({ id, contentName, thumbnail, url, isScrapped }) => {
+const ContentCard = ({ id, contentName, thumbnail, url, isScrapped, onScrapUpdate }) => {
     const [isScrap, setIsScrap] = useState(isScrapped);
 
     const handleScrap = async () => {
@@ -13,6 +13,7 @@ const ContentCard = ({ id, contentName, thumbnail, url, isScrapped }) => {
             if (isScrap) {
                 await deleteScrapContent(id);
                 setIsScrap(false);
+                onScrapUpdate(id);
                 console.log(`스크랩 해제됨 (id: ${id})`);
             } else {
                 const result = await postScrapContent(id);

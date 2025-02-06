@@ -1,5 +1,3 @@
-//통일되면 삭제하기
-
 export const mapScrapContents = (apiData) => {
     if (!apiData || apiData.status !== 200 || !apiData.data) {
         console.error('Invalid API response:', apiData);

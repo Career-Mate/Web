@@ -24,7 +24,7 @@ export const deleteScrapContent = async (contentId) => {
 export const getScrapContent = async () => {
     try {
         const response = await apiClient.get('/content/scrap');
-        return response.data;
+        return response.data?.data?.result || [];
     } catch (error) {
         console.error('get scrap contents error:', error);
         throw error;

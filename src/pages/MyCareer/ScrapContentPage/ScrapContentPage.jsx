@@ -3,18 +3,16 @@ import pin from '../../../assets/common/pin.svg';
 import ContentCard from '../../../components/common/Card/ContentCard/ContentCard';
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
 import useScrapStore from '../../../store/useScrapStore';
+import { getScrapContent } from '../../../apis/Scrap/Content/ContentScrapApi';
 import UnderlineButton from '../../../components/common/Button/UnderlineButton/UnderlineButton';
 import Pagination from '../../../components/common/Pagination/Pagination';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getScrapContent } from '../../../apis/Scrap/Content/ContentScrapApi';
 
 const ScrapContentPage = () => {
     const itemsPerPage = 6;
-
-    const { scrapJobs } = useScrapStore();
     const navigate = useNavigate();
-
+    const { scrapJobs } = useScrapStore();
     const handleToContent = () => navigate('/recommend/content');
     const handleToJob = () => navigate('/recommend/job');
 
@@ -25,63 +23,32 @@ const ScrapContentPage = () => {
     const loadScrapContents = async () => {
         try {
             const scrapContentData = await getScrapContent();
-            setScrapContents(data);
-            console.log('scrap contents data:', scrapContentData);
+            setScrapContents(Array.isArray(scrapContentData) ? scrapContentData : []);
         } catch (error) {
-            console.error('scrap content data error:', error);
+            console.error('스크랩 콘텐츠 가져오기 실패:', error);
         }
     };
 
     useEffect(() => {
-        if (selectedTab === 'job') {
-            const totalItems = scrapJobs.length;
-            const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
+        loadScrapContents();
+    }, []);
 
-            if (totalItems === 0) {
-                setCurrentPage(1);
-            } else if (currentPage > totalPages) {
-                setCurrentPage((prev) => Math.max(1, prev - 1));
-            }
-        }
-
-        window.scrollTo(0, 0);
-    }, [scrapJobs, selectedTab, currentPage]);
-
-    const getPaginatedData = (data) => {
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        return data.slice(startIndex, endIndex);
+    // ✅ 스크랩 해제 시 해당 콘텐츠를 즉시 제거
+    const handleScrapUpdate = (contentId) => {
+        setScrapContents((prev) => prev.filter((content) => content.contentId !== contentId));
     };
-
-    const displayedData = selectedTab === 'content' ? getPaginatedData(scrapContents) : getPaginatedData(scrapJobs);
-    const totalPages = Math.max(
-        1,
-        Math.ceil((selectedTab === 'content' ? scrapContents.length : scrapJobs.length) / itemsPerPage),
-    );
 
     return (
         <S.Container>
             <S.TitleContainer>
-                <S.TitleWrapper
-                    isSelected={selectedTab === 'content'}
-                    onClick={() => {
-                        setSelectedTab('content');
-                        setCurrentPage(1);
-                    }}
-                >
+                <S.TitleWrapper isSelected={selectedTab === 'content'} onClick={() => setSelectedTab('content')}>
                     <S.PinIcon isSelected={selectedTab === 'content'} src={pin} alt="pin icon" />
                     <S.Title isSelected={selectedTab === 'content'}>
                         스크랩한 <S.Highlight>콘텐츠</S.Highlight>
                     </S.Title>
                 </S.TitleWrapper>
 
-                <S.TitleWrapper
-                    isSelected={selectedTab === 'job'}
-                    onClick={() => {
-                        setSelectedTab('job');
-                        setCurrentPage(1);
-                    }}
-                >
+                <S.TitleWrapper isSelected={selectedTab === 'job'} onClick={() => setSelectedTab('job')}>
                     <S.PinIcon isSelected={selectedTab === 'job'} src={pin} alt="pin icon" />
                     <S.Title isSelected={selectedTab === 'job'}>
                         스크랩한 <S.Highlight>채용 공고</S.Highlight>
@@ -91,15 +58,17 @@ const ScrapContentPage = () => {
 
             {selectedTab === 'content' ? (
                 <>
-                    {displayedData.length > 0 ? (
+                    {scrapContents.length > 0 ? (
                         <S.CardWrapper>
-                            {displayedData.map((content) => (
+                            {scrapContents.map((content) => (
                                 <ContentCard
-                                    key={content.id}
-                                    id={content.id}
-                                    contentName={content.contentName}
-                                    thumbnail={content.thumbnail}
-                                    onClick={content.onClick}
+                                    key={content.contentId}
+                                    id={content.contentId}
+                                    contentName={content.title}
+                                    thumbnail={content.photo}
+                                    url={content.url}
+                                    isScrapped={content.isScraped}
+                                    onScrapUpdate={handleScrapUpdate}
                                 />
                             ))}
                         </S.CardWrapper>
@@ -115,9 +84,9 @@ const ScrapContentPage = () => {
                 </>
             ) : (
                 <>
-                    {displayedData.length > 0 ? (
+                    {displayedJobs.length > 0 ? (
                         <S.CardWrapper>
-                            {displayedData.map((job) => (
+                            {displayedJobs.map((job) => (
                                 <JobPostingCard
                                     key={job.id}
                                     id={job.id}
@@ -134,7 +103,6 @@ const ScrapContentPage = () => {
 
                     <S.ButtonContainer>
                         <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-
                         <UnderlineButton fontSize={'14px'} onClick={handleToJob}>
                             더 많은 채용 공고 보러 가기&gt;
                         </UnderlineButton>
