@@ -30,7 +30,16 @@ export const transformProfileData = (profile) => ({
 
 export const transformProfileResponse = (responseData) => ({
     ...responseData,
-    educationLevel: educationLevel.find((item) => item.value === responseData.educationLevel)?.label || '',
-    educationStatus: educationStatus.find((item) => item.value === responseData.educationStatus)?.label || '',
-    job: responseData.job.name,
+    educationLevel: responseData.educationLevel
+        ? educationLevel.find((item) => item.value === responseData.educationLevel)?.label || ''
+        : '',
+    educationStatus: responseData.educationStatus
+        ? educationStatus.find((item) => item.value === responseData.educationStatus)?.label || ''
+        : '',
+    job: responseData.job && responseData.job.name ? responseData.job.name : '',
 });
+
+export const sanitizeProfile = (profile) => {
+    if (!profile) return { name: '', email: '', educationLevel: '', major: '', educationStatus: '', job: '' }; // 기본값 설정
+    return Object.fromEntries(Object.entries(profile).map(([key, value]) => [key, value ?? '']));
+};

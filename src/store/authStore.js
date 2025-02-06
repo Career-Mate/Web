@@ -1,11 +1,13 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { sanitizeProfile } from '../utils/Profile/ProfileMapper';
+import { profileEmptyData } from '../data/profileData';
 
 export const useAuthStore = create(
     persist(
         (set) => ({
             isLogin: false,
-            user: null,
+            user: profileEmptyData,
             login: (userData) =>
                 set({
                     isLogin: true,
@@ -14,11 +16,11 @@ export const useAuthStore = create(
             logout: () =>
                 set({
                     isLogin: false,
-                    user: null,
+                    user: profileEmptyData,
                 }),
             fetchUser: (userData) =>
                 set({
-                    user: userData,
+                    user: sanitizeProfile(userData),
                 }),
         }),
         {
