@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { getProfile, modifyProfile, saveProfile } from './profileApi';
+import { deleteProfile, getProfile, modifyProfile, saveProfile } from './profileApi';
 import { useAuthStore } from '../../store/authStore';
 import { useNavigate } from 'react-router-dom';
 
@@ -45,12 +45,8 @@ export const useFetchProfile = () => {
 };
 
 export const useDeleteProfile = () => {
-    const { logout } = useAuthStore();
     return useMutation({
-        mutationFn: modifyProfile,
-        onSuccess: (data) => {
-            logout();
-        },
+        mutationFn: deleteProfile,
         onError: (error) => {
             alert('프로필 수정에 실패했습니다. 다시 시도해주세요.');
         },

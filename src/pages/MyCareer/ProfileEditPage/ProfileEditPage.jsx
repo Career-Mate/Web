@@ -5,21 +5,23 @@ import * as S from './styled/styled';
 import AccountPopUp from '../../../components/common/Popups/AccountPopUp/AccountPopUp';
 import { useProfile } from '../../../hooks/useProfile';
 import { useAuthStore } from '../../../store/authStore';
-import { useEditProfile, useFetchProfile } from '../../../apis/Profile/useProfileApi';
+import { useDeleteProfile, useEditProfile, useFetchProfile } from '../../../apis/Profile/useProfileApi';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileEditPage = () => {
     const [isPopUp, setIsPopUp] = useState(false);
-    const { fetchUser } = useAuthStore();
+    const { fetchUser, logout } = useAuthStore();
     const { data, isLoading, isError, error } = useFetchProfile();
     const { canSave, emailError, profile, handleProfileFieldChange } = useProfile();
+    const { mutate: deleteProfile } = useDeleteProfile();
+    const { mutate: modifyProfile } = useEditProfile();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (data) {
             fetchUser(data);
         }
     }, [data]);
-
-    const mutation = useEditProfile();
 
     const handlePopUpOpen = () => {
         setIsPopUp(true);
@@ -39,7 +41,13 @@ const ProfileEditPage = () => {
             alert('유효한 이메일 주소를 입력하세요.');
             return;
         }
-        mutation.mutate(profile);
+        modifyProfile(profile);
+    };
+
+    const handleDeleteUser = () => {
+        deleteProfile();
+        logout();
+        navigate('/');
     };
 
     if (isLoading) {
@@ -67,7 +75,7 @@ const ProfileEditPage = () => {
                     회원 탈퇴
                 </UnderlineButton>
             </S.ContentWrapper>
-            {isPopUp && <AccountPopUp type={'회원 탈퇴'} onCancel={handlePopUpClose} />}
+            {isPopUp && <AccountPopUp type={'회원 탈퇴'} onCancel={handlePopUpClose} onConfirm={handleDeleteUser} />}
         </S.EditContainer>
     );
 };
