@@ -45,6 +45,7 @@ const RecommendContentPage = ({ user }) => {
                             contentName={content.contentName}
                             thumbnail={content.thumbnail}
                             url={content.url}
+                            isScrapped={content.isScrapped}
                         />
                     ))}
                 </S.CardWrapper>

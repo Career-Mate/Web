@@ -7,11 +7,12 @@ import UnderlineButton from '../../../components/common/Button/UnderlineButton/U
 import Pagination from '../../../components/common/Pagination/Pagination';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { getScrapContent } from '../../../apis/Scrap/Content/ContentScrapApi';
 
 const ScrapContentPage = () => {
     const itemsPerPage = 6;
 
-    const { scrapContents, scrapJobs } = useScrapStore();
+    const { scrapJobs } = useScrapStore();
     const navigate = useNavigate();
 
     const handleToContent = () => navigate('/recommend/content');
@@ -19,6 +20,17 @@ const ScrapContentPage = () => {
 
     const [selectedTab, setSelectedTab] = useState('content');
     const [currentPage, setCurrentPage] = useState(1);
+    const [scrapContents, setScrapContents] = useState([]);
+
+    const loadScrapContents = async () => {
+        try {
+            const scrapContentData = await getScrapContent();
+            setScrapContents(data);
+            console.log('scrap contents data:', scrapContentData);
+        } catch (error) {
+            console.error('scrap content data error:', error);
+        }
+    };
 
     useEffect(() => {
         if (selectedTab === 'job') {

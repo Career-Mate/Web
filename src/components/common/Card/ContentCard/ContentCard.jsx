@@ -2,24 +2,32 @@ import * as S from '../styled/styled.js';
 import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
-import useScrapStore from '../../../../store/useScrapStore.js';
+import { postScrapContent, deleteScrapContent } from '../../../../apis/Scrap/Content/ContentScrapApi.js';
+import { useState } from 'react';
 
-const ContentCard = ({ id, contentName, thumbnail, url }) => {
-    const { scrapContents, addScrapContent, removeScrapContent } = useScrapStore();
-    const isScrap = scrapContents.some((content) => content.id === id);
+const ContentCard = ({ id, contentName, thumbnail, url, isScrapped }) => {
+    const [isScrap, setIsScrap] = useState(isScrapped);
 
-    const handleScrap = () => {
-        if (isScrap) {
-            removeScrapContent(id);
-        } else {
-            addScrapContent({ id, contentName, thumbnail, url });
+    const handleScrap = async () => {
+        try {
+            if (isScrap) {
+                await deleteScrapContent(id);
+                setIsScrap(false);
+                console.log(`스크랩 해제됨 (id: ${id})`);
+            } else {
+                const result = await postScrapContent(id);
+                setIsScrap(true);
+                console.log(`스크랩 성공 (id: ${id}):`, result);
+            }
+        } catch (error) {
+            console.error(`스크랩 요청 실패 (id: ${id}):`, error);
         }
     };
 
     return (
         <S.CardContainer $width={'375px'} $type={true}>
             <S.Thumbnail
-                src={thumbnail || defaultThumbnail}
+                src={thumbnail ? thumbnail : defaultThumbnail}
                 alt={contentName}
                 $width={'323px'}
                 $height={'227px'}
