@@ -3,10 +3,19 @@ import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSet
 import * as S from './styled/styled';
 import { profileEmptyData } from '../../../data/profileData';
 import { useProfile } from '../../../hooks/useProfile';
-import { useSaveProfile } from '../../../apis/profile/useProfileApi';
+import { useFetchProfile, useSaveProfile } from '../../../apis/Profile/useProfileApi';
+import { useEffect } from 'react';
 
 const ProfileSettingPage = () => {
-    const { canSave, emailError, profile, handleProfileFieldChange } = useProfile(profileEmptyData);
+    const { data, isLoading, isError, error } = useFetchProfile();
+    const { canSave, emailError, profile, handleProfileFieldChange } = useProfile();
+
+    useEffect(() => {
+        if (data) {
+            console.log(data);
+            fetchUser(data);
+        }
+    }, [data]);
 
     const mutation = useSaveProfile();
 
@@ -23,6 +32,14 @@ const ProfileSettingPage = () => {
 
         mutation.mutate(profile);
     };
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (isError) {
+        return <div>Error: {error.message}</div>;
+    }
 
     return (
         <S.ProfileContainer>

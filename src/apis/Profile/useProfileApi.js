@@ -43,3 +43,16 @@ export const useFetchProfile = () => {
     });
     return { data, isLoading, isError, error };
 };
+
+export const useDeleteProfile = () => {
+    const { logout } = useAuthStore();
+    return useMutation({
+        mutationFn: modifyProfile,
+        onSuccess: (data) => {
+            logout();
+        },
+        onError: (error) => {
+            alert('프로필 수정에 실패했습니다. 다시 시도해주세요.');
+        },
+    });
+};

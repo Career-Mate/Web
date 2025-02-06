@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react';
 import { useAuthStore } from '../store/authStore';
 import { profileEmptyData } from '../data/profileData';
 
+const sanitizeProfile = (profile) => {
+    if (!profile) return profileEmptyData;
+    return Object.fromEntries(Object.entries(profile).map(([key, value]) => [key, value ?? '']));
+};
+
 export const useProfile = () => {
     const [profile, setProfile] = useState(profileEmptyData);
     const [canSave, setCanSave] = useState(false);
@@ -10,7 +15,8 @@ export const useProfile = () => {
 
     useEffect(() => {
         if (user) {
-            setProfile(user);
+            console.log(sanitizeProfile(user));
+            setProfile(sanitizeProfile(user));
         }
     }, [user]);
 
