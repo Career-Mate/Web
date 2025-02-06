@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 1280px;
     padding-bottom: 20px;
-    margin: 0 auto;
+    margin-left: -198px;
 `;
 
 export const TitleContainer = styled.div`
