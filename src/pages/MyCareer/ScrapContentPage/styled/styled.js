@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 1280px;
+    width: 1650px;
     padding-bottom: 20px;
     margin-left: -198px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 export const TitleContainer = styled.div`
@@ -12,13 +15,14 @@ export const TitleContainer = styled.div`
     justify-content: center;
     gap: 2px;
     width: 100%;
-    max-width: 1280px;
     position: relative;
     white-space: nowrap;
     border-bottom: 2px solid #ddd;
 `;
 
-export const TitleWrapper = styled.div`
+export const TitleWrapper = styled.div.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isSelected',
+})`
     width: 220px;
     position: relative;
     display: flex;
@@ -47,13 +51,17 @@ export const TitleWrapper = styled.div`
     }
 `;
 
-export const PinIcon = styled.img`
+export const PinIcon = styled.img.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isSelected',
+})`
     width: 32px;
     height: 32px;
     visibility: ${({ isSelected }) => (isSelected ? 'visible' : 'hidden')};
 `;
 
-export const Title = styled.span`
+export const Title = styled.span.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isSelected',
+})`
     width: fit-content;
     font-size: 24px;
     font-weight: 600;
