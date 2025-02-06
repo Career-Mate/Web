@@ -1,10 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
-import useLogin from '../../../hooks/useLogin';
+import { useAuthStore } from '../../../store/authStore';
 
 const LoginSuccessPage = () => {
-    const { isLogin } = useLogin();
-    const userName = '김단아';
+    const { isLogin, user } = useAuthStore();
     const navigate = useNavigate();
 
     return (
@@ -18,7 +17,7 @@ const LoginSuccessPage = () => {
                     showLogo={true}
                     showTitleText={false}
                     mainText="로그인 성공"
-                    detailText={`${userName} 메이트님에게 최적의 서비스를 제공할 수 있도록 프로필을 설정해주세요`}
+                    detailText={`${user.name} 메이트님에게 최적의 서비스를 제공할 수 있도록 프로필을 설정해주세요`}
                     buttons={[
                         {
                             text: '지금 바로 프로필 설정하기',
