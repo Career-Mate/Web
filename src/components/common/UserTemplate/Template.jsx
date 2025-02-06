@@ -20,6 +20,8 @@ const Template = ({ pageType, onDataChange }) => {
         isError,
     } = useTemplateData(pageType, jobType);
 
+    const [localValues, setLocalValues] = useState({});
+
     const memoizedData = useMemo(() => {
         return templateData.length >= 2
             ? templateData
@@ -41,6 +43,21 @@ const Template = ({ pageType, onDataChange }) => {
         }
     };
 
+    const handleChange = (sectionIndex, itemIndex, value) => {
+        setLocalValues((prev) => ({
+            ...prev,
+            [`${sectionIndex}-${itemIndex}`]: value,
+        }));
+    };
+
+    const handleBlur = (sectionIndex, itemIndex) => {
+        const key = `${sectionIndex}-${itemIndex}`;
+        if (localValues[key] !== undefined) {
+            handleInputChange(sectionIndex, itemIndex, localValues[key]);
+        }
+        autoResize(document.getElementById(key));
+    };
+
     if (isLoading) {
         return <p>로딩 중...</p>;
     }
@@ -56,78 +73,82 @@ const Template = ({ pageType, onDataChange }) => {
                     <S.TemplateTitle style={{ display: 'none' }}>{section.title}</S.TemplateTitle>
 
                     <S.TemplateTable>
-                        {section.items.map((item, itemIndex) => (
-                            <S.TableRow key={itemIndex}>
-                                <S.TableCellHeader
-                                    isFirstRow={itemIndex === 0}
-                                    isLastRow={itemIndex === section.items.length - 1}
-                                >
-                                    {item.label}
+                        {section.items.map((item, itemIndex) => {
+                            const key = `${sectionIndex}-${itemIndex}`;
+                            return (
+                                <S.TableRow key={itemIndex}>
+                                    <S.TableCellHeader
+                                        isFirstRow={itemIndex === 0}
+                                        isLastRow={itemIndex === section.items.length - 1}
+                                    >
+                                        {item.label}
 
-                                    {itemIndex === 0 && (
-                                        <S.IconWrapper
-                                            onMouseEnter={() => setTooltipVisible(true)}
-                                            onMouseLeave={() => setTooltipVisible(false)}
-                                        >
-                                            <FaExclamationCircle />
-                                            {tooltipVisible && (
-                                                <S.Tooltip>
-                                                    <S.TooltipText>{generateTooltipText(section)}</S.TooltipText>
-                                                </S.Tooltip>
-                                            )}
-                                        </S.IconWrapper>
-                                    )}
-                                </S.TableCellHeader>
-                                <S.TableCellData
-                                    isFirstRow={itemIndex === 0}
-                                    isLastRow={itemIndex === section.items.length - 1}
-                                >
-                                    {item.type === 'date' ? (
-                                        <S.DatePickerRow>
-                                            <S.DateInput isInline>
-                                                <FaCalendarAlt className="calendar-icon" />
-                                                <DatePicker
-                                                    selected={item.startDate ?? null}
-                                                    onChange={(date) =>
-                                                        handleDateChange(sectionIndex, itemIndex, date, true)
-                                                    }
-                                                    selectsStart
-                                                    startDate={item.startDate ?? null}
-                                                    endDate={item.endDate ?? null}
-                                                    placeholderText="시작 날짜를 선택해주세요"
-                                                    dateFormat="yyyy년 MM월 dd일"
-                                                />
-                                            </S.DateInput>
+                                        {itemIndex === 0 && (
+                                            <S.IconWrapper
+                                                onMouseEnter={() => setTooltipVisible(true)}
+                                                onMouseLeave={() => setTooltipVisible(false)}
+                                            >
+                                                <FaExclamationCircle />
+                                                {tooltipVisible && (
+                                                    <S.Tooltip>
+                                                        <S.TooltipText>{generateTooltipText(section)}</S.TooltipText>
+                                                    </S.Tooltip>
+                                                )}
+                                            </S.IconWrapper>
+                                        )}
+                                    </S.TableCellHeader>
+                                    <S.TableCellData
+                                        isFirstRow={itemIndex === 0}
+                                        isLastRow={itemIndex === section.items.length - 1}
+                                    >
+                                        {item.type === 'date' ? (
+                                            <S.DatePickerRow>
+                                                <S.DateInput isInline>
+                                                    <FaCalendarAlt className="calendar-icon" />
+                                                    <DatePicker
+                                                        selected={item.startDate ?? null}
+                                                        onChange={(date) =>
+                                                            handleDateChange(sectionIndex, itemIndex, date, true)
+                                                        }
+                                                        selectsStart
+                                                        startDate={item.startDate ?? null}
+                                                        endDate={item.endDate ?? null}
+                                                        placeholderText="시작 날짜를 선택해주세요"
+                                                        dateFormat="yyyy년 MM월 dd일"
+                                                    />
+                                                </S.DateInput>
 
-                                            <S.DateDivider>|</S.DateDivider>
+                                                <S.DateDivider>|</S.DateDivider>
 
-                                            <S.DateInput isInline>
-                                                <FaCalendarAlt className="calendar-icon" />
-                                                <DatePicker
-                                                    selected={item.endDate ?? null}
-                                                    onChange={(date) =>
-                                                        handleDateChange(sectionIndex, itemIndex, date, false)
-                                                    }
-                                                    selectsEnd
-                                                    startDate={item.startDate ?? null}
-                                                    endDate={item.endDate ?? null}
-                                                    minDate={item.startDate ?? null}
-                                                    placeholderText="종료 날짜를 선택해주세요"
-                                                    dateFormat="yyyy년 MM월 dd일"
-                                                />
-                                            </S.DateInput>
-                                        </S.DatePickerRow>
-                                    ) : (
-                                        <textarea
-                                            value={item.content ?? ''}
-                                            placeholder={item.placeholder ?? `${item.label}를 입력해주세요.`}
-                                            onChange={(e) => handleInputChange(sectionIndex, itemIndex, e.target.value)}
-                                            onInput={(e) => autoResize(e.target)}
-                                        />
-                                    )}
-                                </S.TableCellData>
-                            </S.TableRow>
-                        ))}
+                                                <S.DateInput isInline>
+                                                    <FaCalendarAlt className="calendar-icon" />
+                                                    <DatePicker
+                                                        selected={item.endDate ?? null}
+                                                        onChange={(date) =>
+                                                            handleDateChange(sectionIndex, itemIndex, date, false)
+                                                        }
+                                                        selectsEnd
+                                                        startDate={item.startDate ?? null}
+                                                        endDate={item.endDate ?? null}
+                                                        minDate={item.startDate ?? null}
+                                                        placeholderText="종료 날짜를 선택해주세요"
+                                                        dateFormat="yyyy년 MM월 dd일"
+                                                    />
+                                                </S.DateInput>
+                                            </S.DatePickerRow>
+                                        ) : (
+                                            <textarea
+                                                id={key}
+                                                value={localValues[key] ?? item.content}
+                                                placeholder={item.placeholder ?? `${item.label}를 입력해주세요.`}
+                                                onChange={(e) => handleChange(sectionIndex, itemIndex, e.target.value)}
+                                                onBlur={() => handleBlur(sectionIndex, itemIndex)}
+                                            />
+                                        )}
+                                    </S.TableCellData>
+                                </S.TableRow>
+                            );
+                        })}
                     </S.TemplateTable>
 
                     <S.ButtonWrapper>
