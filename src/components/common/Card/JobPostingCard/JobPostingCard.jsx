@@ -43,11 +43,11 @@ const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, onCli
             <S.Thumbnail src={thumbnail} alt={contentName} $width={'348px'} $height={'200px'} $type={false} />
             <S.Line $type={false} />
             <S.ContentWrapper $type={false}>
-                <S.Title $type={false}>{contentName}</S.Title>
-                <S.DetailButton $type={false} onClick={onClick}>
-                    공고 보기 &gt;
-                </S.DetailButton>
-                <S.DeadlineWrapper>
+                <S.Title $type={false} onClick={onClick}>
+                    {contentName}
+                </S.Title>
+
+                <S.DeadlineWrapper $type={false}>
                     <S.Deadline>{deadline}</S.Deadline>
                     <S.ScrapIcon
                         src={isScrap ? scrapCheckedIcon : scrapUncheckedIcon}
