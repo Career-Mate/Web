@@ -205,13 +205,15 @@ export const useTemplateStore = create((set, get) => ({
 
         try {
             const requestData = {
-                answerGroupDTOList: get().data.map((section, index) => ({
-                    sequence: index + 1,
-                    answerInfoDTOList: section.items.map((item) => ({
-                        questionId: item.questionId,
-                        content: '',
-                    })),
-                })),
+                answerGroupDTOList: [
+                    {
+                        sequence: sectionIndex + 1,
+                        answerInfoDTOList: get().data[sectionIndex].items.map((item) => ({
+                            questionId: item.questionId,
+                            content: '',
+                        })),
+                    },
+                ],
             };
 
             const formData = new FormData();
