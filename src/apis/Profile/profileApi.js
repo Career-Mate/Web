@@ -18,3 +18,13 @@ export const getProfile = async () => {
     const transformedData = transformProfileResponse(response.data.data);
     return transformedData;
 };
+
+export const deleteProfile = async () => {
+    try {
+        const response = await apiClient.patch('/member/delete');
+        return response.data;
+    } catch (error) {
+        console.error('delete user error: ', error);
+        throw error;
+    }
+};
