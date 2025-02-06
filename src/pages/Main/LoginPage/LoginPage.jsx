@@ -17,18 +17,18 @@ const LoginPage = () => {
                 <S.Container>
                     <S.Text>SNS로 시작하기</S.Text>
                     <S.SocialButtonWrapper>
-                        {/* <a href={`${apiURL}/naver`}> */}
-                        <S.SocialButton $type="naver">
-                            <img src={Naver} alt="naver"></img>
-                            네이버로 시작하기
-                        </S.SocialButton>
-                        {/* </a>
-                        <a href={`${apiURL}/kakao`}> */}
-                        <S.SocialButton $type="kakao">
-                            <img src={Kakao} alt="kakao"></img>
-                            카카오로 시작하기
-                        </S.SocialButton>
-                        {/* </a> */}
+                        <a href={`${apiURL}/naver`}>
+                            <S.SocialButton $type="naver">
+                                <img src={Naver} alt="naver"></img>
+                                네이버로 시작하기
+                            </S.SocialButton>
+                        </a>
+                        <a href={`${apiURL}/kakao`}>
+                            <S.SocialButton $type="kakao">
+                                <img src={Kakao} alt="kakao"></img>
+                                카카오로 시작하기
+                            </S.SocialButton>
+                        </a>
                     </S.SocialButtonWrapper>
                 </S.Container>
             }
