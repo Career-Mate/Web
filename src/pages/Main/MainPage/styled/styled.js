@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import backgroundUrl from '../../../../assets/MainPage/main-vector.svg';
 
 export const MainContainer = styled.div`
     display: flex;
@@ -40,7 +41,7 @@ export const FirstTextWrapper = styled.div`
 export const SecondPage = styled.div`
     width: 100%;
     height: 150vh;
-    background-image: url('/src/assets/MainPage/main-vector.svg');
+    background-image: url(${backgroundUrl});
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
