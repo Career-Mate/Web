@@ -1,5 +1,5 @@
 import * as S from './styled/styled';
-import { useMemo, useState, useCallback } from 'react';
+import { useMemo, useState, useCallback, useEffect } from 'react';
 import { useTemplateData } from '../../../hooks/useTemplateData';
 import { useJobStore, useFetchUserJobType } from '../../../store/useJobStore';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
@@ -10,6 +10,16 @@ const TextTemplate = ({ pageType }) => {
     const { handleInputChange, data: templateData, clearAll, isLoading, isError } = useTemplateData(pageType, jobType);
 
     const [localValues, setLocalValues] = useState({});
+
+    useEffect(() => {
+        const newLocalValues = {};
+        templateData.forEach((section, sectionIndex) => {
+            section.items.forEach((item, itemIndex) => {
+                newLocalValues[`${sectionIndex}-${itemIndex}`] = item.content;
+            });
+        });
+        setLocalValues(newLocalValues);
+    }, [templateData]);
 
     const memoizedData = useMemo(() => {
         return templateData.length >= 2

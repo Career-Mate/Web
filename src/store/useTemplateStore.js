@@ -244,19 +244,30 @@ export const useTemplateStore = create((set, get) => ({
 
     clearAll: async (sectionIndex) => {
         set((state) => {
-            const newData = [...state.data];
+            const templateType = state.templateType;
+            const isTechnicalOrSummary = ['TECHNICAL_SKILLS', 'FINAL_SUMMARY'].includes(templateType);
 
-            if (newData[sectionIndex]?.items) {
-                newData[sectionIndex].items = newData[sectionIndex].items.map((item) => ({
-                    ...item,
-                    content: '',
-                    startDate: null,
-                    endDate: null,
-                }));
-            }
+            const newData = state.data.map((section, sIndex) =>
+                sIndex === sectionIndex
+                    ? {
+                          ...section,
+                          items: section.items.map((item) => ({
+                              ...item,
+                              content: '',
+                              ...(item.type === 'date' && !isTechnicalOrSummary
+                                  ? { startDate: null, endDate: null }
+                                  : {}),
+                          })),
+                      }
+                    : section,
+            );
 
             return { data: newData };
         });
+
+        set((state) => ({
+            data: [...state.data],
+        }));
 
         get().checkIfCanSave();
 
@@ -278,8 +289,11 @@ export const useTemplateStore = create((set, get) => ({
             formData.append('data', jsonBlob);
 
             await updateTemplateData(formData);
+
+            const { templateType, jobType } = get();
+            await get().fetchTemplateData(templateType, jobType);
         } catch (error) {
-            console.error('전체 내용 삭제 요청 실패: ', error);
+            console.error(`템플릿 ${sectionIndex + 1} 내용 삭제 실패:`, error);
         }
     },
 }));

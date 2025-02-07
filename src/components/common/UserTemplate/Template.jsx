@@ -1,7 +1,7 @@
 import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useMemo, useState, useCallback } from 'react';
+import { useMemo, useState, useCallback, useEffect } from 'react';
 import { useTemplateData } from '../../../hooks/useTemplateData';
 import { useJobStore, useFetchUserJobType } from '../../../store/useJobStore';
 import * as S from './styled/styled';
@@ -21,6 +21,16 @@ const Template = ({ pageType, onDataChange }) => {
     } = useTemplateData(pageType, jobType);
 
     const [localValues, setLocalValues] = useState({});
+
+    useEffect(() => {
+        const newLocalValues = {};
+        templateData.forEach((section, sectionIndex) => {
+            section.items.forEach((item, itemIndex) => {
+                newLocalValues[`${sectionIndex}-${itemIndex}`] = item.content;
+            });
+        });
+        setLocalValues(newLocalValues);
+    }, [templateData]);
 
     const memoizedData = useMemo(() => {
         return templateData.length >= 2
