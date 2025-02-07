@@ -18,48 +18,64 @@ export const useTemplateStore = create((set, get) => ({
     fetchTemplateData: async (templateType, jobType) => {
         if (!jobType) return;
 
+        console.log('🔹 fetchTemplateData 실행:', { templateType, jobType });
         set({ isLoading: true, templateType });
 
         try {
             const isComplete = await fetchCompletionStatus(templateType);
             const templateResponse = await fetchTemplate(templateType, jobType);
-            const answersResponse = await fetchExistingAnswers(templateType, jobType);
+            const answersResponse = await fetchExistingAnswers(templateType);
 
-            const processedTemplateData = (templateResponse?.data?.templateInfoDTOList || []).map((template) => ({
-                items: (template.questionDTOList || []).map((q) => ({
-                    questionId: q.questionId,
-                    label: q.content,
-                    type: ['기간', '근무기간'].includes(q.content) ? 'date' : 'text',
-                    isRequired: q.isRequired,
-                    placeholder: templateType === 'SUMMARY' ? '내용을 입력해주세요' : `${q.content}을 입력해주세요.`,
-                    content: '',
-                    startDate: null,
-                    endDate: null,
-                })),
-            }));
+            console.log('템플릿 응답 데이터:', templateResponse.data);
+            console.log('기존 답변 데이터:', answersResponse);
 
-            const processedAnswersData = (answersResponse?.data || []).map((answer) => ({
-                sequence: answer.sequence,
-                items: answer.answerInfoDTOList.map((a) => ({
-                    questionId: a.questionId,
-                    label: a.questionName,
-                    content: a.content,
-                })),
-            }));
-
-            let finalData = processedAnswersData.length > 0 ? processedAnswersData : processedTemplateData;
-
-            while (finalData.length < 2) {
-                finalData.push({ items: [...processedTemplateData[0]?.items] });
+            if (!answersResponse || answersResponse.length === 0) {
+                console.warn('기존 답변 데이터가 없음!');
             }
 
+            const answerMap = {};
+            answersResponse.forEach((answer) => {
+                answer.answerInfoDTOList.forEach((a) => {
+                    if (a.content !== undefined && a.content !== null && a.content.trim() !== '') {
+                        answerMap[a.questionId] = a.content.trim();
+                    }
+                });
+            });
+
+            const processedTemplateData = (templateResponse?.data?.templateInfoDTOList || []).map((template) => ({
+                items: (template.questionDTOList || []).map((q) => {
+                    let content = answerMap[q.questionId] ?? '';
+                    let startDate = null;
+                    let endDate = null;
+
+                    if (q.content === '근무기간' && answerMap[q.questionId] && answerMap[q.questionId].includes('~')) {
+                        const [start, end] = answerMap[q.questionId].split('~');
+                        startDate = start.trim() || null;
+                        endDate = end.trim() || null;
+                        content = '';
+                    }
+
+                    return {
+                        questionId: q.questionId,
+                        label: q.content,
+                        type: q.content === '근무기간' ? 'date' : 'text',
+                        isRequired: q.isRequired,
+                        placeholder: `${q.content}을 입력해주세요.`,
+                        content: answerMap[q.questionId] || '',
+                        startDate,
+                        endDate,
+                    };
+                }),
+            }));
+
+            console.log('최종 데이터 상태 업데이트 완료:', processedTemplateData);
+
             set({
-                data: finalData,
+                data: processedTemplateData,
                 isLoading: false,
                 isError: false,
                 hasExistingData: isComplete,
             });
-            get().checkIfCanSave();
         } catch (error) {
             console.error('템플릿 데이터 불러오기 실패:', error);
             set({ isLoading: false, isError: true });

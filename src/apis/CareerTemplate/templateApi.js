@@ -33,6 +33,8 @@ export const fetchCompletionStatus = async (templateType) => {
 // 기존 답변 조회 API (잘못된 요청 수정)
 export const fetchExistingAnswers = async (templateType) => {
     try {
+        console.log(`fetchExistingAnswers 실행: templateType=${templateType}`);
+
         if (!templateType) {
             console.warn('templateType이 없음.');
             return [];
@@ -42,7 +44,14 @@ export const fetchExistingAnswers = async (templateType) => {
             params: { templateType },
         });
 
-        return response.data?.data || [];
+        console.log('기존 답변 API 응답:', response.data);
+
+        if (!response.data || !response.data.data) {
+            console.warn('기존 답변 응답이 비어 있음.');
+            return [];
+        }
+
+        return response.data.data;
     } catch (error) {
         console.error('기존 데이터 불러오기 실패:', error.response?.data || error.message);
         return [];
