@@ -26,51 +26,55 @@ export const useTemplateStore = create((set, get) => ({
             const templateResponse = await fetchTemplate(templateType, jobType);
             const answersResponse = await fetchExistingAnswers(templateType);
 
-            console.log('템플릿 응답 데이터:', templateResponse.data);
-            console.log('기존 답변 데이터:', answersResponse);
-
             if (!answersResponse || answersResponse.length === 0) {
                 console.warn('기존 답변 데이터가 없음!');
             }
 
             const answerMap = {};
             answersResponse.forEach((answer) => {
+                answerMap[answer.sequence] = {};
                 answer.answerInfoDTOList.forEach((a) => {
                     if (a.content !== undefined && a.content !== null && a.content.trim() !== '') {
-                        answerMap[a.questionId] = a.content.trim();
+                        answerMap[answer.sequence][a.questionId] = a.content.trim();
                     }
                 });
             });
 
-            const processedTemplateData = (templateResponse?.data?.templateInfoDTOList || []).map((template) => ({
-                items: (template.questionDTOList || []).map((q) => {
-                    let content = answerMap[q.questionId] ?? '';
-                    let startDate = null;
-                    let endDate = null;
+            const processedTemplateData = answersResponse.map((answer) => ({
+                sequence: answer.sequence,
+                items:
+                    templateResponse?.data?.templateInfoDTOList[0]?.questionDTOList.map((q) => {
+                        let content = '';
+                        let startDate = null;
+                        let endDate = null;
 
-                    const periodKeywords = ['기간', '근무기간'];
-                    if (periodKeywords.includes(q.content) && content.includes('~')) {
-                        const [start, end] = content.split('~').map((date) => date.trim());
-                        startDate = start || null;
-                        endDate = end || null;
-                        content = '';
-                    }
+                        const existingAnswer = answer.answerInfoDTOList.find((a) => a.questionId === q.questionId);
+                        if (existingAnswer) {
+                            content = existingAnswer.content;
+                            if (q.content.includes('기간') && content.includes('~')) {
+                                const [start, end] = content.split('~').map((date) => date.trim());
+                                startDate = start || null;
+                                endDate = end || null;
+                                content = '';
+                            }
+                        }
 
-                    return {
-                        questionId: q.questionId,
-                        label: q.content,
-                        type: ['기간', '근무기간'].includes(q.content) ? 'date' : 'text',
-                        isRequired: q.isRequired,
-                        placeholder: `${q.content}을 입력해주세요.`,
-                        content: answerMap[q.questionId] || '',
-                        startDate,
-                        endDate,
-                    };
-                }),
+                        return {
+                            questionId: q.questionId,
+                            label: q.content,
+                            type: ['근무기간', '기간'].includes(q.content) ? 'date' : 'text',
+                            isRequired: q.isRequired,
+                            placeholder: `${q.content}을 입력해주세요.`,
+                            content,
+                            startDate,
+                            endDate,
+                        };
+                    }) || [],
             }));
 
             while (processedTemplateData.length < 2) {
                 processedTemplateData.push({
+                    sequence: processedTemplateData.length + 1,
                     items: processedTemplateData[0]?.items
                         ? processedTemplateData[0].items.map((item) => ({
                               ...item,
