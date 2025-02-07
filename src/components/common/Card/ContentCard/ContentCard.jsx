@@ -3,21 +3,24 @@ import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
 import { postScrapContent, deleteScrapContent } from '../../../../apis/Scrap/Content/ContentScrapApi.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const ContentCard = ({ id, contentName, thumbnail, url, isScrapped, onScrapUpdate }) => {
     const [isScrap, setIsScrap] = useState(isScrapped);
+
+    useEffect(() => {
+        setIsScrap(isScrapped);
+    }, [isScrapped]);
 
     const handleScrap = async () => {
         try {
             if (isScrap) {
                 await deleteScrapContent(id);
-                setIsScrap(false);
-                onScrapUpdate(id);
+                onScrapUpdate(id, false);
                 console.log(`스크랩 해제됨 (id: ${id})`);
             } else {
                 const result = await postScrapContent(id);
-                setIsScrap(true);
+                onScrapUpdate(id, true);
                 console.log(`스크랩 성공 (id: ${id}):`, result);
             }
         } catch (error) {

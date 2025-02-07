@@ -18,7 +18,9 @@ export const TitleContainer = styled.div`
     border-bottom: 2px solid #ddd;
 `;
 
-export const TitleWrapper = styled.div`
+export const TitleWrapper = styled.div.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isSelected',
+})`
     width: 220px;
     position: relative;
     display: flex;
@@ -47,13 +49,17 @@ export const TitleWrapper = styled.div`
     }
 `;
 
-export const PinIcon = styled.img`
+export const PinIcon = styled.img.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isSelected',
+})`
     width: 32px;
     height: 32px;
     visibility: ${({ isSelected }) => (isSelected ? 'visible' : 'hidden')};
 `;
 
-export const Title = styled.span`
+export const Title = styled.span.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isSelected',
+})`
     width: fit-content;
     font-size: 24px;
     font-weight: 600;

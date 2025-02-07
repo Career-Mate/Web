@@ -20,7 +20,7 @@ export const CardContainer = styled.div`
 
 export const CompanyName = styled.div`
     transform: ${({ $type }) => ($type ? 'none' : 'translateY(-3px)')};
-    color: #c4c4c4;
+    color: #8f8f8f;
 `;
 
 export const Thumbnail = styled.img`

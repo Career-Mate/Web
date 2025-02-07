@@ -10,7 +10,7 @@ export const mapScrapContents = (apiData) => {
             contentName: content.title || '컨텐츠 정보 없음',
             url: content.url,
             thumbnail: content.photo,
-            isScrapped: content.isScraped,
+            isScrapped: content.isScrapped,
         })),
     };
 };

@@ -13,6 +13,7 @@ const ScrapContentPage = () => {
     const itemsPerPage = 6;
     const navigate = useNavigate();
     const { scrapJobs } = useScrapStore();
+
     const handleToContent = () => navigate('/recommend/content');
     const handleToJob = () => navigate('/recommend/job');
 
@@ -20,12 +21,19 @@ const ScrapContentPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [scrapContents, setScrapContents] = useState([]);
 
+    const totalPages = Math.max(
+        1,
+        Math.ceil((selectedTab === 'content' ? scrapContents.length : scrapJobs.length) / itemsPerPage),
+    );
+    const displayedJobs = scrapJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
     const loadScrapContents = async () => {
         try {
             const scrapContentData = await getScrapContent();
+            console.log('scrap content data:', scrapContentData);
             setScrapContents(Array.isArray(scrapContentData) ? scrapContentData : []);
         } catch (error) {
-            console.error('스크랩 콘텐츠 가져오기 실패:', error);
+            console.error('get scrap content error:', error);
         }
     };
 
@@ -33,7 +41,6 @@ const ScrapContentPage = () => {
         loadScrapContents();
     }, []);
 
-    // ✅ 스크랩 해제 시 해당 콘텐츠를 즉시 제거
     const handleScrapUpdate = (contentId) => {
         setScrapContents((prev) => prev.filter((content) => content.contentId !== contentId));
     };
@@ -67,7 +74,7 @@ const ScrapContentPage = () => {
                                     contentName={content.title}
                                     thumbnail={content.photo}
                                     url={content.url}
-                                    isScrapped={content.isScraped}
+                                    isScrapped={content.isScrapped}
                                     onScrapUpdate={handleScrapUpdate}
                                 />
                             ))}

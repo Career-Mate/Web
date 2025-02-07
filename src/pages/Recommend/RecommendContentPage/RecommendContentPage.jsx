@@ -11,18 +11,26 @@ const RecommendContentPage = ({ user }) => {
     const [contents, setContents] = useState([]);
 
     useEffect(() => {
-        const loadContents = async () => {
+        (async () => {
             try {
                 const data = await fetchContents();
                 setContents(data.contents);
             } catch (error) {
-                console.error('콘텐츠 데이터를 가져오는 중 오류 발생:', error);
+                console.error('fetch contents error:', error);
             }
-        };
+        })();
 
-        loadContents();
         window.scrollTo(0, 0);
     }, []);
+
+    const handleScrapUpdate = (contentId, isScrapped) => {
+        setContents((prevContents) => {
+            const updatedContents = [...prevContents];
+            const targetContent = updatedContents.find((content) => content.id === contentId);
+            if (targetContent) targetContent.isScrapped = isScrapped;
+            return updatedContents;
+        });
+    };
 
     return (
         <S.Container>
@@ -46,6 +54,7 @@ const RecommendContentPage = ({ user }) => {
                             thumbnail={content.thumbnail}
                             url={content.url}
                             isScrapped={content.isScrapped}
+                            onScrapUpdate={handleScrapUpdate}
                         />
                     ))}
                 </S.CardWrapper>
