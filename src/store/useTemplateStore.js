@@ -58,7 +58,7 @@ export const useTemplateStore = create((set, get) => ({
                     return {
                         questionId: q.questionId,
                         label: q.content,
-                        type: q.content === '근무기간' ? 'date' : 'text',
+                        type: ['기간', '근무기간'].includes(q.content) ? 'date' : 'text',
                         isRequired: q.isRequired,
                         placeholder: `${q.content}을 입력해주세요.`,
                         content: answerMap[q.questionId] || '',
