@@ -25,51 +25,59 @@ export const useTemplateStore = create((set, get) => ({
             const templateResponse = await fetchTemplate(templateType, jobType);
             const answersResponse = await fetchExistingAnswers(templateType);
 
-            if (!answersResponse || answersResponse.length === 0) {
-                console.warn('기존 답변 데이터가 없음!');
-            }
+            let processedTemplateData = [];
 
-            const answerMap = {};
-            answersResponse.forEach((answer) => {
-                answerMap[answer.sequence] = {};
-                answer.answerInfoDTOList.forEach((a) => {
-                    if (a.content !== undefined && a.content !== null && a.content.trim() !== '') {
-                        answerMap[answer.sequence][a.questionId] = a.content.trim();
-                    }
-                });
-            });
+            if (answersResponse.length > 0) {
+                processedTemplateData = answersResponse.map((answer) => ({
+                    sequence: answer.sequence,
+                    items: answer.answerInfoDTOList.map((a) => {
+                        const question = templateResponse.data.templateInfoDTOList[0].questionDTOList.find(
+                            (q) => q.questionId === a.questionId,
+                        );
+                        const isDateField = ['근무기간', '기간'].includes(question?.content);
 
-            const processedTemplateData = answersResponse.map((answer) => ({
-                sequence: answer.sequence,
-                items:
-                    templateResponse?.data?.templateInfoDTOList[0]?.questionDTOList.map((q) => {
-                        let content = '';
-                        let startDate = null;
-                        let endDate = null;
-
-                        const existingAnswer = answer.answerInfoDTOList.find((a) => a.questionId === q.questionId);
-                        if (existingAnswer) {
-                            content = existingAnswer.content;
-                            if (q.content.includes('기간') && content.includes('~')) {
-                                const [start, end] = content.split('~').map((date) => date.trim());
-                                startDate = start || null;
-                                endDate = end || null;
-                                content = '';
-                            }
-                        }
+                        return {
+                            questionId: a.questionId,
+                            label: question?.content || '질문 없음',
+                            type:
+                                isDateField && !['TECHNICAL_SKILLS', 'FINAL_SUMMARY'].includes(templateType)
+                                    ? 'date'
+                                    : 'text',
+                            isRequired: question?.isRequired || false,
+                            placeholder: `${question?.content || '항목'}을 입력해주세요.`,
+                            content: isDateField ? '' : a.content || '',
+                            ...(isDateField && !['TECHNICAL_SKILLS', 'FINAL_SUMMARY'].includes(templateType)
+                                ? {
+                                      startDate: a.content?.split('~')[0]?.trim() || null,
+                                      endDate: a.content?.split('~')[1]?.trim() || null,
+                                  }
+                                : {}),
+                        };
+                    }),
+                }));
+            } else {
+                processedTemplateData = (templateResponse?.data?.templateInfoDTOList || []).map((template, index) => ({
+                    sequence: index + 1,
+                    items: (template.questionDTOList || []).map((q) => {
+                        const isDateField = ['근무기간', '기간'].includes(q.content);
 
                         return {
                             questionId: q.questionId,
                             label: q.content,
-                            type: ['근무기간', '기간'].includes(q.content) ? 'date' : 'text',
+                            type:
+                                isDateField && !['TECHNICAL_SKILLS', 'FINAL_SUMMARY'].includes(templateType)
+                                    ? 'date'
+                                    : 'text',
                             isRequired: q.isRequired,
                             placeholder: `${q.content}을 입력해주세요.`,
-                            content,
-                            startDate,
-                            endDate,
+                            content: '',
+                            ...(isDateField && !['TECHNICAL_SKILLS', 'FINAL_SUMMARY'].includes(templateType)
+                                ? { startDate: null, endDate: null }
+                                : {}),
                         };
-                    }) || [],
-            }));
+                    }),
+                }));
+            }
 
             while (processedTemplateData.length < 2) {
                 processedTemplateData.push({
@@ -78,8 +86,9 @@ export const useTemplateStore = create((set, get) => ({
                         ? processedTemplateData[0].items.map((item) => ({
                               ...item,
                               content: '',
-                              startDate: null,
-                              endDate: null,
+                              ...(item.type === 'date' && !['TECHNICAL_SKILLS', 'FINAL_SUMMARY'].includes(templateType)
+                                  ? { startDate: null, endDate: null }
+                                  : {}),
                           }))
                         : [],
                 });
