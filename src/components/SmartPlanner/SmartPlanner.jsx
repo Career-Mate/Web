@@ -35,6 +35,7 @@ const SmartPlanner = ({ data, onDataChange, page }) => {
                         return newData;
                     })
                 }
+                page = {page}
             />
         </S.Container>
     );

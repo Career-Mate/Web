@@ -1,33 +1,56 @@
 import * as S from './styled/styled';
-import { useMemo, useState,useEffect,useRef } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 import { useTemplateData } from '../../../hooks/useTemplateData';
 import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
 
-const SmartTemplate = ({ data: externalData, onDataChange, onClearAll }) => {
+const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) => {
     const { handleInputChange, data } = useTemplateData(externalData, onDataChange);
     const memoizedData = useMemo(() => data, [data]);
     const [localValues, setLocalValues] = useState({});
-    const textareaRefs = useRef([]);
+    const [charCounts, setCharCounts] = useState({});
 
+    const MAX_CHAR_COUNT = 256;
+    
     const autoResize = (textarea) => {
         if (textarea) {
             textarea.style.height = '20px';
             textarea.style.height = `${textarea.scrollHeight}px`;
         }
     };
+
     useEffect(() => {
-        textareaRefs.current.forEach((textarea) => autoResize(textarea));
-    }, [data])
+        setTimeout(() => {
+            document.querySelectorAll('textarea').forEach((textarea) => {
+                autoResize(textarea);
+            });
+        }, 100);
+        memoizedData.forEach((section, sectionIndex) => {
+            section.items.forEach((item, itemIndex) => {
+                const key = `${page}-${sectionIndex}-${itemIndex}`;
+                setCharCounts((prev) => ({
+                    ...prev,
+                    [key]: item.content.length,
+                }));
+            });
+        });
+    }, [memoizedData]);
 
     const handleChange = (sectionIndex, itemIndex, value) => {
-        setLocalValues((prev) => ({
-            ...prev,
-            [`${sectionIndex}-${itemIndex}`]: value,
-        }));
+        const key = `${page}-${sectionIndex}-${itemIndex}`;
+        if (value.length <= MAX_CHAR_COUNT){
+            setLocalValues((prev) => ({
+                ...prev,
+                [key]: value,
+            }));
+            setCharCounts((prev) => ({
+                ...prev,
+                [key]: value.length,
+            }));
+        }
     };
 
     const handleBlur = (sectionIndex, itemIndex) => {
-        const key = `${sectionIndex}-${itemIndex}`;
+        const key = `${page}-${sectionIndex}-${itemIndex}`;
         if (localValues[key] !== undefined) {
             handleInputChange(sectionIndex, itemIndex, localValues[key]);
         }
@@ -36,6 +59,7 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll }) => {
     const handleClearAllWrapper = () => {
         onClearAll();
         setLocalValues({});
+        setCharCounts({});
     };
 
     return (
@@ -45,7 +69,7 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll }) => {
                     <S.TemplateTitle>{section.title}</S.TemplateTitle>
                     <S.TemplateTable>
                         {section.items.map((item, itemIndex) => {
-                            const key = `${sectionIndex}-${itemIndex}`;
+                            const key = `${page}-${sectionIndex}-${itemIndex}`;
                             return (
                                 <S.TableRow key={itemIndex}>
                                     <S.TableCellHeader
@@ -61,7 +85,6 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll }) => {
                                     >
                                         <textarea
                                             value={localValues[key] ?? item.content}
-                                            ref={(el) => textareaRefs.current.push(el)}
                                             placeholder={item.placeholder}
                                             onChange={(e) => {
                                                 handleChange(sectionIndex, itemIndex, e.target.value);
@@ -69,13 +92,18 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll }) => {
                                             }}
                                             onBlur={() => handleBlur(sectionIndex, itemIndex)}
                                         />
+                                        <S.CharCount $charCount = {charCounts[key]} $maxCount = {MAX_CHAR_COUNT}>
+                                            {charCounts[key] || 0}/{MAX_CHAR_COUNT}
+                                        </S.CharCount>
                                     </S.TableCellData>
                                 </S.TableRow>
                             );
                         })}
                     </S.TemplateTable>
                     <S.ButtonWrapper>
-                        <UnderlineButton onClick={handleClearAllWrapper}>전체 내용 삭제하기</UnderlineButton>
+                        <UnderlineButton onClick={handleClearAllWrapper}>
+                            전체 내용 삭제하기
+                        </UnderlineButton>
                     </S.ButtonWrapper>
                 </S.TemplateWrapper>
             ))}

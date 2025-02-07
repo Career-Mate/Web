@@ -7,18 +7,6 @@ export const useSmartPlanner = () => {
     const [data, setData] = useState(SmartPlannerInitialData);
     const {mutate: updatePlanner} = useUpdatePlanner();
 
-    const checkPageCanSave = (page) => {
-        const section = data[page];
-        if (
-            section.activityName === '' ||
-            section.goalPeriod.startDate === null ||
-            section.goalPeriod.endDate === null
-        ) {
-            return false;
-        }
-        return section.items.slice(0, 5).every((item) => item.content.trim().length > 0);
-    };
-
     const areDatesEqual = (serverDate, localDate) => {
         const serverDateObj = new Date(serverDate);
         const localDateObj = new Date(localDate);
@@ -67,11 +55,7 @@ export const useSmartPlanner = () => {
 
 
     const handleSave = (serverData,page) => {
-        if (!checkPageCanSave(page)) {
-            alert('항목을 모두 입력해주세요!');
-            return;
-        }
-        else if(!isPageModified(serverData, page)){
+        if(!isPageModified(serverData, page)){
             alert("수정된 내용이 없습니다!");
             return;
         }
@@ -87,8 +71,7 @@ export const useSmartPlanner = () => {
     return {
         data,
         setData,
-        handleSave,
-        checkPageCanSave
+        handleSave
     };
 };
 

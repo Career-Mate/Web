@@ -62,7 +62,8 @@ export const TableCellData = styled.div.withConfig({
     background: #ffffff;
     width: 55%;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-end;
     padding: 20px;
     overflow-wrap: break-word;
     white-space: normal;
@@ -86,6 +87,11 @@ export const TableCellData = styled.div.withConfig({
         box-sizing: border-box;
     }
 `;
+
+export const CharCount = styled.div`
+    font-size: 8px;
+    color: ${(props)=>(props.$charCount >= props.$maxCount ? 'red' : 'grey') };
+`
 
 export const ButtonWrapper = styled.div`
     display: flex;
