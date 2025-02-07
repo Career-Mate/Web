@@ -56,7 +56,7 @@ export const StyledImgOverlay = styled.div`
 export const ImgTextWrapper = styled.div`
     position: absolute;
     bottom: 40px;
-    left: 30px;
+    left: 50px;
 
     display: flex;
     flex-direction: column;
@@ -143,7 +143,7 @@ export const ListWrapper = styled.div`
     height: fit-content;
 
     box-sizing: border-box;
-    padding: 40px 20px 60px 20px;
+    padding: 40px 10px 60px 10px;
 `;
 
 export const ButtonWrapper = styled.div`
