@@ -6,17 +6,29 @@ import backThumbnail from '../../../../assets/Card/backend.png';
 import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
-import useScrapStore from '../../../../store/useScrapStore';
+import { postScrapJob, deleteScrapJob } from '../../../../apis/Scrap/Job/JobScrapApi';
+import { useState, useEffect } from 'react';
 
-const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, onClick }) => {
-    const { scrapJobs, addScrapJob, removeScrapJob } = useScrapStore();
-    const isScrap = scrapJobs.some((job) => job.id === id);
+const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, onClick, isScrapped, onScrapUpdate }) => {
+    const [isScrap, setIsScrap] = useState(isScrapped);
 
-    const handleClick = () => {
-        if (isScrap) {
-            removeScrapJob(id);
-        } else {
-            addScrapJob({ id, companyName, deadline, contentName, thumbnail, onClick });
+    useEffect(() => {
+        setIsScrap(isScrapped);
+    }, [isScrapped]);
+
+    const handleScrap = async () => {
+        try {
+            if (isScrap) {
+                await deleteScrapJob(id);
+                onScrapUpdate(id, false);
+                console.log(`스크랩 해제됨 (id: ${id})`);
+            } else {
+                const result = await postScrapJob(id);
+                onScrapUpdate(id, true);
+                console.log(`스크랩 성공 (id: ${id}):`, result);
+            }
+        } catch (error) {
+            console.error(`스크랩 요청 실패 (id: ${id}):`, error);
         }
     };
 
@@ -52,7 +64,7 @@ const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, onCli
                     <S.ScrapIcon
                         src={isScrap ? scrapCheckedIcon : scrapUncheckedIcon}
                         alt="스크랩 아이콘"
-                        onClick={handleClick}
+                        onClick={handleScrap}
                     />
                 </S.DeadlineWrapper>
             </S.ContentWrapper>

@@ -2,8 +2,8 @@ import * as S from './styled/styled';
 import pin from '../../../assets/common/pin.svg';
 import ContentCard from '../../../components/common/Card/ContentCard/ContentCard';
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
-import useScrapStore from '../../../store/useScrapStore';
-import { getScrapContent } from '../../../apis/Scrap/Content/ContentScrapApi';
+import { getScrapContents } from '../../../apis/Scrap/Content/ContentScrapApi';
+import { getScrapJobs } from '../../../apis/Scrap/Job/JobScrapApi';
 import UnderlineButton from '../../../components/common/Button/UnderlineButton/UnderlineButton';
 import Pagination from '../../../components/common/Pagination/Pagination';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,6 @@ import { useState, useEffect } from 'react';
 const ScrapContentPage = () => {
     const itemsPerPage = 6;
     const navigate = useNavigate();
-    const { scrapJobs } = useScrapStore();
 
     const handleToContent = () => navigate('/recommend/content');
     const handleToJob = () => navigate('/recommend/job');
@@ -20,6 +19,7 @@ const ScrapContentPage = () => {
     const [selectedTab, setSelectedTab] = useState('content');
     const [currentPage, setCurrentPage] = useState(1);
     const [scrapContents, setScrapContents] = useState([]);
+    const [scrapJobs, setScrapJobs] = useState([]);
 
     const totalPages = Math.max(
         1,
@@ -27,22 +27,31 @@ const ScrapContentPage = () => {
     );
     const displayedJobs = scrapJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-    const loadScrapContents = async () => {
-        try {
-            const scrapContentData = await getScrapContent();
-            console.log('scrap content data:', scrapContentData);
-            setScrapContents(Array.isArray(scrapContentData) ? scrapContentData : []);
-        } catch (error) {
-            console.error('get scrap content error:', error);
-        }
-    };
-
     useEffect(() => {
-        loadScrapContents();
-    }, []);
+        const loadScrapData = async () => {
+            try {
+                if (selectedTab === 'content') {
+                    const data = await getScrapContents();
+                    console.log(data);
+                    setScrapContents(Array.isArray(data) ? data : []);
+                } else {
+                    const data = await getScrapJobs();
+                    console.log(data);
+                    setScrapJobs(Array.isArray(data) ? data : []);
+                }
+            } catch (error) {
+                console.error('get scrap data error:', error);
+                throw error;
+            }
+        };
+        loadScrapData();
+    }, [selectedTab]);
 
-    const handleScrapUpdate = (contentId) => {
+    const handleScrapContentUpdate = (contentId) => {
         setScrapContents((prev) => prev.filter((content) => content.contentId !== contentId));
+    };
+    const handleScrapJobUpdate = (jobId) => {
+        setScrapJobs((prev) => prev.filter((job) => job.recruitId !== jobId));
     };
 
     return (
@@ -75,7 +84,7 @@ const ScrapContentPage = () => {
                                     thumbnail={content.photo}
                                     url={content.url}
                                     isScrapped={content.isScrapped}
-                                    onScrapUpdate={handleScrapUpdate}
+                                    onScrapUpdate={handleScrapContentUpdate}
                                 />
                             ))}
                         </S.CardWrapper>
@@ -95,12 +104,14 @@ const ScrapContentPage = () => {
                         <S.CardWrapper>
                             {displayedJobs.map((job) => (
                                 <JobPostingCard
-                                    key={job.id}
-                                    id={job.id}
+                                    key={job.recruitId}
+                                    id={job.recruitId}
                                     companyName={job.companyName}
-                                    deadline={job.deadline}
-                                    contentName={job.contentName}
+                                    deadline={job.deadLine}
+                                    contentName={job.title}
                                     thumbnail={job.thumbnail}
+                                    isScrapped={job.isScraped}
+                                    onScrapUpdate={handleScrapJobUpdate}
                                 />
                             ))}
                         </S.CardWrapper>

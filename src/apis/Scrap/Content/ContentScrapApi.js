@@ -1,5 +1,4 @@
 import apiClient from '../../axiosInstance';
-import { mapRecommendContentData } from '../../../utils/mapRecommendContentData';
 
 export const postScrapContent = async (contentId) => {
     try {
@@ -21,7 +20,7 @@ export const deleteScrapContent = async (contentId) => {
     }
 };
 
-export const getScrapContent = async () => {
+export const getScrapContents = async () => {
     try {
         const response = await apiClient.get('/content/scrap');
         return response.data?.data?.result || [];

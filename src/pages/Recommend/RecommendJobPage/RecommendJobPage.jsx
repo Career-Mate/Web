@@ -24,12 +24,22 @@ const RecommendJobPage = ({ user }) => {
     const { data } = useFetchRecommendJobs(currentPage, SORT_TYPES[sortType]);
 
     const jobName = data?.jobName || '직무 정보 없음';
-    const jobData = data?.jobs || [];
+    const [jobs, setJobs] = useState([]);
     const totalPages = data?.totalPages || 1;
+
+    useEffect(() => {
+        if (data?.jobs) {
+            setJobs(data.jobs);
+        }
+    }, [data]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [currentPage]);
+
+    const handleScrapUpdate = (jobId, isScrapped) => {
+        setJobs((prevJobs) => prevJobs.map((job) => (job.id === jobId ? { ...job, isScrapped } : job)));
+    };
 
     return (
         <S.Container>
@@ -60,17 +70,17 @@ const RecommendJobPage = ({ user }) => {
                 </S.DeadlineWrapper>
 
                 <S.CardWrapper>
-                    {jobData.map((content) => (
+                    {jobs.map((job) => (
                         <JobPostingCard
-                            key={content.id}
-                            id={content.id}
-                            companyName={content.companyName}
-                            deadline={content.deadline}
-                            contentName={content.contentName}
+                            key={job.id}
+                            id={job.id}
+                            companyName={job.companyName}
+                            deadline={job.deadline}
+                            contentName={job.contentName}
                             jobType={jobName}
-                            onClick={() =>
-                                navigate(`/recommend/detail/${content.id}`, { state: { page: currentPage } })
-                            }
+                            onClick={() => navigate(`/recommend/detail/${job.id}`, { state: { page: currentPage } })}
+                            isScrapped={job.isScrapped}
+                            onScrapUpdate={handleScrapUpdate}
                         />
                     ))}
                 </S.CardWrapper>
