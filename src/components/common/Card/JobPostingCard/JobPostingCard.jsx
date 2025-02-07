@@ -9,7 +9,7 @@ import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
 import { postScrapJob, deleteScrapJob } from '../../../../apis/Scrap/Job/JobScrapApi';
 import { useState, useEffect } from 'react';
 
-const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, onClick, isScrapped, onScrapUpdate }) => {
+const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, isScrapped, onScrapUpdate }) => {
     const [isScrap, setIsScrap] = useState(isScrapped);
 
     useEffect(() => {
@@ -55,9 +55,7 @@ const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, onCli
             <S.Thumbnail src={thumbnail} alt={contentName} $width={'348px'} $height={'200px'} $type={false} />
             <S.Line $type={false} />
             <S.ContentWrapper $type={false}>
-                <S.Title $type={false} onClick={onClick}>
-                    {contentName}
-                </S.Title>
+                <S.Title $type={false}>{contentName}</S.Title>
 
                 <S.DeadlineWrapper $type={false}>
                     <S.Deadline>{deadline}</S.Deadline>

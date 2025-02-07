@@ -37,8 +37,8 @@ const RecommendJobPage = ({ user }) => {
         window.scrollTo(0, 0);
     }, [currentPage]);
 
-    const handleScrapUpdate = (jobId, isScrapped) => {
-        setJobs((prevJobs) => prevJobs.map((job) => (job.id === jobId ? { ...job, isScrapped } : job)));
+    const handleScrapUpdate = (jobId, isScraped) => {
+        setJobs((prevJobs) => prevJobs.map((job) => (job.id === jobId ? { ...job, isScraped } : job)));
     };
 
     return (
@@ -79,7 +79,7 @@ const RecommendJobPage = ({ user }) => {
                             contentName={job.contentName}
                             jobType={jobName}
                             onClick={() => navigate(`/recommend/detail/${job.id}`, { state: { page: currentPage } })}
-                            isScrapped={job.isScrapped}
+                            isScrapped={job.isScraped}
                             onScrapUpdate={handleScrapUpdate}
                         />
                     ))}
