@@ -19,11 +19,9 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
     };
 
     useEffect(() => {
-        setTimeout(() => {
-            document.querySelectorAll('textarea').forEach((textarea) => {
-                autoResize(textarea);
-            });
-        }, 100);
+        document.querySelectorAll('textarea').forEach((textarea) => {
+            autoResize(textarea);
+        });
         memoizedData.forEach((section, sectionIndex) => {
             section.items.forEach((item, itemIndex) => {
                 const key = `${page}-${sectionIndex}-${itemIndex}`;
