@@ -9,7 +9,7 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
     const [localValues, setLocalValues] = useState({});
     const [charCounts, setCharCounts] = useState({});
 
-    const MAX_CHAR_COUNT = 256;
+    const MAX_CHAR_COUNT = 1000;
     
     const autoResize = (textarea) => {
         if (textarea) {

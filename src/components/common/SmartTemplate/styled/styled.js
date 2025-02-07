@@ -42,7 +42,7 @@ export const TableCellHeader = styled.div.withConfig({
     shouldForwardProp: (prop) => !['isFirstRow', 'isLastRow'].includes(prop),
 })`
     position: relative;
-    width: 45%;
+    width: 35%;
     background: #b6e3cf;
     display: flex;
     align-items: center;
@@ -60,7 +60,7 @@ export const TableCellData = styled.div.withConfig({
 })`
     flex-grow: 1;
     background: #ffffff;
-    width: 55%;
+    width: 65%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
