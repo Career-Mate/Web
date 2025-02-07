@@ -87,7 +87,7 @@ const JobDetailPage = () => {
             <S.AIChatBotWrapper>
                 {speechVisible && 
                 <><S.AIChatBubbleWrapper>
-                    <textarea readOnly value={detail?.data?.comment}/>
+                    <textarea id={id} readOnly value={detail?.data?.comment}/>
                     </S.AIChatBubbleWrapper>
                     <S.AIChatBubbleTail/>
                     <S.AIChatBubbleTailInner/>
