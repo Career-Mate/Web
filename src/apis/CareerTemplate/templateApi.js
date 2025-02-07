@@ -8,7 +8,7 @@ export const fetchTemplate = async (templateType, jobType) => {
         const response = await apiClient.get('/templates', {
             params: { templateType, jobType },
         });
-        console.log('템플릿 데이터 응답:', response.data);
+
         return response.data;
     } catch (error) {
         console.error('템플릿 데이터 불러오기 실패:', error.response?.data || error.message);
@@ -33,8 +33,6 @@ export const fetchCompletionStatus = async (templateType) => {
 // 기존 답변 조회 API (잘못된 요청 수정)
 export const fetchExistingAnswers = async (templateType) => {
     try {
-        console.log(`fetchExistingAnswers 실행: templateType=${templateType}`);
-
         if (!templateType) {
             console.warn('templateType이 없음.');
             return [];
@@ -43,8 +41,6 @@ export const fetchExistingAnswers = async (templateType) => {
         const response = await apiClient.get('/answers', {
             params: { templateType },
         });
-
-        console.log('기존 답변 API 응답:', response.data);
 
         if (!response.data || !response.data.data) {
             console.warn('기존 답변 응답이 비어 있음.');
@@ -61,13 +57,9 @@ export const fetchExistingAnswers = async (templateType) => {
 // 새 커리어 데이터 저장 API
 export const saveTemplateData = async (data) => {
     try {
-        console.log('API 요청 데이터:', JSON.stringify(data, null, 2));
-
         const response = await apiClient.post('/answers', data, {
             headers: { 'Content-Type': 'multipart/form-data' },
         });
-
-        console.log('저장 성공:', response.data);
 
         return response.data;
     } catch (error) {
@@ -79,13 +71,10 @@ export const saveTemplateData = async (data) => {
 // 기존 커리어 데이터 수정 API
 export const updateTemplateData = async (data) => {
     try {
-        console.log('PATCH 요청 데이터:', data);
-
         const response = await apiClient.patch('/answers', data, {
             headers: { 'Content-Type': 'multipart/form-data' },
         });
 
-        console.log('수정 성공:', response.data);
         return response.data;
     } catch (error) {
         console.error('데이터 수정 실패:', error.response?.data || error.message);

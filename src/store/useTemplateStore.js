@@ -18,7 +18,6 @@ export const useTemplateStore = create((set, get) => ({
     fetchTemplateData: async (templateType, jobType) => {
         if (!jobType) return;
 
-        console.log('fetchTemplateData :', { templateType, jobType });
         set({ isLoading: true, templateType });
 
         try {
@@ -85,8 +84,6 @@ export const useTemplateStore = create((set, get) => ({
                         : [],
                 });
             }
-
-            console.log('최종 데이터 상태 업데이트 완료:', processedTemplateData);
 
             set({
                 data: processedTemplateData,
@@ -198,7 +195,6 @@ export const useTemplateStore = create((set, get) => ({
                 set({ hasExistingData: true });
             }
 
-            console.log('저장 성공:', response);
             alert('저장되었습니다.');
         } catch (error) {
             console.error('데이터 저장 실패:', error);
@@ -206,11 +202,9 @@ export const useTemplateStore = create((set, get) => ({
             if (error.response?.status === 400 && error.response?.data?.code === 'EAN001') {
                 try {
                     const response = await updateTemplateData(formData);
-                    console.log('수정 성공:', response);
                     alert('수정되었습니다.');
                     set({ hasExistingData: true });
                 } catch (patchError) {
-                    console.error('데이터 수정 실패:', patchError);
                     alert('데이터 수정에 실패했습니다.');
                 }
             } else {
@@ -255,7 +249,6 @@ export const useTemplateStore = create((set, get) => ({
             formData.append('data', jsonBlob);
 
             await updateTemplateData(formData);
-            console.log('전체 내용 삭제 및 업데이트 성공');
         } catch (error) {
             console.error('전체 내용 삭제 요청 실패: ', error);
         }

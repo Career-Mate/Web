@@ -22,8 +22,6 @@ const Template = ({ pageType, onDataChange }) => {
 
     const [localValues, setLocalValues] = useState({});
 
-    console.log('Template에서 받아온 데이터:', templateData);
-
     const memoizedData = useMemo(() => {
         return templateData.length >= 2
             ? templateData
