@@ -21,7 +21,9 @@ const Template = ({ pageType, onDataChange }) => {
     } = useTemplateData(pageType, jobType);
 
     const [localValues, setLocalValues] = useState({});
+
     console.log('Template에서 받아온 데이터:', templateData);
+
     const memoizedData = useMemo(() => {
         return templateData.length >= 2
             ? templateData
@@ -36,27 +38,30 @@ const Template = ({ pageType, onDataChange }) => {
         return `${labels}은 꼭 입력해주세요!`;
     }, []);
 
-    const autoResize = (textarea) => {
+    const autoResize = useCallback((textarea) => {
         if (textarea) {
             textarea.style.height = '20px';
             textarea.style.height = `${textarea.scrollHeight}px`;
         }
-    };
+    }, []);
 
-    const handleChange = (sectionIndex, itemIndex, value) => {
+    const handleChange = useCallback((sectionIndex, itemIndex, value) => {
         setLocalValues((prev) => ({
             ...prev,
             [`${sectionIndex}-${itemIndex}`]: value,
         }));
-    };
+    }, []);
 
-    const handleBlur = (sectionIndex, itemIndex) => {
-        const key = `${sectionIndex}-${itemIndex}`;
-        if (localValues[key] !== undefined) {
-            handleInputChange(sectionIndex, itemIndex, localValues[key]);
-        }
-        autoResize(document.getElementById(key));
-    };
+    const handleBlur = useCallback(
+        (sectionIndex, itemIndex) => {
+            const key = `${sectionIndex}-${itemIndex}`;
+            if (localValues[key] !== undefined) {
+                handleInputChange(sectionIndex, itemIndex, localValues[key]);
+            }
+            autoResize(document.getElementById(key));
+        },
+        [handleInputChange, localValues, autoResize],
+    );
 
     if (isLoading) {
         return <p>로딩 중...</p>;
