@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import RabbitLogo from "../../../../assets/JobDetailPage/rabbit-logo.svg"
 export const PageContainer = styled.div`
     width: 100%;
     height: fit-content;
@@ -17,13 +18,15 @@ export const ComponentContainer = styled.div`
 
     box-sizing: border-box;
     padding: 0 40px;
-    width: 75%;
+    width: 900px;
     margin-top: 40px;
+
+    z-index: 0;
 `;
 
 export const ImgWrapper = styled.div`
     width: inherit;
-    height: 542px;
+    height: 400px;
     border-radius: 20px;
     background-color: black;
     position: relative;
@@ -152,3 +155,81 @@ export const ButtonWrapper = styled.div`
     margin-top: 107px;
     margin-bottom: 209px;
 `;
+
+export const AIChatBotWrapper = styled.div`
+    width: fit-content;
+    height: fit-content;
+    margin-top: 50px;
+
+    display: flex;
+    flex-direction: row;
+
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    
+    z-index: 1;
+    gap: 30px;
+`
+export const AIProfile = styled.div`
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background-image: url(${RabbitLogo});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #F1F1F1;
+
+    cursor: pointer;
+
+    &:active {
+    transform: scale(0.95); /* 살짝 축소 */
+
+    }
+`
+export const AIChatBubble = styled.div`
+    position: relative;
+    width: 350px;
+    height: fit-content;
+    padding: 16px 20px;
+    background: #ffffff; /* 말풍선 배경색 */
+    border-radius: 60px;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    line-height: 1.5;
+    white-space: pre-wrap; /* 줄바꿈 유지 */
+    word-wrap: break-word; /* 긴 단어 줄바꿈 처리 */
+
+    text-align: center;
+    font-size: 12px;
+    color: #000000;
+    /* 말풍선 꼬리 부분 */
+/* &:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 5px 0 5px 42px;
+border-color: transparent #ffffff;
+display: block;
+width: 0;
+z-index: 1;
+right: -90px;
+top: 40px;
+}
+
+&:before
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 13px 0 13px 50px;
+border-color: transparent #ffffff;
+display: block;
+width: 0;
+z-index: 0;
+right: -107px;
+top: 32px;
+filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+} */
+`

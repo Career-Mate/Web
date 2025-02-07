@@ -2,41 +2,43 @@ import * as S from './styled/styled.js';
 import companyImg from '../../../assets/JobDetailPage/company.svg';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton.jsx';
 import JobDetailList from '../../../components/Recommend/JobDetailList/JobDetailList.jsx';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useFetchDetail } from '../../../apis/JobDetail/useJobDetailApi.js';
 import { mapJobDetailData } from '../../../utils/JobDetailList/JobDetailMapper.js';
-import { useState, useEffect } from 'react';
+import { useState,useEffect } from 'react';
 
 const JobDetailPage = () => {
-    const { id } = useParams();
-    const { data: detail, error, isLoading, isSuccess: apiSuccess, isError } = useFetchDetail(id);
+    const {id} = useParams();
+    const {data: detail, error, isLoading, isSuccess: apiSuccess, isError} = useFetchDetail(id);
     const [isSuccess, setIsSuccess] = useState(false);
-    const location = useLocation();
-    const prevPage = location.state?.page || 1;
+    const [speechVisible, setSpeechVisible] = useState(false);
+
+    const onAIChatClick = () => {
+        setSpeechVisible((prev)=>!prev);
+    }
 
     const navigate = useNavigate();
     const handlePrevNavigation = () => {
-        navigate('/recommend/job', { state: { page: prevPage } });
+        navigate(-1);
     };
     const handleJobRecruitNavigation = () => {
         window.open(detail?.data?.recruitUrl, '_blank', 'noopener,noreferrer');
     };
-
+    
     useEffect(() => {
         if (detail) {
             setIsSuccess(true);
         }
-        window.scrollTo(0, 0);
     }, [detail]);
-
+    
     if (isLoading) {
         return <div>데이터 로딩 중...</div>;
     }
-
+    
     if (error || !isSuccess) {
         return <div>데이터를 불러올 수 없습니다.</div>;
     }
-
+    
     const detailListData = mapJobDetailData(detail);
 
     return (
@@ -71,6 +73,11 @@ const JobDetailPage = () => {
                     </SquareButton>
                 </S.ButtonWrapper>
             </S.ComponentContainer>
+            <S.AIChatBotWrapper>
+                {speechVisible && <S.AIChatBubble>{detail?.data?.comment}</S.AIChatBubble>}
+                <S.AIProfile onClick={onAIChatClick}/>
+            </S.AIChatBotWrapper>
+
         </S.PageContainer>
     );
 };
