@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import RabbitLogo from "../../../../assets/JobDetailPage/rabbit-logo.svg"
+import RabbitLogo from '../../../../assets/JobDetailPage/rabbit-logo.svg';
 export const PageContainer = styled.div`
     width: 100%;
     height: fit-content;
@@ -157,20 +157,24 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const AIChatBotWrapper = styled.div`
+    position: relative;
+    
     width: fit-content;
     height: fit-content;
     margin-top: 50px;
 
     display: flex;
     flex-direction: row;
+    align-items: end;
 
     position: fixed;
     bottom: 20px;
-    right: 20px;
-    
-    z-index: 1;
-    gap: 30px;
-`
+    right: 50px;
+
+    z-index: 100;
+    gap: 40px;
+`;
+
 export const AIProfile = styled.div`
     width: 96px;
     height: 96px;
@@ -178,23 +182,25 @@ export const AIProfile = styled.div`
     background-image: url(${RabbitLogo});
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #F1F1F1;
-
+    background-color: #f1f1f1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 
     &:active {
-    transform: scale(0.95); /* 살짝 축소 */
-
+        transform: scale(0.95); /* 살짝 축소 */
     }
-`
-export const AIChatBubble = styled.div`
+`;
+
+export const AIChatBubbleWrapper = styled.div`
     position: relative;
+    z-index: 2;
     width: 350px;
     height: fit-content;
     padding: 16px 20px;
     background: #ffffff; /* 말풍선 배경색 */
     border-radius: 60px;
-    
+    margin-bottom: 30px;
+
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     line-height: 1.5;
     white-space: pre-wrap; /* 줄바꿈 유지 */
@@ -203,33 +209,48 @@ export const AIChatBubble = styled.div`
     text-align: center;
     font-size: 12px;
     color: #000000;
-    /* 말풍선 꼬리 부분 */
-/* &:after
-{
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 5px 0 5px 42px;
-border-color: transparent #ffffff;
-display: block;
-width: 0;
-z-index: 1;
-right: -90px;
-top: 40px;
-}
 
-&:before
-{
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 13px 0 13px 50px;
-border-color: transparent #ffffff;
-display: block;
-width: 0;
-z-index: 0;
-right: -107px;
-top: 32px;
-filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
-} */
-`
+    textarea {
+        height: fit-content;
+        width: 300px;
+        border: none;
+        background: none;
+        outline: none;
+        resize: none;
+        overflow: hidden;
+        white-space: normal;
+        word-wrap: break-word;
+        box-sizing: border-box;
+        text-align: center;
+
+        font-size: 14px;
+
+
+    }
+`;
+export const AIChatBubbleTail = styled.div`
+    position: absolute;
+    z-index: 1;
+    bottom: 30px; /* 말풍선 아래에 배치 */
+    right: 115px; /* 왼쪽으로 오프셋 */
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 60px 30px 0; /* 직각 삼각형 */
+    border-color: transparent transparent #ffffff transparent; /* 색상 설정 */
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+`;
+
+export const AIChatBubbleTailInner = styled.div`
+    position: absolute;
+    z-index: 3;
+    bottom: 3px; /* 말풍선 아래에 배치 */
+    right: 153px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 50px 25px 30PX 0; /* 직각 삼각형 */
+    border-color: transparent #ffffff transparent transparent ; /* 색상 설정 */
+    transform: rotate(-90deg) scaleX(-1);
+    
+`;

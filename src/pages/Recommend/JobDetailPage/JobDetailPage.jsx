@@ -24,12 +24,23 @@ const JobDetailPage = () => {
     const handleJobRecruitNavigation = () => {
         window.open(detail?.data?.recruitUrl, '_blank', 'noopener,noreferrer');
     };
-    
+
+    const autoResize = (textarea) => {
+        if (textarea) {
+            textarea.style.height = '20px';
+            textarea.style.height = `${textarea.scrollHeight}px`;
+        }
+    }
     useEffect(() => {
         if (detail) {
             setIsSuccess(true);
         }
     }, [detail]);
+    useEffect(()=>{
+        document.querySelectorAll('textarea').forEach((textarea) => {
+            autoResize(textarea);
+        });
+    },[speechVisible])
     
     if (isLoading) {
         return <div>데이터 로딩 중...</div>;
@@ -74,7 +85,13 @@ const JobDetailPage = () => {
                 </S.ButtonWrapper>
             </S.ComponentContainer>
             <S.AIChatBotWrapper>
-                {speechVisible && <S.AIChatBubble>{detail?.data?.comment}</S.AIChatBubble>}
+                {speechVisible && 
+                <><S.AIChatBubbleWrapper>
+                    <textarea readOnly value={detail?.data?.comment}/>
+                    </S.AIChatBubbleWrapper>
+                    <S.AIChatBubbleTail/>
+                    <S.AIChatBubbleTailInner/>
+                    </>}
                 <S.AIProfile onClick={onAIChatClick}/>
             </S.AIChatBotWrapper>
 
