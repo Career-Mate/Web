@@ -18,7 +18,7 @@ export const useTemplateStore = create((set, get) => ({
     fetchTemplateData: async (templateType, jobType) => {
         if (!jobType) return;
 
-        console.log('🔹 fetchTemplateData 실행:', { templateType, jobType });
+        console.log('fetchTemplateData :', { templateType, jobType });
         set({ isLoading: true, templateType });
 
         try {
@@ -48,10 +48,11 @@ export const useTemplateStore = create((set, get) => ({
                     let startDate = null;
                     let endDate = null;
 
-                    if (q.content === '근무기간' && answerMap[q.questionId] && answerMap[q.questionId].includes('~')) {
-                        const [start, end] = answerMap[q.questionId].split('~');
-                        startDate = start.trim() || null;
-                        endDate = end.trim() || null;
+                    const periodKeywords = ['기간', '근무기간'];
+                    if (periodKeywords.includes(q.content) && content.includes('~')) {
+                        const [start, end] = content.split('~').map((date) => date.trim());
+                        startDate = start || null;
+                        endDate = end || null;
                         content = '';
                     }
 
