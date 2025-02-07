@@ -39,11 +39,10 @@ const ContentCard = ({ id, contentName, thumbnail, url, isScrapped, onScrapUpdat
             />
             <S.Line $type={true} />
             <S.ContentWrapper $type={true}>
-                <S.Title $type={true}>{contentName}</S.Title>
-                <S.DeadlineWrapper>
-                    <S.DetailButton $type={true} onClick={() => window.open(url, '_blank')}>
-                        자세히 보기 &gt;
-                    </S.DetailButton>
+                <S.Title $type={true} onClick={() => window.open(url, '_blank')}>
+                    {contentName}
+                </S.Title>
+                <S.DeadlineWrapper $type={true}>
                     <S.ScrapIcon
                         src={isScrap ? scrapCheckedIcon : scrapUncheckedIcon}
                         alt="스크랩 아이콘"

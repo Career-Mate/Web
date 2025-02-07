@@ -56,18 +56,14 @@ export const Title = styled.div`
     text-overflow: ellipsis;
     font-weight: 600;
     flex-grow: 1;
-`;
-
-export const DetailButton = styled.div`
-    font-size: 16px;
-    font-weight: 400;
-    color: ${({ $type }) => ($type ? '#000000' : '#00000080')};
     cursor: pointer;
 `;
 
 export const DeadlineWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: ${({ $type }) => ($type ? 'flex-end' : 'space-between')};
+    padding-top: 10px;
     align-items: center;
 `;
 

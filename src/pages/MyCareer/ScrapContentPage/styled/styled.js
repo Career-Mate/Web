@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 1280px;
+    width: 1650px;
     padding-bottom: 20px;
-    margin: 0 auto;
+    margin-left: -198px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 export const TitleContainer = styled.div`
@@ -12,7 +15,6 @@ export const TitleContainer = styled.div`
     justify-content: center;
     gap: 2px;
     width: 100%;
-    max-width: 1280px;
     position: relative;
     white-space: nowrap;
     border-bottom: 2px solid #ddd;
