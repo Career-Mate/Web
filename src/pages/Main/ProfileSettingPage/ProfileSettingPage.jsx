@@ -2,12 +2,21 @@ import InfoContainer from '../../../components/common/InfoContainer/InfoContaine
 import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSetting';
 import * as S from './styled/styled';
 import { useProfile } from '../../../hooks/useProfile';
-import { useSaveProfile } from '../../../apis/Profile/useProfileApi';
+import { useFetchProfile, useSaveProfile } from '../../../apis/Profile/useProfileApi';
+import { useEffect } from 'react';
+import { useAuthStore } from '../../../store/authStore';
 
 const ProfileSettingPage = () => {
     const { canSave, emailError, profile, handleProfileFieldChange } = useProfile();
+    const { data, error } = useFetchProfile();
+    const { login } = useAuthStore();
+    const mutation = useSaveProfile(profile);
 
-    const mutation = useSaveProfile();
+    useEffect(() => {
+        if (data) {
+            login(data);
+        }
+    }, [data]);
 
     const handleSave = async () => {
         if (!canSave) {

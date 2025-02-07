@@ -3,14 +3,14 @@ import { deleteProfile, getProfile, modifyProfile, saveProfile } from './profile
 import { useAuthStore } from '../../store/authStore';
 import { useNavigate } from 'react-router-dom';
 
-export const useSaveProfile = () => {
+export const useSaveProfile = (profile) => {
     const navigate = useNavigate();
-    const { fetchUser } = useAuthStore();
+    const { login } = useAuthStore();
 
     return useMutation({
         mutationFn: saveProfile,
-        onSuccess: (data) => {
-            fetchUser(data);
+        onSuccess: () => {
+            login(profile);
             navigate('/profile/success');
         },
         onError: (error) => {

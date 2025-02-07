@@ -10,6 +10,9 @@ import InterviewBox from '../../../components/MainPage/InterviewBox/InterviewBox
 import Card from '../../../components/MainPage/Card/Card';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 import { useNavigate } from 'react-router-dom';
+import { useFetchProfile } from '../../../apis/profile/useProfileApi';
+import { useAuthStore } from '../../../store/authStore';
+import { useEffect } from 'react';
 
 const cards = [
     {
@@ -34,6 +37,15 @@ const cards = [
 
 const MainPage = () => {
     const navigate = useNavigate();
+    const { data, error } = useFetchProfile();
+    const { login } = useAuthStore();
+
+    useEffect(() => {
+        if (data) {
+            login(data);
+        }
+    }, [data]);
+
     return (
         <S.MainContainer>
             <S.FirstPage>
