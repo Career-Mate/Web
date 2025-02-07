@@ -146,7 +146,21 @@ export const useTemplateStore = create((set, get) => ({
             return;
         }
 
-        const isValid = get().data.some((section) =>
+        const { templateType, data } = get();
+
+        if (templateType === 'FINAL_SUMMARY') {
+            set({ canSave: true });
+            return;
+        }
+
+        if (templateType === 'TECHNICAL_SKILLS') {
+            const isValid = data.some((section) => section.items.every((item) => item.content.trim().length > 0));
+
+            set({ canSave: isValid });
+            return;
+        }
+
+        const isValid = data.some((section) =>
             section.items.slice(0, 4).every((item) => {
                 if (item.type === 'date') {
                     return item.startDate !== null && item.endDate !== null;
@@ -159,8 +173,14 @@ export const useTemplateStore = create((set, get) => ({
     },
 
     handleSave: async () => {
-        if (!get().canSave) {
-            alert('필수 항목을 모두 입력해주세요!');
+        const { templateType, canSave } = get();
+
+        if (!canSave) {
+            if (templateType === 'TECHNICAL_SKILLS') {
+                alert('항목을 모두 입력해주세요!');
+            } else {
+                alert('필수 항목을 모두 입력해주세요!');
+            }
             return;
         }
 
