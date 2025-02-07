@@ -68,6 +68,19 @@ export const useTemplateStore = create((set, get) => ({
                 }),
             }));
 
+            while (processedTemplateData.length < 2) {
+                processedTemplateData.push({
+                    items: processedTemplateData[0]?.items
+                        ? processedTemplateData[0].items.map((item) => ({
+                              ...item,
+                              content: '',
+                              startDate: null,
+                              endDate: null,
+                          }))
+                        : [],
+                });
+            }
+
             console.log('최종 데이터 상태 업데이트 완료:', processedTemplateData);
 
             set({
