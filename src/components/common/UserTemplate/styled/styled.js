@@ -177,3 +177,17 @@ export const ButtonWrapper = styled.div`
     align-items: flex-end;
     width: 100%;
 `;
+
+export const UploadButton = styled.button`
+    background: rgb(201, 205, 201);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+
+    &:hover {
+        background: rgb(153, 152, 152);
+    }
+`;

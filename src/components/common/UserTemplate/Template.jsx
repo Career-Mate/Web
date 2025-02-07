@@ -11,6 +11,8 @@ const Template = ({ pageType, onDataChange }) => {
     useFetchUserJobType();
     const jobType = useJobStore((state) => state.jobType);
     const [tooltipVisible, setTooltipVisible] = useState(false);
+    const [uploadedImage, setUploadedImage] = useState(null);
+
     const {
         data: templateData,
         handleInputChange,
@@ -70,6 +72,8 @@ const Template = ({ pageType, onDataChange }) => {
         },
         [handleInputChange, localValues, autoResize],
     );
+
+    const shouldShowImageUpload = jobType === 'Designer' && pageType === 'PROJECT_EXPERIENCE';
 
     if (isLoading) {
         return <p>로딩 중...</p>;
@@ -149,11 +153,38 @@ const Template = ({ pageType, onDataChange }) => {
                                                     />
                                                 </S.DateInput>
                                             </S.DatePickerRow>
+                                        ) : shouldShowImageUpload && item.label === '결과물 / 직접 디자인한 화면' ? (
+                                            <div>
+                                                <label htmlFor="imageUpload">
+                                                    <S.UploadButton>사진 첨부</S.UploadButton>
+                                                </label>
+                                                <input
+                                                    id="imageUpload"
+                                                    type="file"
+                                                    accept="image/*"
+                                                    style={{ display: 'none' }}
+                                                    onChange={(e) =>
+                                                        setUploadedImage(URL.createObjectURL(e.target.files[0]))
+                                                    }
+                                                />
+                                                {uploadedImage && (
+                                                    <img
+                                                        src={uploadedImage}
+                                                        alt="Uploaded"
+                                                        style={{ maxWidth: '100%' }}
+                                                    />
+                                                )}
+                                            </div>
                                         ) : (
                                             <textarea
                                                 id={key}
                                                 value={localValues[key] ?? item.content}
-                                                placeholder={item.placeholder ?? `${item.label}를 입력해주세요.`}
+                                                placeholder={
+                                                    shouldShowImageUpload &&
+                                                    item.label === '결과물 / 직접 디자인한 화면'
+                                                        ? '(사진 첨부)'
+                                                        : `${item.label}를 입력해주세요.`
+                                                }
                                                 onChange={(e) => handleChange(sectionIndex, itemIndex, e.target.value)}
                                                 onBlur={() => handleBlur(sectionIndex, itemIndex)}
                                             />
