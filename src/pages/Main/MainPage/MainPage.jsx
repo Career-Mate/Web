@@ -26,7 +26,7 @@ const cards = [
     {
         title: '나의 커리어',
         url: BookMark,
-        first: '커리어 정리 템플릿을 수정\n스크랩한 채용 공고 확인',
+        first: '스크랩한 채용 공고 확인',
         second: '나의 커리어 발전 과정을 지속적으로 관리하고 업데이트할 수 있습니다.',
     },
 ];
@@ -35,7 +35,7 @@ const MainPage = () => {
     return (
         <S.MainContainer>
             <S.FirstPage>
-                <object width="300px" type="image/svg+xml" data={Logo}></object>
+                <object width="225px" type="image/svg+xml" data={Logo}></object>
                 <S.FirstTextWrapper>
                     경험 정리부터 지원까지
                     <b>
@@ -92,7 +92,7 @@ const MainPage = () => {
                 <OvalButton>로그인하고 프로필 설정하기</OvalButton>
             </S.FifthPage>
             <S.DashedLine>
-                <line x1="20%" y1="5" x2="80%" y2="5" />
+                <line x1="0%" y1="5" x2="100%" y2="5" />
             </S.DashedLine>
             <S.OtherPage>
                 <S.OtherTitle>B2B. 광고, 제휴 문의</S.OtherTitle>

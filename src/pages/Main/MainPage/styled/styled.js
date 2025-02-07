@@ -168,7 +168,7 @@ export const DashedLine = styled.svg`
 export const OtherPage = styled.div`
     font-size: 30px;
     width: 100%;
-    height: 130vh;
+    height: 100vh;
     font-weight: 400;
     display: flex;
     flex-direction: column;
@@ -183,6 +183,8 @@ export const OtherTitle = styled.div`
 `;
 
 export const OtherBox = styled.div`
+    width: 650px;
+    font-size: 25px;
     margin-top: 50px;
     text-align: center;
     border: 1px solid rgba(185, 185, 185, 1);
