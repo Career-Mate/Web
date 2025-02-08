@@ -7,6 +7,7 @@ import Pagination from '../../../components/common/Pagination/Pagination';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 import DeadlineButton from '../../../components/common/Button/DeadlineButton/DeadlineButton';
 import { useFetchRecommendJobs } from '../../../apis/Job/useJobApi';
+import JobPostingCardSkeleton from '../../../components/SkeletonUi/JobPostingCardSkeleton/JobPostingCardSkeleton';
 
 const SORT_TYPES = {
     전체: 'POSTING_DESC',
@@ -21,11 +22,13 @@ const RecommendJobPage = ({ user }) => {
     const [sortType, setSortType] = useState('전체');
 
     const navigate = useNavigate();
-    const { data } = useFetchRecommendJobs(currentPage, SORT_TYPES[sortType]);
+    const { data, isLoading } = useFetchRecommendJobs(currentPage, SORT_TYPES[sortType]);
 
     const jobName = data?.jobName || '직무 정보 없음';
     const jobData = data?.jobs || [];
     const totalPages = data?.totalPages || 1;
+
+    const numbers = Array.from({ length: 6 }, (_, i) => i + 1);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -60,19 +63,21 @@ const RecommendJobPage = ({ user }) => {
                 </S.DeadlineWrapper>
 
                 <S.CardWrapper>
-                    {jobData.map((content) => (
-                        <JobPostingCard
-                            key={content.id}
-                            id={content.id}
-                            companyName={content.companyName}
-                            deadline={content.deadline}
-                            contentName={content.contentName}
-                            jobType={jobName}
-                            onClick={() =>
-                                navigate(`/recommend/detail/${content.id}`, { state: { page: currentPage } })
-                            }
-                        />
-                    ))}
+                    {isLoading
+                        ? numbers.map((number) => <JobPostingCardSkeleton />)
+                        : jobData.map((content) => (
+                              <JobPostingCard
+                                  key={content.id}
+                                  id={content.id}
+                                  companyName={content.companyName}
+                                  deadline={content.deadline}
+                                  contentName={content.contentName}
+                                  jobType={jobName}
+                                  onClick={() =>
+                                      navigate(`/recommend/detail/${content.id}`, { state: { page: currentPage } })
+                                  }
+                              />
+                          ))}
                 </S.CardWrapper>
                 <S.ActionWrapper>
                     <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
