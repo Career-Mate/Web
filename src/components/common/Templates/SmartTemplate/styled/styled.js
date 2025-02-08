@@ -4,9 +4,13 @@ export const TemplateWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 983px;
+    width: 850px;
     gap: 10px;
     padding-bottom: 65px;
+
+    @media (max-width: 1024px) {
+        width: 640px;
+    }
 `;
 
 export const TemplateTitle = styled.h2`
@@ -22,7 +26,7 @@ export const TemplateTitle = styled.h2`
 export const TemplateTable = styled.div`
     display: flex;
     flex-direction: column;
-    width: 976px;
+    width: inherit;
     background: #ffffff;
     border-radius: 12px;
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -90,8 +94,8 @@ export const TableCellData = styled.div.withConfig({
 
 export const CharCount = styled.div`
     font-size: 8px;
-    color: ${(props)=>(props.$charCount >= props.$maxCount ? 'red' : 'grey') };
-`
+    color: ${(props) => (props.$charCount >= props.$maxCount ? 'red' : 'grey')};
+`;
 
 export const ButtonWrapper = styled.div`
     display: flex;
