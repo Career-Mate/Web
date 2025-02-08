@@ -16,7 +16,6 @@ export const TemplateTitle = styled.h2`
     line-height: 39px;
     letter-spacing: -0.011em;
     color: #000000;
-    margin: 0;
 `;
 
 export const TemplateTable = styled.div`
@@ -48,6 +47,7 @@ export const TableCellHeader = styled.div.withConfig({
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
@@ -64,7 +64,7 @@ export const TableCellData = styled.div.withConfig({
     width: 768px;
     background: #ffffff;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: 20px;
     overflow-wrap: break-word;
     white-space: normal;
