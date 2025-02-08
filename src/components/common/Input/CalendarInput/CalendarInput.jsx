@@ -7,6 +7,16 @@ import 'react-datepicker/dist/react-datepicker.css';
 const CalendarInput = React.memo(({ label, startDate, endDate, onStartDateChange, onEndDateChange }) => {
     const startDatePickerRef = useRef(null);
     const endDatePickerRef = useRef(null);
+
+    const convertToUTC = (date) => {
+        if (!date) return null;
+        return new Date(Date.UTC(
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate(),
+            0, 0, 0
+        ));
+    };
     
     const isDateObject = (date) => date instanceof Date && !isNaN(date);
 
@@ -19,7 +29,7 @@ const CalendarInput = React.memo(({ label, startDate, endDate, onStartDateChange
                     <DatePicker
                         ref={startDatePickerRef}
                         selected={isDateObject(startDate) ? startDate : null}
-                        onChange={(date) => onStartDateChange(date)}
+                        onChange={(date) => onStartDateChange(convertToUTC(date))}
                         startDate={startDate}
                         endDate={endDate}
                         selectsStart
@@ -35,7 +45,7 @@ const CalendarInput = React.memo(({ label, startDate, endDate, onStartDateChange
                     <DatePicker
                         ref={endDatePickerRef}
                         selected={isDateObject(endDate) ? endDate : null}
-                        onChange={(date) => onEndDateChange(date)}
+                        onChange={(date) => onEndDateChange(convertToUTC(date))}
                         startDate={startDate}
                         endDate={endDate}
                         minDate={startDate}

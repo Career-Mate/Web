@@ -38,6 +38,7 @@ const JobDetailPage = () => {
         if (detail) {
             setIsSuccess(true);
         }
+        window.scrollTo(0, 0);
     }, [detail]);
     useEffect(() => {
         document.querySelectorAll('textarea').forEach((textarea) => {
