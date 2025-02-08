@@ -4,7 +4,7 @@ export const TemplateWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 983px;
+    width: 800px;
     gap: 10px;
     padding-bottom: 65px;
 `;
@@ -21,7 +21,7 @@ export const TemplateTitle = styled.h2`
 export const TemplateTable = styled.div`
     display: flex;
     flex-direction: column;
-    width: 976px;
+    width: inherit;
     background: #ffffff;
     border-radius: 12px;
     border: 2px solid rgba(0, 0, 0, 0.2);
