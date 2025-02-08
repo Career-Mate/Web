@@ -5,27 +5,22 @@ import { mapPlannerDataToState, mapStateToPlannerData } from '../utils/smartPlan
 
 export const useSmartPlanner = () => {
     const [data, setData] = useState(SmartPlannerInitialData);
-    const {mutate: updatePlanner} = useUpdatePlanner();
+    const { mutate: updatePlanner } = useUpdatePlanner();
 
     const areDatesEqual = (serverDate, localDate) => {
         const serverDateObj = new Date(serverDate);
         const localDateObj = new Date(localDate);
-    
+
         const serverLocalTime = new Date(
-            serverDateObj.getFullYear(), 
-            serverDateObj.getMonth(), 
-            serverDateObj.getDate()
+            serverDateObj.getFullYear(),
+            serverDateObj.getMonth(),
+            serverDateObj.getDate(),
         );
-    
-        const localTime = new Date(
-            localDateObj.getFullYear(), 
-            localDateObj.getMonth(), 
-            localDateObj.getDate()
-        );
-    
+
+        const localTime = new Date(localDateObj.getFullYear(), localDateObj.getMonth(), localDateObj.getDate());
+
         return serverLocalTime.getTime() === localTime.getTime();
     };
-    
 
     const isPageModified = (serverData, page) => {
         const server = serverData[page];
@@ -53,17 +48,13 @@ export const useSmartPlanner = () => {
         return JSON.stringify(localItems) !== JSON.stringify(serverItems);
     };
 
-
-    const handleSave = (serverData,page) => {
-        if(!isPageModified(serverData, page)){
-            alert("수정된 내용이 없습니다!");
+    const handleSave = (serverData, page) => {
+        if (!isPageModified(serverData, page)) {
+            alert('수정된 내용이 없습니다!');
             return;
-        }
-        else {
+        } else {
             setData([...data]);
-            console.log("map전 data",data);
             const updatedPlannerData = mapStateToPlannerData(data);
-            console.log("updatePlannerData",updatedPlannerData);
             updatePlanner(updatedPlannerData);
         }
     };
@@ -71,7 +62,7 @@ export const useSmartPlanner = () => {
     return {
         data,
         setData,
-        handleSave
+        handleSave,
     };
 };
 
@@ -97,7 +88,6 @@ export const usePlannerDataEffect = (isSuccess, planner, setData, isError, error
         }
 
         if (isSuccess && planner) {
-
             setData((prevData) => mapPlannerDataToState(planner, prevData));
         }
     }, [isSuccess, planner, setData, isError, error, createPlanner, isCreating]);
