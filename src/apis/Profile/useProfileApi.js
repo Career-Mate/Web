@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { deleteProfile, getProfile, modifyProfile, saveProfile } from './profileApi';
 import { useAuthStore } from '../../store/authStore';
 import { useNavigate } from 'react-router-dom';
@@ -37,14 +37,18 @@ export const useFetchProfile = () => {
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['profile'],
         queryFn: getProfile,
-        retry: 1,
+        retry: 0,
     });
     return { data, isLoading, isError, error };
 };
 
 export const useDeleteProfile = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: deleteProfile,
+        onSuccess: () => {
+            queryClient.removeQueries('profile');
+        },
         onError: (error) => {
             alert('프로필 수정에 실패했습니다. 다시 시도해주세요.');
         },

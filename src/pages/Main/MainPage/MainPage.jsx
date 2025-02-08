@@ -38,11 +38,15 @@ const cards = [
 const MainPage = () => {
     const navigate = useNavigate();
     const { data, error } = useFetchProfile();
-    const { login } = useAuthStore();
+    const { isLogin, login, logout } = useAuthStore();
 
     useEffect(() => {
-        if (data) {
+        if (data && !isLogin) {
+            console.log('로그인');
+            console.log(data);
             login(data);
+        } else if (!data) {
+            logout();
         }
     }, [data]);
 

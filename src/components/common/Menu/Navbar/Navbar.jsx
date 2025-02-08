@@ -14,8 +14,9 @@ const Navbar = () => {
     const { isLogin, logout, user } = useAuthStore();
 
     useEffect(() => {
-        console.log(user);
-    }, [user]);
+        //console.log(user);
+        console.log(isLogin);
+    }, [isLogin]);
 
     const isActive = (path) => location.pathname.startsWith(`/${path}`);
 
