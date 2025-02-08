@@ -25,14 +25,14 @@ export const TemplateTable = styled.div`
     width: 976px;
     background: #ffffff;
     border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(0, 0, 0, 0.2);
 `;
 
 export const TableRow = styled.div`
     display: flex;
     width: 100%;
     height: auto;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
     &:last-child {
         border-bottom: none;
     }
@@ -50,7 +50,7 @@ export const TableCellHeader = styled.div.withConfig({
     font-weight: 700;
     font-size: 16px;
     color: rgba(0, 0, 0, 0.8);
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 2px solid rgba(0, 0, 0, 0.2);
     border-top-left-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
     border-bottom-left-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
 `;
