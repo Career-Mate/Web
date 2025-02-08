@@ -15,10 +15,7 @@ const Navbar = () => {
     const { isLogin, logout, user } = useAuthStore();
     const mutation = useLogout();
 
-    useEffect(() => {
-        //console.log(user);
-        console.log(isLogin);
-    }, [isLogin]);
+    useEffect(() => {}, [isLogin]);
 
     const isActive = (path) => location.pathname.startsWith(`/${path}`);
 
@@ -33,7 +30,6 @@ const Navbar = () => {
     const handleLogout = () => {
         setIsPopUp(false);
         mutation.mutate();
-        //logout();
     };
 
     return (
