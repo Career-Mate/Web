@@ -16,7 +16,7 @@ export const SideContainer = styled.div`
     margin-right: 100px;
 
     @media (max-width: 1024px) {
-        left: -1px;
+        left: -2px;
         margin-right: 0px;
     }
 `;
