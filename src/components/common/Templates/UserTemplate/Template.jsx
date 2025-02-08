@@ -2,10 +2,10 @@ import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useMemo } from 'react';
-import { useTemplateData } from '../../../hooks/useTemplateData';
-import { jobTemplateData } from '../../../data/jobTemplateData';
+import { useTemplateData } from '../../../../hooks/useTemplateData';
+import { jobTemplateData } from '../../../../data/jobTemplateData';
 import * as S from './styled/styled';
-import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
+import UnderlineButton from '../../Button/UnderlineButton/UnderlineButton';
 
 const Template = ({ jobType = 'frontend', pageType = 'internExperience', data: externalData, onDataChange }) => {
     const initialData = jobTemplateData[pageType]?.[jobType] || [];

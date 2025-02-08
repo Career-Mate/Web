@@ -1,8 +1,8 @@
 import * as S from './styled/styled';
 import { useMemo } from 'react';
-import { useTemplateData } from '../../../hooks/useTemplateData';
-import { textTemplateData } from '../../../data/textTemplateData';
-import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
+import { useTemplateData } from '../../../../hooks/useTemplateData';
+import { textTemplateData } from '../../../../data/textTemplateData';
+import UnderlineButton from '../../Button/UnderlineButton/UnderlineButton';
 
 const TextTemplate = ({ jobType = 'frontend', pageType = 'skills', data: externalData, onDataChange }) => {
     const initialData = textTemplateData[pageType]?.[jobType] || [];

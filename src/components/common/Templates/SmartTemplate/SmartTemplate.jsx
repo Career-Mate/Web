@@ -1,7 +1,7 @@
 import * as S from './styled/styled';
 import { useMemo, useState, useEffect, useRef } from 'react';
-import { useTemplateData } from '../../../hooks/useTemplateData';
-import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
+import { useTemplateData } from '../../../../hooks/useTemplateData';
+import UnderlineButton from '../../Button/UnderlineButton/UnderlineButton';
 
 const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) => {
     const { handleInputChange, data } = useTemplateData(externalData, onDataChange);
@@ -10,7 +10,7 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
     const [charCounts, setCharCounts] = useState({});
 
     const MAX_CHAR_COUNT = 1000;
-    
+
     const autoResize = (textarea) => {
         if (textarea) {
             textarea.style.height = '20px';
@@ -35,7 +35,7 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
 
     const handleChange = (sectionIndex, itemIndex, value) => {
         const key = `${page}-${sectionIndex}-${itemIndex}`;
-        if (value.length <= MAX_CHAR_COUNT){
+        if (value.length <= MAX_CHAR_COUNT) {
             setLocalValues((prev) => ({
                 ...prev,
                 [key]: value,
@@ -90,7 +90,7 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
                                             }}
                                             onBlur={() => handleBlur(sectionIndex, itemIndex)}
                                         />
-                                        <S.CharCount $charCount = {charCounts[key]} $maxCount = {MAX_CHAR_COUNT}>
+                                        <S.CharCount $charCount={charCounts[key]} $maxCount={MAX_CHAR_COUNT}>
                                             {charCounts[key] || 0}/{MAX_CHAR_COUNT}
                                         </S.CharCount>
                                     </S.TableCellData>
@@ -99,9 +99,7 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
                         })}
                     </S.TemplateTable>
                     <S.ButtonWrapper>
-                        <UnderlineButton onClick={handleClearAllWrapper}>
-                            전체 내용 삭제하기
-                        </UnderlineButton>
+                        <UnderlineButton onClick={handleClearAllWrapper}>전체 내용 삭제하기</UnderlineButton>
                     </S.ButtonWrapper>
                 </S.TemplateWrapper>
             ))}

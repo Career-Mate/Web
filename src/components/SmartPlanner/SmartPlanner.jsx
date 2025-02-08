@@ -1,13 +1,11 @@
 import ProfileInput from '../common/Input/ProfileInput';
 import CalendarInput from '../common/Input/CalendarInput/CalendarInput';
-import TextTemplate from '../common/TextTemplate/TextTemplate';
-import SmartTemplate from '../common/SmartTemplate/SmartTemplate';
+import SmartTemplate from '../common/Templates/SmartTemplate/SmartTemplate';
 import React from 'react';
-import { handleDateChange, handleInputChange,handleClearAll } from "../../utils/SmartPlanner/plannerHandler"
+import { handleDateChange, handleInputChange, handleClearAll } from '../../utils/SmartPlanner/plannerHandler';
 import * as S from './styled/styled';
 
 const SmartPlanner = ({ data, onDataChange, page }) => {
-    
     return (
         <S.Container>
             <S.InputContainer>
@@ -27,7 +25,7 @@ const SmartPlanner = ({ data, onDataChange, page }) => {
             </S.InputContainer>
             <SmartTemplate
                 data={[data[page]]}
-                onClearAll={()=>handleClearAll(onDataChange,page)}
+                onClearAll={() => handleClearAll(onDataChange, page)}
                 onDataChange={(updatedArray) =>
                     onDataChange((prevData) => {
                         const newData = [...prevData];
@@ -35,7 +33,7 @@ const SmartPlanner = ({ data, onDataChange, page }) => {
                         return newData;
                     })
                 }
-                page = {page}
+                page={page}
             />
         </S.Container>
     );
