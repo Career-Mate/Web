@@ -179,7 +179,7 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const UploadButton = styled.button`
-    background: rgb(201, 205, 201);
+    background: rgb(200, 205, 200);
     color: white;
     border: none;
     padding: 8px 12px;
@@ -188,6 +188,6 @@ export const UploadButton = styled.button`
     font-size: 14px;
 
     &:hover {
-        background: rgb(153, 152, 152);
+        background: rgb(107, 107, 107);
     }
 `;
