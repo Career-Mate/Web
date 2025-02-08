@@ -158,7 +158,7 @@ export const ButtonWrapper = styled.div`
 
 export const AIChatBotWrapper = styled.div`
     position: relative;
-    
+
     width: fit-content;
     height: fit-content;
     margin-top: 50px;
@@ -187,7 +187,7 @@ export const AIProfile = styled.div`
     cursor: pointer;
 
     &:active {
-        transform: scale(0.95); /* 살짝 축소 */
+        transform: scale(0.95);
     }
 `;
 
@@ -197,14 +197,14 @@ export const AIChatBubbleWrapper = styled.div`
     width: 350px;
     height: fit-content;
     padding: 16px 20px;
-    background: #ffffff; /* 말풍선 배경색 */
+    background: #ffffff;
     border-radius: 60px;
     margin-bottom: 30px;
 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     line-height: 1.5;
-    white-space: pre-wrap; /* 줄바꿈 유지 */
-    word-wrap: break-word; /* 긴 단어 줄바꿈 처리 */
+    white-space: pre-wrap;
+    word-wrap: break-word;
 
     text-align: center;
     font-size: 12px;
@@ -224,33 +224,30 @@ export const AIChatBubbleWrapper = styled.div`
         text-align: center;
 
         font-size: 14px;
-
-
     }
 `;
 export const AIChatBubbleTail = styled.div`
     position: absolute;
     z-index: 1;
-    bottom: 30px; /* 말풍선 아래에 배치 */
-    right: 115px; /* 왼쪽으로 오프셋 */
+    bottom: 30px;
+    right: 115px;
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 0 60px 30px 0; /* 직각 삼각형 */
-    border-color: transparent transparent #ffffff transparent; /* 색상 설정 */
+    border-width: 0 60px 30px 0;
+    border-color: transparent transparent #ffffff transparent;
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
 `;
 
 export const AIChatBubbleTailInner = styled.div`
     position: absolute;
     z-index: 3;
-    bottom: 3px; /* 말풍선 아래에 배치 */
+    bottom: 3px;
     right: 153px;
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 50px 25px 30PX 0; /* 직각 삼각형 */
-    border-color: transparent #ffffff transparent transparent ; /* 색상 설정 */
+    border-width: 50px 25px 30px 0;
+    border-color: transparent #ffffff transparent transparent;
     transform: rotate(-90deg) scaleX(-1);
-    
 `;
