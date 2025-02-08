@@ -60,7 +60,7 @@ export const ImgTextWrapper = styled.div`
 
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 
     width: fit-content;
     height: fit-content;
@@ -69,9 +69,9 @@ export const ImgTextWrapper = styled.div`
 `;
 export const ImgTitleWrapper = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: baseline;
-    gap: 20px;
+    gap: 10px;
 `;
 export const ImgTitle = styled.span`
     font-size: 36px;
