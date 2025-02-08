@@ -8,13 +8,13 @@ export const SmartPlannerInitialData = [
         title: 'SMART 기법',
         items: [
             {
-                label: '구체적인 목표(Specific)',
+                label: '구체적인 목표 (Specific)',
                 content: '',
                 placeholder: '내용을 입력해주세요',
                 required: true,
             },
             {
-                label: '측정 가능한 기준을 포함한 목표(Measurable)',
+                label: '측정 가능한 기준을 포함한 목표 (Measurable)',
                 content: '',
                 placeholder: '내용을 입력해주세요',
             },
@@ -49,13 +49,13 @@ export const SmartPlannerInitialData = [
         title: 'SMART 기법',
         items: [
             {
-                label: '구체적인 목표(Specific)',
+                label: '구체적인 목표 (Specific)',
                 content: '',
                 placeholder: '내용을 입력해주세요',
                 required: true,
             },
             {
-                label: '측정 가능한 기준을 포함한 목표(Measurable)',
+                label: '측정 가능한 기준을 포함한 목표 (Measurable)',
                 content: '',
                 placeholder: '내용을 입력해주세요',
             },
