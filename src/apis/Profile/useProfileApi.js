@@ -38,8 +38,6 @@ export const useFetchProfile = () => {
         queryKey: ['profile'],
         queryFn: getProfile,
         retry: 1,
-        staleTime: 300000,
-        cacheTime: 600000,
     });
     return { data, isLoading, isError, error };
 };
