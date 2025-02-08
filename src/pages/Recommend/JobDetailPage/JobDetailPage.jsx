@@ -2,7 +2,7 @@ import * as S from './styled/styled.js';
 import companyImg from '../../../assets/JobDetailPage/company.svg';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton.jsx';
 import JobDetailList from '../../../components/Recommend/JobDetailList/JobDetailList.jsx';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { useFetchDetail } from '../../../apis/JobDetail/useJobDetailApi.js';
 import { mapJobDetailData } from '../../../utils/JobDetailList/JobDetailMapper.js';
 import { useState,useEffect } from 'react';
@@ -13,13 +13,16 @@ const JobDetailPage = () => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [speechVisible, setSpeechVisible] = useState(false);
 
+    const location = useLocation();
+    const prevPage = location.state?.page || 1;
+
     const onAIChatClick = () => {
         setSpeechVisible((prev)=>!prev);
     }
 
     const navigate = useNavigate();
     const handlePrevNavigation = () => {
-        navigate(-1);
+        navigate('/recommend/job', { state: { page: prevPage } });
     };
     const handleJobRecruitNavigation = () => {
         window.open(detail?.data?.recruitUrl, '_blank', 'noopener,noreferrer');
