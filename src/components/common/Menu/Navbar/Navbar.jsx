@@ -6,12 +6,14 @@ import SquareButton from '../../Button/SquareButton/SquareButton.jsx';
 import { useState, useEffect } from 'react';
 import AccountPopup from '../../Popups/AccountPopUp/AccountPopUp.jsx';
 import { useAuthStore } from '../../../../store/authStore.js';
+import { useLogout } from '../../../../apis/Auth/useAuthApi.js';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [isPopUp, setIsPopUp] = useState(false);
     const { isLogin, logout, user } = useAuthStore();
+    const mutation = useLogout();
 
     useEffect(() => {
         //console.log(user);
@@ -30,7 +32,8 @@ const Navbar = () => {
 
     const handleLogout = () => {
         setIsPopUp(false);
-        logout();
+        mutation.mutate();
+        //logout();
     };
 
     return (
