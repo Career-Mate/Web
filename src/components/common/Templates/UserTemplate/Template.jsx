@@ -183,7 +183,7 @@ const Template = ({ pageType, onDataChange }) => {
                                                     shouldShowImageUpload &&
                                                     item.label === '결과물 / 직접 디자인한 화면'
                                                         ? '(사진 첨부)'
-                                                        : `${item.label}를 입력해주세요.`
+                                                        : `${item.label}을 입력해주세요.`
                                                 }
                                                 onChange={(e) => handleChange(sectionIndex, itemIndex, e.target.value)}
                                                 onBlur={() => handleBlur(sectionIndex, itemIndex)}

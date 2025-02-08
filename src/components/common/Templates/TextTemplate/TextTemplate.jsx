@@ -84,7 +84,11 @@ const TextTemplate = ({ pageType }) => {
                                         <textarea
                                             id={key}
                                             value={localValues[key] ?? item.content}
-                                            placeholder={item.placeholder ?? `${item.label}을 입력해주세요.`}
+                                            placeholder={
+                                                pageType === 'SUMMARY'
+                                                    ? '내용을 입력해주세요.'
+                                                    : (item.placeholder ?? `${item.label}을 입력해주세요.`)
+                                            }
                                             onChange={(e) => handleChange(sectionIndex, itemIndex, e.target.value)}
                                             onBlur={() => handleBlur(sectionIndex, itemIndex)}
                                             onInput={(e) => autoResize(e.target)}
