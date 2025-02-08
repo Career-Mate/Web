@@ -3,17 +3,23 @@ import BookIcon from '../../../assets/common/book-icon.svg';
 import { GrCircleQuestion } from 'react-icons/gr';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import SmartPlanner from '../../../components/SmartPlanner/SmartPlanner';
-import { useSmartPlanner } from '../../../components/SmartPlanner/useSmartPlanner';
-import { useState } from 'react';
+import { useSmartPlanner, usePlannerDataEffect } from '../../../hooks/useSmartPlanner';
+import { useFetchPlanner } from '../../../apis/smartPlanner/useSmartPlannerApi';
+import { useState,useEffect } from 'react';
 
 const SmartPlannerPage = () => {
     const [tooltipVisible, setTooltipVisible] = useState(false);
     const [page, setPage] = useState(0);
     const pageChange = (num) => {
         setPage((prev) => prev + num);
+        window.scrollTo(0, 0);
     };
-    const { data, setData, canSave, handleSave } = useSmartPlanner();
+    const { data: plannerData, error, isSuccess, isError } = useFetchPlanner();
+    const { data, setData, handleSave } = useSmartPlanner();
 
+    const planners = plannerData?.data?.planners;
+    usePlannerDataEffect(isSuccess, planners, setData, isError, error);
+    
     const renderTooltip = () => (
         <S.TooltipWrapper onMouseEnter={() => setTooltipVisible(true)} onMouseLeave={() => setTooltipVisible(false)}>
             <GrCircleQuestion />
@@ -35,7 +41,7 @@ const SmartPlannerPage = () => {
             )}
         </S.TooltipWrapper>
     );
-    const renderPageContent = () =>
+    const renderTitleContent = () =>
         page === 0 ? (
             <>
                 <S.TextContainer>
@@ -54,11 +60,8 @@ const SmartPlannerPage = () => {
                         </S.Text>
                     </S.TextWrapper>
                 </S.TextContainer>
-                <SmartPlanner data={data} onDataChange={setData} />
             </>
-        ) : (
-            <SmartPlanner data={data} onDataChange={setData} />
-        );
+        ) : null;
     const renderButtons = () => (
         <S.ButtonWrapper>
             <SquareButton
@@ -66,8 +69,7 @@ const SmartPlannerPage = () => {
                 height="60px"
                 padding="18px 48px"
                 backgroundColor="deepgreen"
-                onClick={handleSave}
-                disabled={!canSave}
+                onClick={()=>handleSave(planners, page)}
             >
                 저장
             </SquareButton>
@@ -97,7 +99,8 @@ const SmartPlannerPage = () => {
 
     return (
         <S.MainContainer>
-            {renderPageContent()}
+            {renderTitleContent()}
+            <SmartPlanner data={data} onDataChange={setData} page={page}/>
             {renderButtons()}
         </S.MainContainer>
     );

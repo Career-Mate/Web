@@ -2,10 +2,10 @@ import { FaCalendarAlt, FaExclamationCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useMemo, useState, useCallback, useEffect } from 'react';
-import { useTemplateData } from '../../../hooks/useTemplateData';
-import { useJobStore, useFetchUserJobType } from '../../../store/useJobStore';
+import { useTemplateData } from '../../../../hooks/useTemplateData';
+import { useJobStore, useFetchUserJobType } from '../../../../store/useJobStore';
 import * as S from './styled/styled';
-import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
+import UnderlineButton from '../../../common/Button/UnderlineButton/UnderlineButton';
 
 const Template = ({ pageType, onDataChange }) => {
     useFetchUserJobType();

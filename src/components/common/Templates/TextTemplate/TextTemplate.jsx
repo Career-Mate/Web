@@ -1,8 +1,8 @@
 import * as S from './styled/styled';
 import { useMemo, useState, useCallback, useEffect } from 'react';
-import { useTemplateData } from '../../../hooks/useTemplateData';
-import { useJobStore, useFetchUserJobType } from '../../../store/useJobStore';
-import UnderlineButton from '../Button/UnderlineButton/UnderlineButton';
+import { useTemplateData } from '../../../../hooks/useTemplateData';
+import { useJobStore, useFetchUserJobType } from '../../../../store/useJobStore';
+import UnderlineButton from '../../../common/Button/UnderlineButton/UnderlineButton';
 
 const TextTemplate = ({ pageType }) => {
     useFetchUserJobType();
