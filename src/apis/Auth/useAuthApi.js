@@ -12,5 +12,8 @@ export const useLogout = () => {
             logout();
             queryClient.removeQueries('profile');
         },
+        onError: (error) => {
+            console.error('React Query Error:', error);
+        },
     });
 };
