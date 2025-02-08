@@ -6,6 +6,7 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { useFetchDetail } from '../../../apis/JobDetail/useJobDetailApi.js';
 import { mapJobDetailData } from '../../../utils/JobDetailList/JobDetailMapper.js';
 import { useState, useEffect } from 'react';
+import JobDetailSkeleton from '../../../components/SkeletonUi/JobDetailSkeleton/JobDetailSkeleton.jsx';
 
 const JobDetailPage = () => {
     const { id } = useParams();
@@ -51,7 +52,11 @@ const JobDetailPage = () => {
     }
 
     if (error || !isSuccess) {
-        return <div>데이터를 불러올 수 없습니다.</div>;
+        return (
+            <S.PageContainer>
+                <JobDetailSkeleton />
+            </S.PageContainer>
+        );
     }
 
     const detailListData = mapJobDetailData(detail);

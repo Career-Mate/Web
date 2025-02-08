@@ -31,7 +31,7 @@ export const ImgTextWrapper = styled.div`
 
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 
     width: fit-content;
     height: fit-content;
@@ -40,7 +40,7 @@ export const ImgTextWrapper = styled.div`
 `;
 export const ImgTitleWrapper = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: baseline;
     gap: 20px;
 `;
@@ -50,7 +50,12 @@ export const ImgTitle = styled.span`
     background-color: grey;
     border-radius: 20px;
 `;
-
+export const ImgButton = styled.div`
+    width: 100px;
+    height: 15px;
+    background-color: grey;
+    border-radius: 20px;
+`;
 export const ImgText = styled.span`
     width: 100px;
     height: 20px;
