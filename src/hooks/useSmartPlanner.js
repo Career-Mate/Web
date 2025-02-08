@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { SmartPlannerInitialData } from '../data/smartTemplateData';
 import { useCreatePlanner, useUpdatePlanner } from '../apis/smartPlanner/useSmartPlannerApi';
-import { mapPlannerDataToState, mapStateToPlannerData } from '../utils/smartPlanner/plannerMappers';
+import { mapPlannerDataToState, mapStateToPlannerData } from '../utils/SmartPlanner/plannerMappers';
 
 export const useSmartPlanner = () => {
     const [data, setData] = useState(SmartPlannerInitialData);
