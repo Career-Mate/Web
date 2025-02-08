@@ -4,7 +4,7 @@ import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchContents } from '../../../apis/Content/ContentApi';
+import { getContents } from '../../../apis/Content/ContentApi';
 
 const RecommendContentPage = ({ user }) => {
     const navigate = useNavigate();
@@ -13,7 +13,7 @@ const RecommendContentPage = ({ user }) => {
     useEffect(() => {
         (async () => {
             try {
-                const data = await fetchContents();
+                const data = await getContents();
                 setContents(data.contents);
             } catch (error) {
                 console.error('fetch contents error:', error);

@@ -1,17 +1,14 @@
 import apiClient from '../axiosInstance';
+import { mapRecommendJobData } from '../../utils/mapRecommendJobData';
 
-export const fetchRecommendJobs = async (page = 1, sortType = 'POSTING_DESC') => {
-    try {
-        const response = await apiClient.get('/recruits', {
-            params: {
-                page,
-                size: 6,
-                recruitSortType: sortType,
-            },
-        });
-        return response.data;
-    } catch (error) {
-        console.error('fetch job error: ', error);
-        throw error;
-    }
+export const getRecommendJobs = async (page = 1, sortType = 'POSTING_DESC') => {
+    const response = await apiClient.get('/recruits', {
+        params: {
+            page,
+            size: 6,
+            recruitSortType: sortType,
+        },
+    });
+    console.log('hi:', mapRecommendJobData(response.data));
+    return mapRecommendJobData(response.data);
 };

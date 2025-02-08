@@ -6,7 +6,7 @@ import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import Pagination from '../../../components/common/Pagination/Pagination';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 import DeadlineButton from '../../../components/common/Button/DeadlineButton/DeadlineButton';
-import { useFetchRecommendJobs } from '../../../apis/Job/useJobApi';
+import { getRecommendJobs } from '../../../apis/Job/JobApi';
 
 const SORT_TYPES = {
     전체: 'POSTING_DESC',
@@ -16,22 +16,30 @@ const SORT_TYPES = {
 
 const RecommendJobPage = ({ user }) => {
     const location = useLocation();
+    const navigate = useNavigate();
 
     const [currentPage, setCurrentPage] = useState(location.state?.page || 1);
     const [sortType, setSortType] = useState('전체');
-
-    const navigate = useNavigate();
-    const { data } = useFetchRecommendJobs(currentPage, SORT_TYPES[sortType]);
-
-    const jobName = data?.jobName || '직무 정보 없음';
     const [jobs, setJobs] = useState([]);
-    const totalPages = data?.totalPages || 1;
+    const [totalPages, setTotalPages] = useState(1);
+    const [jobName, setJobName] = useState('직무 정보 없음');
 
     useEffect(() => {
-        if (data?.jobs) {
-            setJobs(data.jobs);
-        }
-    }, [data]);
+        const fetchJobs = async () => {
+            try {
+                const data = await getRecommendJobs(currentPage, SORT_TYPES[sortType]);
+                console.log('API 응답 데이터:', data);
+
+                setJobs(data.jobs || []);
+                setTotalPages(data.totalPages || 1);
+                setJobName(data.jobName || '직무 정보 없음');
+            } catch (err) {
+                console.error('fetchRecommendJobs error:', err);
+            }
+        };
+
+        fetchJobs();
+    }, [currentPage, sortType]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -69,21 +77,30 @@ const RecommendJobPage = ({ user }) => {
                     ))}
                 </S.DeadlineWrapper>
 
-                <S.CardWrapper>
-                    {jobs.map((job) => (
-                        <JobPostingCard
-                            key={job.id}
-                            id={job.id}
-                            companyName={job.companyName}
-                            deadline={job.deadline}
-                            contentName={job.contentName}
-                            jobType={jobName}
-                            onClick={() => navigate(`/recommend/detail/${job.id}`, { state: { page: currentPage } })}
-                            isScrapped={job.isScraped}
-                            onScrapUpdate={handleScrapUpdate}
-                        />
-                    ))}
-                </S.CardWrapper>
+                {jobs.length > 0 ? (
+                    <S.CardWrapper>
+                        {jobs.map((job) => (
+                            <JobPostingCard
+                                key={job.id}
+                                id={job.id}
+                                companyName={job.companyName}
+                                deadline={job.deadline}
+                                contentName={job.contentName}
+                                jobType={jobName}
+                                onClick={() =>
+                                    navigate(`/recommend/detail/${job.id}`, {
+                                        state: { page: currentPage },
+                                    })
+                                }
+                                isScrapped={job.isScraped}
+                                onScrapUpdate={handleScrapUpdate}
+                            />
+                        ))}
+                    </S.CardWrapper>
+                ) : (
+                    <div style={{ textAlign: 'center', fontSize: '18px', margin: '20px 0' }}>공고가 없습니다.</div>
+                )}
+
                 <S.ActionWrapper>
                     <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                     <OvalButton
