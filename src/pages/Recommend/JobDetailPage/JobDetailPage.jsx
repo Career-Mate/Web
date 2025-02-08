@@ -5,11 +5,11 @@ import JobDetailList from '../../../components/Recommend/JobDetailList/JobDetail
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { useFetchDetail } from '../../../apis/JobDetail/useJobDetailApi.js';
 import { mapJobDetailData } from '../../../utils/JobDetailList/JobDetailMapper.js';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const JobDetailPage = () => {
-    const {id} = useParams();
-    const {data: detail, error, isLoading, isSuccess: apiSuccess, isError} = useFetchDetail(id);
+    const { id } = useParams();
+    const { data: detail, error, isLoading, isSuccess: apiSuccess, isError } = useFetchDetail(id);
     const [isSuccess, setIsSuccess] = useState(false);
     const [speechVisible, setSpeechVisible] = useState(false);
 
@@ -17,8 +17,8 @@ const JobDetailPage = () => {
     const prevPage = location.state?.page || 1;
 
     const onAIChatClick = () => {
-        setSpeechVisible((prev)=>!prev);
-    }
+        setSpeechVisible((prev) => !prev);
+    };
 
     const navigate = useNavigate();
     const handlePrevNavigation = () => {
@@ -33,26 +33,26 @@ const JobDetailPage = () => {
             textarea.style.height = '20px';
             textarea.style.height = `${textarea.scrollHeight}px`;
         }
-    }
+    };
     useEffect(() => {
         if (detail) {
             setIsSuccess(true);
         }
     }, [detail]);
-    useEffect(()=>{
+    useEffect(() => {
         document.querySelectorAll('textarea').forEach((textarea) => {
             autoResize(textarea);
         });
-    },[speechVisible])
-    
+    }, [speechVisible]);
+
     if (isLoading) {
         return <div>데이터 로딩 중...</div>;
     }
-    
+
     if (error || !isSuccess) {
         return <div>데이터를 불러올 수 없습니다.</div>;
     }
-    
+
     const detailListData = mapJobDetailData(detail);
 
     return (
@@ -88,16 +88,17 @@ const JobDetailPage = () => {
                 </S.ButtonWrapper>
             </S.ComponentContainer>
             <S.AIChatBotWrapper>
-                {speechVisible && 
-                <><S.AIChatBubbleWrapper>
-                    <textarea id={id} readOnly value={detail?.data?.comment}/>
-                    </S.AIChatBubbleWrapper>
-                    <S.AIChatBubbleTail/>
-                    <S.AIChatBubbleTailInner/>
-                    </>}
-                <S.AIProfile onClick={onAIChatClick}/>
+                {speechVisible && (
+                    <>
+                        <S.AIChatBubbleWrapper>
+                            <textarea id={id} readOnly value={detail?.data?.comment} />
+                        </S.AIChatBubbleWrapper>
+                        <S.AIChatBubbleTail />
+                        <S.AIChatBubbleTailInner />
+                    </>
+                )}
+                <S.AIProfile onClick={onAIChatClick} />
             </S.AIChatBotWrapper>
-
         </S.PageContainer>
     );
 };
