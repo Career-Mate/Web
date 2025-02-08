@@ -58,7 +58,7 @@ export const SecondContainer = styled.div`
     gap: 80px;
     h1 {
         color: rgba(255, 255, 255, 1);
-        font-size: 80px;
+        font-size: 60px;
         font-weight: 700;
     }
 `;
@@ -177,18 +177,18 @@ export const OtherPage = styled.div`
 
 export const OtherTitle = styled.div`
     margin-top: 200px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: 700;
     text-align: center;
 `;
 
 export const OtherBox = styled.div`
     width: 650px;
-    font-size: 25px;
-    margin-top: 50px;
+    font-size: 20px;
+    margin-top: 20px;
     text-align: center;
-    border: 1px solid rgba(185, 185, 185, 1);
-    box-shadow: 0px 0px 8.5px 0px rgba(0, 0, 0, 0.25);
+    //border: 1px solid rgba(185, 185, 185, 1);
+    //box-shadow: 0px 0px 8.5px 0px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    padding: 27px 13px;
+    padding: 15px 13px;
 `;

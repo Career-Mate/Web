@@ -15,13 +15,13 @@ const cards = [
         title: '커리어 정리',
         url: File,
         first: '각 직무별로 최적화된 템플릿을 제공',
-        second: '경험을 하여 스스로 느낀 것을 회고하여 정리하도록 도와드려요.',
+        second: '경험을 하여 스스로 느낀 것을 \n 회고하여 정리하도록 도와드려요.',
     },
     {
         title: '맞춤형 채용 공고 추천',
         url: Search,
         first: '적합한 채용 공고를 찾기 위한\n시간 낭비는 그만!',
-        second: '커리어 메이트가 커리어 정리 템플릿을 분석하고 딱 맞는 채용 공고를 추천해드립니다.',
+        second: '커리어 메이트가 커리어 정리\n 템플릿을 분석하고 딱 맞는 채용 공고를 추천해드립니다.',
     },
     {
         title: '나의 커리어',
@@ -89,7 +89,7 @@ const MainPage = () => {
                 <S.FifthText>
                     커리어의 시작과 성장 과정을 <span>커리어 메이트</span>가 응원합니다!
                 </S.FifthText>
-                <OvalButton>로그인하고 프로필 설정하기</OvalButton>
+                <OvalButton width={'400px'}>로그인하고 프로필 설정하기</OvalButton>
             </S.FifthPage>
             <S.DashedLine>
                 <line x1="0%" y1="5" x2="100%" y2="5" />
