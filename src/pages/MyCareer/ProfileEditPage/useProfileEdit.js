@@ -37,7 +37,7 @@ export const useDeleteAccount = () => {
         setTimeout(() => {
             logout();
             navigate('/');
-        }, 200);
+        }, 300);
     };
 
     return { isDeleting, handleDeleteUser };
