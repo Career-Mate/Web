@@ -76,7 +76,7 @@ export const ThirdPage = styled.div`
     align-items: center;
     gap: 100px;
     width: 100%;
-    height: 100vh;
+    height: auto;
     box-sizing: border-box;
 `;
 

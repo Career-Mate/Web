@@ -2,13 +2,15 @@ import InfoContainer from '../../../components/common/InfoContainer/InfoContaine
 import LoadingPopup from '../../../components/common/Popups/LoadingPopup/LoadingPopup';
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
+import { useProfilePopup } from '../../../hooks/useProfile';
+import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 
 const RecommendMainPage = () => {
     const userName = '김단아';
     const interestJob = '프론트엔드';
 
     const navigate = useNavigate();
-
+    const { showProfilePopup } = useProfilePopup();
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const timeoutId = useRef(null);
 
@@ -70,6 +72,7 @@ const RecommendMainPage = () => {
                     onCancel={handleClosePopup}
                 />
             )}
+            {showProfilePopup && <ProfilePopup />}
         </>
     );
 };
