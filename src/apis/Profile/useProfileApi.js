@@ -39,6 +39,7 @@ export const useFetchProfile = () => {
         queryKey: ['profile'],
         queryFn: getProfile,
         retry: 0,
+        refetchOnWindowFocus: false,
     });
     return { data, isLoading, isError, error };
 };
