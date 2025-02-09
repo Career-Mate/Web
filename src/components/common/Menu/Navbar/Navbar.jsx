@@ -12,7 +12,7 @@ const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [isPopUp, setIsPopUp] = useState(false);
-    const { isLogin, logout, user } = useAuthStore();
+    const { isLogin, user } = useAuthStore();
     const mutation = useLogout();
 
     useEffect(() => {}, [isLogin]);
@@ -51,8 +51,12 @@ const Navbar = () => {
                         </S.Text>
                     </S.TextWrapper>
                     <S.ButtonWrapper>
-                        {isLogin && user?.name?.trim() ? (
-                            <LogoutButton name={user.name} onClick={handlePopUpOpen} />
+                        {isLogin ? (
+                            <LogoutButton
+                                user={user}
+                                onProfile={() => navigate('/profile')}
+                                onLogout={handlePopUpOpen}
+                            />
                         ) : (
                             <SquareButton
                                 width={'124px'}
