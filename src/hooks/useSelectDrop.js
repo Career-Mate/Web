@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const useSelectDrop = (defaultValue) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(defaultValue);
     const [isTouched, setIsTouched] = useState(false);
+
+    useEffect(() => {
+        setSelectedOption(defaultValue);
+    }, [defaultValue]);
 
     const toggleDropDown = () => {
         setIsTouched(true);

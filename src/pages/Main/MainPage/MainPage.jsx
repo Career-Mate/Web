@@ -10,6 +10,10 @@ import InterviewBox from '../../../components/MainPage/InterviewBox/InterviewBox
 import Card from '../../../components/MainPage/Card/Card';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 import Background from '../../../assets/MainPage/main-vector.svg';
+import { useNavigate } from 'react-router-dom';
+import { useFetchProfile } from '../../../apis/Profile/useProfileApi';
+import { useAuthStore } from '../../../store/authStore';
+import { useEffect } from 'react';
 
 const cards = [
     {
@@ -33,6 +37,16 @@ const cards = [
 ];
 
 const MainPage = () => {
+    const navigate = useNavigate();
+    const { data, error } = useFetchProfile();
+    const { isLogin, login } = useAuthStore();
+
+    useEffect(() => {
+        if (data) {
+            login(data);
+        }
+    }, [data]);
+
     return (
         <S.MainContainer>
             <S.FirstPage>
@@ -90,7 +104,9 @@ const MainPage = () => {
                 <S.FifthText>
                     커리어의 시작과 성장 과정을 <span>커리어 메이트</span>가 응원합니다!
                 </S.FifthText>
-                <OvalButton width={'400px'}>로그인하고 프로필 설정하기</OvalButton>
+                <OvalButton width={'400px'} onClick={() => navigate('/login')}>
+                    로그인하고 프로필 설정하기
+                </OvalButton>
             </S.FifthPage>
             <S.DashedLine>
                 <line x1="0%" y1="5" x2="100%" y2="5" />
