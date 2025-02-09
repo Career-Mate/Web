@@ -11,6 +11,10 @@ export const FooterContainer = styled.footer`
     border-top: 1px solid #d8d8d8;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 391px) {
+        height: 170px;
+    }
 `;
 
 export const ContentWrapper = styled.div`
@@ -21,6 +25,15 @@ export const ContentWrapper = styled.div`
     width: 100%;
     max-width: 1165px;
     height: 120px;
+
+    @media (max-width: 1024px) {
+        max-width: 850px;
+    }
+    @media (max-width: 391px) {
+        max-width: 300px;
+        text-align: center;
+        align-items: center;
+    }
 `;
 
 export const Text = styled.div`
@@ -29,12 +42,19 @@ export const Text = styled.div`
     font-size: 14px;
     line-height: 21px;
     color: #656565;
+    @media (max-width: 391px) {
+        font-size: 12px;
+    }
 `;
 
 export const Section = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
+
+    @media (max-width: 391px) {
+        display: none;
+    }
 `;
 
 export const Row = styled.div`
@@ -63,6 +83,9 @@ export const Copyright = styled.div`
     line-height: 19px;
     text-align: center;
     margin-top: 20px;
+    @media (max-width: 391px) {
+        font-size: 10px;
+    }
 `;
 
 export const Link = styled.a`
@@ -71,5 +94,19 @@ export const Link = styled.a`
 
     &:hover {
         text-decoration: underline;
+    }
+`;
+
+export const ShowOnSmall = styled.div`
+    display: none;
+    @media (max-width: 391px) {
+        display: block;
+    }
+`;
+
+export const HiddenOnSmall = styled.div`
+    display: block;
+    @media (max-width: 391px) {
+        display: none;
     }
 `;
