@@ -40,6 +40,6 @@ export const transformProfileResponse = (responseData) => ({
 });
 
 export const sanitizeProfile = (profile) => {
-    if (!profile) return { name: '', email: '', educationLevel: '', major: '', educationStatus: '', job: '' }; // 기본값 설정
+    if (!profile) return { name: '', email: '', educationLevel: '', major: '', educationStatus: '', job: '' };
     return Object.fromEntries(Object.entries(profile).map(([key, value]) => [key, value ?? '']));
 };
