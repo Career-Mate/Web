@@ -4,11 +4,14 @@ import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSet
 import * as S from './styled/styled';
 import AccountPopUp from '../../../components/common/Popups/AccountPopUp/AccountPopUp';
 import { useProfileEdit, useDeleteAccount } from './useProfileEdit';
+import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
+import { useProfilePopup } from '../../../hooks/useProfile';
 
 const ProfileEditPage = () => {
     const [isPopUp, setIsPopUp] = useState(false);
     const { profile, handleProfileFieldChange, handleSave } = useProfileEdit();
     const { isDeleting, handleDeleteUser } = useDeleteAccount();
+    const { showProfilePopup } = useProfilePopup();
 
     const handlePopUpOpen = () => {
         setIsPopUp(true);
@@ -45,6 +48,7 @@ const ProfileEditPage = () => {
                     <AccountPopUp type={'회원 탈퇴'} onCancel={handlePopUpClose} onConfirm={handleDeleteUser} />
                 )}
             </S.EditContainer>
+            {showProfilePopup && <ProfilePopup />}
         </div>
     );
 };

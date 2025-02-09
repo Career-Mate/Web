@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuthStore } from '../store/authStore';
 import { profileEmptyData } from '../data/profileData';
+import { useNavigate } from 'react-router-dom';
 
 export const useProfile = () => {
     const [profile, setProfile] = useState(profileEmptyData);
@@ -40,4 +41,22 @@ export const useProfile = () => {
     };
 
     return { canSave, emailError, profile, handleProfileFieldChange };
+};
+
+export const useProfilePopup = () => {
+    const { user, isLogin } = useAuthStore();
+    const [showProfilePopup, setShowProfilePopup] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isLogin && !user?.name?.trim()) {
+            setShowProfilePopup(true);
+            setTimeout(() => {
+                setShowProfilePopup(false);
+                navigate('/profile');
+            }, 1000);
+        }
+    }, [user, navigate]);
+
+    return { showProfilePopup };
 };
