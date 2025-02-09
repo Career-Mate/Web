@@ -1,3 +1,17 @@
+const dataURLtoFile = (dataUrl, fileName) => {
+    let arr = dataUrl.split(',');
+    let mime = arr[0].match(/:(.*?);/)[1];
+    let bstr = atob(arr[1]);
+    let n = bstr.length;
+    let u8arr = new Uint8Array(n);
+
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], fileName, { type: mime });
+};
+
 import { create } from 'zustand';
 import {
     fetchTemplate,
@@ -14,6 +28,16 @@ export const useTemplateStore = create((set, get) => ({
     isError: false,
     canSave: false,
     hasExistingData: false,
+    uploadedImages: {},
+
+    setUploadedImages: (newImages) => {
+        set((state) => ({
+            uploadedImages: {
+                ...state.uploadedImages,
+                ...newImages,
+            },
+        }));
+    },
 
     fetchTemplateData: async (templateType, jobType) => {
         if (!jobType) return;
@@ -173,7 +197,7 @@ export const useTemplateStore = create((set, get) => ({
     },
 
     handleSave: async () => {
-        const { templateType, canSave } = get();
+        const { templateType, canSave, uploadedImages } = get();
 
         if (!canSave) {
             if (templateType === 'TECHNICAL_SKILLS') {
@@ -206,6 +230,13 @@ export const useTemplateStore = create((set, get) => ({
         const formData = new FormData();
         const jsonBlob = new Blob([JSON.stringify(requestData)], { type: 'application/json' });
         formData.append('data', jsonBlob);
+
+        if (uploadedImages) {
+            Object.keys(uploadedImages).forEach((key) => {
+                const imageFile = dataURLtoFile(uploadedImages[key], 'image.png');
+                formData.append('image', imageFile);
+            });
+        }
 
         try {
             const { templateType, hasExistingData } = get();

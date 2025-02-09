@@ -84,6 +84,11 @@ const Template = ({ pageType, onDataChange }) => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 console.log('File loaded:', reader.result);
+
+                useTemplateStore.getState().setUploadedImages({
+                    [`${sectionIndex}-${itemIndex}`]: reader.result,
+                });
+
                 setUploadedImages((prev) => ({
                     ...prev,
                     [`${sectionIndex}-${itemIndex}`]: reader.result,
