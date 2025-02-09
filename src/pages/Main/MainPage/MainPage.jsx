@@ -9,6 +9,7 @@ import CheckTextBox from '../../../components/MainPage/CheckTextBox/CheckTextBox
 import InterviewBox from '../../../components/MainPage/InterviewBox/InterviewBox';
 import Card from '../../../components/MainPage/Card/Card';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
+import Background from '../../../assets/MainPage/main-vector.svg';
 
 const cards = [
     {
@@ -43,7 +44,7 @@ const MainPage = () => {
                     </b>
                 </S.FirstTextWrapper>
             </S.FirstPage>
-            <S.SecondPage>
+            <S.SecondPage $background={Background}>
                 <S.SecondContainer>
                     <h1>혹시,</h1>
                     <S.SecondCheckWrapper>
