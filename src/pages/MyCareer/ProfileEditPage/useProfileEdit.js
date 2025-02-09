@@ -33,7 +33,7 @@ export const useDeleteAccount = () => {
 
     const handleDeleteUser = () => {
         setIsDeleting(true);
-        // deleteProfile();
+        deleteProfile();
         setTimeout(() => {
             logout();
             navigate('/');
