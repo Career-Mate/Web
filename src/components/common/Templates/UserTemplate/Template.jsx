@@ -25,6 +25,17 @@ const Template = ({ pageType, onDataChange }) => {
     const [localValues, setLocalValues] = useState({});
 
     useEffect(() => {
+        const savedImages = JSON.parse(localStorage.getItem('uploadedImages')) || {};
+        setUploadedImages(savedImages);
+    }, []);
+
+    useEffect(() => {
+        if (Object.keys(uploadedImages).length > 0) {
+            localStorage.setItem('uploadedImages', JSON.stringify(uploadedImages));
+        }
+    }, [uploadedImages]);
+
+    useEffect(() => {
         const newLocalValues = {};
         templateData.forEach((section, sectionIndex) => {
             section.items.forEach((item, itemIndex) => {
