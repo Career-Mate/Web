@@ -11,8 +11,14 @@ const JobDetailPage = () => {
     const { id } = useParams();
     const { data: detail, error, isLoading, isSuccess: apiSuccess, isError } = useFetchDetail(id);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [speechVisible, setSpeechVisible] = useState(false);
+
     const location = useLocation();
     const prevPage = location.state?.page || 1;
+
+    const onAIChatClick = () => {
+        setSpeechVisible((prev) => !prev);
+    };
 
     const navigate = useNavigate();
     const handlePrevNavigation = () => {
@@ -22,12 +28,23 @@ const JobDetailPage = () => {
         window.open(detail?.data?.recruitUrl, '_blank', 'noopener,noreferrer');
     };
 
+    const autoResize = (textarea) => {
+        if (textarea) {
+            textarea.style.height = '20px';
+            textarea.style.height = `${textarea.scrollHeight}px`;
+        }
+    };
     useEffect(() => {
         if (detail) {
             setIsSuccess(true);
         }
         window.scrollTo(0, 0);
     }, [detail]);
+    useEffect(() => {
+        document.querySelectorAll('textarea').forEach((textarea) => {
+            autoResize(textarea);
+        });
+    }, [speechVisible]);
 
     if (isLoading) {
         return <div>데이터 로딩 중...</div>;
@@ -71,6 +88,18 @@ const JobDetailPage = () => {
                     </SquareButton>
                 </S.ButtonWrapper>
             </S.ComponentContainer>
+            <S.AIChatBotWrapper>
+                {speechVisible && (
+                    <>
+                        <S.AIChatBubbleWrapper>
+                            <textarea id={id} readOnly value={detail?.data?.comment} />
+                        </S.AIChatBubbleWrapper>
+                        <S.AIChatBubbleTail />
+                        <S.AIChatBubbleTailInner />
+                    </>
+                )}
+                <S.AIProfile onClick={onAIChatClick} />
+            </S.AIChatBotWrapper>
         </S.PageContainer>
     );
 };

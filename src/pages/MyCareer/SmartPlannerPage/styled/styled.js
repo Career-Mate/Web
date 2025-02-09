@@ -5,6 +5,7 @@ export const MainContainer = styled.div`
     height: fit-content;
     display: flex;
     flex-direction: column;
+    margin-right: 60px;
     gap: 60px;
 `;
 export const TextContainer = styled.div`
