@@ -111,11 +111,8 @@ const Template = ({ pageType, onDataChange }) => {
     const handleFileChange = (e, sectionIndex, itemIndex) => {
         const file = e.target.files ? e.target.files[0] : null;
         if (file) {
-            console.log('Selected file:', file);
             const reader = new FileReader();
             reader.onloadend = () => {
-                console.log('File loaded:', reader.result);
-
                 useTemplateStore.getState().setUploadedImages({
                     [`${sectionIndex}-${itemIndex}`]: reader.result,
                 });
@@ -127,7 +124,7 @@ const Template = ({ pageType, onDataChange }) => {
             };
             reader.readAsDataURL(file);
         } else {
-            console.log('No file selected');
+            console.log('사진이 선택되지 않았습니다!');
         }
     };
 
