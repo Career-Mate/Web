@@ -64,13 +64,13 @@ export const useTemplateStore = create((set, get) => ({
                             questionId: a.questionId,
                             label: question?.content || '질문 없음',
                             type:
-                                isDateField && !['TECHNICAL_SKILLS', 'FINAL_SUMMARY'].includes(templateType)
+                                isDateField && !['TECHNICAL_SKILLS', 'SUMMARY'].includes(templateType)
                                     ? 'date'
                                     : 'text',
                             isRequired: question?.isRequired || false,
                             placeholder: `${question?.content || '항목'}을 입력해주세요.`,
                             content: isDateField ? '' : a.content || '',
-                            ...(isDateField && !['TECHNICAL_SKILLS', 'FINAL_SUMMARY'].includes(templateType)
+                            ...(isDateField && !['TECHNICAL_SKILLS', 'SUMMARY'].includes(templateType)
                                 ? {
                                       startDate: a.content?.split('~')[0]?.trim() || null,
                                       endDate: a.content?.split('~')[1]?.trim() || null,
@@ -89,13 +89,13 @@ export const useTemplateStore = create((set, get) => ({
                             questionId: q.questionId,
                             label: q.content,
                             type:
-                                isDateField && !['TECHNICAL_SKILLS', 'FINAL_SUMMARY'].includes(templateType)
+                                isDateField && !['TECHNICAL_SKILLS', 'SUMMARY'].includes(templateType)
                                     ? 'date'
                                     : 'text',
                             isRequired: q.isRequired,
                             placeholder: `${q.content}을 입력해주세요.`,
                             content: '',
-                            ...(isDateField && !['TECHNICAL_SKILLS', 'FINAL_SUMMARY'].includes(templateType)
+                            ...(isDateField && !['TECHNICAL_SKILLS', 'SUMMARY'].includes(templateType)
                                 ? { startDate: null, endDate: null }
                                 : {}),
                         };
@@ -110,7 +110,7 @@ export const useTemplateStore = create((set, get) => ({
                         ? processedTemplateData[0].items.map((item) => ({
                               ...item,
                               content: '',
-                              ...(item.type === 'date' && !['TECHNICAL_SKILLS', 'FINAL_SUMMARY'].includes(templateType)
+                              ...(item.type === 'date' && !['TECHNICAL_SKILLS', 'SUMMARY'].includes(templateType)
                                   ? { startDate: null, endDate: null }
                                   : {}),
                           }))
@@ -172,7 +172,7 @@ export const useTemplateStore = create((set, get) => ({
 
         const { templateType, data } = get();
 
-        if (templateType === 'FINAL_SUMMARY') {
+        if (templateType === 'SUMMARY') {
             set({ canSave: true });
             return;
         }
@@ -202,6 +202,8 @@ export const useTemplateStore = create((set, get) => ({
         if (!canSave) {
             if (templateType === 'TECHNICAL_SKILLS') {
                 alert('항목을 모두 입력해주세요!');
+            } else if (templateType === 'SUMMARY') {
+                alert('저장되었습니다!');
             } else {
                 alert('필수 항목을 모두 입력해주세요!');
             }
@@ -276,7 +278,7 @@ export const useTemplateStore = create((set, get) => ({
     clearAll: async (sectionIndex) => {
         set((state) => {
             const templateType = state.templateType;
-            const isTechnicalOrSummary = ['TECHNICAL_SKILLS', 'FINAL_SUMMARY'].includes(templateType);
+            const isTechnicalOrSummary = ['TECHNICAL_SKILLS', 'SUMMARY'].includes(templateType);
 
             const newData = state.data.map((section, sIndex) =>
                 sIndex === sectionIndex
