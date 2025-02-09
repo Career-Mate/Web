@@ -10,7 +10,7 @@ import InterviewBox from '../../../components/MainPage/InterviewBox/InterviewBox
 import Card from '../../../components/MainPage/Card/Card';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 import { useNavigate } from 'react-router-dom';
-import { useFetchProfile } from '../../../apis/profile/useProfileApi';
+import { useFetchProfile } from '../../../apis/Profile/useProfileApi';
 import { useAuthStore } from '../../../store/authStore';
 import { useEffect } from 'react';
 
@@ -38,15 +38,11 @@ const cards = [
 const MainPage = () => {
     const navigate = useNavigate();
     const { data, error } = useFetchProfile();
-    const { isLogin, login, logout } = useAuthStore();
+    const { isLogin, login } = useAuthStore();
 
     useEffect(() => {
-        if (data && !isLogin) {
-            console.log('로그인');
-            console.log(data);
+        if (data) {
             login(data);
-        } else if (!data) {
-            logout();
         }
     }, [data]);
 
