@@ -33,10 +33,10 @@ const Navbar = () => {
     return (
         <S.NavbarContainer>
             <S.Container>
+                <S.LogoWrapper>
+                    <S.Logo src={logo} onClick={() => navigate(``)} />
+                </S.LogoWrapper>
                 <S.Bar>
-                    <S.LogoWrapper>
-                        <S.Logo src={logo} onClick={() => navigate(``)} />
-                    </S.LogoWrapper>
                     <S.TextWrapper>
                         <S.Text $active={isActive('career')} onClick={() => navigate(`career`)}>
                             커리어 정리하기
@@ -48,16 +48,25 @@ const Navbar = () => {
                             나의 커리어
                         </S.Text>
                     </S.TextWrapper>
+                    <S.ButtonWrapper>
+                        {isLogin ? (
+                            <LogoutButton
+                                user={user}
+                                onProfile={() => navigate('/profile')}
+                                onLogout={handlePopUpOpen}
+                            />
+                        ) : (
+                            <SquareButton
+                                width={'124px'}
+                                height={'30px'}
+                                padding={'0'}
+                                onClick={() => navigate('/login')}
+                            >
+                                <span style={{ fontSize: '16px' }}>로그인</span>
+                            </SquareButton>
+                        )}
+                    </S.ButtonWrapper>
                 </S.Bar>
-                <S.ButtonWrapper>
-                    {isLogin ? (
-                        <LogoutButton user={user} onProfile={() => navigate('/profile')} onLogout={handlePopUpOpen} />
-                    ) : (
-                        <SquareButton width={'124px'} height={'30px'} padding={'0'} onClick={() => navigate('/login')}>
-                            <span style={{ fontSize: '16px' }}>로그인</span>
-                        </SquareButton>
-                    )}
-                </S.ButtonWrapper>
             </S.Container>
             <S.GradientBorder />
             {isPopUp && <AccountPopup type={'로그아웃'} onCancel={handlePopUpClose} onConfirm={handleLogout} />}

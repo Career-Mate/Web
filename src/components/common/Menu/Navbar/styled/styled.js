@@ -24,20 +24,19 @@ export const Bar = styled.div`
     display: flex;
     justify-content: space-between;
     align-self: flex-end;
-    width: 875px;
-    height: 100%;
+    width: 80%;
 `;
 
 export const LogoWrapper = styled.div`
     display: flex;
     justify-content: left;
     align-items: flex-end;
-    height: 110%;
+    height: 105%;
 `;
 
 export const Logo = styled.img`
     width: 100%;
-    min-width: 300px;
+    max-height: 150px;
     margin-left: 10px;
     cursor: pointer;
     object-fit: cover;
@@ -47,7 +46,6 @@ export const Logo = styled.img`
 export const TextWrapper = styled.div`
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
 `;
 
 export const Text = styled.div`
@@ -69,6 +67,7 @@ export const ButtonWrapper = styled.div`
     display: flex;
     align-items: flex-end;
     height: auto;
+    align-items: center;
     box-sizing: border-box;
     padding: 15px 0;
 `;
