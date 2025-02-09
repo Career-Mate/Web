@@ -8,17 +8,21 @@ const TextTemplate = ({ pageType }) => {
     useFetchUserJobType();
     const jobType = useJobStore((state) => state.jobType);
     const { handleInputChange, data: templateData, clearAll, isLoading, isError } = useTemplateData(pageType, jobType);
-
     const [localValues, setLocalValues] = useState({});
+    const [charCounts, setCharCounts] = useState({});
+    const MAX_CHAR_COUNT = 300;
 
     useEffect(() => {
         const newLocalValues = {};
+        const newCharCounts = {};
         templateData.forEach((section, sectionIndex) => {
             section.items.forEach((item, itemIndex) => {
                 newLocalValues[`${sectionIndex}-${itemIndex}`] = item.content;
+                newCharCounts[`${sectionIndex}-${itemIndex}`] = item.content.length;
             });
         });
         setLocalValues(newLocalValues);
+        setCharCounts(newCharCounts);
     }, [templateData]);
 
     const memoizedData = useMemo(() => {
@@ -35,10 +39,16 @@ const TextTemplate = ({ pageType }) => {
     }, []);
 
     const handleChange = useCallback((sectionIndex, itemIndex, value) => {
-        setLocalValues((prev) => ({
-            ...prev,
-            [`${sectionIndex}-${itemIndex}`]: value,
-        }));
+        if (value.length <= MAX_CHAR_COUNT) {
+            setLocalValues((prev) => ({
+                ...prev,
+                [`${sectionIndex}-${itemIndex}`]: value,
+            }));
+            setCharCounts((prev) => ({
+                ...prev,
+                [`${sectionIndex}-${itemIndex}`]: value.length,
+            }));
+        }
     }, []);
 
     const handleBlur = useCallback(
@@ -93,6 +103,9 @@ const TextTemplate = ({ pageType }) => {
                                             onBlur={() => handleBlur(sectionIndex, itemIndex)}
                                             onInput={(e) => autoResize(e.target)}
                                         />
+                                        <S.CharCount $charCount={charCounts[key]} $maxCount={MAX_CHAR_COUNT}>
+                                            {charCounts[key] || 0}/{MAX_CHAR_COUNT}
+                                        </S.CharCount>
                                     </S.TableCellData>
                                 </S.TableRow>
                             );

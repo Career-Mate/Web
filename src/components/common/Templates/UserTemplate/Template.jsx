@@ -12,6 +12,9 @@ const Template = ({ pageType, onDataChange }) => {
     const jobType = useJobStore((state) => state.jobType);
     const [tooltipVisible, setTooltipVisible] = useState(false);
     const [uploadedImages, setUploadedImages] = useState({});
+    const [localValues, setLocalValues] = useState({});
+    const [charCounts, setCharCounts] = useState({});
+    const MAX_CHAR_COUNT = 300;
 
     const {
         data: templateData,
@@ -22,7 +25,18 @@ const Template = ({ pageType, onDataChange }) => {
         isError,
     } = useTemplateData(pageType, jobType);
 
-    const [localValues, setLocalValues] = useState({});
+    useEffect(() => {
+        const newLocalValues = {};
+        const newCharCounts = {};
+        templateData.forEach((section, sectionIndex) => {
+            section.items.forEach((item, itemIndex) => {
+                newLocalValues[`${sectionIndex}-${itemIndex}`] = item.content;
+                newCharCounts[`${sectionIndex}-${itemIndex}`] = item.content.length;
+            });
+        });
+        setLocalValues(newLocalValues);
+        setCharCounts(newCharCounts);
+    }, [templateData]);
 
     useEffect(() => {
         const savedImages = JSON.parse(localStorage.getItem('uploadedImages')) || {};
@@ -67,10 +81,16 @@ const Template = ({ pageType, onDataChange }) => {
     }, []);
 
     const handleChange = useCallback((sectionIndex, itemIndex, value) => {
-        setLocalValues((prev) => ({
-            ...prev,
-            [`${sectionIndex}-${itemIndex}`]: value,
-        }));
+        if (value.length <= MAX_CHAR_COUNT) {
+            setLocalValues((prev) => ({
+                ...prev,
+                [`${sectionIndex}-${itemIndex}`]: value,
+            }));
+            setCharCounts((prev) => ({
+                ...prev,
+                [`${sectionIndex}-${itemIndex}`]: value.length,
+            }));
+        }
     }, []);
 
     const handleBlur = useCallback(
@@ -235,18 +255,25 @@ const Template = ({ pageType, onDataChange }) => {
                                                 )}
                                             </div>
                                         ) : (
-                                            <textarea
-                                                id={key}
-                                                value={localValues[key] ?? item.content}
-                                                placeholder={
-                                                    shouldShowImageUpload &&
-                                                    item.label === '결과물 / 직접 디자인한 화면'
-                                                        ? '(사진 첨부)'
-                                                        : `${item.label}을 입력해주세요.`
-                                                }
-                                                onChange={(e) => handleChange(sectionIndex, itemIndex, e.target.value)}
-                                                onBlur={() => handleBlur(sectionIndex, itemIndex)}
-                                            />
+                                            <>
+                                                <textarea
+                                                    id={key}
+                                                    value={localValues[key] ?? item.content}
+                                                    placeholder={
+                                                        shouldShowImageUpload &&
+                                                        item.label === '결과물 / 직접 디자인한 화면'
+                                                            ? '(사진 첨부)'
+                                                            : `${item.label}을 입력해주세요.`
+                                                    }
+                                                    onChange={(e) =>
+                                                        handleChange(sectionIndex, itemIndex, e.target.value)
+                                                    }
+                                                    onBlur={() => handleBlur(sectionIndex, itemIndex)}
+                                                />
+                                                <S.CharCount $charCount={charCounts[key]} $maxCount={MAX_CHAR_COUNT}>
+                                                    {charCounts[key] || 0}/{MAX_CHAR_COUNT}
+                                                </S.CharCount>
+                                            </>
                                         )}
                                     </S.TableCellData>
                                 </S.TableRow>

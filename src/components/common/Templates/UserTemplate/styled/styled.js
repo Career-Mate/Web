@@ -191,3 +191,8 @@ export const UploadButton = styled.button`
         background: rgb(107, 107, 107);
     }
 `;
+
+export const CharCount = styled.div`
+    font-size: 8px;
+    color: ${(props) => (props.$charCount >= props.$maxCount ? 'red' : 'grey')};
+`;

@@ -93,3 +93,8 @@ export const ButtonWrapper = styled.div`
     align-items: flex-end;
     width: 100%;
 `;
+
+export const CharCount = styled.div`
+    font-size: 8px;
+    color: ${(props) => (props.$charCount >= props.$maxCount ? 'red' : 'grey')};
+`;
