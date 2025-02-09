@@ -188,11 +188,19 @@ const Template = ({ pageType, onDataChange }) => {
                                                     onChange={(e) => handleFileChange(e, sectionIndex, itemIndex)}
                                                 />
                                                 {uploadedImages[key] && (
-                                                    <img
-                                                        src={uploadedImages[key]}
-                                                        alt="Uploaded"
-                                                        style={{ maxWidth: '50%' }}
-                                                    />
+                                                    <div
+                                                        style={{
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            alignItems: 'center',
+                                                        }}
+                                                    >
+                                                        <img
+                                                            src={uploadedImages[key]}
+                                                            alt="Uploaded"
+                                                            style={{ maxWidth: '50%' }}
+                                                        />
+                                                    </div>
                                                 )}
                                             </div>
                                         ) : (
