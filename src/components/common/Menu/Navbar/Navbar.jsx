@@ -3,15 +3,17 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../../assets/common/career-mate.svg';
 import LogoutButton from '../../Button/LogoutButton/LogoutButton.jsx';
 import SquareButton from '../../Button/SquareButton/SquareButton.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AccountPopup from '../../Popups/AccountPopUp/AccountPopUp.jsx';
 import { useAuthStore } from '../../../../store/authStore.js';
+import { useLogout } from '../../../../apis/Auth/useAuthApi.js';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [isPopUp, setIsPopUp] = useState(false);
-    const { isLogin, logout, user } = useAuthStore();
+    const { isLogin, user } = useAuthStore();
+    const mutation = useLogout();
 
     const isActive = (path) => location.pathname.startsWith(`/${path}`);
 
@@ -25,7 +27,7 @@ const Navbar = () => {
 
     const handleLogout = () => {
         setIsPopUp(false);
-        logout();
+        mutation.mutate();
     };
 
     return (
@@ -48,7 +50,11 @@ const Navbar = () => {
                     </S.TextWrapper>
                     <S.ButtonWrapper>
                         {isLogin ? (
-                            <LogoutButton name={user.name} onClick={handlePopUpOpen} />
+                            <LogoutButton
+                                user={user}
+                                onProfile={() => navigate('/profile')}
+                                onLogout={handlePopUpOpen}
+                            />
                         ) : (
                             <SquareButton
                                 width={'124px'}
