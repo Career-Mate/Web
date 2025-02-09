@@ -5,23 +5,17 @@ import * as S from './styled/styled';
 import AccountPopUp from '../../../components/common/Popups/AccountPopUp/AccountPopUp';
 import { useProfile } from '../../../hooks/useProfile';
 import { useAuthStore } from '../../../store/authStore';
-import { useDeleteProfile, useEditProfile, useFetchProfile } from '../../../apis/Profile/useProfileApi';
+import { useDeleteProfile, useEditProfile } from '../../../apis/Profile/useProfileApi';
 import { useNavigate } from 'react-router-dom';
 
 const ProfileEditPage = () => {
     const [isPopUp, setIsPopUp] = useState(false);
-    const { fetchUser, logout } = useAuthStore();
-    const { data, isLoading, isError, error } = useFetchProfile();
+    const [isDeleting, setIsDeleting] = useState(false);
+    const { logout, user } = useAuthStore();
     const { canSave, emailError, profile, handleProfileFieldChange } = useProfile();
     const { mutate: deleteProfile } = useDeleteProfile();
-    const { mutate: modifyProfile } = useEditProfile();
+    const { mutate: modifyProfile } = useEditProfile(profile);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        if (data) {
-            fetchUser(data);
-        }
-    }, [data]);
 
     const handlePopUpOpen = () => {
         setIsPopUp(true);
@@ -45,38 +39,42 @@ const ProfileEditPage = () => {
     };
 
     const handleDeleteUser = () => {
-        deleteProfile();
-        logout();
-        navigate('/');
+        setIsDeleting(true);
+        //deleteProfile();
+        setTimeout(() => {
+            logout();
+            navigate('/');
+        }, 200);
     };
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (isError) {
-        return <div>Error: {error.message}</div>;
-    }
-
     return (
-        <S.EditContainer>
-            <S.NoticeWrapper>
-                <S.NoticeTitle>{profile.name} 님의 프로필</S.NoticeTitle>
-                <S.NoticeDetail>{profile.name} 님의 정보를 수정해주세요!</S.NoticeDetail>
-            </S.NoticeWrapper>
-            <S.ContentWrapper>
-                <ProfileSetting
-                    profile={profile}
-                    buttonText={'프로필 저장하기'}
-                    onSave={handleSave}
-                    onChange={handleProfileFieldChange}
-                />
-                <UnderlineButton fontSize={'16px'} onClick={handlePopUpOpen}>
-                    회원 탈퇴
-                </UnderlineButton>
-            </S.ContentWrapper>
-            {isPopUp && <AccountPopUp type={'회원 탈퇴'} onCancel={handlePopUpClose} onConfirm={handleDeleteUser} />}
-        </S.EditContainer>
+        <div
+            style={{
+                opacity: isDeleting ? 0 : 1,
+                transition: 'opacity 0.2s ease-out',
+            }}
+        >
+            <S.EditContainer>
+                <S.NoticeWrapper>
+                    <S.NoticeTitle>{profile.name} 님의 프로필</S.NoticeTitle>
+                    <S.NoticeDetail>{profile.name} 님의 정보를 수정해주세요!</S.NoticeDetail>
+                </S.NoticeWrapper>
+                <S.ContentWrapper>
+                    <ProfileSetting
+                        profile={profile}
+                        buttonText={'프로필 저장하기'}
+                        onSave={handleSave}
+                        onChange={handleProfileFieldChange}
+                    />
+                    <UnderlineButton fontSize={'16px'} onClick={handlePopUpOpen}>
+                        회원 탈퇴
+                    </UnderlineButton>
+                </S.ContentWrapper>
+                {isPopUp && (
+                    <AccountPopUp type={'회원 탈퇴'} onCancel={handlePopUpClose} onConfirm={handleDeleteUser} />
+                )}
+            </S.EditContainer>
+        </div>
     );
 };
 
