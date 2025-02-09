@@ -15,8 +15,6 @@ const Navbar = () => {
     const { isLogin, user } = useAuthStore();
     const mutation = useLogout();
 
-    useEffect(() => {}, [isLogin]);
-
     const isActive = (path) => location.pathname.startsWith(`/${path}`);
 
     const handlePopUpOpen = () => {
