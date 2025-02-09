@@ -1,4 +1,4 @@
-import Template from '../../../components/common/UserTemplate/Template';
+import Template from '../../../components/common/Templates/UserTemplate/Template';
 import ProgressBar from '../../../components/common/ProgressBar/ProgressBar';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import * as S from './styled/styled';
