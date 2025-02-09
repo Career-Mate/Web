@@ -11,7 +11,7 @@ const Template = ({ pageType, onDataChange }) => {
     useFetchUserJobType();
     const jobType = useJobStore((state) => state.jobType);
     const [tooltipVisible, setTooltipVisible] = useState(false);
-    const [uploadedImage, setUploadedImage] = useState(null);
+    const [uploadedImages, setUploadedImages] = useState({});
 
     const {
         data: templateData,
@@ -72,6 +72,28 @@ const Template = ({ pageType, onDataChange }) => {
         },
         [handleInputChange, localValues, autoResize],
     );
+
+    const handleButtonClick = (id) => {
+        document.getElementById(id).click();
+    };
+
+    const handleFileChange = (e, sectionIndex, itemIndex) => {
+        const file = e.target.files ? e.target.files[0] : null;
+        if (file) {
+            console.log('Selected file:', file);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                console.log('File loaded:', reader.result);
+                setUploadedImages((prev) => ({
+                    ...prev,
+                    [`${sectionIndex}-${itemIndex}`]: reader.result,
+                }));
+            };
+            reader.readAsDataURL(file);
+        } else {
+            console.log('No file selected');
+        }
+    };
 
     const shouldShowImageUpload = jobType === 'Designer' && pageType === 'PROJECT_EXPERIENCE';
 
@@ -155,23 +177,21 @@ const Template = ({ pageType, onDataChange }) => {
                                             </S.DatePickerRow>
                                         ) : shouldShowImageUpload && item.label === '결과물 / 직접 디자인한 화면' ? (
                                             <div>
-                                                <label htmlFor="imageUpload">
-                                                    <S.UploadButton>사진 첨부</S.UploadButton>
-                                                </label>
+                                                <S.UploadButton onClick={() => handleButtonClick(key)}>
+                                                    사진 첨부
+                                                </S.UploadButton>
                                                 <input
-                                                    id="imageUpload"
+                                                    id={key}
                                                     type="file"
                                                     accept="image/*"
                                                     style={{ display: 'none' }}
-                                                    onChange={(e) =>
-                                                        setUploadedImage(URL.createObjectURL(e.target.files[0]))
-                                                    }
+                                                    onChange={(e) => handleFileChange(e, sectionIndex, itemIndex)}
                                                 />
-                                                {uploadedImage && (
+                                                {uploadedImages[key] && (
                                                     <img
-                                                        src={uploadedImage}
+                                                        src={uploadedImages[key]}
                                                         alt="Uploaded"
-                                                        style={{ maxWidth: '100%' }}
+                                                        style={{ maxWidth: '50%' }}
                                                     />
                                                 )}
                                             </div>
