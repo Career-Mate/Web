@@ -39,9 +39,10 @@ const Footer = () => {
                     </S.HiddenOnSmall>
                     <S.ShowOnSmall>
                         @CareerMate. All rights reserved.
+                        <br />
+                        Icons by.{' '}
                         <S.Link href="https://icons8.com" target="_blank" rel="noopener noreferrer">
-                            <br />
-                            Icons by. icons8.com
+                            icons8.com
                         </S.Link>
                         ,{' '}
                         <S.Link href="https://flaticon.com" target="_blank" rel="noopener noreferrer">

@@ -27,7 +27,7 @@ export const ContentWrapper = styled.div`
     height: 120px;
 
     @media (max-width: 1024px) {
-        max-width: 850px;
+        max-width: 800px;
     }
     @media (max-width: 391px) {
         max-width: 300px;
@@ -90,11 +90,7 @@ export const Copyright = styled.div`
 
 export const Link = styled.a`
     color: #9d9d9d;
-    text-decoration: none;
-
-    &:hover {
-        text-decoration: underline;
-    }
+    text-decoration: underline;
 `;
 
 export const ShowOnSmall = styled.div`
