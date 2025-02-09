@@ -19,13 +19,14 @@ export const useSaveProfile = (profile) => {
     });
 };
 
-export const useEditProfile = () => {
+export const useEditProfile = (profile) => {
     const { fetchUser } = useAuthStore();
 
     return useMutation({
         mutationFn: modifyProfile,
-        onSuccess: (data) => {
-            fetchUser(data);
+        onSuccess: () => {
+            fetchUser(profile);
+            alert('프로필이 수정되었습니다.');
         },
         onError: (error) => {
             alert('프로필 수정에 실패했습니다. 다시 시도해주세요.');
@@ -44,13 +45,14 @@ export const useFetchProfile = () => {
 
 export const useDeleteProfile = () => {
     const queryClient = useQueryClient();
+
     return useMutation({
         mutationFn: deleteProfile,
         onSuccess: () => {
             queryClient.removeQueries('profile');
         },
         onError: (error) => {
-            alert('프로필 수정에 실패했습니다. 다시 시도해주세요.');
+            alert('프로필 삭제에 실패했습니다. 다시 시도해주세요.');
         },
     });
 };
