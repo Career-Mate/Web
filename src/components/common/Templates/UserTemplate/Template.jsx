@@ -111,6 +111,21 @@ const Template = ({ pageType, onDataChange }) => {
         }
     };
 
+    const handleClearAll = (sectionIndex) => {
+        useTemplateStore.getState().clearAll(sectionIndex);
+
+        const updatedImages = { ...uploadedImages };
+
+        Object.keys(updatedImages).forEach((key) => {
+            if (key.startsWith(sectionIndex)) {
+                delete updatedImages[key];
+            }
+        });
+
+        setUploadedImages(updatedImages);
+        localStorage.setItem('uploadedImages', JSON.stringify(updatedImages));
+    };
+
     const shouldShowImageUpload = jobType === 'Designer' && pageType === 'PROJECT_EXPERIENCE';
 
     if (isLoading) {
@@ -240,7 +255,9 @@ const Template = ({ pageType, onDataChange }) => {
                     </S.TemplateTable>
 
                     <S.ButtonWrapper>
-                        <UnderlineButton onClick={() => clearAll(sectionIndex)}>전체 내용 삭제하기</UnderlineButton>
+                        <UnderlineButton onClick={() => handleClearAll(sectionIndex)}>
+                            전체 내용 삭제하기
+                        </UnderlineButton>
                     </S.ButtonWrapper>
                 </S.TemplateWrapper>
             ))}
