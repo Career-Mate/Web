@@ -2,11 +2,11 @@ import TextTemplate from '../../../components/common/Templates/TextTemplate/Text
 import ProgressBar from '../../../components/common/ProgressBar/ProgressBar';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import * as S from './styled/styled';
-import { useSkills } from './useSkills';
+import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
 
 const SkillsPage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave } = useSkills();
+    const { data, setData, canSave, handleSave } = useTemplateData('TECHNICAL_SKILLS');
     const { progression, prevSummaryProgress, nextSummaryProgress } = useProgressBar(4);
 
     const handlePrevClick = () => {
@@ -29,11 +29,11 @@ const SkillsPage = ({ setActiveScreen }) => {
                 <ProgressBar progression={progression} />
             </S.HeaderWrapper>
 
-            <S.TemplateWrapper>
-                <S.SkillsPageTemplateWrapper>
-                    <TextTemplate data={data} onDataChange={(updatedData) => setData(updatedData)} />
-                </S.SkillsPageTemplateWrapper>
-            </S.TemplateWrapper>
+            <S.SkillsPageTemplateWrapper>
+                <S.TemplateWrapper>
+                    <TextTemplate pageType="TECHNICAL_SKILLS" onDataChange={(updatedData) => setData(updatedData)} />
+                </S.TemplateWrapper>
+            </S.SkillsPageTemplateWrapper>
 
             <S.ButtonWrapper>
                 <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>

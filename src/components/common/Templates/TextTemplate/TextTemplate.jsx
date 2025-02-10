@@ -1,20 +1,74 @@
 import * as S from './styled/styled';
-import { useMemo } from 'react';
+import { useMemo, useState, useCallback, useEffect } from 'react';
 import { useTemplateData } from '../../../../hooks/useTemplateData';
-import { textTemplateData } from '../../../../data/textTemplateData';
-import UnderlineButton from '../../Button/UnderlineButton/UnderlineButton';
+import { useJobStore, useFetchUserJobType } from '../../../../store/useJobStore';
+import UnderlineButton from '../../../common/Button/UnderlineButton/UnderlineButton';
 
-const TextTemplate = ({ jobType = 'frontend', pageType = 'skills', data: externalData, onDataChange }) => {
-    const initialData = textTemplateData[pageType]?.[jobType] || [];
-    const { handleInputChange, data, clearAll } = useTemplateData(externalData || initialData, onDataChange);
-    const memoizedData = useMemo(() => data, [data]);
+const TextTemplate = ({ pageType }) => {
+    useFetchUserJobType();
+    const jobType = useJobStore((state) => state.jobType);
+    const { handleInputChange, data: templateData, clearAll, isLoading, isError } = useTemplateData(pageType, jobType);
+    const [localValues, setLocalValues] = useState({});
+    const [charCounts, setCharCounts] = useState({});
+    const MAX_CHAR_COUNT = 300;
 
-    const autoResize = (textarea) => {
+    useEffect(() => {
+        const newLocalValues = {};
+        const newCharCounts = {};
+        templateData.forEach((section, sectionIndex) => {
+            section.items.forEach((item, itemIndex) => {
+                newLocalValues[`${sectionIndex}-${itemIndex}`] = item.content;
+                newCharCounts[`${sectionIndex}-${itemIndex}`] = item.content.length;
+            });
+        });
+        setLocalValues(newLocalValues);
+        setCharCounts(newCharCounts);
+    }, [templateData]);
+
+    const memoizedData = useMemo(() => {
+        return templateData.length >= 2
+            ? templateData
+            : [...templateData, ...Array(2 - templateData.length).fill({ items: [] })];
+    }, [templateData]);
+
+    const autoResize = useCallback((textarea) => {
         if (textarea) {
             textarea.style.height = '20px';
             textarea.style.height = `${textarea.scrollHeight}px`;
         }
-    };
+    }, []);
+
+    const handleChange = useCallback((sectionIndex, itemIndex, value) => {
+        if (value.length <= MAX_CHAR_COUNT) {
+            setLocalValues((prev) => ({
+                ...prev,
+                [`${sectionIndex}-${itemIndex}`]: value,
+            }));
+            setCharCounts((prev) => ({
+                ...prev,
+                [`${sectionIndex}-${itemIndex}`]: value.length,
+            }));
+        }
+    }, []);
+
+    const handleBlur = useCallback(
+        (sectionIndex, itemIndex) => {
+            const key = `${sectionIndex}-${itemIndex}`;
+            if (localValues[key] !== undefined) {
+                handleInputChange(sectionIndex, itemIndex, localValues[key]);
+            }
+            autoResize(document.getElementById(key));
+        },
+        [handleInputChange, localValues, autoResize],
+    );
+
+    if (isLoading) {
+        return <p>로딩 중...</p>;
+    }
+
+    if (isError) {
+        return <p>데이터를 불러오는 데 실패했습니다. 다시 시도해주세요.</p>;
+    }
 
     return (
         <div>
@@ -22,28 +76,40 @@ const TextTemplate = ({ jobType = 'frontend', pageType = 'skills', data: externa
                 <S.TemplateWrapper key={sectionIndex}>
                     <S.TemplateTitle>{section.title}</S.TemplateTitle>
                     <S.TemplateTable>
-                        {section.items.map((item, itemIndex) => (
-                            <S.TableRow key={itemIndex}>
-                                <S.TableCellHeader
-                                    data-component="TableCellHeader"
-                                    isFirstRow={itemIndex === 0}
-                                    isLastRow={itemIndex === section.items.length - 1}
-                                >
-                                    {item.label}
-                                </S.TableCellHeader>
-                                <S.TableCellData
-                                    isFirstRow={itemIndex === 0}
-                                    isLastRow={itemIndex === section.items.length - 1}
-                                >
-                                    <textarea
-                                        value={item.content}
-                                        placeholder={item.placeholder}
-                                        onChange={(e) => handleInputChange(sectionIndex, itemIndex, e.target.value)}
-                                        onInput={(e) => autoResize(e.target)}
-                                    />
-                                </S.TableCellData>
-                            </S.TableRow>
-                        ))}
+                        {section.items.map((item, itemIndex) => {
+                            const key = `${sectionIndex}-${itemIndex}`;
+                            return (
+                                <S.TableRow key={itemIndex}>
+                                    <S.TableCellHeader
+                                        data-component="TableCellHeader"
+                                        isFirstRow={itemIndex === 0}
+                                        isLastRow={itemIndex === section.items.length - 1}
+                                    >
+                                        {item.label}
+                                    </S.TableCellHeader>
+                                    <S.TableCellData
+                                        isFirstRow={itemIndex === 0}
+                                        isLastRow={itemIndex === section.items.length - 1}
+                                    >
+                                        <textarea
+                                            id={key}
+                                            value={localValues[key] ?? item.content}
+                                            placeholder={
+                                                pageType === 'SUMMARY'
+                                                    ? '내용을 입력해주세요.'
+                                                    : (item.placeholder ?? `${item.label}을 입력해주세요.`)
+                                            }
+                                            onChange={(e) => handleChange(sectionIndex, itemIndex, e.target.value)}
+                                            onBlur={() => handleBlur(sectionIndex, itemIndex)}
+                                            onInput={(e) => autoResize(e.target)}
+                                        />
+                                        <S.CharCount $charCount={charCounts[key]} $maxCount={MAX_CHAR_COUNT}>
+                                            {charCounts[key] || 0}/{MAX_CHAR_COUNT}
+                                        </S.CharCount>
+                                    </S.TableCellData>
+                                </S.TableRow>
+                            );
+                        })}
                     </S.TemplateTable>
                     <S.ButtonWrapper>
                         <UnderlineButton onClick={() => clearAll(sectionIndex)}>전체 내용 삭제하기</UnderlineButton>
