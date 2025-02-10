@@ -13,21 +13,24 @@ const ScrapJob = ({ onNavigate }) => {
 
     const { data: scrapJobs, isLoading, isError } = useGetScrapJobs();
     const itemsPerPage = 6;
+
     const [currentPage, setCurrentPage] = useState(1);
     const [filteredJobs, setFilteredJobs] = useState([]);
 
+    // scrapJobs가 undefined일 수 있으므로 기본값([])을 설정하여 안정성 확보
     useEffect(() => {
-        if (scrapJobs) {
-            setFilteredJobs(scrapJobs.filter((job) => job.jobName === user.job));
-        }
+        setFilteredJobs((scrapJobs || []).filter((job) => job.jobName === user.job));
     }, [scrapJobs, user.job]);
 
     const totalPages = Math.max(1, Math.ceil(filteredJobs.length / itemsPerPage));
     const displayedJobs = filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-    if (currentPage > totalPages) {
-        setCurrentPage(Math.max(1, totalPages));
-    }
+    // 렌더링 도중 훅이 변경되는 문제를 방지하기 위해 useEffect 사용
+    useEffect(() => {
+        if (currentPage > totalPages) {
+            setCurrentPage(Math.max(1, totalPages));
+        }
+    }, [totalPages]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
