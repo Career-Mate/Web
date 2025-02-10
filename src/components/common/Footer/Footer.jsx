@@ -1,6 +1,8 @@
 import * as S from './styled/styled';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const Footer = () => {
+    const isMobileScreen = useIsMobileScreen(390);
     return (
         <S.FooterContainer>
             <S.ContentWrapper>
@@ -27,7 +29,9 @@ const Footer = () => {
                     </S.Row>
                 </S.Section>
                 <S.Copyright>
-                    @CareerMate. All rights reserved. Icons by.{' '}
+                    @CareerMate. All rights reserved.
+                    {isMobileScreen && <br />}
+                    Icons by.{' '}
                     <S.Link href="https://icons8.com" target="_blank" rel="noopener noreferrer">
                         icons8.com
                     </S.Link>
@@ -35,6 +39,12 @@ const Footer = () => {
                     <S.Link href="https://flaticon.com" target="_blank" rel="noopener noreferrer">
                         flaticon.com
                     </S.Link>
+                    {isMobileScreen && (
+                        <>
+                            <br />
+                            무단 전재, 재배포 및 이용(AI 학습 포함) 금지.
+                        </>
+                    )}
                 </S.Copyright>
             </S.ContentWrapper>
         </S.FooterContainer>
