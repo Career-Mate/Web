@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../../assets/common/career-mate.svg';
 import LogoutButton from '../../Button/LogoutButton/LogoutButton.jsx';
 import SquareButton from '../../Button/SquareButton/SquareButton.jsx';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import AccountPopup from '../../Popups/AccountPopup/AccountPopup.jsx';
 import { useAuthStore } from '../../../../store/authStore.js';
 import { useLogout } from '../../../../apis/Auth/useAuthApi.js';
