@@ -18,8 +18,6 @@ const ScrapJob = ({ onNavigate }) => {
     if (isLoading) return <div>loading...</div>;
     if (isError) return <div>error</div>;
 
-    console.log('scrapJobs:', scrapJobs);
-    console.log('user job:', user.job);
     const filteredJobs = scrapJobs.filter((job) => job.jobName === user.job);
     const totalPages = Math.max(1, Math.ceil(filteredJobs.length / itemsPerPage));
     const displayedJobs = filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
