@@ -80,7 +80,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: 'detail/:id',
-                        element: <JobDetailPage  />,
+                        element: <JobDetailPage />,
                     },
                 ],
             },

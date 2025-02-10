@@ -2,11 +2,11 @@ import Template from '../../../components/common/Templates/UserTemplate/Template
 import ProgressBar from '../../../components/common/ProgressBar/ProgressBar';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import * as S from './styled/styled';
-import { useProjectExperience } from './useProjectExperience';
+import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
 
 const ProjectExperiencePage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave } = useProjectExperience();
+    const { data, setData, canSave, handleSave } = useTemplateData('PROJECT_EXPERIENCE');
     const { progression, prevSummaryProgress, nextSummaryProgress } = useProgressBar(2);
 
     const handlePrevClick = () => {
@@ -30,12 +30,7 @@ const ProjectExperiencePage = ({ setActiveScreen }) => {
             </S.HeaderWrapper>
 
             <S.TemplateWrapper>
-                <Template
-                    jobType="frontend"
-                    pageType="projectExperience"
-                    data={data}
-                    onDataChange={(updatedData) => setData(updatedData)}
-                />
+                <Template pageType="PROJECT_EXPERIENCE" onDataChange={(updatedData) => setData(updatedData)} />
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
