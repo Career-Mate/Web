@@ -4,7 +4,7 @@ export const TemplateWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 320px;
+    width: 340px;
     gap: 10px;
     padding-bottom: 65px;
     @media (max-width: 391px) {
@@ -45,7 +45,7 @@ export const ButtonWrapper = styled.div`
     justify-content: flex-end;
     align-items: flex-end;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 30px;
 `;
 
 export const TextareaWrapper = styled.div`
@@ -62,21 +62,5 @@ export const TextareaWrapper = styled.div`
     &:focus-within {
         border-color: #a0a0a0;
         box-shadow: 0 0 5px rgba(160, 160, 160, 0.5);
-    }
-`;
-
-export const StyledTextarea = styled.textarea`
-    width: 100%;
-    height: 34px;
-    border: none;
-    outline: none;
-    resize: none;
-    font-size: 12px;
-    color: #333;
-    background-color: transparent;
-    padding: 0;
-
-    ::placeholder {
-        color: #b0b0b0;
     }
 `;

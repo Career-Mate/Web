@@ -18,7 +18,7 @@ export const TextContainer = styled.div`
     flex-direction: column;
     gap: 25px;
     @media (max-width: 391px) {
-        width: 300px;
+        width: 340px;
     }
 `;
 export const Title = styled.div`
@@ -30,6 +30,7 @@ export const Title = styled.div`
     font-size: 24px;
     @media (max-width: 391px) {
         font-size: 16px;
+        gap: 5px;
     }
 `;
 export const Icon = styled.img`
@@ -55,6 +56,7 @@ export const Text = styled.div`
 
     @media (max-width: 391px) {
         font-size: 14px;
+        width: 300px;
     }
 `;
 export const Subtitle = styled.span`
@@ -70,7 +72,6 @@ export const Subtitle = styled.span`
     }
 `;
 export const TooltipWrapper = styled.span`
-    margin-left: 5px;
     font-size: 16px;
     color: grey;
     cursor: pointer;

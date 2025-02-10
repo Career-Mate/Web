@@ -44,7 +44,7 @@ const SmartPlannerPage = () => {
         </S.TooltipWrapper>
     );
     const renderTitleContent = () =>
-        page === 0 ? (
+        !isMobileScreen && page === 1 ? null : (
             <S.TextContainer>
                 <S.Title>
                     <S.Icon src={BookIcon} />
@@ -62,7 +62,7 @@ const SmartPlannerPage = () => {
                     </S.Text>
                 </S.TextWrapper>
             </S.TextContainer>
-        ) : null;
+        );
     const renderButtons = () => (
         <S.ButtonWrapper>
             <SquareButton
