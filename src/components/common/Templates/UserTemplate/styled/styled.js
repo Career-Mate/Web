@@ -195,4 +195,5 @@ export const UploadButton = styled.button`
 export const CharCount = styled.div`
     font-size: 8px;
     color: ${(props) => (props.$charCount >= props.$maxCount ? 'red' : 'grey')};
+    align-self: flex-end;
 `;
