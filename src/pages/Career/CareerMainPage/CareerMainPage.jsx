@@ -4,6 +4,8 @@ import searchIcon from '../../../assets/MainPage/search.svg';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import LoadingPopup from '../../../components/common/Popups/LoadingPopup/LoadingPopup';
 import * as S from './styled/styled';
+import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
+import { useProfilePopup } from '../../../hooks/useProfile';
 
 const CareerMainPage = () => {
     const navigate = useNavigate();
@@ -11,6 +13,7 @@ const CareerMainPage = () => {
     const job = '프론트엔드 개발자';
     const [isPopUpVisible, setIsPopUpVisible] = useState(false);
     const timeoutId = useRef(null);
+    const { showProfilePopup } = useProfilePopup();
 
     const handleButtonClick = () => {
         setIsPopUpVisible(true);
@@ -55,6 +58,7 @@ const CareerMainPage = () => {
             {isPopUpVisible && (
                 <LoadingPopup userName={userName} interestJob={job} type="template" onCancel={handlePopUpCancel} />
             )}
+            {showProfilePopup && <ProfilePopup />}
         </S.CareerMainPageWrapper>
     );
 };
