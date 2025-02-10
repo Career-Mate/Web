@@ -11,4 +11,5 @@ export const InputContainer = styled.div`
     height: fit-content;
     display: flex;
     flex-direction: column;
+    gap: 30px;
 `;

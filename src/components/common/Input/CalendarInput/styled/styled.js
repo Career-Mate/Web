@@ -38,19 +38,11 @@ export const StyledInputWrapper = styled.div`
     gap: 8px;
 
     justify-content: space-between;
-    .calendar-icon {
-        font-size: 26px;
-        color: #c4c4c4;
-        cursor: pointer;
-        @media (max-width: 391px) {
-            font-size: 16px;
-        }
-    }
 
     @media (max-width: 391px) {
-        width: 320px;
-        padding: 10px 22px;
-        height: 40px;
+        width: 340px;
+        padding: 10px 15px;
+        height: 75px;
     }
 `;
 
@@ -68,11 +60,22 @@ export const DateInput = styled.div.withConfig({
         background: ${(props) => (props.isInline ? 'none' : '#ffffff')};
         padding: ${(props) => (props.isInline ? '0' : '4px 8px')};
         outline: none;
-
         @media (max-width: 391px) {
-            font-size: 12px;
+            font-size: 10px;
             width: 100px;
+            padding: 0px 0px 5px 0px;
         }
+    }
+`;
+
+export const Icon = styled.img`
+    width: ${({ $size }) => $size || '32px'};
+    height: ${({ $size }) => $size || '32px'};
+    cursor: pointer;
+
+    @media (max-width: 391px) {
+        width: 24px;
+        height: 24px;
     }
 `;
 
@@ -82,6 +85,6 @@ export const DateDivider = styled.span`
     color: #d9d9d9;
     padding-right: 20px;
     @media (max-width: 391px) {
-        padding-right: 10px;
+        padding-right: 0px;
     }
 `;

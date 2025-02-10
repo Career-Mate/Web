@@ -6,6 +6,7 @@ import { handleDateChange, handleInputChange, handleClearAll } from '../../utils
 import * as S from './styled/styled';
 
 import SmartMobileTemplate from '../common/Templates/SmartMobileTemplate/SmartMobileTemplate';
+import MobileTextarea from '../common/MobileTextarea/MobileTextarea';
 import useIsMobileScreen from '../../hooks/useIsMobileScreen';
 
 const SmartPlanner = ({ data, onDataChange, page }) => {
@@ -13,12 +14,22 @@ const SmartPlanner = ({ data, onDataChange, page }) => {
     return (
         <S.Container>
             <S.InputContainer>
-                <ProfileInput
-                    label={'활동명'}
-                    placeholder={'활동명을 입력하세요'}
-                    defaultValue={data[page]?.activityName || ''}
-                    onBlur={(value) => handleInputChange(data, onDataChange, page, value)}
-                />
+                {isMobileScreen ? (
+                    <MobileTextarea
+                        label={'활동명'}
+                        value={data[page]?.activityName || ''}
+                        placeholder={'활동명을 입력하세요'}
+                        onBlur={(value) => handleInputChange(data, onDataChange, page, value)}
+                    />
+                ) : (
+                    <ProfileInput
+                        label={'활동명'}
+                        placeholder={'활동명을 입력하세요'}
+                        defaultValue={data[page]?.activityName || ''}
+                        onBlur={(value) => handleInputChange(data, onDataChange, page, value)}
+                    />
+                )}
+
                 <CalendarInput
                     label="목표 달성 기간"
                     startDate={data[page]?.goalPeriod?.startDate || null}

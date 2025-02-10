@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import * as S from './styled/styled';
-import { FaCalendarAlt } from 'react-icons/fa';
+import Calendar from '../../../../assets/calendar.svg';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -10,14 +10,9 @@ const CalendarInput = React.memo(({ label, startDate, endDate, onStartDateChange
 
     const convertToUTC = (date) => {
         if (!date) return null;
-        return new Date(Date.UTC(
-            date.getFullYear(),
-            date.getMonth(),
-            date.getDate(),
-            0, 0, 0
-        ));
+        return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0));
     };
-    
+
     const isDateObject = (date) => date instanceof Date && !isNaN(date);
 
     return (
@@ -25,7 +20,12 @@ const CalendarInput = React.memo(({ label, startDate, endDate, onStartDateChange
             <S.Label>{label}</S.Label>
             <S.StyledInputWrapper>
                 <S.DateInput isInline>
-                    <FaCalendarAlt className="calendar-icon" onClick={() => startDatePickerRef.current.setFocus()} />
+                    <S.Icon
+                        src={Calendar}
+                        width={'26px'}
+                        height={'26px'}
+                        onClick={() => startDatePickerRef.current.setFocus()}
+                    />
                     <DatePicker
                         ref={startDatePickerRef}
                         selected={isDateObject(startDate) ? startDate : null}
@@ -41,7 +41,12 @@ const CalendarInput = React.memo(({ label, startDate, endDate, onStartDateChange
                 <S.DateDivider>|</S.DateDivider>
 
                 <S.DateInput isInline>
-                    <FaCalendarAlt className="calendar-icon" onClick={() => endDatePickerRef.current.setFocus()} />
+                    <S.Icon
+                        src={Calendar}
+                        width={'26px'}
+                        height={'26px'}
+                        onClick={() => endDatePickerRef.current.setFocus()}
+                    />
                     <DatePicker
                         ref={endDatePickerRef}
                         selected={isDateObject(endDate) ? endDate : null}
