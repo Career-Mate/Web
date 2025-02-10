@@ -6,11 +6,12 @@ import LoadingPopup from '../../../components/common/Popups/LoadingPopup/Loading
 import * as S from './styled/styled';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useProfilePopup } from '../../../hooks/useProfile';
+import { useAuthStore } from '../../../store/authStore';
 
 const CareerMainPage = () => {
     const navigate = useNavigate();
-    const userName = '김단아';
-    const job = '프론트엔드 개발자';
+    const user = useAuthStore();
+    console.log('user:', user);
     const [isPopUpVisible, setIsPopUpVisible] = useState(false);
     const timeoutId = useRef(null);
     const { showProfilePopup } = useProfilePopup();
@@ -41,7 +42,7 @@ const CareerMainPage = () => {
                 top="0px"
                 showLogo={false}
                 showTitleText={false}
-                mainText={`${userName} 메이트님에게`}
+                mainText={`${user.user.name} 메이트님에게`}
                 detailText={`관심 직무에 맞는 템플릿을 제공하기 위해 프로필 분석이 필요해요!
                 아래 '내 프로필 분석하기'를 클릭해주세요.`}
                 buttons={[
@@ -56,7 +57,12 @@ const CareerMainPage = () => {
             />
 
             {isPopUpVisible && (
-                <LoadingPopup userName={userName} interestJob={job} type="template" onCancel={handlePopUpCancel} />
+                <LoadingPopup
+                    userName={user.user.name}
+                    interestJob={user.user.job}
+                    type="template"
+                    onCancel={handlePopUpCancel}
+                />
             )}
             {showProfilePopup && <ProfilePopup />}
         </S.CareerMainPageWrapper>
