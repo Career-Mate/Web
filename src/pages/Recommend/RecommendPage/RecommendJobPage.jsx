@@ -9,8 +9,8 @@ import DeadlineButton from '../../../components/common/Button/DeadlineButton/Dea
 import { getRecommendJobs } from '../../../apis/Job/JobApi';
 
 const SORT_TYPES = {
-    전체: 'POSTING_DESC',
     '마감 빠른 순': 'DEADLINE_ASC',
+    전체: 'POSTING_DESC',
     '마감 늦은 순': 'DEADLINE_DESC',
 };
 

@@ -3,8 +3,6 @@ import RecommendContentPage from './RecommendContentPage';
 import RecommendJobPage from './RecommendJobPage';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuthStore } from '../../../store/authStore';
-import { userData as recommendContentData } from '../../../data/recommendContentData';
-import recommendJobData from '../../../data/recommendJobData';
 
 const RecommendPage = () => {
     const { user } = useAuthStore();
@@ -24,11 +22,7 @@ const RecommendPage = () => {
             </S.TabWrapper>
 
             <S.ListContainer>
-                {tab === 'content' ? (
-                    <RecommendContentPage user={recommendContentData} />
-                ) : (
-                    <RecommendJobPage user={recommendJobData} />
-                )}
+                {tab === 'content' ? <RecommendContentPage user={user} /> : <RecommendJobPage user={user} />}
             </S.ListContainer>
         </S.Container>
     );

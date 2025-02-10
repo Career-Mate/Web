@@ -88,10 +88,12 @@ export const Highlight = styled.span`
 `;
 
 export const CardWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    gap: 25px;
-    padding-bottom: 75px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 41px;
+    width: 100%;
+    max-width: 1282px;
+    padding-bottom: 30px;
 `;
 
 export const ButtonContainer = styled.div`
