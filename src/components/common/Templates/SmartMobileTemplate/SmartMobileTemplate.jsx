@@ -1,10 +1,9 @@
 import * as S from './styled/styled';
-import { useMemo, useState, useEffect, useRef } from 'react';
-import { useTemplateData } from '../../../../hooks/useTemplateData';
+import { useMemo, useState, useEffect } from 'react';
 import UnderlineButton from '../../Button/UnderlineButton/UnderlineButton';
+import { handleTemplateChange } from '../../../../utils/SmartPlanner/plannerHandler';
 
-const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) => {
-    const { handleInputChange, data } = useTemplateData(externalData, onDataChange);
+const SmartMobileTemplate = ({ data, onDataChange, onClearAll, page }) => {
     const memoizedData = useMemo(() => data, [data]);
     const [localValues, setLocalValues] = useState({});
     const [charCounts, setCharCounts] = useState({});
@@ -24,7 +23,7 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
         });
         memoizedData.forEach((section, sectionIndex) => {
             section.items.forEach((item, itemIndex) => {
-                const key = `${page}-${sectionIndex}-${itemIndex}`;
+                const key = `${sectionIndex}-${itemIndex}`;
                 setCharCounts((prev) => ({
                     ...prev,
                     [key]: item.content.length,
@@ -32,9 +31,12 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
             });
         });
     }, [memoizedData]);
+    useEffect(() => {
+        setLocalValues({});
+    }, [page]);
 
     const handleChange = (sectionIndex, itemIndex, value) => {
-        const key = `${page}-${sectionIndex}-${itemIndex}`;
+        const key = `${sectionIndex}-${itemIndex}`;
         if (value.length <= MAX_CHAR_COUNT) {
             setLocalValues((prev) => ({
                 ...prev,
@@ -48,9 +50,9 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
     };
 
     const handleBlur = (sectionIndex, itemIndex) => {
-        const key = `${page}-${sectionIndex}-${itemIndex}`;
+        const key = `${sectionIndex}-${itemIndex}`;
         if (localValues[key] !== undefined) {
-            handleInputChange(sectionIndex, itemIndex, localValues[key]);
+            handleTemplateChange(data, sectionIndex, itemIndex, onDataChange, localValues[key]);
         }
     };
 
@@ -66,9 +68,9 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
                 <S.TemplateWrapper key={sectionIndex}>
                     <S.TemplateTitle>{section.title}</S.TemplateTitle>
                     {section.items.map((item, itemIndex) => {
-                        const key = `${page}-${sectionIndex}-${itemIndex}`;
+                        const key = `${sectionIndex}-${itemIndex}`;
                         return (
-                            <S.SectionWrapper>
+                            <S.SectionWrapper key={itemIndex}>
                                 <S.SectionLabel>{item.label}</S.SectionLabel>
                                 <S.TextareaWrapper>
                                     <S.StyledTextarea
@@ -88,7 +90,9 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
                         );
                     })}
                     <S.ButtonWrapper>
-                        <UnderlineButton onClick={handleClearAllWrapper}>전체 내용 삭제하기</UnderlineButton>
+                        <UnderlineButton fontSize={'12px'} onClick={handleClearAllWrapper}>
+                            전체 내용 삭제하기
+                        </UnderlineButton>
                     </S.ButtonWrapper>
                 </S.TemplateWrapper>
             ))}
@@ -96,4 +100,4 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
     );
 };
 
-export default SmartTemplate;
+export default SmartMobileTemplate;

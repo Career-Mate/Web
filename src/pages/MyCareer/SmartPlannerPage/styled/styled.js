@@ -7,11 +7,17 @@ export const MainContainer = styled.div`
     flex-direction: column;
     margin-right: 60px;
     gap: 60px;
+    @media (max-width: 391px) {
+        margin: 0px 25px;
+    }
 `;
 export const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 25px;
+    @media (max-width: 391px) {
+        width: 300px;
+    }
 `;
 export const Title = styled.div`
     display: flex;
@@ -20,10 +26,18 @@ export const Title = styled.div`
     gap: 10px;
     font-weight: 600;
     font-size: 24px;
+    @media (max-width: 391px) {
+        font-size: 16px;
+    }
 `;
 export const Icon = styled.img`
-    width: 32px;
-    height: 32px;
+    width: ${({ $size }) => $size || '32px'};
+    height: ${({ $size }) => $size || '32px'};
+
+    @media (max-width: 391px) {
+        width: 16px;
+        height: 16px;
+    }
 `;
 export const TextWrapper = styled.div`
     display: flex;
@@ -36,6 +50,10 @@ export const Text = styled.div`
     font-size: 16px;
     white-space: pre-line;
     line-height: 2;
+
+    @media (max-width: 391px) {
+        font-size: 14px;
+    }
 `;
 export const Subtitle = styled.span`
     font-weight: 400;
@@ -44,6 +62,10 @@ export const Subtitle = styled.span`
     color: #c4c8ce;
     text-align: center;
     margin-left: 20px;
+    @media (max-width: 391px) {
+        font-size: 10px;
+        margin-left: 0px;
+    }
 `;
 export const TooltipWrapper = styled.span`
     margin-left: 5px;

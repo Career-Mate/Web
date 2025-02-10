@@ -4,19 +4,15 @@ export const TemplateWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 850px;
+    width: 320px;
     gap: 10px;
     padding-bottom: 65px;
-
-    @media (max-width: 1024px) {
-        width: 640px;
-    }
 `;
 
 export const TemplateTitle = styled.h2`
     font-style: normal;
     font-weight: 700;
-    font-size: 26px;
+    font-size: 16px;
     line-height: 39px;
     letter-spacing: -0.011em;
     color: #000000;
@@ -46,6 +42,7 @@ export const ButtonWrapper = styled.div`
     justify-content: flex-end;
     align-items: flex-end;
     width: 100%;
+    margin-top: 40px;
 `;
 
 export const TextareaWrapper = styled.div`
