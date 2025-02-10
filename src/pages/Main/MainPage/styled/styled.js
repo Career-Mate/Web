@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import backgroundUrl from '../../../../assets/MainPage/main-vector.svg';
 
 export const MainContainer = styled.div`
     display: flex;
@@ -41,7 +40,7 @@ export const FirstTextWrapper = styled.div`
 export const SecondPage = styled.div`
     width: 100%;
     height: 150vh;
-    background-image: url(${backgroundUrl});
+    background-image: url('${({ $background }) => $background}');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -59,7 +58,7 @@ export const SecondContainer = styled.div`
     gap: 80px;
     h1 {
         color: rgba(255, 255, 255, 1);
-        font-size: 80px;
+        font-size: 60px;
         font-weight: 700;
     }
 `;
@@ -169,7 +168,7 @@ export const DashedLine = styled.svg`
 export const OtherPage = styled.div`
     font-size: 30px;
     width: 100%;
-    height: 130vh;
+    height: 100vh;
     font-weight: 400;
     display: flex;
     flex-direction: column;
@@ -178,16 +177,16 @@ export const OtherPage = styled.div`
 
 export const OtherTitle = styled.div`
     margin-top: 200px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: 700;
     text-align: center;
 `;
 
 export const OtherBox = styled.div`
-    margin-top: 50px;
+    width: 650px;
+    font-size: 20px;
+    margin-top: 20px;
     text-align: center;
-    border: 1px solid rgba(185, 185, 185, 1);
-    box-shadow: 0px 0px 8.5px 0px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    padding: 27px 13px;
+    padding: 15px 13px;
 `;

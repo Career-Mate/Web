@@ -9,6 +9,7 @@ import CheckTextBox from '../../../components/MainPage/CheckTextBox/CheckTextBox
 import InterviewBox from '../../../components/MainPage/InterviewBox/InterviewBox';
 import Card from '../../../components/MainPage/Card/Card';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
+import Background from '../../../assets/MainPage/main-vector.svg';
 import { useNavigate } from 'react-router-dom';
 import { useFetchProfile } from '../../../apis/Profile/useProfileApi';
 import { useAuthStore } from '../../../store/authStore';
@@ -19,18 +20,18 @@ const cards = [
         title: '커리어 정리',
         url: File,
         first: '각 직무별로 최적화된 템플릿을 제공',
-        second: '경험을 하여 스스로 느낀 것을 회고하여 정리하도록 도와드려요.',
+        second: '경험을 하여 스스로 느낀 것을 \n 회고하여 정리하도록 도와드려요.',
     },
     {
         title: '맞춤형 채용 공고 추천',
         url: Search,
         first: '적합한 채용 공고를 찾기 위한\n시간 낭비는 그만!',
-        second: '커리어 메이트가 커리어 정리 템플릿을 분석하고 딱 맞는 채용 공고를 추천해드립니다.',
+        second: '커리어 메이트가 커리어 정리\n 템플릿을 분석하고 딱 맞는 채용 공고를 추천해드립니다.',
     },
     {
         title: '나의 커리어',
         url: BookMark,
-        first: '커리어 정리 템플릿을 수정\n스크랩한 채용 공고 확인',
+        first: '스크랩한 채용 공고 확인',
         second: '나의 커리어 발전 과정을 지속적으로 관리하고 업데이트할 수 있습니다.',
     },
 ];
@@ -49,7 +50,7 @@ const MainPage = () => {
     return (
         <S.MainContainer>
             <S.FirstPage>
-                <object width="300px" type="image/svg+xml" data={Logo}></object>
+                <object width="225px" type="image/svg+xml" data={Logo}></object>
                 <S.FirstTextWrapper>
                     경험 정리부터 지원까지
                     <b>
@@ -57,7 +58,7 @@ const MainPage = () => {
                     </b>
                 </S.FirstTextWrapper>
             </S.FirstPage>
-            <S.SecondPage>
+            <S.SecondPage $background={Background}>
                 <S.SecondContainer>
                     <h1>혹시,</h1>
                     <S.SecondCheckWrapper>
@@ -103,10 +104,12 @@ const MainPage = () => {
                 <S.FifthText>
                     커리어의 시작과 성장 과정을 <span>커리어 메이트</span>가 응원합니다!
                 </S.FifthText>
-                <OvalButton onClick={() => navigate('/login')}>로그인하고 프로필 설정하기</OvalButton>
+                <OvalButton width={'400px'} onClick={() => navigate('/login')}>
+                    로그인하고 프로필 설정하기
+                </OvalButton>
             </S.FifthPage>
             <S.DashedLine>
-                <line x1="20%" y1="5" x2="80%" y2="5" />
+                <line x1="0%" y1="5" x2="100%" y2="5" />
             </S.DashedLine>
             <S.OtherPage>
                 <S.OtherTitle>B2B. 광고, 제휴 문의</S.OtherTitle>
