@@ -35,9 +35,11 @@ export const useEditProfile = (profile) => {
 };
 
 export const useFetchProfile = () => {
+    const { isLogin } = useAuthStore();
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['profile'],
         queryFn: getProfile,
+        enabled: isLogin,
         retry: 0,
         refetchOnWindowFocus: false,
     });

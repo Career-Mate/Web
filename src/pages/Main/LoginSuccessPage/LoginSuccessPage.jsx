@@ -6,13 +6,11 @@ import { useAuthStore } from '../../../store/authStore';
 
 const LoginSuccessPage = () => {
     const navigate = useNavigate();
-    const { login } = useAuthStore();
-    const { data, error } = useFetchProfile();
+    const { checkAuth } = useAuthStore();
+
     useEffect(() => {
-        if (data) {
-            login(data);
-        }
-    }, [data]);
+        checkAuth(data);
+    }, []);
 
     return (
         <>
