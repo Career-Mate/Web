@@ -2,11 +2,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import HomePage from './pages/HomePage';
 import RecommendMainPage from './pages/Recommend/RecommnedMainPage/RecommendMainPage';
-import RecommendContentPage from './pages/Recommend/RecommendContentPage/RecommendContentPage';
-import RecommendJobPage from './pages/Recommend/RecommendJobPage/RecommendJobPage';
+import RecommendPage from './pages/Recommend/RecommendPage/RecommendPage';
 import JobDetailPage from './pages/Recommend/JobDetailPage/JobDetailPage';
-import { userData as recommendContentData } from './data/recommendContentData';
-import recommendJobData from './data/recommendJobData';
 import Test from './test/Test';
 import LoginSuccessPage from './pages/Main/LoginSuccessPage/LoginSuccessPage';
 import MainPage from './pages/Main/MainPage/MainPage';
@@ -71,16 +68,12 @@ const router = createBrowserRouter([
                         element: <RecommendMainPage />,
                     },
                     {
-                        path: 'content',
-                        element: <RecommendContentPage user={recommendContentData} />,
-                    },
-                    {
-                        path: 'job',
-                        element: <RecommendJobPage user={recommendJobData} />,
+                        path: ':tab',
+                        element: <RecommendPage />,
                     },
                     {
                         path: 'detail/:id',
-                        element: <JobDetailPage  />,
+                        element: <JobDetailPage />,
                     },
                 ],
             },
