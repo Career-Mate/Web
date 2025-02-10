@@ -149,12 +149,31 @@ export const useTemplateStore = create((set, get) => ({
 
     handleDateChange: (sectionIndex, itemIndex, date, isStartDate) => {
         set((state) => {
+            const section = state.data[sectionIndex];
+            if (!section) return {};
+            const item = section.items[itemIndex];
+            if (!item) return {};
+
+            const key = isStartDate ? 'startDate' : 'endDate';
+            let currentDate = item[key];
+
+            if (currentDate && !(currentDate instanceof Date)) {
+                currentDate = new Date(currentDate);
+            }
+
+            if (
+                (currentDate === null && date === null) ||
+                (currentDate && date && currentDate.getTime() === date.getTime())
+            ) {
+                return {};
+            }
+
             const newData = state.data.map((section, sIndex) =>
                 sIndex === sectionIndex
                     ? {
                           ...section,
                           items: section.items.map((item, iIndex) =>
-                              iIndex === itemIndex ? { ...item, [isStartDate ? 'startDate' : 'endDate']: date } : item,
+                              iIndex === itemIndex ? { ...item, [key]: date } : item,
                           ),
                       }
                     : section,

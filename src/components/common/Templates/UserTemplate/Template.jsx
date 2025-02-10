@@ -99,7 +99,7 @@ const Template = ({ pageType, onDataChange }) => {
         document.getElementById(id).click();
     };
 
-    const handleFileChange = (e, sectionIndex, itemIndex) => {
+    const handleFileChange = useCallback((e, sectionIndex, itemIndex) => {
         const file = e.target.files ? e.target.files[0] : null;
         if (file) {
             const reader = new FileReader();
@@ -117,9 +117,9 @@ const Template = ({ pageType, onDataChange }) => {
         } else {
             console.log('사진이 선택되지 않았습니다!');
         }
-    };
+    });
 
-    const handleClearAll = (sectionIndex) => {
+    const handleClearAll = useCallback((sectionIndex) => {
         useTemplateStore.getState().clearAll(sectionIndex);
 
         const updatedImages = { ...uploadedImages };
@@ -132,7 +132,7 @@ const Template = ({ pageType, onDataChange }) => {
 
         setUploadedImages(updatedImages);
         localStorage.setItem('uploadedImages', JSON.stringify(updatedImages));
-    };
+    });
 
     const shouldShowImageUpload = jobType === 'Designer' && pageType === 'PROJECT_EXPERIENCE';
 
