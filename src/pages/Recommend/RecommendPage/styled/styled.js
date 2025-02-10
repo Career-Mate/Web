@@ -65,7 +65,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-top: 50px;
+    padding-top: 80px;
 `;
 
 export const TextWrapper = styled.div`

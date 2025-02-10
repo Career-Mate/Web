@@ -15,11 +15,14 @@ const ScrapJob = ({ onNavigate }) => {
     const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
 
-    const totalPages = Math.max(1, Math.ceil(scrapJobs.length / itemsPerPage));
-    const displayedJobs = scrapJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
     if (isLoading) return <div>loading...</div>;
     if (isError) return <div>error</div>;
+
+    console.log('scrapJobs:', scrapJobs);
+    console.log('user job:', user.job);
+    const filteredJobs = scrapJobs.filter((job) => job.jobName === user.job);
+    const totalPages = Math.max(1, Math.ceil(filteredJobs.length / itemsPerPage));
+    const displayedJobs = filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     return (
         <>
