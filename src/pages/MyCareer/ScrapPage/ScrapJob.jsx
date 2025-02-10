@@ -14,24 +14,27 @@ const ScrapJob = ({ onNavigate }) => {
     const { data: scrapJobs, isLoading, isError } = useGetScrapJobs();
     const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
+    const [filteredJobs, setFilteredJobs] = useState([]);
 
-    if (isLoading) return <div>loading...</div>;
-    if (isError) return <div>error</div>;
+    useEffect(() => {
+        if (scrapJobs) {
+            setFilteredJobs(scrapJobs.filter((job) => job.jobName === user.job));
+        }
+    }, [scrapJobs, user.job]);
 
-    const filteredJobs = scrapJobs.filter((job) => job.jobName === user.job);
     const totalPages = Math.max(1, Math.ceil(filteredJobs.length / itemsPerPage));
     const displayedJobs = filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-    useEffect(() => {
-        if (filteredJobs.length > 0 && displayedJobs.length === 0 && currentPage > 1) {
-            setCurrentPage((prev) => Math.max(1, prev - 1));
-            window.scrollTo(0, 0);
-        }
-    }, [filteredJobs, displayedJobs.length, currentPage]);
+    if (currentPage > totalPages) {
+        setCurrentPage(Math.max(1, totalPages));
+    }
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [currentPage]);
+
+    if (isLoading) return <div>loading...</div>;
+    if (isError) return <div>error</div>;
 
     return (
         <>
