@@ -1,5 +1,6 @@
 import * as S from './styled/styled.js';
 import companyImg from '../../../assets/JobDetailPage/company.svg';
+import RabbitLogo from '../../../assets/JobDetailPage/rabbit-logo.svg';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton.jsx';
 import JobDetailList from '../../../components/Recommend/JobDetailList/JobDetailList.jsx';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
@@ -98,7 +99,9 @@ const JobDetailPage = () => {
                         <S.AIChatBubbleTailInner />
                     </>
                 )}
-                <S.AIProfile onClick={onAIChatClick} />
+                <S.AIProfile onClick={onAIChatClick}>
+                    <S.RabbitImg src={RabbitLogo} />
+                </S.AIProfile>
             </S.AIChatBotWrapper>
         </S.PageContainer>
     );
