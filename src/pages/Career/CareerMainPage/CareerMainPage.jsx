@@ -20,7 +20,7 @@ const CareerMainPage = () => {
         timeoutId.current = setTimeout(() => {
             handlePopUpCancel();
             navigate('/career/note');
-        }, 1500);
+        }, 1000);
     };
 
     const handlePopUpCancel = () => {

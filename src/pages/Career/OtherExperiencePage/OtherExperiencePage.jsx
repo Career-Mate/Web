@@ -1,12 +1,12 @@
-import Template from '../../../components/common/Templates/TextTemplate/TextTemplate';
+import Template from '../../../components/common/Templates/UserTemplate/Template';
 import ProgressBar from '../../../components/common/ProgressBar/ProgressBar';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import * as S from './styled/styled';
-import { useOtherExperience } from './useOtherExperience';
+import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
 
 const OtherExperiencePage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave } = useOtherExperience();
+    const { data, setData, canSave, handleSave } = useTemplateData('OTHER_ACTIVITIES');
     const { progression, prevSummaryProgress, nextSummaryProgress } = useProgressBar(3);
 
     const handlePrevClick = () => {
@@ -23,19 +23,14 @@ const OtherExperiencePage = ({ setActiveScreen }) => {
         <S.PageWrapper>
             <S.HeaderWrapper>
                 <S.TitleGroup>
-                    <S.Title>3. 기타 경험</S.Title>
+                    <S.Title>3. 기타 활동</S.Title>
                     <S.Subtitle>※ 최대 2개까지 작성할 수 있어요.</S.Subtitle>
                 </S.TitleGroup>
                 <ProgressBar progression={progression} />
             </S.HeaderWrapper>
 
             <S.TemplateWrapper>
-                <Template
-                    jobType="frontend"
-                    pageType="otherExperience"
-                    data={data}
-                    onDataChange={(updatedData) => setData(updatedData)}
-                />
+                <Template pageType="OTHER_ACTIVITIES" onDataChange={(updatedData) => setData(updatedData)} />
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
