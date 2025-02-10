@@ -92,17 +92,3 @@ export const Link = styled.a`
     color: #9d9d9d;
     text-decoration: underline;
 `;
-
-export const ShowOnSmall = styled.div`
-    display: none;
-    @media (max-width: 391px) {
-        display: block;
-    }
-`;
-
-export const HiddenOnSmall = styled.div`
-    display: block;
-    @media (max-width: 391px) {
-        display: none;
-    }
-`;
