@@ -30,8 +30,9 @@ const Template = ({ pageType, onDataChange }) => {
         const newCharCounts = {};
         templateData.forEach((section, sectionIndex) => {
             section.items.forEach((item, itemIndex) => {
-                newLocalValues[`${sectionIndex}-${itemIndex}`] = item.content;
-                newCharCounts[`${sectionIndex}-${itemIndex}`] = item.content.length;
+                const key = `${sectionIndex}-${itemIndex}`;
+                newLocalValues[key] = item.content;
+                newCharCounts[key] = item.content ? item.content.length : 0;
             });
         });
         setLocalValues(newLocalValues);
@@ -48,16 +49,6 @@ const Template = ({ pageType, onDataChange }) => {
             localStorage.setItem('uploadedImages', JSON.stringify(uploadedImages));
         }
     }, [uploadedImages]);
-
-    useEffect(() => {
-        const newLocalValues = {};
-        templateData.forEach((section, sectionIndex) => {
-            section.items.forEach((item, itemIndex) => {
-                newLocalValues[`${sectionIndex}-${itemIndex}`] = item.content;
-            });
-        });
-        setLocalValues(newLocalValues);
-    }, [templateData]);
 
     const memoizedData = useMemo(() => {
         return templateData.length >= 2
