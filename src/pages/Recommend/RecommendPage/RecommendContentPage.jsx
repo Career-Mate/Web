@@ -2,35 +2,24 @@ import * as S from './styled/styled';
 import ContentCard from '../../../components/common/Card/ContentCard/ContentCard';
 import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getContents } from '../../../apis/Content/ContentApi';
+import { useGetRecommendContents } from '../../../apis/Content/ContentApi';
+import { useQueryClient } from '@tanstack/react-query';
 
 const RecommendContentPage = ({ user }) => {
     const navigate = useNavigate();
-    const [contents, setContents] = useState([]);
+    const queryClient = useQueryClient();
+
+    const { data, isLoading, error } = useGetRecommendContents();
+    const contents = data?.contents || [];
 
     useEffect(() => {
-        (async () => {
-            try {
-                const data = await getContents();
-                setContents(data.contents);
-            } catch (error) {
-                console.error('fetch contents error:', error);
-            }
-        })();
-
         window.scrollTo(0, 0);
     }, []);
 
-    const handleScrapUpdate = (contentId, isScrapped) => {
-        setContents((prevContents) => {
-            const updatedContents = [...prevContents];
-            const targetContent = updatedContents.find((content) => content.id === contentId);
-            if (targetContent) targetContent.isScrapped = isScrapped;
-            return updatedContents;
-        });
-    };
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>error</div>;
 
     return (
         <S.Container>
@@ -50,7 +39,6 @@ const RecommendContentPage = ({ user }) => {
                         thumbnail={content.thumbnail}
                         url={content.url}
                         isScrapped={content.isScrapped}
-                        onScrapUpdate={handleScrapUpdate}
                     />
                 ))}
             </S.CardWrapper>
@@ -58,7 +46,7 @@ const RecommendContentPage = ({ user }) => {
                 <OvalButton
                     width={'280px'}
                     height={'58px'}
-                    padding={'17x 74px'}
+                    padding={'17px 74px'}
                     onClick={() => navigate('/recommend/job')}
                 >
                     추천 공고 보러 가기

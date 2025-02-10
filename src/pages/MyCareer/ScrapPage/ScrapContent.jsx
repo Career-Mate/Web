@@ -1,27 +1,13 @@
 import ContentCard from '../../../components/common/Card/ContentCard/ContentCard';
-import { getScrapContents } from '../../../apis/Scrap/Content/ContentScrapApi';
 import UnderlineButton from '../../../components/common/Button/UnderlineButton/UnderlineButton';
+import { useGetScrapContents } from '../../../apis/Scrap/Content/ContentScrapApi';
 import * as S from './styled/styled';
-import { useState, useEffect } from 'react';
 
 const ScrapContent = ({ onNavigate }) => {
-    const [scrapContents, setScrapContents] = useState([]);
+    const { data: scrapContents, isLoading, error } = useGetScrapContents();
 
-    useEffect(() => {
-        const loadScrapData = async () => {
-            try {
-                const data = await getScrapContents();
-                setScrapContents(Array.isArray(data) ? data : []);
-            } catch (error) {
-                console.error('get scrap data error:', error);
-            }
-        };
-        loadScrapData();
-    }, []);
-
-    const handleScrapContentUpdate = (contentId) => {
-        setScrapContents((prev) => prev.filter((content) => content.contentId !== contentId));
-    };
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>error</div>;
 
     return (
         <>
@@ -35,7 +21,6 @@ const ScrapContent = ({ onNavigate }) => {
                             thumbnail={content.photo}
                             url={content.url}
                             isScrapped={content.isScrapped}
-                            onScrapUpdate={handleScrapContentUpdate}
                         />
                     ))}
                 </S.CardWrapper>

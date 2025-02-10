@@ -1,42 +1,25 @@
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
-import { getScrapJobs } from '../../../apis/Scrap/Job/JobScrapApi';
+import { useGetScrapJobs } from '../../../apis/Scrap/Job/JobScrapApi';
 import UnderlineButton from '../../../components/common/Button/UnderlineButton/UnderlineButton';
 import Pagination from '../../../components/common/Pagination/Pagination';
 import * as S from './styled/styled';
-import { useState, useEffect } from 'react';
+import { useAuthStore } from '../../../store/authStore';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const ScrapJob = ({ onNavigate }) => {
+    const { user } = useAuthStore();
+    const navigate = useNavigate();
+
+    const { data: scrapJobs, isLoading, isError } = useGetScrapJobs();
     const itemsPerPage = 6;
-    const [scrapJobs, setScrapJobs] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
-    useEffect(() => {
-        const loadScrapData = async () => {
-            try {
-                const data = await getScrapJobs();
-                setScrapJobs(Array.isArray(data) ? data : []);
-            } catch (error) {
-                console.error('get scrap data error:', error);
-            }
-        };
-        loadScrapData();
-    }, []);
-
     const totalPages = Math.max(1, Math.ceil(scrapJobs.length / itemsPerPage));
-
     const displayedJobs = scrapJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-    console.log('displayedJobs:');
-    const handleScrapJobUpdate = (jobId) => {
-        setScrapJobs((prev) => {
-            const updatedJobs = prev.filter((job) => job.recruitId !== jobId);
-            const newTotalPages = Math.max(1, Math.ceil(updatedJobs.length / itemsPerPage));
-            if (currentPage > newTotalPages) {
-                setCurrentPage(newTotalPages);
-            }
-            return updatedJobs;
-        });
-    };
+    if (isLoading) return <div>loading...</div>;
+    if (isError) return <div>error</div>;
 
     return (
         <>
@@ -49,11 +32,13 @@ const ScrapJob = ({ onNavigate }) => {
                             companyName={job.companyName}
                             deadline={job.deadLine}
                             contentName={job.title}
-                            thumbnail={job.thumbnail}
-                            url={job.companyInfoUrl}
-                            jobName={job.jobName}
+                            jobType={user.job}
+                            goToDetail={() =>
+                                navigate(`/recommend/detail/${job.recruitId}`, {
+                                    state: { page: currentPage },
+                                })
+                            }
                             isScrapped={job.isScraped}
-                            onScrapUpdate={handleScrapJobUpdate}
                         />
                     ))}
                 </S.CardWrapper>

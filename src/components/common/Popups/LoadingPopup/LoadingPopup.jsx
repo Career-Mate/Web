@@ -6,8 +6,7 @@ import { useAuthStore } from '../../../../store/authStore';
 
 const LoadingPopup = ({ type, onCancel }) => {
     const { user } = useAuthStore();
-    console.log('hi');
-    console.log('user info:', user.job, user.name);
+
     const text =
         type === 'template'
             ? `${user.name} 메이트님의

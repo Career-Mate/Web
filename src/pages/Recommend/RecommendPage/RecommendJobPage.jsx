@@ -6,7 +6,8 @@ import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import Pagination from '../../../components/common/Pagination/Pagination';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 import DeadlineButton from '../../../components/common/Button/DeadlineButton/DeadlineButton';
-import { getRecommendJobs } from '../../../apis/Job/JobApi';
+import { useGetRecommendJobs } from '../../../apis/Job/JobApi';
+import { useQueryClient } from '@tanstack/react-query';
 
 const SORT_TYPES = {
     '마감 빠른 순': 'DEADLINE_ASC',
@@ -17,37 +18,32 @@ const SORT_TYPES = {
 const RecommendJobPage = ({ user }) => {
     const location = useLocation();
     const navigate = useNavigate();
+    const queryClient = useQueryClient();
 
     const [currentPage, setCurrentPage] = useState(location.state?.page || 1);
     const [sortType, setSortType] = useState('전체');
-    const [jobs, setJobs] = useState([]);
-    const [totalPages, setTotalPages] = useState(1);
-    const [jobName, setJobName] = useState('직무 정보 없음');
 
-    useEffect(() => {
-        const getJobs = async () => {
-            try {
-                const data = await getRecommendJobs(currentPage, SORT_TYPES[sortType]);
-                console.log('API 응답 데이터:', data);
+    const { data, isLoading, error } = useGetRecommendJobs(currentPage, SORT_TYPES[sortType]);
+    const jobs = data?.jobs || [];
+    const totalPages = data?.totalPages || 1;
+    const jobName = data?.jobName || '직무 정보 없음';
 
-                setJobs(data.jobs || []);
-                setTotalPages(data.totalPages || 1);
-                setJobName(data.jobName || '직무 정보 없음');
-            } catch (err) {
-                console.error('fetchRecommendJobs error:', err);
-            }
-        };
-
-        getJobs();
-    }, [currentPage, sortType]);
+    const handleScrapUpdate = (jobId, isScraped) => {
+        queryClient.setQueryData(['recommendJobs', currentPage, SORT_TYPES[sortType]], (oldData) => {
+            if (!oldData) return oldData;
+            return {
+                ...oldData,
+                jobs: oldData.jobs.map((job) => (job.id === jobId ? { ...job, isScraped } : job)),
+            };
+        });
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [currentPage]);
+    }, []);
 
-    const handleScrapUpdate = (jobId, isScraped) => {
-        setJobs((prevJobs) => prevJobs.map((job) => (job.id === jobId ? { ...job, isScraped } : job)));
-    };
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>error</div>;
 
     return (
         <S.Container>
@@ -82,8 +78,8 @@ const RecommendJobPage = ({ user }) => {
                             companyName={job.companyName}
                             deadline={job.deadline}
                             contentName={job.contentName}
-                            jobType={jobName}
-                            onClick={() =>
+                            jobType={user.job}
+                            goToDetail={() =>
                                 navigate(`/recommend/detail/${job.id}`, {
                                     state: { page: currentPage },
                                 })

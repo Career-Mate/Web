@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 1650px;
     padding-bottom: 20px;
-    margin-left: -198px;
+    margin-left: -165px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +29,7 @@ export const TitleWrapper = styled.div.withConfig({
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 16px 16px;
+    padding: 24px 24px;
     border-radius: 20px 20px 0 0;
     cursor: pointer;
     pointer-events: auto;
@@ -49,6 +49,14 @@ export const TitleWrapper = styled.div.withConfig({
         height: 2px;
         background-color: ${({ isSelected }) => (isSelected ? 'white' : 'transparent')};
     }
+`;
+
+export const PinIcon = styled.img.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isSelected',
+})`
+    width: 32px;
+    height: 32px;
+    visibility: ${({ isSelected }) => (isSelected ? 'visible' : 'hidden')};
 `;
 
 export const Title = styled.span.withConfig({

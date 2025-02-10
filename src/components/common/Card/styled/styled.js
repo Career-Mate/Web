@@ -16,6 +16,7 @@ export const CardContainer = styled.div`
     box-sizing: border-box;
     font-weight: 600;
     font-size: 18px;
+    cursor: pointer;
 `;
 
 export const CompanyName = styled.div`
@@ -56,7 +57,6 @@ export const Title = styled.div`
     text-overflow: ellipsis;
     font-weight: 600;
     flex-grow: 1;
-    cursor: pointer;
 `;
 
 export const DeadlineWrapper = styled.div`

@@ -2,34 +2,24 @@ import * as S from '../styled/styled.js';
 import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
-import { postScrapContent, deleteScrapContent } from '../../../../apis/Scrap/Content/ContentScrapApi.js';
-import { useState, useEffect } from 'react';
+import { usePostScrapContent, useDeleteScrapContent } from '../../../../apis/Scrap/Content/ContentScrapApi.js';
 
-const ContentCard = ({ id, contentName, thumbnail, url, isScrapped, onScrapUpdate }) => {
-    const [isScrap, setIsScrap] = useState(isScrapped);
+const ContentCard = ({ id, contentName, thumbnail, url, isScrapped }) => {
+    const postScrap = usePostScrapContent();
+    const deleteScrap = useDeleteScrapContent();
 
-    useEffect(() => {
-        setIsScrap(isScrapped);
-    }, [isScrapped]);
+    const handleScrap = (e) => {
+        e.stopPropagation();
 
-    const handleScrap = async () => {
-        try {
-            if (isScrap) {
-                await deleteScrapContent(id);
-                onScrapUpdate(id, false);
-                console.log(`스크랩 해제됨 (id: ${id})`);
-            } else {
-                const result = await postScrapContent(id);
-                onScrapUpdate(id, true);
-                console.log(`스크랩 성공 (id: ${id}):`, result);
-            }
-        } catch (error) {
-            console.error(`스크랩 요청 실패 (id: ${id}):`, error);
+        if (isScrapped) {
+            deleteScrap.mutate(id);
+        } else {
+            postScrap.mutate(id);
         }
     };
 
     return (
-        <S.CardContainer $width={'375px'} $type={true}>
+        <S.CardContainer $width={'375px'} $type={true} onClick={() => window.open(url, '_blank')}>
             <S.Thumbnail
                 src={thumbnail ? thumbnail : defaultThumbnail}
                 alt={contentName}
@@ -39,12 +29,10 @@ const ContentCard = ({ id, contentName, thumbnail, url, isScrapped, onScrapUpdat
             />
             <S.Line $type={true} />
             <S.ContentWrapper $type={true}>
-                <S.Title $type={true} onClick={() => window.open(url, '_blank')}>
-                    {contentName}
-                </S.Title>
+                <S.Title $type={true}>{contentName}</S.Title>
                 <S.DeadlineWrapper $type={true}>
                     <S.ScrapIcon
-                        src={isScrap ? scrapCheckedIcon : scrapUncheckedIcon}
+                        src={isScrapped ? scrapCheckedIcon : scrapUncheckedIcon}
                         alt="스크랩 아이콘"
                         onClick={handleScrap}
                     />

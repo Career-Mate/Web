@@ -6,29 +6,19 @@ import backThumbnail from '../../../../assets/Card/backend.png';
 import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
-import { postScrapJob, deleteScrapJob } from '../../../../apis/Scrap/Job/JobScrapApi';
-import { useState, useEffect } from 'react';
+import { usePostScrapJob, useDeleteScrapJob } from '../../../../apis/Scrap/Job/JobScrapApi';
 
-const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, isScrapped, onScrapUpdate }) => {
-    const [isScrap, setIsScrap] = useState(isScrapped);
+const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, isScrapped, goToDetail }) => {
+    const postScrap = usePostScrapJob();
+    const deleteScrap = useDeleteScrapJob();
 
-    useEffect(() => {
-        setIsScrap(isScrapped);
-    }, [isScrapped]);
+    const handleScrap = async (e) => {
+        e.stopPropagation();
 
-    const handleScrap = async () => {
-        try {
-            if (isScrap) {
-                await deleteScrapJob(id);
-                onScrapUpdate(id, false);
-                console.log(`스크랩 해제됨 (id: ${id})`);
-            } else {
-                const result = await postScrapJob(id);
-                onScrapUpdate(id, true);
-                console.log(`스크랩 성공 (id: ${id}):`, result);
-            }
-        } catch (error) {
-            console.error(`스크랩 요청 실패 (id: ${id}):`, error);
+        if (isScrapped) {
+            deleteScrap.mutate(id);
+        } else {
+            postScrap.mutate(id);
         }
     };
 
@@ -50,7 +40,7 @@ const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, isScr
     const thumbnail = getThumbnailByJob(jobType);
 
     return (
-        <S.CardContainer $width={'400px'} $type={false}>
+        <S.CardContainer $width={'400px'} $type={false} onClick={goToDetail}>
             <S.CompanyName $type={false}>{companyName}</S.CompanyName>
             <S.Thumbnail src={thumbnail} alt={contentName} $width={'348px'} $height={'200px'} $type={false} />
             <S.Line $type={false} />
@@ -60,7 +50,7 @@ const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, isScr
                 <S.DeadlineWrapper $type={false}>
                     <S.Deadline>{deadline}</S.Deadline>
                     <S.ScrapIcon
-                        src={isScrap ? scrapCheckedIcon : scrapUncheckedIcon}
+                        src={isScrapped ? scrapCheckedIcon : scrapUncheckedIcon}
                         alt="스크랩 아이콘"
                         onClick={handleScrap}
                     />

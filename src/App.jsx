@@ -14,7 +14,7 @@ import CareerMainPage from './pages/Career/CareerMainPage/CareerMainPage';
 import ProfileSettingPage from './pages/Main/ProfileSettingPage/ProfileSettingPage';
 import ProfileSuccessPage from './pages/Main/ProfileSuccessPage/ProfileSuccessPage';
 import MyCareerPage from './pages/MyCareer/MyCareerPage/MyCareerPage';
-import ScrapContentPage from './pages/MyCareer/ScrapContentPage/ScrapContentPage';
+import ScrapPage from './pages/MyCareer/ScrapPage/ScrapPage';
 import SmartPlannerPage from './pages/MyCareer/SmartPlannerPage/SmartPlannerPage';
 import ProfileEditPage from './pages/MyCareer/ProfileEditPage/ProfileEditPage';
 
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: 'saved-content',
-                        element: <ScrapContentPage />,
+                        element: <ScrapPage />,
                     },
                     {
                         path: 'smart-planner',
