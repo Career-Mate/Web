@@ -54,7 +54,11 @@ export const TabButton = styled.div.withConfig({
     }
 `;
 
-export const ListContainer = styled.div``;
+export const ListContainer = styled.div`
+    background-color: #f7f8f9;
+    width: 100%;
+    padding-bottom: 100px;
+`;
 
 export const Container = styled.div`
     display: flex;
@@ -62,8 +66,6 @@ export const Container = styled.div`
     align-items: center;
     width: 100%;
     padding-top: 50px;
-    padding-bottom: 50px;
-    background-color: #f7f8f9;
 `;
 
 export const TextWrapper = styled.div`
