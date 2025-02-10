@@ -3,12 +3,12 @@ import TextTemplate from '../../../components/common/Templates/TextTemplate/Text
 import ProgressBar from '../../../components/common/ProgressBar/ProgressBar';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton';
 import * as S from './styled/styled';
-import { useFinalSummary } from './useFinalSummary';
+import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
 
 const FinalSummaryPage = ({ setActiveScreen }) => {
     const navigate = useNavigate();
-    const { data, setData, handleSave } = useFinalSummary();
+    const { data, setData, handleSave, canSave } = useTemplateData('SUMMARY');
     const { progression, prevSummaryProgress } = useProgressBar(5);
 
     const handlePrevClick = () => {
@@ -31,11 +31,11 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
             </S.HeaderWrapper>
 
             <S.TemplateWrapper>
-                <TextTemplate data={data} onDataChange={(updatedData) => setData(updatedData)} />
+                <TextTemplate pageType="SUMMARY" onDataChange={(updatedData) => setData(updatedData)} />
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
-                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave}>
+                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
                     저장
                 </SquareButton>
                 <div>
@@ -43,7 +43,7 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
                         이전
                     </SquareButton>
                     <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
-                        다음
+                        완료
                     </SquareButton>
                 </div>
             </S.ButtonWrapper>

@@ -4,7 +4,7 @@ export const TemplateWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 983px;
+    width: 800px;
     gap: 10px;
     padding-bottom: 65px;
 `;
@@ -16,23 +16,22 @@ export const TemplateTitle = styled.h2`
     line-height: 39px;
     letter-spacing: -0.011em;
     color: #000000;
-    margin: 0;
 `;
 
 export const TemplateTable = styled.div`
     display: flex;
     flex-direction: column;
-    width: 976px;
+    width: inherit;
     background: #ffffff;
     border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(0, 0, 0, 0.2);
 `;
 
 export const TableRow = styled.div`
     display: flex;
     width: 100%;
     height: auto;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
     &:last-child {
         border-bottom: none;
@@ -48,11 +47,12 @@ export const TableCellHeader = styled.div.withConfig({
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
     color: rgba(0, 0, 0, 0.8);
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 2px solid rgba(0, 0, 0, 0.2);
     border-top-left-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
     border-bottom-left-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
 `;
@@ -64,7 +64,7 @@ export const TableCellData = styled.div.withConfig({
     width: 768px;
     background: #ffffff;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: 20px;
     overflow-wrap: break-word;
     white-space: normal;
@@ -176,4 +176,24 @@ export const ButtonWrapper = styled.div`
     justify-content: flex-end;
     align-items: flex-end;
     width: 100%;
+`;
+
+export const UploadButton = styled.button`
+    background: rgb(200, 205, 200);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+
+    &:hover {
+        background: rgb(107, 107, 107);
+    }
+`;
+
+export const CharCount = styled.div`
+    font-size: 8px;
+    color: ${(props) => (props.$charCount >= props.$maxCount ? 'red' : 'grey')};
+    align-self: flex-end;
 `;
