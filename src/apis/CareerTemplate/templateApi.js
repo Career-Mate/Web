@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import apiClient from '../axiosInstance';
 
-// 직무별 템플릿 조회 API
 export const fetchTemplate = async (templateType, jobType) => {
     const response = await apiClient.get('/templates', {
         params: { templateType, jobType },
@@ -18,7 +17,6 @@ export const useFetchTemplate = (templateType, jobType) => {
     });
 };
 
-// 커리어 작성 진행 상태 조회 API
 export const fetchCompletionStatus = async (templateType) => {
     const response = await apiClient.get('/answers/completion-status');
     const statusList = response.data?.data?.answerCompletionStatusInfoDTOList || [];
@@ -34,7 +32,6 @@ export const useFetchCompletionStatus = (templateType) => {
     });
 };
 
-// 기존 답변 조회 API
 export const fetchExistingAnswers = async (templateType) => {
     if (!templateType) {
         console.warn('templateType이 없음.');
@@ -54,7 +51,6 @@ export const useFetchExistingAnswers = (templateType) => {
     });
 };
 
-// 새 커리어 데이터 저장 API
 export const saveTemplateData = async (data) => {
     const response = await apiClient.post('/answers', data, {
         headers: { 'Content-Type': 'multipart/form-data' },
@@ -74,7 +70,6 @@ export const useSaveTemplateData = () => {
     });
 };
 
-// 기존 커리어 데이터 수정 API
 export const updateTemplateData = async (data) => {
     const response = await apiClient.patch('/answers', data, {
         headers: { 'Content-Type': 'multipart/form-data' },
