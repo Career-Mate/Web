@@ -2,7 +2,7 @@ import { useState } from 'react';
 import UnderlineButton from '../../../components/common/Button/UnderlineButton/UnderlineButton';
 import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSetting';
 import * as S from './styled/styled';
-import AccountPopUp from '../../../components/common/Popups/AccountPopUp/AccountPopUp';
+import AccountPopup from '../../../components/common/Popups/AccountPopup/AccountPopup';
 import { useProfileEdit, useDeleteAccount } from './useProfileEdit';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useProfilePopup } from '../../../hooks/useProfile';
@@ -45,7 +45,7 @@ const ProfileEditPage = () => {
                     </UnderlineButton>
                 </S.ContentWrapper>
                 {isPopUp && (
-                    <AccountPopUp type={'회원 탈퇴'} onCancel={handlePopUpClose} onConfirm={handleDeleteUser} />
+                    <AccountPopup type={'회원 탈퇴'} onCancel={handlePopUpClose} onConfirm={handleDeleteUser} />
                 )}
             </S.EditContainer>
             {showProfilePopup && <ProfilePopup />}
