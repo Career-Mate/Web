@@ -40,7 +40,7 @@ const RecommendJobPage = ({ user }) => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+    }, [currentPage, sortType]);
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>error</div>;

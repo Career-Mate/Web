@@ -5,7 +5,7 @@ import Pagination from '../../../components/common/Pagination/Pagination';
 import * as S from './styled/styled';
 import { useAuthStore } from '../../../store/authStore';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const ScrapJob = ({ onNavigate }) => {
     const { user } = useAuthStore();
@@ -21,6 +21,17 @@ const ScrapJob = ({ onNavigate }) => {
     const filteredJobs = scrapJobs.filter((job) => job.jobName === user.job);
     const totalPages = Math.max(1, Math.ceil(filteredJobs.length / itemsPerPage));
     const displayedJobs = filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+    useEffect(() => {
+        if (filteredJobs.length > 0 && displayedJobs.length === 0 && currentPage > 1) {
+            setCurrentPage((prev) => Math.max(1, prev - 1));
+            window.scrollTo(0, 0);
+        }
+    }, [filteredJobs, displayedJobs.length, currentPage]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [currentPage]);
 
     return (
         <>
