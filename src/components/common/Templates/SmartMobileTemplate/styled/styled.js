@@ -7,6 +7,9 @@ export const TemplateWrapper = styled.div`
     width: 320px;
     gap: 10px;
     padding-bottom: 65px;
+    @media (max-width: 391px) {
+        padding-bottom: 0px;
+    }
 `;
 
 export const TemplateTitle = styled.h2`

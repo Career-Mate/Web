@@ -12,15 +12,3 @@ export const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
 `;
-export const HideOnSmall = styled.div`
-    display: block;
-    @media (max-width: 391px) {
-        display: none;
-    }
-`;
-export const ShowOnSmall = styled.div`
-    display: none;
-    @media (max-width: 391px) {
-        display: block;
-    }
-`;

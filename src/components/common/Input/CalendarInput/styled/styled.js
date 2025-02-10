@@ -9,6 +9,7 @@ export const InputContainer = styled.div`
     gap: 5px;
     margin-bottom: 20px;
     @media (max-width: 391px) {
+        width: fit-content;
         height: 60px;
     }
 `;

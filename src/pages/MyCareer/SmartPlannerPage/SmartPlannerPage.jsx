@@ -68,7 +68,7 @@ const SmartPlannerPage = () => {
             <SquareButton
                 width="131px"
                 height="60px"
-                padding="18px 48px"
+                mobileWidth="340px"
                 backgroundColor="deepgreen"
                 onClick={() => handleSave(planners, page)}
             >
@@ -77,8 +77,8 @@ const SmartPlannerPage = () => {
             {page === 0 ? (
                 <SquareButton
                     width="131px"
+                    mobileWidth="340px"
                     height="60px"
-                    padding="18px 48px"
                     backgroundColor="lightgreen"
                     onClick={() => pageChange(1)}
                 >
@@ -87,8 +87,8 @@ const SmartPlannerPage = () => {
             ) : (
                 <SquareButton
                     width="131px"
+                    mobileWidth="340px"
                     height="60px"
-                    padding="18px 48px"
                     backgroundColor="grey"
                     onClick={() => pageChange(-1)}
                 >

@@ -8,7 +8,9 @@ export const MainContainer = styled.div`
     margin-right: 60px;
     gap: 60px;
     @media (max-width: 391px) {
-        margin: 0px 25px;
+        margin: 0px 15px;
+        gap: 10px;
+        align-items: center;
     }
 `;
 export const TextContainer = styled.div`
@@ -141,4 +143,9 @@ export const ButtonWrapper = styled.div`
     flex-direction: row;
     gap: 18px;
     justify-content: end;
+
+    @media (max-width: 391px) {
+        flex-direction: column;
+        gap: 12px;
+    }
 `;
