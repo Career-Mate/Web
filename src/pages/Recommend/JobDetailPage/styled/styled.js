@@ -175,9 +175,9 @@ export const ListWrapper = styled.div`
 
     @media (max-width: 391px) {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2열 레이아웃 */
-        gap: 40px 20px; /* 아이템 간 간격 */
-        width: 100%; /* 전체 너비 */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 20px;
+        width: 100%;
         padding: 0px;
     }
 `;
@@ -190,6 +190,12 @@ export const ButtonWrapper = styled.div`
     gap: 20px;
     margin-top: 107px;
     margin-bottom: 209px;
+
+    @media (max-width: 391px) {
+        flex-direction: column;
+        margin-top: 30px;
+        margin-bottom: 70px;
+    }
 `;
 
 export const AIChatBotWrapper = styled.div`
@@ -265,9 +271,10 @@ export const AIChatBubbleWrapper = styled.div`
     color: #000000;
 
     @media (max-width: 391px) {
-        width: 270px;
+        width: 235px;
         margin-bottom: 40px;
         border-radius: 30px;
+        padding: 10px 0px 5px 0px;
     }
 
     textarea {
@@ -286,7 +293,8 @@ export const AIChatBubbleWrapper = styled.div`
         font-size: 14px;
 
         @media (max-width: 391px) {
-            width: 250px;
+            width: 200px;
+            font-size: 10px;
         }
     }
 `;
