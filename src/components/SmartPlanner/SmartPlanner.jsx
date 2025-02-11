@@ -5,16 +5,31 @@ import React from 'react';
 import { handleDateChange, handleInputChange, handleClearAll } from '../../utils/SmartPlanner/plannerHandler';
 import * as S from './styled/styled';
 
+import SmartMobileTemplate from '../common/Templates/SmartMobileTemplate/SmartMobileTemplate';
+import MobileTextarea from '../common/MobileTextarea/MobileTextarea';
+import useIsMobileScreen from '../../hooks/useIsMobileScreen';
+
 const SmartPlanner = ({ data, onDataChange, page }) => {
+    const isMobileScreen = useIsMobileScreen(390);
     return (
         <S.Container>
             <S.InputContainer>
-                <ProfileInput
-                    label={'활동명'}
-                    placeholder={'활동명을 입력하세요'}
-                    defaultValue={data[page]?.activityName || ''}
-                    onBlur={(value) => handleInputChange(data, onDataChange, page, value)}
-                />
+                {isMobileScreen ? (
+                    <MobileTextarea
+                        label={'활동명'}
+                        value={data[page]?.activityName || ''}
+                        placeholder={'활동명을 입력하세요'}
+                        onBlur={(value) => handleInputChange(data, onDataChange, page, value)}
+                    />
+                ) : (
+                    <ProfileInput
+                        label={'활동명'}
+                        placeholder={'활동명을 입력하세요'}
+                        defaultValue={data[page]?.activityName || ''}
+                        onBlur={(value) => handleInputChange(data, onDataChange, page, value)}
+                    />
+                )}
+
                 <CalendarInput
                     label="목표 달성 기간"
                     startDate={data[page]?.goalPeriod?.startDate || null}
@@ -23,18 +38,33 @@ const SmartPlanner = ({ data, onDataChange, page }) => {
                     onEndDateChange={(date) => handleDateChange(data, onDataChange, page, false, date)}
                 />
             </S.InputContainer>
-            <SmartTemplate
-                data={[data[page]]}
-                onClearAll={() => handleClearAll(onDataChange, page)}
-                onDataChange={(updatedArray) =>
-                    onDataChange((prevData) => {
-                        const newData = [...prevData];
-                        newData[page] = updatedArray[0];
-                        return newData;
-                    })
-                }
-                page={page}
-            />
+            {isMobileScreen ? (
+                <SmartMobileTemplate
+                    data={[data[page]]}
+                    onClearAll={() => handleClearAll(onDataChange, page)}
+                    onDataChange={(updatedArray) =>
+                        onDataChange((prevData) => {
+                            const newData = [...prevData];
+                            newData[page] = updatedArray[0];
+                            return newData;
+                        })
+                    }
+                    page={page}
+                />
+            ) : (
+                <SmartTemplate
+                    data={[data[page]]}
+                    onClearAll={() => handleClearAll(onDataChange, page)}
+                    onDataChange={(updatedArray) =>
+                        onDataChange((prevData) => {
+                            const newData = [...prevData];
+                            newData[page] = updatedArray[0];
+                            return newData;
+                        })
+                    }
+                    page={page}
+                />
+            )}
         </S.Container>
     );
 };
