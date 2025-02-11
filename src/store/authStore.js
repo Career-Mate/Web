@@ -28,7 +28,7 @@ export const useAuthStore = create(
                 if (token) {
                     set({ isLogin: true });
                 } else {
-                    set({ isLogin: true, user: profileEmptyData });
+                    set({ isLogin: false, user: profileEmptyData });
                 }
             },
 

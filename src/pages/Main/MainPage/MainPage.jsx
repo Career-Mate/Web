@@ -38,11 +38,11 @@ const cards = [
 
 const MainPage = () => {
     const navigate = useNavigate();
-    const { checkAuth, fetchUser } = useAuthStore();
+    const { checkAuth, fetchUser, isLogin } = useAuthStore();
 
     useEffect(() => {
         checkAuth();
-    }, []);
+    }, [isLogin]);
 
     const { data } = useFetchProfile();
 
