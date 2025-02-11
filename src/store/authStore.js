@@ -27,6 +27,8 @@ export const useAuthStore = create(
                 const token = getCookie('access-token');
                 if (token) {
                     set({ isLogin: true });
+                } else {
+                    set({ isLogin: true, user: profileEmptyData });
                 }
             },
 
