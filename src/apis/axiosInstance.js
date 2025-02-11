@@ -18,7 +18,7 @@ apiClient.interceptors.response.use(
     async (error) => {
         const originalRequest = error.config;
         const statusCode = error.response?.status;
-        const errorCode = error.response?.data?.code;
+        const errorCode = error.response?.code;
         const handleLogout = useHandleLogout();
         if (
             ((statusCode === 4001 && errorCode === 'ETK001') || (statusCode === 4003 && errorCode === 'ETK004')) &&
