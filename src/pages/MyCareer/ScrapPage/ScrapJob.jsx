@@ -4,30 +4,36 @@ import UnderlineButton from '../../../components/common/Button/UnderlineButton/U
 import Pagination from '../../../components/common/Pagination/Pagination';
 import * as S from './styled/styled';
 import { useAuthStore } from '../../../store/authStore';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-const ScrapJob = ({ onNavigate }) => {
+const ScrapJob = ({ onNavigate, prevPage }) => {
     const { user } = useAuthStore();
     const navigate = useNavigate();
-
+    const location = useLocation();
     const { data: scrapJobs, isLoading, isError } = useGetScrapJobs();
     const itemsPerPage = 6;
 
-    const [currentPage, setCurrentPage] = useState(1);
     const [filteredJobs, setFilteredJobs] = useState([]);
+    const [totalPages, setTotalPages] = useState(1);
+    const [currentPage, setCurrentPage] = useState(prevPage);
+    useEffect(() => {
+        if (prevPage) {
+            setCurrentPage(prevPage);
+        }
+    }, [prevPage]);
 
-    // scrapJobs가 undefined일 수 있으므로 기본값([])을 설정하여 안정성 확보
     useEffect(() => {
         setFilteredJobs((scrapJobs || []).filter((job) => job.jobName === user.job));
     }, [scrapJobs, user.job]);
 
-    const totalPages = Math.max(1, Math.ceil(filteredJobs.length / itemsPerPage));
-    const displayedJobs = filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
-    // 렌더링 도중 훅이 변경되는 문제를 방지하기 위해 useEffect 사용
     useEffect(() => {
-        if (currentPage > totalPages) {
+        const newTotalPages = Math.max(1, Math.ceil(filteredJobs.length / itemsPerPage));
+        setTotalPages(newTotalPages);
+    }, [filteredJobs]);
+
+    useEffect(() => {
+        if (totalPages > 1 && currentPage > totalPages) {
             setCurrentPage(Math.max(1, totalPages));
         }
     }, [totalPages]);
@@ -38,6 +44,8 @@ const ScrapJob = ({ onNavigate }) => {
 
     if (isLoading) return <div>loading...</div>;
     if (isError) return <div>error</div>;
+
+    const displayedJobs = filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     return (
         <>
@@ -53,7 +61,7 @@ const ScrapJob = ({ onNavigate }) => {
                             jobType={user.job}
                             goToDetail={() =>
                                 navigate(`/recommend/detail/${job.recruitId}`, {
-                                    state: { page: currentPage },
+                                    state: { page: currentPage, from: 'scrap' },
                                 })
                             }
                             isScrapped={job.isScraped}

@@ -14,16 +14,23 @@ const JobDetailPage = () => {
     const [speechVisible, setSpeechVisible] = useState(false);
 
     const location = useLocation();
+    const navigate = useNavigate();
+
     const prevPage = location.state?.page || 1;
+    const from = location.state?.from || 'recommend';
 
     const onAIChatClick = () => {
         setSpeechVisible((prev) => !prev);
     };
 
-    const navigate = useNavigate();
     const handlePrevNavigation = () => {
-        navigate('/recommend/job', { state: { page: prevPage } });
+        if (from === 'recommend') {
+            navigate('/recommend/job', { state: { page: prevPage, sortType: location.state?.sortType || '전체' } });
+        } else {
+            navigate('/mycareer/saved-content', { state: { page: prevPage, selectedTab: 'job' } });
+        }
     };
+
     const handleJobRecruitNavigation = () => {
         window.open(detail?.data?.recruitUrl, '_blank', 'noopener,noreferrer');
     };

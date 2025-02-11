@@ -21,7 +21,7 @@ const RecommendJobPage = ({ user }) => {
     const queryClient = useQueryClient();
 
     const [currentPage, setCurrentPage] = useState(location.state?.page || 1);
-    const [sortType, setSortType] = useState('전체');
+    const [sortType, setSortType] = useState(location.state?.sortType || '전체');
 
     const { data, isLoading, error } = useGetRecommendJobs(currentPage, SORT_TYPES[sortType]);
     const jobs = data?.jobs || [];
@@ -81,7 +81,7 @@ const RecommendJobPage = ({ user }) => {
                             jobType={user.job}
                             goToDetail={() =>
                                 navigate(`/recommend/detail/${job.id}`, {
-                                    state: { page: currentPage },
+                                    state: { page: currentPage, sortType: sortType, from: 'recommend' },
                                 })
                             }
                             isScrapped={job.isScraped}
