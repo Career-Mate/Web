@@ -267,6 +267,7 @@ export const AIChatBubbleWrapper = styled.div`
     @media (max-width: 391px) {
         width: 270px;
         margin-bottom: 40px;
+        border-radius: 30px;
     }
 
     textarea {
