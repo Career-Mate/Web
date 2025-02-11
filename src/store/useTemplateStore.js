@@ -9,7 +9,14 @@ const dataURLtoFile = (dataUrl, fileName) => {
         u8arr[n] = bstr.charCodeAt(n);
     }
 
-    return new File([u8arr], fileName, { type: mime });
+    const extensions = {
+        'image/jpeg': 'jpg',
+        'image/png': 'png',
+        'image/gif': 'gif',
+    };
+
+    const extension = extensions[mime] || 'png';
+    return new File([u8arr], `${fileName}.${extension}`, { type: mime });
 };
 
 import { create } from 'zustand';
@@ -253,9 +260,9 @@ export const useTemplateStore = create((set, get) => ({
 
         if (uploadedImages) {
             Object.keys(uploadedImages).forEach((key) => {
-                const imageIndex = key.split('_')[1]; // 'image_1'에서 '1' 추출
-                const imageKey = `image_${imageIndex}`; // 새로운 키 포맷
-                const imageFile = dataURLtoFile(uploadedImages[key], `${imageKey}.png`);
+                const imageIndex = key.split('_')[1];
+                const imageKey = `image_${imageIndex}`;
+                const imageFile = dataURLtoFile(uploadedImages[key], imageKey);
                 formData.append(imageKey, imageFile);
             });
         }
