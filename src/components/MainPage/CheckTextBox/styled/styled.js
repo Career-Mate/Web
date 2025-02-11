@@ -17,12 +17,12 @@ export const IconWrapper = styled.div`
 `;
 
 export const Text = styled.div`
-    width: 930px;
+    width: 758px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 20px;
     border-radius: 20px;
     padding: 18px 26px;
     background-color: white;

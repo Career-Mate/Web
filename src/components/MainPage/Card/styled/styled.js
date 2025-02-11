@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-    width: 337px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
 `;
 
 export const TitleBox = styled.div`
-    width: 245px;
+    width: 218px;
     height: 57px;
     display: flex;
     justify-content: center;
@@ -25,7 +25,7 @@ export const TitleBox = styled.div`
 
 export const ContentWrapper = styled.div`
     width: 100%;
-    height: 367px;
+    height: 334px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -36,9 +36,11 @@ export const ContentWrapper = styled.div`
 `;
 
 export const Img = styled.div`
-    width: 130px;
-    height: 130px;
+    width: 100px;
+    height: 100px;
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const Content = styled.div`
@@ -63,7 +65,7 @@ export const FirstSection = styled.div`
 export const SecondSection = styled.div`
     width: 232px;
     position: absolute;
-    top: 65px;
+    top: 60px;
     word-wrap: keep-all;
     font-weight: 500;
 `;

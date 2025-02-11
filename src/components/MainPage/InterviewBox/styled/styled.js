@@ -12,7 +12,7 @@ export const TextWrapper = styled.div`
     background-color: white;
     box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.25);
     padding: 32px 41px;
-    width: 740px;
+    width: 617px;
     box-sizing: border-box;
     border-radius: 20px;
     display: flex;
@@ -25,7 +25,7 @@ export const TextWrapper = styled.div`
 export const Text = styled.div`
     text-align: center;
     width: 577px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
 `;
 
@@ -35,8 +35,8 @@ export const ImgWrapper = styled.div`
     align-items: center;
     border-radius: 50%;
     background-color: rgba(209, 244, 224, 1);
-    width: 297px;
-    height: 297px;
+    width: 268px;
+    height: 268px;
     z-index: 2;
     margin-left: ${({ $type }) => ($type === 'left' ? '20px' : '0')};
     margin-right: ${({ $type }) => ($type === 'right' ? '20px' : '0')};

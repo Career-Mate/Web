@@ -22,13 +22,13 @@ export const FirstPage = styled.div`
 `;
 
 export const FirstTextWrapper = styled.div`
-    font-size: 30px;
+    font-size: 28px;
     text-align: right;
     display: flex;
     flex-direction: column;
 
     b {
-        font-size: 48px;
+        font-size: 40px;
         font-weight: 400;
         span {
             font-weight: 700;
@@ -41,7 +41,7 @@ export const SecondPage = styled.div`
     width: 100%;
     height: 150vh;
     background-image: url('/assets/main-vector.svg');
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     box-sizing: border-box;
@@ -128,7 +128,7 @@ export const Text = styled.div`
 
 export const CardWrapper = styled.div`
     display: flex;
-    gap: 62px;
+    gap: 20px;
     font-size: 18px;
 `;
 
