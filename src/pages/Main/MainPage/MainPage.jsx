@@ -9,7 +9,6 @@ import CheckTextBox from '../../../components/MainPage/CheckTextBox/CheckTextBox
 import InterviewBox from '../../../components/MainPage/InterviewBox/InterviewBox';
 import Card from '../../../components/MainPage/Card/Card';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
-import Background from '../../../assets/MainPage/main-vector.svg';
 import { useNavigate } from 'react-router-dom';
 import { useFetchProfile } from '../../../apis/Profile/useProfileApi';
 import { useAuthStore } from '../../../store/authStore';
@@ -58,7 +57,7 @@ const MainPage = () => {
                     </b>
                 </S.FirstTextWrapper>
             </S.FirstPage>
-            <S.SecondPage $background={Background}>
+            <S.SecondPage>
                 <S.SecondContainer>
                     <h1>혹시,</h1>
                     <S.SecondCheckWrapper>
