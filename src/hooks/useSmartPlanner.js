@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { SmartPlannerInitialData } from '../data/smartTemplateData';
-import { useCreatePlanner, useUpdatePlanner } from '../apis/smartPlanner/useSmartPlannerApi';
+import { useUpdatePlanner } from '../apis/smartPlanner/useSmartPlannerApi';
 import { mapPlannerDataToState, mapStateToPlannerData } from '../utils/SmartPlanner/plannerMappers';
 
 export const useSmartPlanner = () => {
@@ -67,28 +67,9 @@ export const useSmartPlanner = () => {
 };
 
 export const usePlannerDataEffect = (isSuccess, planner, setData, isError, error) => {
-    const { mutate: createPlanner, isLoading: isCreating } = useCreatePlanner();
-
-    const initialPlannerData = {
-        activityName: '',
-        startTime: null,
-        endTime: null,
-        specifics: '',
-        measurable: '',
-        achievable: '',
-        relevant: '',
-        timeBound: '',
-        otherPlans: '',
-    };
-
     useEffect(() => {
-        if (isError && error?.response?.status === 400 && !isCreating) {
-            createPlanner(initialPlannerData);
-            return;
-        }
-
         if (isSuccess && planner) {
             setData((prevData) => mapPlannerDataToState(planner, prevData));
         }
-    }, [isSuccess, planner, setData, isError, error, createPlanner, isCreating]);
+    }, [isSuccess, planner, setData, isError, error]);
 };
