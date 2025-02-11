@@ -1,22 +1,24 @@
-import { useNavigate } from 'react-router-dom';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSetting';
 import * as S from './styled/styled';
-import { profileEmptyData } from '../../../data/profileData';
 import { useProfile } from '../../../hooks/useProfile';
+import { useSaveProfile } from '../../../apis/Profile/useProfileApi';
+import { useAuthStore } from '../../../store/authStore';
 
 const ProfileSettingPage = () => {
-    const navigate = useNavigate();
-    const { canSave, profile, handleProfileChange, handleProfileFieldChange } = useProfile(profileEmptyData);
+    const { canSave, emailError, profile, handleProfileFieldChange } = useProfile();
+    const mutation = useSaveProfile(profile);
 
-    const handleSave = () => {
-        if (canSave) {
-            const updatedProfile = handleProfileChange();
-            console.log(updatedProfile);
-            navigate('/profile/success');
-        } else {
+    const handleSave = async () => {
+        if (!canSave) {
             alert('항목을 모두 입력해주세요!');
+            return;
         }
+        if (emailError) {
+            alert('유효한 이메일 주소를 입력하세요.');
+            return;
+        }
+        mutation.mutate(profile);
     };
 
     return (

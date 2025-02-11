@@ -1,8 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
+import { useFetchProfile } from '../../../apis/Profile/useProfileApi';
+import { useEffect } from 'react';
+import { useAuthStore } from '../../../store/authStore';
 
 const LoginSuccessPage = () => {
     const navigate = useNavigate();
+    const { login } = useAuthStore();
+    const { data, error } = useFetchProfile();
+    useEffect(() => {
+        if (data) {
+            login(data);
+        }
+    }, [data]);
 
     return (
         <>

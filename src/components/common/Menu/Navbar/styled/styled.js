@@ -31,7 +31,7 @@ export const LogoWrapper = styled.div`
     display: flex;
     justify-content: left;
     align-items: flex-end;
-    height: 100%;
+    height: 105%;
 `;
 
 export const Logo = styled.img`
@@ -41,7 +41,6 @@ export const Logo = styled.img`
     cursor: pointer;
     object-fit: cover;
     position: relative;
-    transform: translateY(-23%);
 `;
 
 export const TextWrapper = styled.div`
@@ -70,7 +69,7 @@ export const ButtonWrapper = styled.div`
     height: auto;
     align-items: center;
     box-sizing: border-box;
-    padding: 10px 0;
+    padding: 15px 0;
 `;
 
 export const GradientBorder = styled.div`
