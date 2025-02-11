@@ -7,8 +7,11 @@ import { useSmartPlanner, usePlannerDataEffect } from '../../../hooks/useSmartPl
 import { useFetchPlanner } from '../../../apis/smartPlanner/useSmartPlannerApi';
 import { useState } from 'react';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import { useAuthStore } from '../../../store/authStore';
 
 const SmartPlannerPage = () => {
+    const { user } = useAuthStore();
+    console.log(user.name);
     const [tooltipVisible, setTooltipVisible] = useState(false);
     const [page, setPage] = useState(0);
     const pageChange = (num) => {
@@ -56,7 +59,7 @@ const SmartPlannerPage = () => {
                         SMART 기법은 목표를 설정할 때, 명확하고 구체적인 성과 목표를 세우기 위한 방법론입니다.
                     </S.Text>
                     <S.Text>
-                        아래 플래너를 OOO 님만의 목표로 채워보세요!
+                        아래 플래너를 {user.name} 님만의 목표로 채워보세요!
                         {isMobileScreen ? <br /> : null}
                         <S.Subtitle>※ 최대 2개까지 작성할 수 있어요.</S.Subtitle>
                     </S.Text>
