@@ -253,8 +253,10 @@ export const useTemplateStore = create((set, get) => ({
 
         if (uploadedImages) {
             Object.keys(uploadedImages).forEach((key) => {
-                const imageFile = dataURLtoFile(uploadedImages[key], 'image.png');
-                formData.append('image', imageFile);
+                const imageIndex = key.split('_')[1]; // 'image_1'에서 '1' 추출
+                const imageKey = `image_${imageIndex}`; // 새로운 키 포맷
+                const imageFile = dataURLtoFile(uploadedImages[key], `${imageKey}.png`);
+                formData.append(imageKey, imageFile);
             });
         }
 
