@@ -55,7 +55,7 @@ export const DateInput = styled.div.withConfig({
     @media (max-width: 391px) {
         .react-datepicker {
             font-size: 12px;
-            width: 180px; /* 모바일에서 캘린더 크기 조절 */
+            width: 180px;
         }
 
         .react-datepicker__day {
