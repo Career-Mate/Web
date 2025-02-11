@@ -40,7 +40,7 @@ export const FirstTextWrapper = styled.div`
 export const SecondPage = styled.div`
     width: 100%;
     height: 150vh;
-    background-image: url('${({ $background }) => $background}');
+    background-image: url('/assets/main-vector.svg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
