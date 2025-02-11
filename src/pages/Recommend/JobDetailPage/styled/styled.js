@@ -209,6 +209,12 @@ export const AIChatBotWrapper = styled.div`
 
     z-index: 100;
     gap: 40px;
+
+    @media (max-width: 391px) {
+        bottom: 10px;
+        right: 10px;
+        gap: 10px;
+    }
 `;
 
 export const AIProfile = styled.div`
@@ -216,6 +222,7 @@ export const AIProfile = styled.div`
     height: 96px;
     border-radius: 50%;
     overflow: hidden;
+    background-color: #f1f1f1;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
@@ -227,8 +234,8 @@ export const AIProfile = styled.div`
     }
 
     @media (max-width: 391px) {
-        width: 64px;
-        height: 64px;
+        width: 58px;
+        height: 58px;
     }
 `;
 export const RabbitImg = styled.img`
@@ -257,6 +264,11 @@ export const AIChatBubbleWrapper = styled.div`
     font-size: 12px;
     color: #000000;
 
+    @media (max-width: 391px) {
+        width: 270px;
+        margin-bottom: 40px;
+    }
+
     textarea {
         height: fit-content;
         width: 300px;
@@ -271,6 +283,10 @@ export const AIChatBubbleWrapper = styled.div`
         text-align: center;
 
         font-size: 14px;
+
+        @media (max-width: 391px) {
+            width: 250px;
+        }
     }
 `;
 export const AIChatBubbleTail = styled.div`
@@ -284,6 +300,11 @@ export const AIChatBubbleTail = styled.div`
     border-width: 0 60px 30px 0;
     border-color: transparent transparent #ffffff transparent;
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+
+    @media (max-width: 391px) {
+        bottom: 40px;
+        right: 60px;
+    }
 `;
 
 export const AIChatBubbleTailInner = styled.div`
@@ -297,4 +318,11 @@ export const AIChatBubbleTailInner = styled.div`
     border-width: 50px 25px 30px 0;
     border-color: transparent #ffffff transparent transparent;
     transform: rotate(-90deg) scaleX(-1);
+
+    @media (max-width: 391px) {
+        bottom: 18px;
+        right: 88px;
+        border-width: 40px 17px 20px 0;
+        border-color: transparent #ffffff transparent transparent;
+    }
 `;
