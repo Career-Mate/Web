@@ -28,6 +28,19 @@ export const CompanyName = styled.div`
     height: 24px;
     border-radius: 20px;
     background-color: gray;
+
+    animation: pulse 1.5s infinite ease-in-out;
+    @keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 `;
 
 export const Thumbnail = styled.div`
@@ -35,6 +48,19 @@ export const Thumbnail = styled.div`
     height: 130px;
     border-radius: 20px;
     background-color: gray;
+
+    animation: pulse 1.5s infinite ease-in-out;
+    @keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 `;
 
 export const Line = styled.div`
@@ -57,6 +83,19 @@ export const Title = styled.div`
     height: 20px;
     border-radius: 20px;
     background-color: gray;
+
+    animation: pulse 1.5s infinite ease-in-out;
+    @keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 `;
 
 export const DeadlineWrapper = styled.div`
@@ -70,6 +109,19 @@ export const Deadline = styled.div`
     height: 20px;
     border-radius: 20px;
     background-color: gray;
+
+    animation: pulse 1.5s infinite ease-in-out;
+    @keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 `;
 
 export const ScrapIcon = styled.img`

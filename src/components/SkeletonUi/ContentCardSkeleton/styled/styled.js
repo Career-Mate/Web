@@ -22,6 +22,19 @@ export const Thumbnail = styled.div`
     height: 150px;
     background-color: gray;
     border-radius: 20px;
+
+    animation: pulse 1.5s infinite ease-in-out;
+    @keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 `;
 
 export const Line = styled.div`
@@ -45,6 +58,19 @@ export const Title = styled.div`
     height: 20px;
     background-color: gray;
     border-radius: 20px;
+
+    animation: pulse 1.5s infinite ease-in-out;
+    @keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 `;
 
 export const DeadlineWrapper = styled.div`

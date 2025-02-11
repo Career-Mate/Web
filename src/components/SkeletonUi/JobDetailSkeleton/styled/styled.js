@@ -37,6 +37,19 @@ export const ImgTextWrapper = styled.div`
     height: fit-content;
     color: white;
     z-index: 2;
+
+    animation: pulse 1.5s infinite ease-in-out;
+    @keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 `;
 export const ImgTitleWrapper = styled.div`
     display: flex;
@@ -83,31 +96,6 @@ export const SummaryWrapper = styled.div`
 
     box-sizing: border-box;
     padding: 0 40px;
-`;
-export const SummaryTextWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-
-    width: fit-content;
-    height: fit-content;
-
-    box-sizing: border-box;
-    padding: 70px 29px 52px 29px;
-    border-bottom: 3px solid #efefef;
-`;
-export const Highlight = styled.span`
-    font-weight: 700;
-    font-size: inherit;
-    color: inherit;
-`;
-export const SummaryTitle = styled.span`
-    font-size: 23px;
-    font-weight: 400;
-`;
-export const SummaryText = styled.span`
-    font-size: 20px;
-    font-weight: 400;
 `;
 
 export const ListWrapper = styled.div`
