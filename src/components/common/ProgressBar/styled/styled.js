@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const BarContainer = styled.div`
     width: 248px;
@@ -7,22 +7,29 @@ export const BarContainer = styled.div`
     flex-direction: column;
     gap: 10px;
     align-items: end;
-`
+
+    @media (max-width: 391px) {
+        width: 120px;
+    }
+`;
 export const Text = styled.div`
     font-weight: 600;
     font-size: 16px;
-    color: #66CCAA;
-`
+    color: #66ccaa;
+`;
 export const RectangleWrapper = styled.div`
-    width: 248px;
+    width: inherit;
     display: flex;
     flex-direction: row;
     gap: 12px;
-` 
+    @media (max-width: 391px) {
+        gap: 5px;
+    }
+`;
 export const Rectangle = styled.div`
     width: 40px;
     height: 10px;
-    background-color:${(props)=>( props.$status === "done" ? '#66CCAA' : '#D9D9D9')};
+    background-color: ${(props) => (props.$status === 'done' ? '#66CCAA' : '#D9D9D9')};
     ${(props) => {
         switch (props.$type) {
             case 0:
@@ -33,4 +40,8 @@ export const Rectangle = styled.div`
                 return 'border-radius: 0;';
         }
     }}
-`
+    @media (max-width:391px) {
+        width: 20px;
+        height: 5px;
+    }
+`;
