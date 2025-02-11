@@ -4,19 +4,20 @@ import UnderlineButton from '../../../components/common/Button/UnderlineButton/U
 import Pagination from '../../../components/common/Pagination/Pagination';
 import * as S from './styled/styled';
 import { useAuthStore } from '../../../store/authStore';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 const ScrapJob = ({ onNavigate, prevPage }) => {
     const { user } = useAuthStore();
     const navigate = useNavigate();
-    const location = useLocation();
+
     const { data: scrapJobs, isLoading, isError } = useGetScrapJobs();
     const itemsPerPage = 6;
 
     const [filteredJobs, setFilteredJobs] = useState([]);
     const [totalPages, setTotalPages] = useState(1);
-    const [currentPage, setCurrentPage] = useState(prevPage);
+    const [currentPage, setCurrentPage] = useState(prevPage ?? 1);
+
     useEffect(() => {
         if (prevPage) {
             setCurrentPage(prevPage);
@@ -24,8 +25,16 @@ const ScrapJob = ({ onNavigate, prevPage }) => {
     }, [prevPage]);
 
     useEffect(() => {
-        setFilteredJobs((scrapJobs || []).filter((job) => job.jobName === user.job));
-    }, [scrapJobs, user.job]);
+        if (!isLoading && scrapJobs && Array.isArray(scrapJobs.recruitScrapThumbNailInfoDTOList)) {
+            if (scrapJobs.jobName === user.job) {
+                setFilteredJobs(scrapJobs.recruitScrapThumbNailInfoDTOList);
+            } else {
+                setFilteredJobs([]);
+            }
+        } else {
+            setFilteredJobs([]);
+        }
+    }, [scrapJobs, user.job, isLoading]);
 
     useEffect(() => {
         const newTotalPages = Math.max(1, Math.ceil(filteredJobs.length / itemsPerPage));
@@ -33,10 +42,16 @@ const ScrapJob = ({ onNavigate, prevPage }) => {
     }, [filteredJobs]);
 
     useEffect(() => {
-        if (totalPages > 1 && currentPage > totalPages) {
+        if (filteredJobs.length === 0 && currentPage > 1) {
+            setCurrentPage((prev) => Math.max(1, prev - 1));
+        }
+    }, [filteredJobs]);
+
+    useEffect(() => {
+        if (currentPage > totalPages) {
             setCurrentPage(Math.max(1, totalPages));
         }
-    }, [totalPages]);
+    }, [totalPages, currentPage]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -64,7 +79,7 @@ const ScrapJob = ({ onNavigate, prevPage }) => {
                                     state: { page: currentPage, from: 'scrap' },
                                 })
                             }
-                            isScrapped={job.isScraped}
+                            isScrapped={job.isScrapped}
                         />
                     ))}
                 </S.CardWrapper>

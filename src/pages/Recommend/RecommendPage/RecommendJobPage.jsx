@@ -28,12 +28,12 @@ const RecommendJobPage = ({ user }) => {
     const totalPages = data?.totalPages || 1;
     const jobName = data?.jobName || '직무 정보 없음';
 
-    const handleScrapUpdate = (jobId, isScraped) => {
+    const handleScrapUpdate = (jobId, isScarpped) => {
         queryClient.setQueryData(['recommendJobs', currentPage, SORT_TYPES[sortType]], (oldData) => {
             if (!oldData) return oldData;
             return {
                 ...oldData,
-                jobs: oldData.jobs.map((job) => (job.id === jobId ? { ...job, isScraped } : job)),
+                jobs: oldData.jobs.map((job) => (job.id === jobId ? { ...job, isScarpped } : job)),
             };
         });
     };
@@ -84,7 +84,7 @@ const RecommendJobPage = ({ user }) => {
                                     state: { page: currentPage, sortType: sortType, from: 'recommend' },
                                 })
                             }
-                            isScrapped={job.isScraped}
+                            isScrapped={job.isScrapped}
                             onScrapUpdate={handleScrapUpdate}
                         />
                     ))}
