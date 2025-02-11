@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import RabbitLogo from '../../../../assets/JobDetailPage/rabbit-logo.svg';
+import RabbitLogo from '../../../../../public/assets/rabbit-logo.svg';
 export const PageContainer = styled.div`
     width: 100%;
     height: fit-content;
