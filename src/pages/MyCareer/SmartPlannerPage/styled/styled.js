@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import SpeechBubble from '../../../../assets/common/speech-bubble.svg';
+import MobileSpeechBubble from '../../../../assets/common/mobile-speech-bubble.svg';
 
 export const MainContainer = styled.div`
     height: fit-content;
@@ -8,7 +9,7 @@ export const MainContainer = styled.div`
     margin-right: 60px;
     gap: 60px;
     @media (max-width: 391px) {
-        margin: 0px 15px;
+        margin: 70px 15px 95px 15px;
         gap: 10px;
         align-items: center;
     }
@@ -88,6 +89,13 @@ export const Tooltip = styled.div`
 
     display: flex;
     align-items: center;
+    @media (max-width: 391px) {
+        align-items: end;
+        width: 150px;
+        height: 150px;
+        top: -130px;
+        left: 50%;
+    }
     justify-content: center;
 
     text-align: center;
@@ -100,6 +108,9 @@ export const Tooltip = styled.div`
         width: 100%;
         height: 100%;
         background-image: url(${SpeechBubble});
+        @media (max-width: 391px) {
+            background-image: url(${MobileSpeechBubble});
+        }
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center 75%;
@@ -125,6 +136,11 @@ export const TooltipText = styled.p`
     line-height: 1.5;
 
     text-align: center;
+
+    @media (max-width: 391px) {
+        margin-bottom: 50px;
+        font-size: 8px;
+    }
 `;
 
 export const Hyperlink = styled.a`
