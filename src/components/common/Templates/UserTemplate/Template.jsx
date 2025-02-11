@@ -99,40 +99,39 @@ const Template = ({ pageType, onDataChange }) => {
         document.getElementById(id).click();
     };
 
-    const handleFileChange = useCallback((e, sectionIndex, itemIndex) => {
+    const handleFileChange = useCallback((e, sectionIndex) => {
         const file = e.target.files ? e.target.files[0] : null;
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
+                const imageKey = `image_${sectionIndex + 1}`;
                 useTemplateStore.getState().setUploadedImages({
-                    [`${sectionIndex}-${itemIndex}`]: reader.result,
+                    [imageKey]: reader.result,
                 });
-
                 setUploadedImages((prev) => ({
                     ...prev,
-                    [`${sectionIndex}-${itemIndex}`]: reader.result,
+                    [imageKey]: reader.result,
                 }));
             };
             reader.readAsDataURL(file);
         } else {
             console.log('사진이 선택되지 않았습니다!');
         }
-    });
+    }, []);
 
-    const handleClearAll = useCallback((sectionIndex) => {
-        useTemplateStore.getState().clearAll(sectionIndex);
+    const handleClearAll = useCallback(
+        (sectionIndex) => {
+            useTemplateStore.getState().clearAll(sectionIndex);
 
-        const updatedImages = { ...uploadedImages };
+            const imageKey = `image_${sectionIndex + 1}`;
+            const updatedImages = { ...uploadedImages };
+            delete updatedImages[imageKey];
 
-        Object.keys(updatedImages).forEach((key) => {
-            if (key.startsWith(sectionIndex)) {
-                delete updatedImages[key];
-            }
-        });
-
-        setUploadedImages(updatedImages);
-        localStorage.setItem('uploadedImages', JSON.stringify(updatedImages));
-    });
+            setUploadedImages(updatedImages);
+            localStorage.setItem('uploadedImages', JSON.stringify(updatedImages));
+        },
+        [uploadedImages],
+    );
 
     const shouldShowImageUpload = jobType === 'Designer' && pageType === 'PROJECT_EXPERIENCE';
 
@@ -226,7 +225,7 @@ const Template = ({ pageType, onDataChange }) => {
                                                     style={{ display: 'none' }}
                                                     onChange={(e) => handleFileChange(e, sectionIndex, itemIndex)}
                                                 />
-                                                {uploadedImages[key] && (
+                                                {uploadedImages[`image_${sectionIndex + 1}`] && (
                                                     <div
                                                         style={{
                                                             display: 'flex',
@@ -235,7 +234,7 @@ const Template = ({ pageType, onDataChange }) => {
                                                         }}
                                                     >
                                                         <img
-                                                            src={uploadedImages[key]}
+                                                            src={uploadedImages[`image_${sectionIndex + 1}`]}
                                                             alt="Uploaded"
                                                             style={{ maxWidth: '50%' }}
                                                         />
