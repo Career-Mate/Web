@@ -6,7 +6,7 @@ import { useAuthStore } from '../../../store/authStore';
 const CareerSavePage = () => {
     const { user } = useAuthStore();
     const navigate = useNavigate();
-    console.log('user', user);
+
     const handleNavigation = (path) => {
         navigate(path);
     };

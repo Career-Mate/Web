@@ -11,7 +11,7 @@ import { useAuthStore } from '../../../store/authStore';
 const CareerMainPage = () => {
     const navigate = useNavigate();
     const user = useAuthStore();
-    console.log('user:', user);
+
     const [isPopUpVisible, setIsPopUpVisible] = useState(false);
     const timeoutId = useRef(null);
     const { showProfilePopup } = useProfilePopup();
