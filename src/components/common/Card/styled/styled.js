@@ -16,11 +16,12 @@ export const CardContainer = styled.div`
     box-sizing: border-box;
     font-weight: 600;
     font-size: 18px;
+    cursor: pointer;
 `;
 
 export const CompanyName = styled.div`
     transform: ${({ $type }) => ($type ? 'none' : 'translateY(-3px)')};
-    color: #c4c4c4;
+    color: #8f8f8f;
 `;
 
 export const Thumbnail = styled.img`
@@ -58,16 +59,11 @@ export const Title = styled.div`
     flex-grow: 1;
 `;
 
-export const DetailButton = styled.div`
-    font-size: 16px;
-    font-weight: 400;
-    color: ${({ $type }) => ($type ? '#000000' : '#00000080')};
-    cursor: pointer;
-`;
-
 export const DeadlineWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: ${({ $type }) => ($type ? 'flex-end' : 'space-between')};
+    padding-top: 10px;
     align-items: center;
 `;
 
