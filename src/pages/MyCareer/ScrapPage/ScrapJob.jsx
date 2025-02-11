@@ -42,16 +42,10 @@ const ScrapJob = ({ onNavigate, prevPage }) => {
     }, [filteredJobs]);
 
     useEffect(() => {
-        if (filteredJobs.length === 0 && currentPage > 1) {
-            setCurrentPage((prev) => Math.max(1, prev - 1));
-        }
-    }, [filteredJobs]);
-
-    useEffect(() => {
-        if (currentPage > totalPages) {
+        if (totalPages > 1 && currentPage > totalPages) {
             setCurrentPage(Math.max(1, totalPages));
         }
-    }, [totalPages, currentPage]);
+    }, [totalPages]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
