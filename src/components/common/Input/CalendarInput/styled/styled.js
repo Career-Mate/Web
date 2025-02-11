@@ -52,7 +52,34 @@ export const DateInput = styled.div.withConfig({
     display: flex;
     align-items: center;
     gap: 8px;
+    @media (max-width: 391px) {
+        .react-datepicker {
+            font-size: 12px;
+            width: 180px; /* 모바일에서 캘린더 크기 조절 */
+        }
 
+        .react-datepicker__day {
+            width: 1.2rem;
+            height: 1.2rem;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .react-datepicker__header {
+            width: 180px;
+            font-size: 11px;
+        }
+        .react-datepicker__day-names {
+            display: flex;
+            justify-content: space-between;
+        }
+        .react-datepicker__week {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
     input {
         font-size: 16px;
         width: ${(props) => (props.isInline ? 'auto' : '200px')};
