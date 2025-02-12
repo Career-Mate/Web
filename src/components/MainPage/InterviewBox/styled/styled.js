@@ -7,7 +7,7 @@ export const InterviewBoxContainer = styled.div`
     justify-content: center;
     position: relative;
 
-    @media (max-width: 430px) {
+    @media (max-width: 431px) {
         flex-direction: column;
     }
 `;
@@ -31,7 +31,7 @@ export const TextWrapper = styled.div`
         padding: 16px;
     }
 
-    @media (max-width: 430px) {
+    @media (max-width: 431px) {
         width: 307px;
         transform: ${({ $type }) => ($type === 'left' ? 'translateX(0)' : 'translateX(-0)')};
         transform: translateY(-10px);
@@ -49,7 +49,7 @@ export const Text = styled.div`
         font-size: 14px;
         width: 269px;
     }
-    @media (max-width: 430px) {
+    @media (max-width: 431px) {
         font-size: 10px;
         width: 269px;
     }

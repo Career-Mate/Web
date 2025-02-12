@@ -65,7 +65,7 @@ export const Text = styled.div`
         border-radius: 10px;
     }
 
-    @media (max-width: 430px) {
+    @media (max-width: 431px) {
         width: 307px;
         height: 38px;
         font-size: 10px;
