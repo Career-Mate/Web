@@ -7,7 +7,7 @@ const fetchDetail = async ({ recruitId }) => {
 };
 
 export const useFetchDetail = (recruitId) => {
-    const { data, isFetching, isError } = useQuery({
+    const { data, isFetching, isLoading, isError } = useQuery({
         queryFn: () => fetchDetail({ recruitId }),
         queryKey: ['detail', recruitId],
         cacheTime: 1000 * 60 * 5,
@@ -16,5 +16,5 @@ export const useFetchDetail = (recruitId) => {
             console.error('React Query Error:', error);
         },
     });
-    return { data, isFetching, isError };
+    return { data, isFetching, isLoading, isError };
 };

@@ -83,7 +83,7 @@ export const ImgTitleWrapper = styled.div`
     align-items: baseline;
     gap: 10px;
     @media (max-width: 391px) {
-        gap: 0px;
+        gap: 3px;
     }
 `;
 export const ImgTitle = styled.span`
@@ -195,6 +195,7 @@ export const ButtonWrapper = styled.div`
         flex-direction: column;
         margin-top: 30px;
         margin-bottom: 70px;
+        gap: 10px;
     }
 `;
 
@@ -279,7 +280,7 @@ export const AIChatBubbleWrapper = styled.div`
 
     textarea {
         height: fit-content;
-        width: 300px;
+        width: 320px;
         border: none;
         background: none;
         outline: none;

@@ -10,8 +10,7 @@ import { useState, useEffect } from 'react';
 
 const JobDetailPage = () => {
     const { id } = useParams();
-    const { data: detail, error, isLoading, isSuccess: apiSuccess, isError } = useFetchDetail(id);
-    const [isSuccess, setIsSuccess] = useState(false);
+    const { data: detail, isLoading, isError } = useFetchDetail(id);
     const [speechVisible, setSpeechVisible] = useState(false);
 
     const location = useLocation();
@@ -36,9 +35,6 @@ const JobDetailPage = () => {
         }
     };
     useEffect(() => {
-        if (detail) {
-            setIsSuccess(true);
-        }
         window.scrollTo(0, 0);
     }, [detail]);
     useEffect(() => {
@@ -51,7 +47,7 @@ const JobDetailPage = () => {
         return <div>데이터 로딩 중...</div>;
     }
 
-    if (error || !isSuccess) {
+    if (isError) {
         return <div>데이터를 불러올 수 없습니다.</div>;
     }
 
