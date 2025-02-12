@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SkillsPageTemplateWrapper = styled.div`
     & div[data-component='TableCellHeader'] {
-        width: 17%;
+        width: 20%;
         align-items: center;
         justify-content: center;
     }
