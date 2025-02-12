@@ -38,8 +38,7 @@ const Navbar = () => {
             logoSrc={logo}
             isLogin={isLogin}
             user={user}
-            //onProfile={() => navigate('/profile')}
-            //onLogout={handlePopUpOpen}
+            onLogout={handleLogout}
             navigate={navigate}
             isActive={isActive}
         />
