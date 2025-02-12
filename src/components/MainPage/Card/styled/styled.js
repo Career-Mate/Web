@@ -5,6 +5,10 @@ export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 1024px) {
+        width: 170px;
+    }
 `;
 
 export const TitleBox = styled.div`
@@ -21,6 +25,13 @@ export const TitleBox = styled.div`
     color: white;
     border-radius: 10px;
     transform: translateY(30px);
+
+    @media (max-width: 1024px) {
+        width: 123px;
+        height: 31px;
+        font-size: 11px;
+        transform: translateY(20px);
+    }
 `;
 
 export const ContentWrapper = styled.div`
@@ -33,6 +44,12 @@ export const ContentWrapper = styled.div`
     border: 1px solid rgba(185, 185, 185, 1);
     border-radius: 20px;
     gap: 20px;
+
+    @media (max-width: 1024px) {
+        height: 201px;
+        border-radius: 10px;
+        gap: 10px;
+    }
 `;
 
 export const Img = styled.div`
@@ -41,6 +58,12 @@ export const Img = styled.div`
     margin-top: 50px;
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 1024px) {
+        width: 60px;
+        height: 60px;
+        margin-top: 25px;
+    }
 `;
 
 export const Content = styled.div`
@@ -53,14 +76,21 @@ export const Content = styled.div`
     font-size: 18px;
     position: relative;
     white-space: pre-line;
+
+    @media (max-width: 1024px) {
+        font-size: 10px;
+    }
 `;
 
 export const FirstSection = styled.div`
     width: 269px;
     position: absolute;
     top: 0;
-    left: 0;
     word-wrap: keep-all;
+
+    @media (max-width: 1024px) {
+        width: 170px;
+    }
 `;
 export const SecondSection = styled.div`
     width: 232px;
@@ -68,4 +98,9 @@ export const SecondSection = styled.div`
     top: 60px;
     word-wrap: keep-all;
     font-weight: 500;
+
+    @media (max-width: 1024px) {
+        width: 150px;
+        top: 45px;
+    }
 `;
