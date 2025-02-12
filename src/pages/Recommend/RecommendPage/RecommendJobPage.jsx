@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
 import JobBox from '../../../components/Recommend/JobBox/JobBox';
-import Pagination from '../../../components/common/Pagination/Pagination';
+import Pagination from '../../../components/common/Pagination/Pagination/Pagination';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
 import DeadlineButton from '../../../components/common/Button/DeadlineButton/DeadlineButton';
 import { useGetRecommendJobs } from '../../../apis/Job/JobApi';

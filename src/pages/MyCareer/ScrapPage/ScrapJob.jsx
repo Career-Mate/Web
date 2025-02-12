@@ -1,7 +1,7 @@
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
 import { useGetScrapJobs } from '../../../apis/Scrap/Job/JobScrapApi';
 import UnderlineButton from '../../../components/common/Button/UnderlineButton/UnderlineButton';
-import Pagination from '../../../components/common/Pagination/Pagination';
+import Pagination from '../../../components/common/Pagination/Pagination/Pagination';
 import * as S from './styled/styled';
 import { useAuthStore } from '../../../store/authStore';
 import { useNavigate } from 'react-router-dom';
@@ -42,16 +42,10 @@ const ScrapJob = ({ onNavigate, prevPage }) => {
     }, [filteredJobs]);
 
     useEffect(() => {
-        if (filteredJobs.length === 0 && currentPage > 1) {
-            setCurrentPage((prev) => Math.max(1, prev - 1));
-        }
-    }, [filteredJobs]);
-
-    useEffect(() => {
-        if (currentPage > totalPages) {
+        if (totalPages > 1 && currentPage > totalPages) {
             setCurrentPage(Math.max(1, totalPages));
         }
-    }, [totalPages, currentPage]);
+    }, [totalPages]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
