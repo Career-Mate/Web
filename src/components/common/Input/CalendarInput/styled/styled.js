@@ -2,15 +2,14 @@ import styled from 'styled-components';
 
 export const InputContainer = styled.div`
     width: 633px;
-    height: 121px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
-    margin-bottom: 20px;
     @media (max-width: 391px) {
         width: fit-content;
-        height: 60px;
+        height: fit-content;
     }
 `;
 
@@ -42,7 +41,7 @@ export const StyledInputWrapper = styled.div`
     @media (max-width: 391px) {
         width: 340px;
         padding: 10px 15px;
-        height: 75px;
+        height: 50px;
     }
 `;
 

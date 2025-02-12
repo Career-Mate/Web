@@ -46,7 +46,6 @@ export const Icon = styled.img`
 export const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 10px;
 `;
 
 export const Text = styled.div`

@@ -5,26 +5,27 @@ import SquareButton from '../../../components/common/Button/SquareButton/SquareB
 import SmartPlanner from '../../../components/SmartPlanner/SmartPlanner';
 import { useSmartPlanner, usePlannerDataEffect } from '../../../hooks/useSmartPlanner';
 import { useFetchPlanner } from '../../../apis/smartPlanner/useSmartPlannerApi';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 import { useAuthStore } from '../../../store/authStore';
 
 const SmartPlannerPage = () => {
     const { user } = useAuthStore();
-
     const [tooltipVisible, setTooltipVisible] = useState(false);
     const [page, setPage] = useState(0);
-    const pageChange = (num) => {
-        setPage((prev) => prev + num);
-        window.scrollTo(0, 0);
-    };
+
     const { data: plannerData, error, isSuccess, isError } = useFetchPlanner();
     const { data, setData, handleSave } = useSmartPlanner();
-
     const planners = plannerData?.data?.planners;
     usePlannerDataEffect(isSuccess, planners, setData, isError, error);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [page]);
+
     const isMobileScreen = useIsMobileScreen(390);
+    const isTabletScreen = useIsMobileScreen(1024);
+
     const renderTooltip = () => (
         <S.TooltipWrapper onMouseEnter={() => setTooltipVisible(true)} onMouseLeave={() => setTooltipVisible(false)}>
             <S.Icon src={Help} $size={'16px'} />
@@ -66,38 +67,28 @@ const SmartPlannerPage = () => {
                 </S.TextWrapper>
             </S.TextContainer>
         );
-    const renderButtons = () => (
+    const renderButtons = ({ isTablet }) => (
         <S.ButtonWrapper>
             <SquareButton
-                width="131px"
-                height="60px"
+                width={isTablet ? '90px' : '131px'}
+                height={isTablet ? '40px' : '60px'}
+                fontSize={isTablet ? '14px' : '20px'}
                 mobileWidth="340px"
                 backgroundColor="deepgreen"
                 onClick={() => handleSave(planners, page)}
             >
                 저장
             </SquareButton>
-            {page === 0 ? (
-                <SquareButton
-                    width="131px"
-                    mobileWidth="340px"
-                    height="60px"
-                    backgroundColor="lightgreen"
-                    onClick={() => pageChange(1)}
-                >
-                    다음
-                </SquareButton>
-            ) : (
-                <SquareButton
-                    width="131px"
-                    mobileWidth="340px"
-                    height="60px"
-                    backgroundColor="grey"
-                    onClick={() => pageChange(-1)}
-                >
-                    이전
-                </SquareButton>
-            )}
+            <SquareButton
+                width={isTablet ? '90px' : '131px'}
+                height={isTablet ? '40px' : '60px'}
+                fontSize={isTablet ? '14px' : '20px'}
+                mobileWidth="340px"
+                backgroundColor={page === 0 ? 'lightgreen' : 'grey'}
+                onClick={() => setPage((prev) => (page === 0 ? prev + 1 : prev - 1))}
+            >
+                {page === 0 ? '다음' : '이전'}
+            </SquareButton>
         </S.ButtonWrapper>
     );
 
@@ -105,7 +96,7 @@ const SmartPlannerPage = () => {
         <S.MainContainer>
             {renderTitleContent()}
             <SmartPlanner data={data} onDataChange={setData} page={page} />
-            {renderButtons()}
+            {renderButtons({ isTablet: isTabletScreen })}
         </S.MainContainer>
     );
 };
