@@ -129,6 +129,10 @@ export const Drop = styled.img`
     height: 7px;
 `;
 
+export const AccountOptionWrapper = styled.div`
+    background-color: ${({ $active }) => ($active ? ' white' : 'inherit')};
+`;
+
 export const AccountOption = styled.div`
     cursor: pointer;
     height: 40px;

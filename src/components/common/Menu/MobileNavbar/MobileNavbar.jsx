@@ -42,6 +42,7 @@ const MobileNavbar = ({ isLogin, user, navigate, isActive, onLogout }) => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
     return (
         <S.NavbarContainer>
             <S.LogoWrapper>
@@ -120,42 +121,44 @@ const MobileNavbar = ({ isLogin, user, navigate, isActive, onLogout }) => {
                         <img src={Keep} />
                         <span>추천 공고</span>
                     </S.Option>
-                    <S.Option $active={isAccountToggle} onClick={handleAccountToggle}>
-                        <img src={Account} />
-                        <span>나의 커리어</span>
-                        <S.Drop src={isAccountToggle ? DropUp : DropDown} />
-                    </S.Option>
-                    {isAccountToggle && (
-                        <>
-                            <S.AccountOption
-                                onClick={() => {
-                                    navigate('/mycareer');
-                                    setToggleSide(false);
-                                    setAccountToggle(false);
-                                }}
-                            >
-                                <span>프로필 수정하기</span>
-                            </S.AccountOption>
-                            <S.AccountOption
-                                onClick={() => {
-                                    navigate('/mycareer/saved-content');
-                                    setToggleSide(false);
-                                    setAccountToggle(false);
-                                }}
-                            >
-                                <span>스크랩한 콘텐츠 및 공고 확인하기</span>
-                            </S.AccountOption>
-                            <S.AccountOption
-                                onClick={() => {
-                                    navigate('/mycareer/smart-planner');
-                                    setToggleSide(false);
-                                    setAccountToggle(false);
-                                }}
-                            >
-                                <span>SMART 커리어 플래너</span>
-                            </S.AccountOption>
-                        </>
-                    )}
+                    <S.AccountOptionWrapper $active={isAccountToggle}>
+                        <S.Option onClick={handleAccountToggle}>
+                            <img src={Account} />
+                            <span>나의 커리어</span>
+                            <S.Drop src={isAccountToggle ? DropUp : DropDown} />
+                        </S.Option>
+                        {isAccountToggle && (
+                            <>
+                                <S.AccountOption
+                                    onClick={() => {
+                                        navigate('/mycareer');
+                                        setToggleSide(false);
+                                        setAccountToggle(false);
+                                    }}
+                                >
+                                    <span>프로필 수정하기</span>
+                                </S.AccountOption>
+                                <S.AccountOption
+                                    onClick={() => {
+                                        navigate('/mycareer/saved-content');
+                                        setToggleSide(false);
+                                        setAccountToggle(false);
+                                    }}
+                                >
+                                    <span>스크랩한 콘텐츠 및 공고 확인하기</span>
+                                </S.AccountOption>
+                                <S.AccountOption
+                                    onClick={() => {
+                                        navigate('/mycareer/smart-planner');
+                                        setToggleSide(false);
+                                        setAccountToggle(false);
+                                    }}
+                                >
+                                    <span>SMART 커리어 플래너</span>
+                                </S.AccountOption>
+                            </>
+                        )}
+                    </S.AccountOptionWrapper>
                 </S.MenuWrapper>
                 {isLogin && <S.Logout onClick={onLogout}>로그아웃</S.Logout>}
             </S.ToggleContainer>
