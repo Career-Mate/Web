@@ -8,6 +8,10 @@ export const CareerMainPageWrapper = styled.div`
     min-height: calc(100vh - 300px);
     padding: 32px 16px;
     background-color: white;
+
+    @media (max-width: 1024px) {
+        min-height: calc(100vh - 500px);
+    }
 `;
 
 export const SearchIcon = styled.div`
@@ -17,5 +21,11 @@ export const SearchIcon = styled.div`
         height: 150px;
         left: calc(50% - 91px / 2 + 1px);
         top: 250px;
+    }
+
+    @media (max-width: 1024px) {
+        width: 140px;
+        height: 140px;
+        margin: 50px auto;
     }
 `;
