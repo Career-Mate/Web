@@ -8,6 +8,9 @@ export const BarContainer = styled.div`
     gap: 10px;
     align-items: end;
 
+    @media (max-width: 1024px) {
+        width: 180px;
+    }
     @media (max-width: 391px) {
         width: 120px;
     }
@@ -16,12 +19,19 @@ export const Text = styled.div`
     font-weight: 600;
     font-size: 16px;
     color: #66ccaa;
+
+    @media (max-width: 1024px) {
+        font-size: 14px;
+    }
 `;
 export const RectangleWrapper = styled.div`
     width: inherit;
     display: flex;
     flex-direction: row;
     gap: 12px;
+    @media (max-width: 1024px) {
+        gap: 8px;
+    }
     @media (max-width: 391px) {
         gap: 5px;
     }
@@ -40,7 +50,12 @@ export const Rectangle = styled.div`
                 return 'border-radius: 0;';
         }
     }}
-    @media (max-width:391px) {
+
+    @media (max-width:1024px) {
+        width: 30px;
+        height: 10px;
+    }
+    @media (max-width: 391px) {
         width: 20px;
         height: 5px;
     }
