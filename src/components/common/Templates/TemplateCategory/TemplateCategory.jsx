@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import * as S from './styled/styled';
 import ArrowNext from '../../../../assets/Pagination/arrow-next.svg';
 import ArrowPrev from '../../../../assets/Pagination/arrow-prev.svg';
@@ -17,24 +17,24 @@ const TemplateCategory = ({ handlePrevPage, handleNextPage }) => {
 
     const { progression, nextSummaryProgress, prevSummaryProgress } = useProgressBar(1);
 
-    const handleOnClick = (num) => {
+    const handleOnClick = useCallback((num) => {
         setSelectedIndex((prev) => {
             const newIndex = prev + num;
             return newIndex < 0 || newIndex >= categories.length ? prev : newIndex;
         });
-    };
+    }, []);
 
-    const handlePrevArrowClick = () => {
+    const handlePrevArrowClick = useCallback(() => {
         handleOnClick(-1);
         prevSummaryProgress();
         if (handlePrevPage !== undefined) handlePrevPage();
-    };
+    }, [handleOnClick, prevSummaryProgress, handlePrevPage]);
 
-    const handleNextArrowClick = () => {
+    const handleNextArrowClick = useCallback(() => {
         handleOnClick(1);
         nextSummaryProgress();
         if (handleNextPage !== undefined) handleNextPage();
-    };
+    }, [handleOnClick, nextSummaryProgress, handleNextPage]);
 
     return (
         <S.Container>
