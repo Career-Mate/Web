@@ -27,13 +27,13 @@ const TemplateCategory = ({ handlePrevPage, handleNextPage }) => {
     const handlePrevArrowClick = () => {
         handleOnClick(-1);
         prevSummaryProgress();
-        handlePrevPage();
+        if (handlePrevPage !== undefined) handlePrevPage();
     };
 
     const handleNextArrowClick = () => {
         handleOnClick(1);
         nextSummaryProgress();
-        handleNextPage();
+        if (handleNextPage !== undefined) handleNextPage();
     };
 
     return (
