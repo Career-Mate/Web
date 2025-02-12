@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFetchProfile } from '../../../apis/Profile/useProfileApi';
 import { useAuthStore } from '../../../store/authStore';
 import { useEffect } from 'react';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const cards = [
     {
@@ -46,10 +47,13 @@ const MainPage = () => {
         }
     }, [data]);
 
+    const isMobileScreen = useIsMobileScreen(430);
+    const buttonWidth = isMobileScreen ? '240px' : '400px';
+
     return (
         <S.MainContainer>
             <S.FirstPage>
-                <object width="225px" type="image/svg+xml" data={Logo}></object>
+                <S.Object type="image/svg+xml" data={Logo} />
                 <S.FirstTextWrapper>
                     경험 정리부터 지원까지
                     <b>
@@ -62,11 +66,16 @@ const MainPage = () => {
                     <h1>혹시,</h1>
                     <S.SecondCheckWrapper>
                         <CheckTextBox>
-                            지금껏 열심히 해 온 활동들을&nbsp;<strong>주먹구구식으로 나열</strong>하여 정리하고 있나요?
+                            <span>
+                                지금껏 열심히 해 온 활동들을&nbsp;<strong>주먹구구식으로 나열</strong>하여 정리하고
+                                있나요?
+                            </span>
                         </CheckTextBox>
                         <CheckTextBox>
-                            채용 플랫폼이 너무 많아서 어느 사이트 먼저 둘러봐야 할 지 몰라&nbsp;
-                            <strong>막막함을 느끼고 있나요?</strong>
+                            <span>
+                                채용 플랫폼이 너무 많아서 어느 사이트 먼저 둘러봐야 할 지 몰라&nbsp;
+                                <strong>막막함을 느끼고 있나요?</strong>
+                            </span>
                         </CheckTextBox>
                     </S.SecondCheckWrapper>
                 </S.SecondContainer>
@@ -104,11 +113,11 @@ const MainPage = () => {
                     커리어의 시작과 성장 과정을 <span>커리어 메이트</span>가 응원합니다!
                 </S.FifthText>
                 {isLogin ? (
-                    <OvalButton width={'400px'} onClick={() => navigate('/career')}>
+                    <OvalButton width={buttonWidth} onClick={() => navigate('/career')}>
                         관심 직무 템플릿 작성하기
                     </OvalButton>
                 ) : (
-                    <OvalButton width={'400px'} onClick={() => navigate('/login')}>
+                    <OvalButton width={buttonWidth} onClick={() => navigate('/login')}>
                         로그인하고 프로필 설정하기
                     </OvalButton>
                 )}
