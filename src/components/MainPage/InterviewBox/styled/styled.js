@@ -2,10 +2,14 @@ import styled from 'styled-components';
 
 export const InterviewBoxContainer = styled.div`
     display: flex;
-    flex-direction: ${({ $type }) => ($type === 'left' ? 'row' : 'row-reverse')};
+    flex-direction: ${({ $type }) => ($type === 'left' ? 'row-reverse' : 'row')};
     align-items: center;
     justify-content: center;
     position: relative;
+
+    @media (max-width: 430px) {
+        flex-direction: column;
+    }
 `;
 
 export const TextWrapper = styled.div`
@@ -20,6 +24,19 @@ export const TextWrapper = styled.div`
     align-items: center;
     z-index: 1;
     transform: ${({ $type }) => ($type === 'left' ? 'translateX(30px)' : 'translateX(-30px)')};
+
+    @media (max-width: 1024px) {
+        width: 354px;
+        transform: ${({ $type }) => ($type === 'left' ? 'translateX(35px)' : 'translateX(-35px)')};
+        padding: 16px;
+    }
+
+    @media (max-width: 430px) {
+        width: 307px;
+        transform: ${({ $type }) => ($type === 'left' ? 'translateX(0)' : 'translateX(-0)')};
+        transform: translateY(-10px);
+        padding: 16px;
+    }
 `;
 
 export const Text = styled.div`
@@ -27,6 +44,15 @@ export const Text = styled.div`
     width: 577px;
     font-size: 16px;
     font-weight: 600;
+
+    @media (max-width: 1024px) {
+        font-size: 14px;
+        width: 269px;
+    }
+    @media (max-width: 430px) {
+        font-size: 10px;
+        width: 269px;
+    }
 `;
 
 export const ImgWrapper = styled.div`
@@ -44,5 +70,10 @@ export const ImgWrapper = styled.div`
     img {
         width: 100%;
         height: 100%;
+    }
+
+    @media (max-width: 1024px) {
+        width: 143px;
+        height: 143px;
     }
 `;
