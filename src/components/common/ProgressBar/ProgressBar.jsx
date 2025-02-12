@@ -1,22 +1,17 @@
-import { useState } from 'react';
-import * as S from './styled/styled.js'
-
-const ProgressBar = ({progression})=>{
+import * as S from './styled/styled.js';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen.js';
+const ProgressBar = ({ progression }) => {
+    const isMobileScreen = useIsMobileScreen(390);
     return (
         <S.BarContainer>
-            <S.Text>[진행률 {progression*20}%]</S.Text>
+            {isMobileScreen ? null : <S.Text>[진행률 {progression * 20}%]</S.Text>}
             <S.RectangleWrapper>
-                {Array.from({length: 5}).map((_,i)=>(
-                    
-                    <S.Rectangle 
-                        $type={i}
-                        key = {i}
-                        $status = {i<progression ? "done" : "undone"}
-                    />
+                {Array.from({ length: 5 }).map((_, i) => (
+                    <S.Rectangle $type={i} key={i} $status={i < progression ? 'done' : 'undone'} />
                 ))}
             </S.RectangleWrapper>
         </S.BarContainer>
-    )
-}
+    );
+};
 
 export default ProgressBar;
