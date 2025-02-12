@@ -11,7 +11,7 @@ import { useAuthStore } from '../../../store/authStore';
 
 const SmartPlannerPage = () => {
     const { user } = useAuthStore();
-    console.log(user.name);
+
     const [tooltipVisible, setTooltipVisible] = useState(false);
     const [page, setPage] = useState(0);
     const pageChange = (num) => {
