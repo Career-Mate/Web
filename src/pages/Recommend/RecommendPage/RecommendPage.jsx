@@ -13,11 +13,11 @@ const RecommendPage = () => {
     return (
         <S.Container>
             <S.TabWrapper>
-                <S.TabButton isActive={tab === 'content'} onClick={() => navigate('/recommend/content')}>
-                    추천 콘텐츠
-                </S.TabButton>
                 <S.TabButton isActive={tab === 'job'} onClick={() => navigate('/recommend/job')}>
                     추천 공고
+                </S.TabButton>
+                <S.TabButton isActive={tab === 'content'} onClick={() => navigate('/recommend/content')}>
+                    추천 콘텐츠
                 </S.TabButton>
             </S.TabWrapper>
 

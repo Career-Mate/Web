@@ -1,7 +1,7 @@
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
 import { useGetScrapJobs } from '../../../apis/Scrap/Job/JobScrapApi';
 import UnderlineButton from '../../../components/common/Button/UnderlineButton/UnderlineButton';
-import Pagination from '../../../components/common/Pagination/Pagination';
+import Pagination from '../../../components/common/Pagination/Pagination/Pagination';
 import * as S from './styled/styled';
 import { useAuthStore } from '../../../store/authStore';
 import { useNavigate } from 'react-router-dom';
