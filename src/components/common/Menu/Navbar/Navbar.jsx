@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react';
 import AccountPopup from '../../Popups/AccountPopup/AccountPopup.jsx';
 import { useAuthStore } from '../../../../store/authStore.js';
 import { useLogout } from '../../../../apis/Auth/useAuthApi.js';
+import useIsMobileScreen from '../../../../hooks/useIsMobileScreen.js';
+import MobileNavbar from '../MobileNavbar/MobileNavbar.jsx';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -14,6 +16,7 @@ const Navbar = () => {
     const [isPopUp, setIsPopUp] = useState(false);
     const { isLogin, user } = useAuthStore();
     const mutation = useLogout();
+    const isMobileScreen = useIsMobileScreen(430);
 
     const isActive = (path) => location.pathname.startsWith(`/${path}`);
 
@@ -30,7 +33,17 @@ const Navbar = () => {
         mutation.mutate();
     };
 
-    return (
+    return isMobileScreen ? (
+        <MobileNavbar
+            logoSrc={logo}
+            isLogin={isLogin}
+            user={user}
+            //onProfile={() => navigate('/profile')}
+            //onLogout={handlePopUpOpen}
+            navigate={navigate}
+            isActive={isActive}
+        />
+    ) : (
         <S.NavbarContainer>
             <S.Container>
                 <S.LogoWrapper>
