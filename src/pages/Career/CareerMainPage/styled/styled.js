@@ -11,6 +11,10 @@ export const CareerMainPageWrapper = styled.div`
 
     @media (max-width: 1024px) {
         min-height: calc(100vh - 500px);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 `;
 
@@ -26,6 +30,5 @@ export const SearchIcon = styled.div`
     @media (max-width: 1024px) {
         width: 140px;
         height: 140px;
-        margin: 50px auto;
     }
 `;
