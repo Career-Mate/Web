@@ -75,4 +75,8 @@ export const ButtonWrapper = styled.div`
         display: flex;
         gap: 15px;
     }
+
+    @media (max-width: 1024px) {
+        padding-top: 0;
+    }
 `;

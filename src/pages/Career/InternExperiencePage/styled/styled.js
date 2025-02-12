@@ -70,4 +70,8 @@ export const ButtonWrapper = styled.div`
     width: 100%;
     max-width: 976px;
     padding: 50px 0;
+
+    @media (max-width: 1024px) {
+        padding-top: 0;
+    }
 `;
