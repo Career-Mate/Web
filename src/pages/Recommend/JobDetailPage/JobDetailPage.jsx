@@ -1,5 +1,6 @@
 import * as S from './styled/styled.js';
 import companyImg from '../../../assets/JobDetailPage/company.svg';
+import RabbitLogo from '../../../assets/JobDetailPage/rabbit-logo.svg';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton.jsx';
 import JobDetailList from '../../../components/Recommend/JobDetailList/JobDetailList.jsx';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
@@ -9,8 +10,7 @@ import { useState, useEffect } from 'react';
 
 const JobDetailPage = () => {
     const { id } = useParams();
-    const { data: detail, error, isLoading, isSuccess: apiSuccess, isError } = useFetchDetail(id);
-    const [isSuccess, setIsSuccess] = useState(false);
+    const { data: detail, isLoading, isError } = useFetchDetail(id);
     const [speechVisible, setSpeechVisible] = useState(false);
 
     const location = useLocation();
@@ -35,9 +35,6 @@ const JobDetailPage = () => {
         }
     };
     useEffect(() => {
-        if (detail) {
-            setIsSuccess(true);
-        }
         window.scrollTo(0, 0);
     }, [detail]);
     useEffect(() => {
@@ -50,7 +47,7 @@ const JobDetailPage = () => {
         return <div>데이터 로딩 중...</div>;
     }
 
-    if (error || !isSuccess) {
+    if (isError) {
         return <div>데이터를 불러올 수 없습니다.</div>;
     }
 
@@ -98,7 +95,9 @@ const JobDetailPage = () => {
                         <S.AIChatBubbleTailInner />
                     </>
                 )}
-                <S.AIProfile onClick={onAIChatClick} />
+                <S.AIProfile onClick={onAIChatClick}>
+                    <S.RabbitImg src={RabbitLogo} />
+                </S.AIProfile>
             </S.AIChatBotWrapper>
         </S.PageContainer>
     );
