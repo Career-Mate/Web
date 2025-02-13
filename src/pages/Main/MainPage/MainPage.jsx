@@ -49,6 +49,8 @@ const MainPage = () => {
 
     const isMobileScreen = useIsMobileScreen(430);
     const buttonWidth = isMobileScreen ? '240px' : '400px';
+    const buttonHeight = isMobileScreen ? '41px' : '85px';
+    const buttonPadding = isMobileScreen ? '0' : '20px 88px';
 
     return (
         <S.MainContainer>
@@ -113,11 +115,21 @@ const MainPage = () => {
                     커리어의 시작과 성장 과정을 <span>커리어 메이트</span>가 응원합니다!
                 </S.FifthText>
                 {isLogin ? (
-                    <OvalButton width={buttonWidth} onClick={() => navigate('/career')}>
+                    <OvalButton
+                        width={buttonWidth}
+                        height={buttonHeight}
+                        padding={buttonPadding}
+                        onClick={() => navigate('/career')}
+                    >
                         관심 직무 템플릿 작성하기
                     </OvalButton>
                 ) : (
-                    <OvalButton width={buttonWidth} onClick={() => navigate('/login')}>
+                    <OvalButton
+                        width={buttonWidth}
+                        height={buttonHeight}
+                        padding={buttonPadding}
+                        onClick={() => navigate('/login')}
+                    >
                         로그인하고 프로필 설정하기
                     </OvalButton>
                 )}
