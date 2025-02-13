@@ -8,6 +8,10 @@ export const PageContainer = styled.div`
     gap: 60px;
     width: 100%;
     height: fit-content;
+    @media (max-width: 391px) {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
 `;
 export const SideContainer = styled.div`
     position: relative;

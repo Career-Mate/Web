@@ -4,6 +4,7 @@ const SquareButton = ({
     width,
     height,
     padding,
+    fontSize,
     mobileWidth,
     mobileHeight,
     mobileFontSize,
@@ -16,6 +17,7 @@ const SquareButton = ({
             $width={width}
             $height={height}
             $padding={padding}
+            $fontSize={fontSize}
             $mobileWidth={mobileWidth}
             $mobileHeight={mobileHeight}
             $mobileFontSize={mobileFontSize}
