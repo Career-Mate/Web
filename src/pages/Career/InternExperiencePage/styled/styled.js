@@ -46,7 +46,6 @@ export const PageWrapper = styled.div`
     align-items: center;
     gap: 10px;
     width: 100%;
-    min-height: 100vh;
 `;
 
 export const ProgressBarWrapper = styled.div`
