@@ -63,7 +63,7 @@ const RecommendJobPage = ({ user }) => {
                 </S.DeadlineWrapper>
 
                 <S.CardWrapper>
-                    {!isLoading
+                    {isLoading
                         ? numbers.map((number) => <JobPostingCardSkeleton />)
                         : jobData.map((content) => (
                               <JobPostingCard
