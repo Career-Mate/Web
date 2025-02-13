@@ -19,6 +19,10 @@ export const Title = styled.h1`
     font-weight: 700;
     color: #000;
     margin: 0;
+
+    @media (max-width: 1024px) {
+        font-size: 24px;
+    }
 `;
 
 export const Subtitle = styled.p`
@@ -28,6 +32,12 @@ export const Subtitle = styled.p`
     color: #c4c8ce;
     text-align: center;
     margin-left: 20px;
+
+    @media (max-width: 1024px) {
+        font-size: 10px;
+        margin-left: 10px;
+        line-height: 20px;
+    }
 `;
 
 export const PageWrapper = styled.div`
@@ -36,7 +46,6 @@ export const PageWrapper = styled.div`
     align-items: center;
     gap: 10px;
     width: 100%;
-    min-height: 100vh;
 `;
 
 export const ProgressBarWrapper = styled.div`
@@ -64,5 +73,9 @@ export const ButtonWrapper = styled.div`
     & > div {
         display: flex;
         gap: 15px;
+    }
+
+    @media (max-width: 1024px) {
+        padding-top: 0;
     }
 `;

@@ -2,12 +2,11 @@ import styled from 'styled-components';
 
 export const InputContainer = styled.div`
     width: 633px;
-    height: 121px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
-    margin-bottom: 20px;
 `;
 
 export const Label = styled.label`
