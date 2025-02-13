@@ -16,7 +16,7 @@ export const StyledButton = styled.button`
 
     text-align: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: ${(props) => props.$fontSize || '20px'};
     font-weight: 400;
 
     @media (max-width: 391px) {
