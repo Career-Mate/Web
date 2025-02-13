@@ -250,8 +250,7 @@ export const FifthPage = styled.div`
     box-sizing: border-box;
 
     @media (max-width: 431px) {
-        //font-size: 14px;
-        //height: 400px;
+        height: 600px;
     }
 `;
 
