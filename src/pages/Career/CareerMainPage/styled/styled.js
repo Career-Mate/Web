@@ -16,6 +16,13 @@ export const CareerMainPageWrapper = styled.div`
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
+    @media (max-width: 391px) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 `;
 
 export const SearchIcon = styled.div`
@@ -28,7 +35,16 @@ export const SearchIcon = styled.div`
     }
 
     @media (max-width: 1024px) {
-        width: 140px;
-        height: 140px;
+        img {
+            width: 140px;
+            height: 140px;
+        }
+    }
+
+    @media (max-width: 391px) {
+        img {
+            width: 90px;
+            height: 90px;
+        }
     }
 `;
