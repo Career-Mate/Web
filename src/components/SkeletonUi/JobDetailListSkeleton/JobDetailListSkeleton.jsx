@@ -1,11 +1,14 @@
-import * as S from "./styled/styled"
+import * as S from './styled/styled';
 const JobDetailListSkeleton = () => {
-    return(
+    return (
         <S.Container>
-            <S.SectionTitle/>
-            <S.Item/>
+            <S.SectionTitle />
+            <S.ItemWrapper>
+                <S.Item />
+                <S.Item2 />
+            </S.ItemWrapper>
         </S.Container>
-    )
-}
+    );
+};
 
 export default JobDetailListSkeleton;

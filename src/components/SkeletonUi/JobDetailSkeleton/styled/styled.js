@@ -12,6 +12,12 @@ export const ComponentContainer = styled.div`
     padding: 0 40px;
     width: 900px;
     margin-top: 40px;
+
+    z-index: 0;
+
+    @media (max-width: 391px) {
+        width: 360px;
+    }
 `;
 
 export const ImgWrapper = styled.div`
@@ -22,21 +28,31 @@ export const ImgWrapper = styled.div`
     position: relative;
     overflow: hidden;
     z-index: 1;
+
+    @media (max-width: 391px) {
+        height: 250px;
+    }
 `;
 
 export const ImgTextWrapper = styled.div`
     position: absolute;
     bottom: 40px;
-    left: 60px;
+    left: 50px;
 
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 15px;
 
     width: fit-content;
     height: fit-content;
     color: white;
     z-index: 2;
+
+    @media (max-width: 391px) {
+        gap: 7px;
+        bottom: 25px;
+        left: 20px;
+    }
 
     animation: pulse 1.5s infinite ease-in-out;
     @keyframes pulse {
@@ -55,25 +71,44 @@ export const ImgTitleWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    gap: 20px;
+    gap: 10px;
+
+    @media (max-width: 391px) {
+        gap: 4px;
+    }
 `;
 export const ImgTitle = styled.span`
-    width: 200px;
+    width: 250px;
     height: 40px;
     background-color: grey;
     border-radius: 20px;
+
+    @media (max-width: 391px) {
+        width: 130px;
+        height: 25px;
+    }
 `;
 export const ImgButton = styled.div`
-    width: 100px;
+    width: 110px;
     height: 15px;
     background-color: grey;
     border-radius: 20px;
+
+    @media (max-width: 391px) {
+        width: 70px;
+        height: 10px;
+    }
 `;
 export const ImgText = styled.span`
-    width: 100px;
+    width: 180px;
     height: 20px;
     border-radius: 20px;
     background-color: grey;
+
+    @media (max-width: 391px) {
+        width: 90px;
+        height: 13px;
+    }
 `;
 
 export const SummaryWrapper = styled.div`
@@ -96,6 +131,11 @@ export const SummaryWrapper = styled.div`
 
     box-sizing: border-box;
     padding: 0 40px;
+
+    @media (max-width: 391px) {
+        padding: 30px;
+        box-shadow: 0px 0px 10px 0px #00000040;
+    }
 `;
 
 export const ListWrapper = styled.div`
@@ -107,6 +147,14 @@ export const ListWrapper = styled.div`
 
     box-sizing: border-box;
     padding: 40px 20px 60px 20px;
+
+    @media (max-width: 391px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 20px;
+        width: 100%;
+        padding: 0px;
+    }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -117,4 +165,11 @@ export const ButtonWrapper = styled.div`
     gap: 20px;
     margin-top: 107px;
     margin-bottom: 209px;
+
+    @media (max-width: 391px) {
+        flex-direction: column;
+        margin-top: 30px;
+        margin-bottom: 70px;
+        gap: 10px;
+    }
 `;

@@ -2,7 +2,7 @@ import * as S from './styled/styled.js';
 import SquareButton from '../../common/Button/SquareButton/SquareButton.jsx';
 import JobDetailListSkeleton from '../JobDetailListSkeleton/JobDetailListSkeleton.jsx';
 const JobDetailSkeleton = () => {
-    const numbers = Array.from({ length: 5 }, (_, i) => i + 1);
+    const numbers = Array.from({ length: 6 }, (_, i) => i + 1);
 
     return (
         <S.ComponentContainer>
