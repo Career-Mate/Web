@@ -1,6 +1,6 @@
 import * as S from './styled/styled.js';
 import companyImg from '../../../assets/JobDetailPage/company.svg';
-import RabbitLogo from '../../../../public/assets/rabbit-logo.svg';
+import RabbitLogo from '/assets/rabbit-logo.svg';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton.jsx';
 import JobDetailList from '../../../components/Recommend/JobDetailList/JobDetailList.jsx';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
