@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 310px;
     height: 300px;
     background-color: white;
@@ -16,12 +17,22 @@ export const CardContainer = styled.div`
     font-weight: 600;
     font-size: 18px;
     gap: 10px;
+
+    @media (max-width: 391px) {
+        width: 295px;
+        height: 295px;
+    }
 `;
 export const Thumbnail = styled.div`
     width: 260px;
     height: 150px;
     background-color: gray;
     border-radius: 20px;
+
+    @media (max-width: 391px) {
+        width: 245px;
+        height: 145px;
+    }
 
     animation: pulse 1.5s infinite ease-in-out;
     @keyframes pulse {
@@ -47,6 +58,7 @@ export const ContentWrapper = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     flex-grow: 1;
+    width: 100%;
 `;
 export const TitleWrapper = styled.div`
     display: flex;
