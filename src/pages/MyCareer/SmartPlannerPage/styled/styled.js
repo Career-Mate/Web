@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import SpeechBubble from '../../../../../public/assets/speech-bubble.svg';
-import MobileSpeechBubble from '../../../../../public/assets/mobile-speech-bubble.svg';
+import SpeechBubble from '/assets/speech-bubble.svg';
+import MobileSpeechBubble from '/assets/mobile-speech-bubble.svg';
 
 export const MainContainer = styled.div`
     height: fit-content;
