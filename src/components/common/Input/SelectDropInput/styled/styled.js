@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const InputContainer = styled.div`
     width: ${({ $width }) => $width};
-    height: 121px;
+    //height: 121px;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    margin-bottom: 20px;
+    //margin-bottom: 20px;
 `;
 
 export const Label = styled.div`
@@ -133,5 +133,5 @@ export const WarningText = styled.p`
     font-size: 14px;
     line-height: 17px;
     z-index: 1;
-    visibility: ${({ $isTouched, $selectedOption }) => ($isTouched && $selectedOption === '' ? 'visible' : 'hidden')};
+    display: ${({ $isTouched, $selectedOption }) => ($isTouched && $selectedOption === '' ? 'visible' : 'none')};
 `;
