@@ -2,14 +2,17 @@ import React from 'react';
 import * as S from './styled/styled';
 import loadingIcon from '../../../../assets/loader.svg';
 import SquareButton from '../../Button/SquareButton/SquareButton';
+import { useAuthStore } from '../../../../store/authStore';
 
-const LoadingPopup = ({ userName, interestJob, type, onCancel }) => {
+const LoadingPopup = ({ type, onCancel }) => {
+    const { user } = useAuthStore();
+
     const text =
         type === 'template'
-            ? `${userName} 메이트님의
-            ${interestJob} 직무에 맞는 템플릿을 제공해드릴게요!`
-            : `${userName} 메이트님의
-            ${interestJob} 직무에 맞는 채용 공고를 추천 중이에요!`;
+            ? `${user.name} 메이트님의
+            ${user.job} 직무에 맞는 템플릿을 제공해드릴게요!`
+            : `${user.name} 메이트님의
+            ${user.job} 직무에 맞는 채용 공고를 추천 중이에요!`;
 
     return (
         <S.PopupOverlay>
