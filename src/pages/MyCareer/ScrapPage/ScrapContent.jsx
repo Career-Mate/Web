@@ -5,7 +5,7 @@ import * as S from './styled/styled';
 
 const ScrapContent = ({ onNavigate }) => {
     const { data: scrapContents, isLoading, error } = useGetScrapContents();
-
+    console.log('scrap contents:', scrapContents);
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>error</div>;
 
