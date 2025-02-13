@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react';
 
 const useIsMobileScreen = (breakpoint = 390) => {
-    const [isLargeScreen, setIsLargeScreen] = useState(window.outerWidth <= breakpoint);
+    const [isMobileScreen, setIsMobileScreen] = useState(() => window.innerWidth <= breakpoint);
 
     useEffect(() => {
         const handleResize = () => {
-            setIsLargeScreen(window.outerWidth <= breakpoint);
+            setIsMobileScreen(window.innerWidth <= breakpoint);
         };
+
+        handleResize();
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [breakpoint]);
 
-    return isLargeScreen;
+    return isMobileScreen;
 };
 
 export default useIsMobileScreen;
