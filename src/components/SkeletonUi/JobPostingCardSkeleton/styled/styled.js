@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 310px;
     height: 300px;
     background-color: white;
@@ -15,19 +16,28 @@ export const CardContainer = styled.div`
     box-sizing: border-box;
     font-weight: 600;
     font-size: 18px;
+
+    @media (max-width: 391px) {
+        width: 295px;
+        height: 295px;
+    }
 `;
 
 export const CompanyNameWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 `;
 export const CompanyName = styled.div`
     width: 130px;
     height: 24px;
     border-radius: 20px;
     background-color: gray;
+
+    @media (max-width: 391px) {
+        width: 95px;
+    }
 
     animation: pulse 1.5s infinite ease-in-out;
     @keyframes pulse {
@@ -48,6 +58,11 @@ export const Thumbnail = styled.div`
     height: 130px;
     border-radius: 20px;
     background-color: gray;
+
+    @media (max-width: 391px) {
+        width: 250px;
+        height: 120px;
+    }
 
     animation: pulse 1.5s infinite ease-in-out;
     @keyframes pulse {
@@ -76,6 +91,11 @@ export const ContentWrapper = styled.div`
     flex-wrap: wrap;
     flex-grow: 1;
     gap: 25px;
+    width: 100%;
+    height: fit-content;
+    @media (max-width: 391px) {
+        gap: 20px;
+    }
 `;
 
 export const Title = styled.div`
@@ -109,6 +129,10 @@ export const Deadline = styled.div`
     height: 20px;
     border-radius: 20px;
     background-color: gray;
+
+    @media (max-width: 391px) {
+        height: 15px;
+    }
 
     animation: pulse 1.5s infinite ease-in-out;
     @keyframes pulse {
