@@ -7,6 +7,11 @@ export const TemplateWrapper = styled.div`
     width: 800px;
     gap: 10px;
     padding-bottom: 65px;
+
+    @media (max-width: 1024px) {
+        width: 760px;
+        padding-bottom: 50px;
+    }
 `;
 
 export const TemplateTitle = styled.h2`
@@ -42,7 +47,7 @@ export const TableCellHeader = styled.div.withConfig({
     shouldForwardProp: (prop) => !['isFirstRow', 'isLastRow'].includes(prop),
 })`
     position: relative;
-    width: 208px;
+    width: 200px;
     background: #b6e3cf;
     display: flex;
     align-items: center;
@@ -55,6 +60,10 @@ export const TableCellHeader = styled.div.withConfig({
     border-right: 2px solid rgba(0, 0, 0, 0.2);
     border-top-left-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
     border-bottom-left-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
+
+    @media (max-width: 1024px) {
+        width: 226px;
+    }
 `;
 
 export const TableCellData = styled.div.withConfig({
@@ -113,14 +122,24 @@ export const Tooltip = styled.div`
         border-right: 40px solid transparent;
         border-top: 15px solid #ffffff;
     }
+
+    @media (max-width: 1024px) {
+        width: 130px;
+        top: -80px;
+        left: -15px;
+    }
 `;
 
 export const TooltipText = styled.div`
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.8);
     line-height: 1.5;
     text-align: center;
+
+    @media (max-width: 1024px) {
+        font-size: 8px;
+    }
 `;
 
 export const IconWrapper = styled.span`
@@ -140,6 +159,10 @@ export const DatePickerRow = styled.div`
     justify-content: flex-start;
     width: 100%;
     gap: 20px;
+
+    @media (max-width: 1024px) {
+        width: 226px;
+    }
 `;
 
 export const DateInput = styled.div.withConfig({
@@ -190,10 +213,19 @@ export const UploadButton = styled.button`
     &:hover {
         background: rgb(107, 107, 107);
     }
+
+    @media (max-width: 1024px) {
+        font-size: 12px;
+    }
 `;
 
 export const CharCount = styled.div`
     font-size: 8px;
     color: ${(props) => (props.$charCount >= props.$maxCount ? 'red' : 'grey')};
     align-self: flex-end;
+`;
+
+export const UploadedImg = styled.img`
+    max-width: 50%;
+    margin-top: -50px;
 `;
