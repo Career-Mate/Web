@@ -12,6 +12,13 @@ export const TemplateWrapper = styled.div`
         width: 760px;
         padding-bottom: 50px;
     }
+
+    @media (max-width: 391px) {
+        width: 320px;
+        padding-bottom: 40px;
+        padding-right: 50px;
+        padding-left: 40px;
+    }
 `;
 
 export const TemplateTitle = styled.h2`
@@ -41,6 +48,10 @@ export const TableRow = styled.div`
     &:last-child {
         border-bottom: none;
     }
+
+    @media (max-width: 391px) {
+        height: 40px;
+    }
 `;
 
 export const TableCellHeader = styled.div.withConfig({
@@ -64,6 +75,13 @@ export const TableCellHeader = styled.div.withConfig({
     @media (max-width: 1024px) {
         width: 226px;
     }
+
+    @media (max-width: 391px) {
+        width: 200px;
+        font-size: 8px;
+        padding: 5px;
+        line-height: 15px;
+    }
 `;
 
 export const TableCellData = styled.div.withConfig({
@@ -73,7 +91,8 @@ export const TableCellData = styled.div.withConfig({
     width: 768px;
     background: #ffffff;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
     padding: 20px;
     overflow-wrap: break-word;
     white-space: normal;
@@ -96,6 +115,14 @@ export const TableCellData = styled.div.withConfig({
         white-space: normal;
         word-wrap: break-word;
         box-sizing: border-box;
+    }
+
+    @media (max-width: 391px) {
+        textarea {
+            font-size: 8px;
+        }
+
+        padding: 10px;
     }
 `;
 
@@ -163,6 +190,11 @@ export const DatePickerRow = styled.div`
     @media (max-width: 1024px) {
         width: 226px;
     }
+
+    @media (max-width: 391px) {
+        width: 100px;
+        font-size: 10px;
+    }
 `;
 
 export const DateInput = styled.div.withConfig({
@@ -185,6 +217,18 @@ export const DateInput = styled.div.withConfig({
         padding: ${(props) => (props.isInline ? '0' : '4px 8px')};
         outline: none;
     }
+
+    @media (max-width: 391px) {
+        input {
+            font-size: 8px;
+            width: 80px;
+        }
+
+        .calendar-icon {
+            font-size: 8px;
+            color: #c4c4c4;
+        }
+    }
 `;
 
 export const DateDivider = styled.span`
@@ -192,6 +236,11 @@ export const DateDivider = styled.span`
     font-weight: 500;
     color: #d9d9d9;
     padding-right: 20px;
+
+    @media (max-width: 391px) {
+        font-size: 5px;
+        padding: 0px;
+    }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -217,12 +266,21 @@ export const UploadButton = styled.button`
     @media (max-width: 1024px) {
         font-size: 12px;
     }
+
+    @media (max-width: 391px) {
+        font-size: 10px;
+    }
 `;
 
 export const CharCount = styled.div`
     font-size: 8px;
     color: ${(props) => (props.$charCount >= props.$maxCount ? 'red' : 'grey')};
     align-self: flex-end;
+
+    @media (max-width: 391px) {
+        font-size: 5px;
+        padding: 0px;
+    }
 `;
 
 export const UploadedImg = styled.img`

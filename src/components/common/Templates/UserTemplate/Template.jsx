@@ -268,7 +268,7 @@ const Template = ({ pageType, onDataChange }) => {
                     </S.TemplateTable>
 
                     <S.ButtonWrapper>
-                        <UnderlineButton onClick={() => handleClearAll(sectionIndex)}>
+                        <UnderlineButton onClick={() => handleClearAll(sectionIndex)} fontSize={'8px'}>
                             전체 내용 삭제하기
                         </UnderlineButton>
                     </S.ButtonWrapper>
