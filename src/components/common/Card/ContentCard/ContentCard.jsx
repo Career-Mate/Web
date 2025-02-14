@@ -17,21 +17,14 @@ const ContentCard = ({ id, contentName, thumbnail, url }) => {
     };
 
     return (
-        <S.CardContainer $width={'375px'} $type={true}>
-            <S.Thumbnail
-                src={thumbnail || defaultThumbnail}
-                alt={contentName}
-                $width={'323px'}
-                $height={'227px'}
-                $type={true}
-            />
-            <S.Line $type={true} />
+        <S.CardContainer $type={true}>
+            <S.Thumbnail src={thumbnail || defaultThumbnail} alt={contentName} $type={true} />
+            <S.Line />
             <S.ContentWrapper $type={true}>
-                <S.Title $type={true}>{contentName}</S.Title>
+                <S.Title $type={true} onClick={() => window.open(url, '_blank')}>
+                    {contentName}
+                </S.Title>
                 <S.DeadlineWrapper>
-                    <S.DetailButton $type={true} onClick={() => window.open(url, '_blank')}>
-                        자세히 보기 &gt;
-                    </S.DetailButton>
                     <S.ScrapIcon
                         src={isScrap ? scrapCheckedIcon : scrapUncheckedIcon}
                         alt="스크랩 아이콘"

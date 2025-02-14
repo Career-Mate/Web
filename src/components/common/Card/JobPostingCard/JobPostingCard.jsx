@@ -38,15 +38,14 @@ const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, onCli
     const thumbnail = getThumbnailByJob(jobType);
 
     return (
-        <S.CardContainer $width={'400px'} $type={false}>
-            <S.CompanyName $type={false}>{companyName}</S.CompanyName>
-            <S.Thumbnail src={thumbnail} alt={contentName} $width={'348px'} $height={'200px'} $type={false} />
-            <S.Line $type={false} />
-            <S.ContentWrapper $type={false}>
-                <S.Title $type={false}>{contentName}</S.Title>
-                <S.DetailButton $type={false} onClick={onClick}>
-                    공고 보기 &gt;
-                </S.DetailButton>
+        <S.CardContainer $type={false}>
+            <S.CompanyName>{companyName}</S.CompanyName>
+            <S.Thumbnail src={thumbnail} alt={contentName} $type={false} />
+            <S.Line />
+            <S.ContentWrapper>
+                <S.Title $type={true} onClick={onClick}>
+                    {contentName}
+                </S.Title>
                 <S.DeadlineWrapper>
                     <S.Deadline>{deadline}</S.Deadline>
                     <S.ScrapIcon
