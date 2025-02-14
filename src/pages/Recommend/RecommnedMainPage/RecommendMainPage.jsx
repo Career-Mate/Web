@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useProfilePopup } from '../../../hooks/useProfile';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useAuthStore } from '../../../store/authStore';
-import MobileLoadingPopupt from '../../../components/common/Popups/MobileLoadingPopup/MobileLoadingPopup';
+import MobileLoadingPopup from '../../../components/common/Popups/MobileLoadingPopup/MobileLoadingPopup';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const RecommendMainPage = () => {
@@ -30,13 +30,69 @@ const RecommendMainPage = () => {
     };
 
     const isMobileScreen = useIsMobileScreen();
+    console.log(window.innerWidth);
+    console.log(isMobileScreen);
+
+    const [containerStyle, setContainerStyle] = useState({
+        width: '768px',
+        height: '486px',
+        mainFontSize: '36px',
+        detailFontSize: '20px',
+        buttonWidth: '327px',
+        buttonHeight: '57px',
+        buttonFontSize: '18px',
+    });
+
+    useEffect(() => {
+        const handleResize = () => {
+            let newStyle;
+            if (window.innerWidth <= 390) {
+                newStyle = {
+                    width: '280px',
+                    height: '300px',
+                    mainFontSize: '18px',
+                    detailFontSize: '10px',
+                    buttonWidth: '213px',
+                    buttonHeight: '39px',
+                    buttonFontSize: '14px',
+                };
+            } else if (window.innerWidth <= 1024) {
+                newStyle = {
+                    width: '574px',
+                    height: '411px',
+                    mainFontSize: '30px',
+                    detailFontSize: '18px',
+                    buttonWidth: '226px',
+                    buttonHeight: '46px',
+                    buttonFontSize: '18px',
+                };
+            } else {
+                newStyle = {
+                    width: '768px',
+                    height: '486px',
+                    mainFontSize: '36px',
+                    detailFontSize: '20px',
+                    buttonWidth: '327px',
+                    buttonHeight: '57px',
+                    buttonFontSize: '18px',
+                };
+            }
+
+            setContainerStyle(newStyle);
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <>
             <InfoContainer
                 type="contentOnly"
-                width="768px"
-                height="486px"
+                width={containerStyle.width}
+                height={containerStyle.height}
                 top="271px"
                 showLogo={false}
                 showTitleText={false}
@@ -46,11 +102,14 @@ const RecommendMainPage = () => {
                     
                     지원하기 전 직무 관련 콘텐츠를 보고 싶다면
                     아래 '콘텐츠 보러가기'를 클릭해주세요.`}
+                mainFontSize={containerStyle.mainFontSize}
+                detailFontSize={containerStyle.detailFontSize}
                 buttons={[
                     {
                         text: '추천 공고 불러오기',
-                        width: '327px',
-                        height: '60px',
+                        width: containerStyle.buttonWidth,
+                        height: containerStyle.buttonHeight,
+                        fontSize: containerStyle.buttonFontSize,
                         backgroundColor: 'deepgreen',
                         onClick: () => {
                             handleOpenPopup();
@@ -58,8 +117,9 @@ const RecommendMainPage = () => {
                     },
                     {
                         text: '콘텐츠 보러가기',
-                        width: '327px',
-                        height: '60px',
+                        width: containerStyle.buttonWidth,
+                        height: containerStyle.buttonHeight,
+                        fontSize: containerStyle.buttonFontSize,
                         backgroundColor: 'green',
                         onClick: () => {
                             navigate('/recommend/content');
@@ -69,7 +129,7 @@ const RecommendMainPage = () => {
             />
             {isPopupOpen &&
                 (isMobileScreen ? (
-                    <MobileLoadingPopupt
+                    <MobileLoadingPopup
                         userName={user.name}
                         interestJob={user.job}
                         type="jobOpening"

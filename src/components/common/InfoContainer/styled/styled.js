@@ -78,15 +78,15 @@ export const TextWrapper = styled.div`
 `;
 
 export const MainText = styled.h2`
-    font-size: 36px;
-    font-weight: 600;
+    font-size: ${(props) => props.$mainFontSize || '24px'};
+    font-weight: 700;
     color: #000;
     text-align: center;
     margin-bottom: 0px;
 `;
 
 export const DetailText = styled.p`
-    font-size: 20px;
+    font-size: ${(props) => props.$detailFontSize || '16px'};
     font-weight: 400;
     color: #000;
     text-align: center;
@@ -100,4 +100,6 @@ export const ButtonWrapper = styled.div`
     gap: 20px;
     width: 100%;
     margin-top: 30px;
+    flex-wrap: wrap;
+    margin-top: 10px;
 `;
