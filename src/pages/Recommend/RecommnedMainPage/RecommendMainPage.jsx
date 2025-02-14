@@ -5,6 +5,8 @@ import { useEffect, useState, useRef } from 'react';
 import { useProfilePopup } from '../../../hooks/useProfile';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useAuthStore } from '../../../store/authStore';
+import MobileLoadingPopupt from '../../../components/common/Popups/MobileLoadingPopup/MobileLoadingPopup';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const RecommendMainPage = () => {
     const user = useAuthStore();
@@ -26,6 +28,8 @@ const RecommendMainPage = () => {
         clearTimeout(timeoutId.current);
         setIsPopupOpen(false);
     };
+
+    const isMobileScreen = useIsMobileScreen();
 
     return (
         <>
@@ -63,14 +67,23 @@ const RecommendMainPage = () => {
                     },
                 ]}
             />
-            {isPopupOpen && (
-                <LoadingPopup
-                    userName={user.name}
-                    interestJob={user.job}
-                    type="jobOpening"
-                    onCancel={handleClosePopup}
-                />
-            )}
+            {isPopupOpen &&
+                (isMobileScreen ? (
+                    <MobileLoadingPopupt
+                        userName={user.name}
+                        interestJob={user.job}
+                        type="jobOpening"
+                        onCancel={handleClosePopup}
+                    />
+                ) : (
+                    <LoadingPopup
+                        userName={user.name}
+                        interestJob={user.job}
+                        type="jobOpening"
+                        onCancel={handleClosePopup}
+                    />
+                ))}
+
             {showProfilePopup && <ProfilePopup />}
         </>
     );

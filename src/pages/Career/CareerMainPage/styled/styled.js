@@ -5,16 +5,17 @@ export const CareerMainPageWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    min-height: calc(100vh - 300px);
+    min-height: 100vh;
     padding: 32px 16px;
     background-color: white;
+    position: relative;
 
     @media (max-width: 1024px) {
-        min-height: calc(100vh - 500px);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        min-height: 100vh;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
     }
 `;
 

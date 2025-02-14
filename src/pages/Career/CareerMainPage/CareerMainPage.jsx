@@ -7,6 +7,8 @@ import * as S from './styled/styled';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useProfilePopup } from '../../../hooks/useProfile';
 import { useAuthStore } from '../../../store/authStore';
+import MobileLoadingPopupt from '../../../components/common/Popups/MobileLoadingPopup/MobileLoadingPopup';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const CareerMainPage = () => {
     const navigate = useNavigate();
@@ -28,6 +30,8 @@ const CareerMainPage = () => {
         clearTimeout(timeoutId.current);
         setIsPopUpVisible(false);
     };
+
+    const isMobileScreen = useIsMobileScreen();
 
     return (
         <S.CareerMainPageWrapper>
@@ -56,14 +60,23 @@ const CareerMainPage = () => {
                 ]}
             />
 
-            {isPopUpVisible && (
-                <LoadingPopup
-                    userName={user.user.name}
-                    interestJob={user.user.job}
-                    type="template"
-                    onCancel={handlePopUpCancel}
-                />
-            )}
+            {isPopUpVisible &&
+                (isMobileScreen ? (
+                    <MobileLoadingPopupt
+                        userName={user.user.name}
+                        interestJob={user.user.job}
+                        type="template"
+                        onCancel={handlePopUpCancel}
+                    />
+                ) : (
+                    <LoadingPopup
+                        userName={user.user.name}
+                        interestJob={user.user.job}
+                        type="template"
+                        onCancel={handlePopUpCancel}
+                    />
+                ))}
+
             {showProfilePopup && <ProfilePopup />}
         </S.CareerMainPageWrapper>
     );

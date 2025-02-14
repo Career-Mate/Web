@@ -1,12 +1,16 @@
 import React from 'react';
 import * as S from './styled/styled';
 import SquareButton from '../../Button/SquareButton/SquareButton';
+import cancelButton from '../../../../assets/common/cancel.svg';
 
 const MobileAccountPopup = ({ type, onCancel, onConfirm }) => {
     return (
         <S.PopupOverlay>
             <S.PopupContainer>
                 <S.PopupWrapper>
+                    <S.CancelButton onClick={onCancel}>
+                        <img src={cancelButton} alt="취소" />
+                    </S.CancelButton>
                     <S.TextWrapper>
                         <S.StyledText>{type}</S.StyledText>
                         <S.Account>
@@ -15,20 +19,12 @@ const MobileAccountPopup = ({ type, onCancel, onConfirm }) => {
                     </S.TextWrapper>
                     <S.ButtonWrapper>
                         <SquareButton
-                            width="95px"
-                            height="48px"
-                            padding="0px"
-                            backgroundColor={type === '로그아웃' ? 'grey' : 'green'}
-                            onClick={onCancel}
-                        >
-                            취소
-                        </SquareButton>
-                        <SquareButton
-                            width="130px"
-                            height="48px"
+                            mobileWidth="72px"
+                            mobileHeight="30px"
                             padding="0px"
                             backgroundColor={type === '로그아웃' ? 'green' : 'grey'}
                             onClick={onConfirm}
+                            mobileFontSize={'12px'}
                         >
                             {type}
                         </SquareButton>

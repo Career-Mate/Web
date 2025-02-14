@@ -19,8 +19,7 @@ export const PopupContainer = styled.div`
     justify-content: center;
     align-items: center;
     position: fixed;
-    width: 757px;
-    min-width: 400px;
+    width: 621px;
     height: fit-content;
     padding-top: 10px;
     top: 50%;
@@ -37,7 +36,7 @@ export const PopupWrapper = styled.div`
     align-items: flex-end;
     padding: 32px 44px;
     gap: 26px;
-    width: 669px;
+    width: 533px;
     height: fit-content;
     flex: none;
     order: 0;
@@ -51,7 +50,7 @@ export const TextWrapper = styled.div`
     align-items: flex-start;
     padding: 0px;
     gap: 18px;
-    width: 669px;
+    width: 533px;
     height: fit-content;
     flex: none;
     order: 0;
@@ -60,12 +59,12 @@ export const TextWrapper = styled.div`
 `;
 
 export const StyledText = styled.div`
-    width: 669px;
+    width: 533px;
     height: fit-content;
     font-style: normal;
     font-weight: 700;
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 24px;
+    line-height: 29px;
     color: #000000;
     flex: none;
     order: 0;
@@ -80,7 +79,7 @@ export const LoadingWrapper = styled.div`
     align-items: center;
     padding: 0px;
     gap: 10px;
-    width: 669px;
+    width: 533px;
     height: fit-content;
     flex: none;
     order: 1;
@@ -90,11 +89,11 @@ export const LoadingWrapper = styled.div`
 
 export const LoadingText = styled.div`
     width: auto;
-    height: 29px;
+    height: 24px;
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 20px;
+    line-height: 24px;
     color: #000000;
     flex: none;
     order: 0;
