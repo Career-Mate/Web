@@ -2,12 +2,15 @@ import styled from 'styled-components';
 
 export const InputContainer = styled.div`
     width: 633px;
-    height: 121px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
-    margin-bottom: 20px;
+    @media (max-width: 391px) {
+        width: fit-content;
+        height: fit-content;
+    }
 `;
 
 export const Label = styled.label`
@@ -15,6 +18,9 @@ export const Label = styled.label`
     font-size: 18px;
     line-height: 21px;
     color: #000000;
+    @media (max-width: 391px) {
+        font-size: 14px;
+    }
 `;
 
 export const StyledInputWrapper = styled.div`
@@ -31,10 +37,11 @@ export const StyledInputWrapper = styled.div`
     gap: 8px;
 
     justify-content: space-between;
-    .calendar-icon {
-        font-size: 26px;
-        color: #c4c4c4;
-        cursor: pointer;
+
+    @media (max-width: 391px) {
+        width: 340px;
+        padding: 10px 15px;
+        height: 50px;
     }
 `;
 
@@ -44,7 +51,34 @@ export const DateInput = styled.div.withConfig({
     display: flex;
     align-items: center;
     gap: 8px;
+    @media (max-width: 391px) {
+        .react-datepicker {
+            font-size: 12px;
+            width: 180px;
+        }
 
+        .react-datepicker__day {
+            width: 1.2rem;
+            height: 1.2rem;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .react-datepicker__header {
+            width: 180px;
+            font-size: 11px;
+        }
+        .react-datepicker__day-names {
+            display: flex;
+            justify-content: space-between;
+        }
+        .react-datepicker__week {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
     input {
         font-size: 16px;
         width: ${(props) => (props.isInline ? 'auto' : '200px')};
@@ -52,6 +86,22 @@ export const DateInput = styled.div.withConfig({
         background: ${(props) => (props.isInline ? 'none' : '#ffffff')};
         padding: ${(props) => (props.isInline ? '0' : '4px 8px')};
         outline: none;
+        @media (max-width: 391px) {
+            font-size: 10px;
+            width: 100px;
+            padding: 0px 0px 5px 0px;
+        }
+    }
+`;
+
+export const Icon = styled.img`
+    width: ${({ $size }) => $size || '32px'};
+    height: ${({ $size }) => $size || '32px'};
+    cursor: pointer;
+
+    @media (max-width: 391px) {
+        width: 24px;
+        height: 24px;
     }
 `;
 
@@ -60,4 +110,7 @@ export const DateDivider = styled.span`
     font-weight: 500;
     color: #d9d9d9;
     padding-right: 20px;
+    @media (max-width: 391px) {
+        padding-right: 0px;
+    }
 `;
