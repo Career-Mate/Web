@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { refreshToken } from './Auth/AuthApi';
-import { useHandleLogout } from './Auth/useHandleLogout';
+import { useAuthStore } from '../store/authStore';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const TEMP_TOKEN = import.meta.env.VITE_TEMP_TOKEN;
@@ -18,8 +18,7 @@ apiClient.interceptors.response.use(
     async (error) => {
         const originalRequest = error.config;
         const statusCode = error.response?.status;
-        const errorCode = error.response?.code;
-        const handleLogout = useHandleLogout();
+        const errorCode = error.response?.data?.code;
         if (
             ((statusCode === 4001 && errorCode === 'ETK001') || (statusCode === 4003 && errorCode === 'ETK004')) &&
             !originalRequest._retry
@@ -29,7 +28,15 @@ apiClient.interceptors.response.use(
             if (success) {
                 return apiClient(originalRequest);
             } else {
-                handleLogout();
+                try {
+                    const authState = useAuthStore.getState();
+                    if (authState.isLogin) {
+                        authState.logout();
+                    }
+                } catch (error) {
+                    console.error('🔴 Zustand 로그아웃 오류:', error);
+                }
+                window.location.replace('/login');
             }
         }
         return Promise.reject(error);
