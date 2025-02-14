@@ -3,11 +3,11 @@ import dropButton from '../../../../assets/SelectDrop/interest-job-button.svg';
 import upButton from '../../../../assets/SelectDrop/interest-job-button-up.svg';
 import { useSelectDrop } from '../../../../hooks/useSelectDrop.js';
 
-const SelectDropInput = ({ label, width, errorMessage, optionData, boxwidth, boxheight, value, onChange }) => {
+const SelectDropInput = ({ label, errorMessage, optionData, boxwidth, boxheight, value, onChange }) => {
     const { isOpen, selectedOption, isTouched, toggleDropDown, onClick } = useSelectDrop(value);
 
     return (
-        <S.InputContainer $width={width}>
+        <S.InputContainer>
             <S.Label>{label}</S.Label>
             <S.SelectorWrapper>
                 <S.Selector $isOpen={isOpen} onClick={toggleDropDown}>

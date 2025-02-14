@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const InputContainer = styled.div`
-    width: ${({ $width }) => $width};
-    //height: 121px;
+    width: 633px;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    //margin-bottom: 20px;
+
+    @media (max-width: 1024px) {
+        width: 643px;
+    }
 `;
 
 export const Label = styled.div`
