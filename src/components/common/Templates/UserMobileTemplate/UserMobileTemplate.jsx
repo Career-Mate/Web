@@ -3,25 +3,30 @@ import MobilePagination from '../../Pagination/MobilePagination/MobilePagination
 import MobileTextArea from '../../MobileTextarea/MobileTextarea.jsx';
 import UnderlineButton from '../../Button/UnderlineButton/UnderlineButton';
 import SquareButton from '../../Button/SquareButton/SquareButton.jsx';
+import * as S from './styled/styled';
 
 const UserMobileTemplate = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     return (
-        <>
-            <div style={{ padding: '16px' }}>
-                <h2>현재 페이지: {currentPage}</h2>
+        <S.Container>
+            <S.TemplateWrapper>
                 <MobileTextArea label={'1. 직무명'} />
-            </div>
+                <MobileTextArea label={'1. 직무명'} />
+            </S.TemplateWrapper>
 
-            <UnderlineButton fontSize="12px">전체 내용 삭제하기</UnderlineButton>
+            <S.ButtonWrapper>
+                <UnderlineButton fontSize="12px">전체 내용 삭제하기</UnderlineButton>
+            </S.ButtonWrapper>
 
-            <SquareButton width="131px" backgroundColor={'deepgreen'}>
-                저장
-            </SquareButton>
+            <S.SaveButtonWrapper>
+                <SquareButton width="100%" backgroundColor={'deepgreen'}>
+                    저장
+                </SquareButton>
+            </S.SaveButtonWrapper>
 
             <MobilePagination totalPages={2} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-        </>
+        </S.Container>
     );
 };
 

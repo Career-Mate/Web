@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BarContainer = styled.div`
     width: 248px;
-    height: 39px;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;

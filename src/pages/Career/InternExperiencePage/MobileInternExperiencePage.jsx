@@ -3,7 +3,6 @@ import UserMobileTemplate from '../../../components/common/Templates/UserMobileT
 const MobileInternExperiencePage = () => {
     return (
         <>
-            <h1>인턴 경험 페이지</h1>
             <UserMobileTemplate />
         </>
     );

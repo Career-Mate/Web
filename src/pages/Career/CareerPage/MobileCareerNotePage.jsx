@@ -5,6 +5,7 @@ import MobileProjectExperiencePage from '../ProjectExperiencePage/MobileProjectE
 import MobileOtherExperiencePage from '../OtherExperiencePage/MobileOtherExperiencePage.jsx';
 import MobileSkillsPage from '../SkillsPage/MobileSkillsPage.jsx';
 import MobileFinalSummaryPage from '../FinalSummaryPage/MobileFinalSummaryPage.jsx';
+import * as S from './styled/mstyled';
 
 const MobileCareerNotePage = () => {
     const [currentCategory, setCurrentCategory] = useState(0);
@@ -27,14 +28,14 @@ const MobileCareerNotePage = () => {
     };
 
     return (
-        <>
+        <S.PageContainer>
             <TemplateCategory
                 handlePrevPage={() => setCurrentCategory((prev) => Math.max(prev - 1, 0))}
                 handleNextPage={() => setCurrentCategory((prev) => Math.min(prev + 1, 4))}
             />
-            <h5>※ 최대 2개까지 작성할 수 있어요.</h5>
-            <div>{renderCategoryPage()}</div>
-        </>
+            <S.Subtitle>※ 최대 2개까지 작성할 수 있어요.</S.Subtitle>
+            <S.MainContainer>{renderCategoryPage()}</S.MainContainer>
+        </S.PageContainer>
     );
 };
 
