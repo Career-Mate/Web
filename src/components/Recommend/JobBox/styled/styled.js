@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const BoxContainer = styled.div`
-    width: 509px;
-    padding: 18px 46px;
+    width: fit-content;
+    padding: 0 20px;
+    height: 60px;
     border-radius: 20px;
     border: 4px solid #84d0b1;
     box-shadow:
@@ -17,5 +18,15 @@ export const BoxContainer = styled.div`
     text-align: center;
     justify-content: center;
     font-weight: 600;
-    font-size: 30px;
+    font-size: 24px;
+
+    @media (max-width: 1024px) {
+        height: 72px;
+    }
+
+    @media (max-width: 390px) {
+        height: 40px;
+        font-size: 16px;
+        border-radius: 10px;
+    }
 `;
