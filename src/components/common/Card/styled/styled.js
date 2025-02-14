@@ -16,11 +16,13 @@ export const CardContainer = styled.div`
     box-sizing: border-box;
     font-weight: 600;
     font-size: 18px;
+    cursor: pointer;
 `;
 
 export const CompanyName = styled.div`
     text-align: center;
-    color: #c4c4c4;
+    color: #8f8f8f;
+    overflow: hidden;
 `;
 
 export const Thumbnail = styled.img`
@@ -57,7 +59,8 @@ export const Title = styled.div`
 
 export const DeadlineWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: ${({ $type }) => ($type ? 'flex-end' : 'space-between')};
     align-items: center;
 `;
 

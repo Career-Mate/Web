@@ -233,10 +233,9 @@ const Template = ({ pageType, onDataChange }) => {
                                                             alignItems: 'center',
                                                         }}
                                                     >
-                                                        <img
+                                                        <S.UploadedImg
                                                             src={uploadedImages[`image_${sectionIndex + 1}`]}
                                                             alt="Uploaded"
-                                                            style={{ maxWidth: '50%' }}
                                                         />
                                                     </div>
                                                 )}

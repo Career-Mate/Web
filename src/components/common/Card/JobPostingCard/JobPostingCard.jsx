@@ -6,17 +6,19 @@ import backThumbnail from '../../../../assets/Card/backend.png';
 import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
-import useScrapStore from '../../../../store/useScrapStore';
+import { usePostScrapJob, useDeleteScrapJob } from '../../../../apis/Scrap/Job/JobScrapApi';
 
-const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, onClick }) => {
-    const { scrapJobs, addScrapJob, removeScrapJob } = useScrapStore();
-    const isScrap = scrapJobs.some((job) => job.id === id);
+const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, isScrapped, goToDetail }) => {
+    const postScrap = usePostScrapJob();
+    const deleteScrap = useDeleteScrapJob();
 
-    const handleClick = () => {
-        if (isScrap) {
-            removeScrapJob(id);
+    const handleScrap = async (e) => {
+        e.stopPropagation();
+
+        if (isScrapped) {
+            deleteScrap.mutate(id);
         } else {
-            addScrapJob({ id, companyName, deadline, contentName, thumbnail, onClick });
+            postScrap.mutate(id);
         }
     };
 
@@ -38,20 +40,18 @@ const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, onCli
     const thumbnail = getThumbnailByJob(jobType);
 
     return (
-        <S.CardContainer $type={false}>
+        <S.CardContainer $type={false} onClick={goToDetail}>
             <S.CompanyName>{companyName}</S.CompanyName>
             <S.Thumbnail src={thumbnail} alt={contentName} $type={false} />
             <S.Line />
             <S.ContentWrapper>
-                <S.Title $type={true} onClick={onClick}>
-                    {contentName}
-                </S.Title>
+                <S.Title $type={true}>{contentName}</S.Title>
                 <S.DeadlineWrapper>
                     <S.Deadline>{deadline}</S.Deadline>
                     <S.ScrapIcon
-                        src={isScrap ? scrapCheckedIcon : scrapUncheckedIcon}
+                        src={isScrapped ? scrapCheckedIcon : scrapUncheckedIcon}
                         alt="스크랩 아이콘"
-                        onClick={handleClick}
+                        onClick={handleScrap}
                     />
                 </S.DeadlineWrapper>
             </S.ContentWrapper>
