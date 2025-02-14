@@ -1,10 +1,8 @@
 import * as S from './styled/styled';
-import { useMemo, useState, useEffect, useRef } from 'react';
-import { useTemplateData } from '../../../../hooks/useTemplateData';
+import { useMemo, useState, useEffect } from 'react';
 import UnderlineButton from '../../Button/UnderlineButton/UnderlineButton';
-
-const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) => {
-    const { handleInputChange, data } = useTemplateData(externalData, onDataChange);
+import { handleTemplateChange } from '../../../../utils/SmartPlanner/plannerHandler';
+const SmartTemplate = ({ data, onDataChange, onClearAll, page }) => {
     const memoizedData = useMemo(() => data, [data]);
     const [localValues, setLocalValues] = useState({});
     const [charCounts, setCharCounts] = useState({});
@@ -50,7 +48,7 @@ const SmartTemplate = ({ data: externalData, onDataChange, onClearAll, page }) =
     const handleBlur = (sectionIndex, itemIndex) => {
         const key = `${page}-${sectionIndex}-${itemIndex}`;
         if (localValues[key] !== undefined) {
-            handleInputChange(sectionIndex, itemIndex, localValues[key]);
+            handleTemplateChange(data, sectionIndex, itemIndex, onDataChange, localValues[key]);
         }
     };
 

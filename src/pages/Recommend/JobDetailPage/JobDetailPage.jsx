@@ -1,5 +1,6 @@
 import * as S from './styled/styled.js';
 import companyImg from '../../../assets/JobDetailPage/company.svg';
+import RabbitLogo from '/assets/rabbit-logo.svg';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton.jsx';
 import JobDetailList from '../../../components/Recommend/JobDetailList/JobDetailList.jsx';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
@@ -9,21 +10,27 @@ import { useState, useEffect } from 'react';
 
 const JobDetailPage = () => {
     const { id } = useParams();
-    const { data: detail, error, isLoading, isSuccess: apiSuccess, isError } = useFetchDetail(id);
-    const [isSuccess, setIsSuccess] = useState(false);
+    const { data: detail, isLoading, isError } = useFetchDetail(id);
     const [speechVisible, setSpeechVisible] = useState(false);
 
     const location = useLocation();
+    const navigate = useNavigate();
+
     const prevPage = location.state?.page || 1;
+    const from = location.state?.from || 'recommend';
 
     const onAIChatClick = () => {
         setSpeechVisible((prev) => !prev);
     };
 
-    const navigate = useNavigate();
     const handlePrevNavigation = () => {
-        navigate('/recommend/job', { state: { page: prevPage } });
+        if (from === 'recommend') {
+            navigate('/recommend/job', { state: { page: prevPage, sortType: location.state?.sortType || '전체' } });
+        } else {
+            navigate('/mycareer/saved-content', { state: { page: prevPage, selectedTab: 'job' } });
+        }
     };
+
     const handleJobRecruitNavigation = () => {
         window.open(detail?.data?.recruitUrl, '_blank', 'noopener,noreferrer');
     };
@@ -35,9 +42,6 @@ const JobDetailPage = () => {
         }
     };
     useEffect(() => {
-        if (detail) {
-            setIsSuccess(true);
-        }
         window.scrollTo(0, 0);
     }, [detail]);
     useEffect(() => {
@@ -50,7 +54,7 @@ const JobDetailPage = () => {
         return <div>데이터 로딩 중...</div>;
     }
 
-    if (error || !isSuccess) {
+    if (isError) {
         return <div>데이터를 불러올 수 없습니다.</div>;
     }
 
@@ -98,7 +102,9 @@ const JobDetailPage = () => {
                         <S.AIChatBubbleTailInner />
                     </>
                 )}
-                <S.AIProfile onClick={onAIChatClick} />
+                <S.AIProfile onClick={onAIChatClick}>
+                    <S.RabbitImg src={RabbitLogo} />
+                </S.AIProfile>
             </S.AIChatBotWrapper>
         </S.PageContainer>
     );
