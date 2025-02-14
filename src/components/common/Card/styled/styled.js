@@ -36,9 +36,10 @@ export const CompanyName = styled.div`
     font-size: 20px;
     color: #8f8f8f;
     overflow: hidden;
-
+    line-height: 23.87px;
     @media (max-width: 1024px) {
         font-size: 18px;
+        line-height: 21.48px;
     }
 `;
 
@@ -96,13 +97,8 @@ export const Deadline = styled.div`
     color: #ff0000;
     font-size: 20px;
     font-weight: 600;
-    height: 40px;
     display: flex;
     align-items: center;
-
-    @media (max-width: 431px) {
-        height: 28px;
-    }
 `;
 
 export const ScrapIcon = styled.img`
