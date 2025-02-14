@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import TemplateCategory from '../../Templates/TemplateCategory/TemplateCategory.jsx';
 import MobilePagination from '../../Pagination/MobilePagination/MobilePagination.jsx';
 import MobileTextArea from '../../MobileTextarea/MobileTextarea.jsx';
 import UnderlineButton from '../../Button/UnderlineButton/UnderlineButton';
@@ -10,10 +9,6 @@ const UserMobileTemplate = () => {
 
     return (
         <>
-            <TemplateCategory />
-
-            <h5>※ 최대 2개까지 작성할 수 있어요.</h5>
-
             <div style={{ padding: '16px' }}>
                 <h2>현재 페이지: {currentPage}</h2>
                 <MobileTextArea label={'1. 직무명'} />
