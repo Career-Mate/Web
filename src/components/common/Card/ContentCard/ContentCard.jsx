@@ -24,14 +24,14 @@ const ContentCard = ({ id, contentName, thumbnail, url, isScrapped }) => {
             <S.Line />
             <S.ContentWrapper $type={true}>
                 <S.Title $type={true}>{contentName}</S.Title>
-                <S.DeadlineWrapper>
-                    <S.ScrapIcon
-                        src={isScrapped ? scrapCheckedIcon : scrapUncheckedIcon}
-                        alt="스크랩 아이콘"
-                        onClick={handleScrap}
-                    />
-                </S.DeadlineWrapper>
             </S.ContentWrapper>
+            <S.DeadlineWrapper>
+                <S.ScrapIcon
+                    src={isScrapped ? scrapCheckedIcon : scrapUncheckedIcon}
+                    alt="스크랩 아이콘"
+                    onClick={handleScrap}
+                />
+            </S.DeadlineWrapper>
         </S.CardContainer>
     );
 };

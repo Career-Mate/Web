@@ -17,12 +17,29 @@ export const CardContainer = styled.div`
     font-weight: 600;
     font-size: 18px;
     cursor: pointer;
+
+    @media (max-width: 1024px) {
+        width: 306px;
+        height: 307px;
+    }
+
+    @media (max-width: 431px) {
+        width: 294px;
+        height: 293px;
+        font-size: 16px;
+        padding: 19px;
+    }
 `;
 
 export const CompanyName = styled.div`
     text-align: center;
+    font-size: 20px;
     color: #8f8f8f;
     overflow: hidden;
+
+    @media (max-width: 1024px) {
+        font-size: 18px;
+    }
 `;
 
 export const Thumbnail = styled.img`
@@ -30,6 +47,17 @@ export const Thumbnail = styled.img`
     height: ${({ $type }) => ($type ? '153px' : '130px')};
     border-radius: 20px;
     object-fit: cover;
+
+    @media (max-width: 1024px) {
+        width: 254px;
+        height: ${({ $type }) => ($type ? '160px' : '125px')};
+    }
+
+    @media (max-width: 431px) {
+        width: 254px;
+        height: ${({ $type }) => ($type ? '145px' : '120px')};
+        font-size: 16px;
+    }
 `;
 
 export const Line = styled.div`
@@ -71,6 +99,10 @@ export const Deadline = styled.div`
     height: 40px;
     display: flex;
     align-items: center;
+
+    @media (max-width: 431px) {
+        height: 28px;
+    }
 `;
 
 export const ScrapIcon = styled.img`

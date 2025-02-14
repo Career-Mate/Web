@@ -46,15 +46,15 @@ const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, isScr
             <S.Line />
             <S.ContentWrapper>
                 <S.Title $type={true}>{contentName}</S.Title>
-                <S.DeadlineWrapper>
-                    <S.Deadline>{deadline}</S.Deadline>
-                    <S.ScrapIcon
-                        src={isScrapped ? scrapCheckedIcon : scrapUncheckedIcon}
-                        alt="스크랩 아이콘"
-                        onClick={handleScrap}
-                    />
-                </S.DeadlineWrapper>
             </S.ContentWrapper>
+            <S.DeadlineWrapper>
+                <S.Deadline>{deadline}</S.Deadline>
+                <S.ScrapIcon
+                    src={isScrapped ? scrapCheckedIcon : scrapUncheckedIcon}
+                    alt="스크랩 아이콘"
+                    onClick={handleScrap}
+                />
+            </S.DeadlineWrapper>
         </S.CardContainer>
     );
 };
