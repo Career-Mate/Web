@@ -5,6 +5,7 @@ import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPo
 import JobBox from '../../../components/Recommend/JobBox/JobBox';
 import Pagination from '../../../components/common/Pagination/Pagination/Pagination';
 import DeadlineButton from '../../../components/common/Button/DeadlineButton/DeadlineButton';
+import JobPostingCardSkeleton from '../../../components/SkeletonUi/JobPostingCardSkeleton/JobPostingCardSkeleton';
 import { useGetRecommendJobs } from '../../../apis/Job/JobApi';
 import { useQueryClient } from '@tanstack/react-query';
 
@@ -41,7 +42,40 @@ const RecommendJobPage = ({ user }) => {
         window.scrollTo(0, 0);
     }, [currentPage, sortType]);
 
-    if (isLoading) return <div>Loading...</div>;
+    const renderJobPostingCards = () =>
+        jobs.length > 0 ? (
+            <S.CardWrapper>
+                {jobs.map((job) => (
+                    <JobPostingCard
+                        key={job.id}
+                        id={job.id}
+                        companyName={job.companyName}
+                        deadline={job.deadline}
+                        contentName={job.contentName}
+                        jobType={user.job}
+                        goToDetail={() =>
+                            navigate(`/recommend/detail/${job.id}`, {
+                                state: { page: currentPage, sortType: sortType, from: 'recommend' },
+                            })
+                        }
+                        isScrapped={job.isScrapped}
+                        onScrapUpdate={handleScrapUpdate}
+                    />
+                ))}
+            </S.CardWrapper>
+        ) : (
+            <div style={{ textAlign: 'center', fontSize: '18px', margin: '20px 0' }}>공고가 없습니다.</div>
+        );
+
+    const numbers = Array.from({ length: 6 }, (_, i) => i + 1);
+    const renderCardLoading = () => (
+        <S.CardWrapper>
+            {numbers.map((number) => (
+                <JobPostingCardSkeleton />
+            ))}
+        </S.CardWrapper>
+    );
+
     if (error) return <div>error</div>;
 
     return (
@@ -68,29 +102,7 @@ const RecommendJobPage = ({ user }) => {
                 ))}
             </S.DeadlineWrapper>
 
-            {jobs.length > 0 ? (
-                <S.CardWrapper>
-                    {jobs.map((job) => (
-                        <JobPostingCard
-                            key={job.id}
-                            id={job.id}
-                            companyName={job.companyName}
-                            deadline={job.deadline}
-                            contentName={job.contentName}
-                            jobType={user.job}
-                            goToDetail={() =>
-                                navigate(`/recommend/detail/${job.id}`, {
-                                    state: { page: currentPage, sortType: sortType, from: 'recommend' },
-                                })
-                            }
-                            isScrapped={job.isScrapped}
-                            onScrapUpdate={handleScrapUpdate}
-                        />
-                    ))}
-                </S.CardWrapper>
-            ) : (
-                <div style={{ textAlign: 'center', fontSize: '18px', margin: '20px 0' }}>공고가 없습니다.</div>
-            )}
+            {isLoading ? renderCardLoading() : renderJobPostingCards()}
 
             <S.ButtonContainer>
                 <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />

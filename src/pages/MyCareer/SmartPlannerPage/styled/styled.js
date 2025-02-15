@@ -6,10 +6,11 @@ export const MainContainer = styled.div`
     height: fit-content;
     display: flex;
     flex-direction: column;
+    width: 100%;
     margin-right: 60px;
     gap: 60px;
-    @media (max-width: 391px) {
-        margin: 70px 15px 95px 15px;
+    @media (max-width: 431px) {
+        margin: 70px 0px 95px 0px;
         gap: 10px;
         align-items: center;
     }
@@ -18,7 +19,7 @@ export const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 25px;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 340px;
     }
 `;
@@ -29,7 +30,7 @@ export const Title = styled.div`
     gap: 10px;
     font-weight: 600;
     font-size: 24px;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 16px;
         gap: 5px;
     }
@@ -38,7 +39,7 @@ export const Icon = styled.img`
     width: ${({ $size }) => $size || '32px'};
     height: ${({ $size }) => $size || '32px'};
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 16px;
         height: 16px;
     }
@@ -54,7 +55,7 @@ export const Text = styled.div`
     white-space: pre-line;
     line-height: 2;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 14px;
         width: 300px;
     }
@@ -66,7 +67,7 @@ export const Subtitle = styled.span`
     color: #c4c8ce;
     text-align: center;
     margin-left: 20px;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 10px;
         margin-left: 0px;
     }
@@ -88,7 +89,7 @@ export const Tooltip = styled.div`
 
     display: flex;
     align-items: center;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         align-items: end;
         width: 150px;
         height: 150px;
@@ -107,7 +108,7 @@ export const Tooltip = styled.div`
         width: 100%;
         height: 100%;
         background-image: url(${SpeechBubble});
-        @media (max-width: 391px) {
+        @media (max-width: 431px) {
             background-image: url(${MobileSpeechBubble});
         }
         background-repeat: no-repeat;
@@ -136,7 +137,7 @@ export const TooltipText = styled.p`
 
     text-align: center;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         margin-bottom: 50px;
         font-size: 8px;
     }
@@ -160,7 +161,7 @@ export const ButtonWrapper = styled.div`
     gap: 18px;
     justify-content: end;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         flex-direction: column;
         gap: 12px;
     }
