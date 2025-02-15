@@ -17,7 +17,7 @@ export const TabWrapper = styled.div`
     width: 100%;
     position: relative;
     white-space: nowrap;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #ccc;
 `;
 
 export const TabButton = styled.div.withConfig({
@@ -46,10 +46,10 @@ export const TabButton = styled.div.withConfig({
     &::after {
         content: '';
         position: absolute;
-        bottom: -2px;
+        bottom: -5px;
         left: 0;
         width: 100%;
-        height: 2px;
+        height: 10px;
         background-color: ${({ isActive }) => (isActive ? '#f7f8f9' : 'transparent')};
     }
 `;
@@ -90,9 +90,10 @@ export const Highlight = styled.span`
 `;
 
 export const CardWrapper = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 41px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
     width: 100%;
     max-width: 1282px;
     padding-bottom: 30px;

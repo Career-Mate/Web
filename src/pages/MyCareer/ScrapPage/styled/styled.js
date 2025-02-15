@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 1650px;
+    width: calc(100% - 20px);
     padding-bottom: 20px;
     margin-left: -165px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 1024px) {
+        width: calc(100% - 230px);
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 export const TitleContainer = styled.div`
@@ -17,7 +25,7 @@ export const TitleContainer = styled.div`
     width: 100%;
     position: relative;
     white-space: nowrap;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #ccc;
 `;
 
 export const TitleWrapper = styled.div.withConfig({
@@ -33,20 +41,20 @@ export const TitleWrapper = styled.div.withConfig({
     border-radius: 20px 20px 0 0;
     cursor: pointer;
     pointer-events: auto;
-
     background-color: ${({ isSelected }) => (isSelected ? 'white' : 'transparent')};
     color: ${({ isSelected }) => (isSelected ? '#000' : '#aaa')};
     border-top: ${({ isSelected }) => (isSelected ? '2px solid #ccc' : 'none')};
     border-left: ${({ isSelected }) => (isSelected ? '2px solid #ccc' : 'none')};
     border-right: ${({ isSelected }) => (isSelected ? '2px solid #ccc' : 'none')};
+    border-bottom: none;
 
     &::after {
         content: '';
         position: absolute;
-        bottom: -2px;
+        bottom: -5px;
         left: 0;
         width: 100%;
-        height: 2px;
+        height: 10px;
         background-color: ${({ isSelected }) => (isSelected ? 'white' : 'transparent')};
     }
 `;
@@ -78,14 +86,21 @@ export const Highlight = styled.span`
 
 export const CardWrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    row-gap: 30px;
-    column-gap: 50px;
-    width: 100%;
-    max-width: 1280px;
-    padding-top: 50px;
-    padding-bottom: 30px;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 카드 크기에 따라 자동 조정 */
+    gap: 30px; /* 카드 간 간격 유지 */
+    width: calc(100% - 260px); /* 서브메뉴 공간 확보 */
+    max-width: 1282px;
+    padding: 50px 0 30px;
+    justify-content: center; /* 중앙 정렬 */
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr); /* 너비 1200px 이하 → 2개씩 배치 */
+        width: 100%; /* 서브메뉴 공간 줄이기 */
+    }
+
+    @media (max-width: 391px) {
+        grid-template-columns: repeat(1, 1fr); /* 너비 768px 이하 → 1개씩 배치 */
+    }
 `;
 
 export const EmptyMessage = styled.p`

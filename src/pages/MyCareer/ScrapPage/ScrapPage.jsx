@@ -5,7 +5,7 @@ import ScrapJob from './ScrapJob';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
-const ScrapContentPage = () => {
+const ScrapPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -13,6 +13,8 @@ const ScrapContentPage = () => {
 
     return (
         <S.Container>
+            {' '}
+            {/* SideContainer를 제외한 공간을 자동으로 차지하도록 수정 */}
             <S.TitleContainer>
                 <S.TitleWrapper isSelected={selectedTab === 'job'} onClick={() => setSelectedTab('job')}>
                     <S.PinIcon isSelected={selectedTab === 'job'} src={pin} alt="pin icon" />
@@ -28,7 +30,6 @@ const ScrapContentPage = () => {
                     </S.Title>
                 </S.TitleWrapper>
             </S.TitleContainer>
-
             {selectedTab === 'content' ? (
                 <ScrapContent onNavigate={() => navigate('/recommend/content')} />
             ) : (
@@ -38,4 +39,4 @@ const ScrapContentPage = () => {
     );
 };
 
-export default ScrapContentPage;
+export default ScrapPage;
