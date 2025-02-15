@@ -90,13 +90,24 @@ export const Highlight = styled.span`
 `;
 
 export const CardWrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     width: 100%;
     max-width: 1282px;
+    margin: 0 auto;
     padding-bottom: 30px;
+    justify-items: center;
+    justify-items: stretch;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+
+    @media (max-width: 390px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `;
 
 export const ButtonContainer = styled.div`
