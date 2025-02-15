@@ -34,7 +34,6 @@ const RecommendMainPage = () => {
 
     const containerStyle = useMemo(() => {
         if (isMobileScreen) {
-            console.log('모바일');
             return {
                 width: '280px',
                 height: '300px',
@@ -45,8 +44,6 @@ const RecommendMainPage = () => {
                 buttonFontSize: '14px',
             };
         } else if (isTabletScreen) {
-            console.log('태블릿');
-
             return {
                 width: '574px',
                 height: '411px',
@@ -57,8 +54,6 @@ const RecommendMainPage = () => {
                 buttonFontSize: '18px',
             };
         } else {
-            console.log('웹');
-
             return {
                 width: '768px',
                 height: '486px',
@@ -71,9 +66,9 @@ const RecommendMainPage = () => {
         }
     }, [isMobileScreen, isTabletScreen]);
 
-    console.log('isMobileScreen:', isMobileScreen);
-    console.log('isTabletScreen:', isTabletScreen);
-    console.log('containerStyle:', containerStyle);
+    console.log('Button Width:', containerStyle.buttonWidth);
+    console.log('Button Height:', containerStyle.buttonHeight);
+    console.log('Button Font Size:', containerStyle.buttonFontSize);
 
     return (
         <>

@@ -31,20 +31,25 @@ const InfoContainer = ({
 
                 {buttons.length > 0 && (
                     <S.ButtonWrapper>
-                        {buttons.map(
-                            ({ text, buttonWidth, buttonHeight, backgroundColor, padding, onClick }, index) => (
+                        {buttons.map(({ text, backgroundColor, padding, width, height, fontSize, onClick }, index) => {
+                            console.log(`Button ${index} Props:`, { width, height, fontSize });
+                            return (
                                 <SquareButton
                                     key={index}
-                                    width={buttonWidth}
-                                    height={buttonHeight}
+                                    width={width}
+                                    height={height}
+                                    fontSize={fontSize}
+                                    mobileWidth={width}
+                                    mobileHeight={height}
+                                    mobileFontSize={fontSize}
                                     backgroundColor={backgroundColor}
                                     padding={padding}
                                     onClick={onClick}
                                 >
                                     {text}
                                 </SquareButton>
-                            ),
-                        )}
+                            );
+                        })}
                     </S.ButtonWrapper>
                 )}
             </S.ContentWrapper>
