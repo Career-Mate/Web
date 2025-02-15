@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import * as S from './styled/styled.js';
 import LogoImg from '../../../../assets/common/career-mate.svg';
-import Hamberger from '../../../../assets/Navbar/hamburger-menu.svg';
-import CloseBtn from '../../../../assets/Navbar/close.svg';
+import Hamburger from '../../../../assets/Navbar/hamburger-menu.svg';
+import CloseBtn from '../../../../assets/close.svg';
 import Home from '../../../../assets/Navbar/home.svg';
 import Career from '../../../../assets/Navbar/career.svg';
 import Keep from '../../../../assets/Navbar/keep.svg';
@@ -12,9 +12,9 @@ import DropUp from '../../../../assets/Navbar/drop-up.svg';
 import Detail from '../../../../assets/Navbar/detail.svg';
 
 const MobileNavbar = ({ isLogin, user, navigate, isActive, onLogout }) => {
-    const [istoggleSide, setToggleSide] = useState(false);
+    const [isToggleSide, setToggleSide] = useState(false);
     const [isAccountToggle, setAccountToggle] = useState(false);
-    const toggleRef = useRef(null); // ToggleContainer 참조
+    const toggleRef = useRef(null);
 
     const handleOpenToggle = () => {
         setToggleSide(true);
@@ -26,18 +26,16 @@ const MobileNavbar = ({ isLogin, user, navigate, isActive, onLogout }) => {
     const handleAccountToggle = () => {
         setAccountToggle(!isAccountToggle);
     };
-    // 메뉴 외부 클릭 시 토글 닫기
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (toggleRef.current && !toggleRef.current.contains(event.target)) {
-                setToggleSide(false); // 메뉴 외부 클릭 시 토글 닫기
+                setToggleSide(false);
             }
         };
 
-        // 클릭 이벤트 리스너 추가
         document.addEventListener('mousedown', handleClickOutside);
 
-        // 컴포넌트 언마운트 시 이벤트 리스너 제거
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
@@ -49,10 +47,10 @@ const MobileNavbar = ({ isLogin, user, navigate, isActive, onLogout }) => {
                 <S.Logo src={LogoImg} />
             </S.LogoWrapper>
             <S.MenuBtn onClick={handleOpenToggle}>
-                <img src={Hamberger} />
+                <img src={Hamburger} />
             </S.MenuBtn>
 
-            <S.ToggleContainer ref={toggleRef} className={istoggleSide ? 'open' : ''}>
+            <S.ToggleContainer ref={toggleRef} className={isToggleSide ? 'open' : ''}>
                 <S.Header>
                     <img src={CloseBtn} onClick={handleCloseToggle} />
                     <S.HeaderWrapper>
