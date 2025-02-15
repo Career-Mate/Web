@@ -13,7 +13,7 @@ export const TemplateWrapper = styled.div`
         padding-bottom: 50px;
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 320px;
         padding-bottom: 40px;
         padding-right: 50px;
@@ -49,7 +49,7 @@ export const TableRow = styled.div`
         border-bottom: none;
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         height: 40px;
     }
 `;
@@ -76,7 +76,7 @@ export const TableCellHeader = styled.div.withConfig({
         width: 226px;
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 200px;
         font-size: 8px;
         padding: 5px;
@@ -117,7 +117,7 @@ export const TableCellData = styled.div.withConfig({
         box-sizing: border-box;
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         textarea {
             font-size: 8px;
         }
@@ -191,7 +191,7 @@ export const DatePickerRow = styled.div`
         width: 226px;
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 100px;
         font-size: 10px;
     }
@@ -218,7 +218,7 @@ export const DateInput = styled.div.withConfig({
         outline: none;
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         input {
             font-size: 8px;
             width: 80px;
@@ -237,7 +237,7 @@ export const DateDivider = styled.span`
     color: #d9d9d9;
     padding-right: 20px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 5px;
         padding: 0px;
     }
@@ -267,7 +267,7 @@ export const UploadButton = styled.button`
         font-size: 12px;
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 10px;
     }
 `;
@@ -277,7 +277,7 @@ export const CharCount = styled.div`
     color: ${(props) => (props.$charCount >= props.$maxCount ? 'red' : 'grey')};
     align-self: flex-end;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 5px;
         padding: 0px;
     }

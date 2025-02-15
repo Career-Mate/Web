@@ -23,11 +23,6 @@ export const Title = styled.h1`
     @media (max-width: 1024px) {
         font-size: 24px;
     }
-
-    @media (max-width: 1024px) {
-        font-size: 14px;
-        margin-left: 50px;
-    }
 `;
 
 export const Subtitle = styled.p`
@@ -42,11 +37,6 @@ export const Subtitle = styled.p`
         font-size: 10px;
         margin-left: 10px;
         line-height: 20px;
-    }
-
-    @media (max-width: 1024px) {
-        font-size: 8px;
-        line-height: 10px;
     }
 `;
 
@@ -84,10 +74,10 @@ export const ButtonWrapper = styled.div`
         padding-top: 0;
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         flex-direction: column;
         align-items: center;
-        max-width: 300px;
-        width: 50%;
+        max-width: 500px;
+        width: 80%;
     }
 `;
