@@ -9,7 +9,6 @@ export const NavbarContainer = styled.div`
     flex-direction: column;
     justify-self: center;
     width: 100%;
-    min-width: 850px;
     height: 130px;
     position: relative;
 `;
