@@ -36,7 +36,7 @@ export const TitleBox = styled.div`
 
 export const ContentWrapper = styled.div`
     width: 100%;
-    height: 334px;
+    height: 360px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -46,7 +46,7 @@ export const ContentWrapper = styled.div`
     gap: 20px;
 
     @media (max-width: 1024px) {
-        height: 201px;
+        height: 220px;
         border-radius: 10px;
         gap: 10px;
     }
