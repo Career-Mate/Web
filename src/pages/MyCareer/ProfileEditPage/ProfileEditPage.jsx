@@ -7,6 +7,7 @@ import { useProfileEdit, useDeleteAccount } from './useProfileEdit';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useProfilePopup } from '../../../hooks/useProfile';
 import { useAuthStore } from '../../../store/authStore';
+import { useFetchProfile } from '../../../apis/Profile/useProfileApi';
 
 const ProfileEditPage = () => {
     const [isPopUp, setIsPopUp] = useState(false);

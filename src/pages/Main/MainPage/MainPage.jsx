@@ -13,6 +13,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../../store/authStore';
 import { useEffect } from 'react';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import { useFetchProfile } from '../../../apis/Profile/useProfileApi';
 
 const cards = [
     {
@@ -37,14 +38,18 @@ const cards = [
 
 const MainPage = () => {
     const navigate = useNavigate();
-    const { isLogin, login } = useAuthStore();
+    const { isLogin, login, fetchUser } = useAuthStore();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const userName = queryParams.get('name');
+    const { data, error } = useFetchProfile();
 
     useEffect(() => {
         if (userName) {
             login({ name: userName });
+            if (data) {
+                fetchUser(data);
+            }
         }
     }, [userName, login]);
 
