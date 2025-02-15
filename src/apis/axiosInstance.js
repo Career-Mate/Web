@@ -47,7 +47,7 @@ apiClient.interceptors.response.use(
             } catch (error) {
                 console.error('🔴 Zustand 로그아웃 오류:', error);
             }
-            window.location.replace('/login');
+            window.location.replace('/');
         } else {
             return Promise.reject(error);
         }
