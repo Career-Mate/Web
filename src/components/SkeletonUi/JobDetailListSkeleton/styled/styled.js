@@ -5,7 +5,7 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 22px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         gap: 7px;
         max-width: 130px;
     }
@@ -29,7 +29,7 @@ export const SectionTitle = styled.span`
     background-color: darkgray;
     border-radius: 20px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 70px;
         height: 17px;
     }
@@ -40,7 +40,7 @@ export const ItemWrapper = styled.div`
     flex-direction: column;
     gap: 10px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         gap: 5px;
     }
 `;
@@ -50,7 +50,7 @@ export const Item = styled.span`
     background-color: darkgray;
     border-radius: 20px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 110px;
         height: 11px;
     }
@@ -61,7 +61,7 @@ export const Item2 = styled.span`
     background-color: darkgray;
     border-radius: 20px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 85px;
         height: 11px;
     }

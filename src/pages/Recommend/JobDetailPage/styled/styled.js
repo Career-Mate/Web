@@ -22,7 +22,7 @@ export const ComponentContainer = styled.div`
 
     z-index: 0;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 360px;
     }
 `;
@@ -36,7 +36,7 @@ export const ImgWrapper = styled.div`
     overflow: hidden;
     z-index: 1;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         height: 250px;
     }
 `;
@@ -70,7 +70,7 @@ export const ImgTextWrapper = styled.div`
     height: fit-content;
     color: white;
     z-index: 2;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         gap: 5px;
         bottom: 25px;
         left: 20px;
@@ -81,14 +81,14 @@ export const ImgTitleWrapper = styled.div`
     flex-direction: column;
     align-items: baseline;
     gap: 10px;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         gap: 3px;
     }
 `;
 export const ImgTitle = styled.span`
     font-size: 36px;
     font-weight: 800;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 20px;
     }
 `;
@@ -97,7 +97,7 @@ export const Hyperlink = styled.a`
     font-weight: 400;
     color: #f7f8f9;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 10px;
     }
 `;
@@ -105,7 +105,7 @@ export const Hyperlink = styled.a`
 export const ImgText = styled.span`
     font-size: 20px;
     font-weight: 400;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 14px;
     }
 `;
@@ -131,7 +131,7 @@ export const SummaryWrapper = styled.div`
     box-sizing: border-box;
     padding: 0 40px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         padding: 30px;
         box-shadow: 0px 0px 10px 0px #00000040;
     }
@@ -172,7 +172,7 @@ export const ListWrapper = styled.div`
     box-sizing: border-box;
     padding: 40px 10px 60px 10px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 40px 20px;
@@ -190,7 +190,7 @@ export const ButtonWrapper = styled.div`
     margin-top: 107px;
     margin-bottom: 209px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         flex-direction: column;
         margin-top: 30px;
         margin-bottom: 70px;
@@ -216,7 +216,7 @@ export const AIChatBotWrapper = styled.div`
     z-index: 100;
     gap: 40px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         bottom: 10px;
         right: 10px;
         gap: 10px;
@@ -239,7 +239,7 @@ export const AIProfile = styled.div`
         transform: scale(0.95);
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 58px;
         height: 58px;
     }
@@ -270,7 +270,7 @@ export const AIChatBubbleWrapper = styled.div`
     font-size: 12px;
     color: #000000;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 235px;
         margin-bottom: 40px;
         border-radius: 30px;
@@ -292,7 +292,7 @@ export const AIChatBubbleWrapper = styled.div`
 
         font-size: 14px;
 
-        @media (max-width: 391px) {
+        @media (max-width: 431px) {
             width: 200px;
             font-size: 10px;
         }
@@ -310,7 +310,7 @@ export const AIChatBubbleTail = styled.div`
     border-color: transparent transparent #ffffff transparent;
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         bottom: 40px;
         right: 60px;
     }
@@ -328,7 +328,7 @@ export const AIChatBubbleTailInner = styled.div`
     border-color: transparent #ffffff transparent transparent;
     transform: rotate(-90deg) scaleX(-1);
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         bottom: 18px;
         right: 88px;
         border-width: 40px 17px 20px 0;

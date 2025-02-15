@@ -17,7 +17,7 @@ export const CardContainer = styled.div`
     font-weight: 600;
     font-size: 18px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 295px;
         height: 295px;
     }
@@ -35,7 +35,7 @@ export const CompanyName = styled.div`
     border-radius: 20px;
     background-color: gray;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 95px;
     }
 
@@ -59,7 +59,7 @@ export const Thumbnail = styled.div`
     border-radius: 20px;
     background-color: gray;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 250px;
         height: 120px;
     }
@@ -93,7 +93,7 @@ export const ContentWrapper = styled.div`
     gap: 25px;
     width: 100%;
     height: fit-content;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         gap: 20px;
     }
 `;
@@ -130,7 +130,7 @@ export const Deadline = styled.div`
     border-radius: 20px;
     background-color: gray;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         height: 15px;
     }
 
