@@ -12,7 +12,7 @@ export const mapRecommendJobData = (apiData) => {
             companyName: job.companyName || '정보 없음',
             contentName: job.title || '채용 정보 없음',
             deadline: job.deadLine || '마감일 미정',
-            isScraped: job.isScraped,
+            isScrapped: job.isScrapped,
         })),
     };
 };

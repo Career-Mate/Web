@@ -7,6 +7,11 @@ export const TemplateWrapper = styled.div`
     width: 800px;
     gap: 10px;
     padding-bottom: 65px;
+
+    @media (max-width: 1024px) {
+        width: 760px;
+        padding-bottom: 50px;
+    }
 `;
 
 export const TemplateTitle = styled.h2`
@@ -53,6 +58,10 @@ export const TableCellHeader = styled.div.withConfig({
     border-right: 2px solid rgba(0, 0, 0, 0.2);
     border-top-left-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
     border-bottom-left-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
+
+    @media (max-width: 1024px) {
+        width: 40%;
+    }
 `;
 
 export const TableCellData = styled.div.withConfig({

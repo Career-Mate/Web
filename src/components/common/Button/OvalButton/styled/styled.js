@@ -15,6 +15,7 @@ export const StyledButton = styled.button`
     background-color: ${(props) => props.$backgroundColor || 'white'};
 
     box-shadow: 0px 0px 10px 0px #00000040;
+    white-space: nowrap;
 
     &:active {
         transform: scale(0.99);
