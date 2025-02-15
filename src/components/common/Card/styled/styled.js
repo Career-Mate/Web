@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 309px;
-    height: 301px;
+    width: 310px;
+    height: 300px;
     background-color: white;
     border: 1px solid #c4c4c4;
     border-radius: 20px;
@@ -12,20 +12,15 @@ export const CardContainer = styled.div`
         2px 2px 5.6px 0px #00000040,
         inset 0px 0px 6.6px 0px #00000040;
     padding: ${({ $type }) => ($type ? '24px 26px' : '16px 26px')};
-    gap: ${({ $type }) => ($type ? '8px' : '9px')};
+    gap: ${({ $type }) => ($type ? '10px' : '9px')};
     box-sizing: border-box;
     font-weight: 600;
     font-size: 18px;
     cursor: pointer;
 
-    @media (max-width: 1024px) {
-        width: 306px;
-        height: 307px;
-    }
-
     @media (max-width: 431px) {
-        width: 294px;
-        height: 293px;
+        width: 295px;
+        height: 295px;
         font-size: 16px;
         padding: 19px;
     }
@@ -37,22 +32,12 @@ export const CompanyName = styled.div`
     color: #8f8f8f;
     overflow: hidden;
     line-height: 23.87px;
-    @media (max-width: 1024px) {
-        font-size: 18px;
-        line-height: 21.48px;
-    }
 `;
 
 export const Thumbnail = styled.img`
-    width: 257px;
-    height: ${({ $type }) => ($type ? '153px' : '130px')};
+    width: 260px;
+    height: ${({ $type }) => ($type ? '150px' : '130px')};
     border-radius: 20px;
-    object-fit: cover;
-
-    @media (max-width: 1024px) {
-        width: 254px;
-        height: ${({ $type }) => ($type ? '160px' : '125px')};
-    }
 
     @media (max-width: 431px) {
         width: 254px;
@@ -71,6 +56,7 @@ export const ContentWrapper = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     flex-grow: 1;
+    width: 100%;
 `;
 
 export const Title = styled.div`
