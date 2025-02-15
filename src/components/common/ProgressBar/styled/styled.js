@@ -14,7 +14,9 @@ export const BarContainer = styled.div`
 
     @media (max-width: 431px) {
         width: 120px;
-        margin-right: 40px;
+        margin-right: 30px;
+        padding-bottom: 0;
+        gap: 3px;
     }
 `;
 

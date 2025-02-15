@@ -14,10 +14,10 @@ export const TemplateWrapper = styled.div`
     }
 
     @media (max-width: 431px) {
-        width: 320px;
+        width: 350px;
         padding-bottom: 40px;
-        padding-right: 50px;
-        padding-left: 40px;
+        padding-right: 30px;
+        padding-left: 30px;
     }
 `;
 
