@@ -17,7 +17,7 @@ apiClient.interceptors.response.use(
     (response) => response,
     async (error) => {
         const originalRequest = error.config;
-        const statusCode = error.response?.status;
+        const statusCode = error.response?.data?.status;
         const errorCode = error.response?.data?.code;
         if (
             ((statusCode === 4001 && errorCode === 'ETK001') || (statusCode === 4003 && errorCode === 'ETK004')) &&
@@ -38,8 +38,19 @@ apiClient.interceptors.response.use(
                 }
                 window.location.replace('/login');
             }
+        } else if (statusCode === 'f') {
+            try {
+                const authState = useAuthStore.getState();
+                if (authState.isLogin) {
+                    authState.logout();
+                }
+            } catch (error) {
+                console.error('🔴 Zustand 로그아웃 오류:', error);
+            }
+            window.location.replace('/login');
+        } else {
+            return Promise.reject(error);
         }
-        return Promise.reject(error);
     },
 );
 
