@@ -52,6 +52,15 @@ export const TabButton = styled.div.withConfig({
         height: 10px;
         background-color: ${({ isActive }) => (isActive ? '#f7f8f9' : 'transparent')};
     }
+
+    @media (max-width: 391px) {
+        width: 160px;
+        padding: 12px 0;
+        gap: 0;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24px;
+    }
 `;
 
 export const ListContainer = styled.div`
@@ -81,6 +90,11 @@ export const TextWrapper = styled.div`
 export const Text = styled.span`
     font-size: 18px;
     font-weight: 400;
+
+    @media (max-width: 391px) {
+        font-size: 10px;
+        line-height: 11px;
+    }
 `;
 
 export const Highlight = styled.span`
@@ -127,9 +141,25 @@ export const ButtonContainer = styled.div`
         left: 50%;
         transform: translateX(-50%);
     }
-
     & > :nth-child(2):nth-last-child(1) {
         margin-left: auto;
+    }
+
+    @media (max-width: 391px) {
+        flex-direction: column;
+        position: static;
+
+        & > :nth-child(1):nth-last-child(2) {
+            position: static;
+            transform: none;
+            margin-bottom: 40px;
+        }
+
+        & > :nth-child(2):nth-last-child(1) {
+            margin-left: 0;
+        }
+
+        padding-top: 40px;
     }
 `;
 

@@ -1,20 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: calc(100% - 20px);
+    width: 100%;
     padding-bottom: 20px;
-    margin-left: -165px;
+    margin-left: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    @media (max-width: 1024px) {
-        width: calc(100% - 230px);
-    }
-
-    @media (max-width: 768px) {
-        width: 100%;
-    }
 `;
 
 export const TitleContainer = styled.div`
@@ -41,6 +33,8 @@ export const TitleWrapper = styled.div.withConfig({
     border-radius: 20px 20px 0 0;
     cursor: pointer;
     pointer-events: auto;
+    margin-top: 30px;
+
     background-color: ${({ isSelected }) => (isSelected ? 'white' : 'transparent')};
     color: ${({ isSelected }) => (isSelected ? '#000' : '#aaa')};
     border-top: ${({ isSelected }) => (isSelected ? '2px solid #ccc' : 'none')};
@@ -57,6 +51,12 @@ export const TitleWrapper = styled.div.withConfig({
         height: 10px;
         background-color: ${({ isSelected }) => (isSelected ? 'white' : 'transparent')};
     }
+
+    @media (max-width: 391px) {
+        width: 160px;
+        padding: 12px 0;
+        gap: 0;
+    }
 `;
 
 export const PinIcon = styled.img.withConfig({
@@ -65,6 +65,11 @@ export const PinIcon = styled.img.withConfig({
     width: 32px;
     height: 32px;
     visibility: ${({ isSelected }) => (isSelected ? 'visible' : 'hidden')};
+
+    @media (max-width: 391px) {
+        width: 16px;
+        height: 16px;
+    }
 `;
 
 export const Title = styled.span.withConfig({
@@ -76,30 +81,41 @@ export const Title = styled.span.withConfig({
     color: ${({ isSelected }) => (isSelected ? '#000000' : '#aaa')};
     text-align: center;
     display: inline-block;
+
+    @media (max-width: 391px) {
+        font-size: 16px;
+    }
 `;
 
 export const Highlight = styled.span`
     font-size: 24px;
     font-weight: 600;
     background-color: #aaffda;
+
+    @media (max-width: 391px) {
+        font-size: 16px;
+    }
 `;
 
 export const CardWrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 카드 크기에 따라 자동 조정 */
-    gap: 30px; /* 카드 간 간격 유지 */
-    width: calc(100% - 260px); /* 서브메뉴 공간 확보 */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    width: 100%;
     max-width: 1282px;
-    padding: 50px 0 30px;
-    justify-content: center; /* 중앙 정렬 */
+    margin: 0 auto;
+    padding-bottom: 30px;
+    justify-items: center;
+    justify-items: stretch;
+    padding: 50px 0;
 
     @media (max-width: 1024px) {
-        grid-template-columns: repeat(2, 1fr); /* 너비 1200px 이하 → 2개씩 배치 */
-        width: 100%; /* 서브메뉴 공간 줄이기 */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
     }
 
-    @media (max-width: 391px) {
-        grid-template-columns: repeat(1, 1fr); /* 너비 768px 이하 → 1개씩 배치 */
+    @media (max-width: 390px) {
+        grid-template-columns: repeat(1, 1fr);
     }
 `;
 
@@ -136,5 +152,18 @@ export const ButtonContainer = styled.div`
 
     & > :nth-child(2):nth-last-child(1) {
         margin-left: auto;
+    }
+
+    @media (max-width: 391px) {
+        flex-direction: column;
+        position: static;
+
+        & > :nth-child(1):nth-last-child(2) {
+            position: static;
+            transform: none;
+            margin-bottom: 40px;
+        }
+
+        padding-top: 40px;
     }
 `;
