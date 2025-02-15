@@ -35,7 +35,8 @@ const RecommendContentPage = ({ user }) => {
             </S.TextWrapper>
             <S.CardWrapper>
                 {isLoading
-                    ? contents.map((content) => (
+                    ? numbers.map((number) => <ContentCardSkeleton />)
+                    : contents.map((content) => (
                           <ContentCard
                               key={content.id}
                               id={content.id}
@@ -44,8 +45,7 @@ const RecommendContentPage = ({ user }) => {
                               url={content.url}
                               isScrapped={content.isScrapped}
                           />
-                      ))
-                    : numbers.map((number) => <ContentCardSkeleton />)}
+                      ))}
             </S.CardWrapper>
             <S.ButtonContainer>
                 <OvalButton
