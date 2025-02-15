@@ -6,10 +6,7 @@ export const TemplateWrapper = styled.div`
     align-items: flex-start;
     width: 340px;
     gap: 10px;
-    padding-bottom: 65px;
-    @media (max-width: 391px) {
-        padding-bottom: 0px;
-    }
+    padding-bottom: 0px;
 `;
 
 export const TemplateTitle = styled.h2`

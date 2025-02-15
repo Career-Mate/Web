@@ -1,7 +1,7 @@
 import * as S from './styled/styled';
 import { useLayoutEffect, useEffect, useRef, useState, useCallback } from 'react';
 
-const MAX_CHAR_COUNT = 1000;
+const MAX_CHAR_COUNT = 100;
 
 const MobileTextarea = ({ label, value, placeholder, onChange, onBlur, sectionIndex = null, itemIndex = null }) => {
     const textareaRef = useRef(null);
