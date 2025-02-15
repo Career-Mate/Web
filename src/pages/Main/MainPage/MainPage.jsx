@@ -47,7 +47,7 @@ const MainPage = () => {
     useEffect(() => {
         if (userName) {
             login({ name: userName });
-            if (data) {
+            if (isLogin && data) {
                 fetchUser(data);
             }
         }
