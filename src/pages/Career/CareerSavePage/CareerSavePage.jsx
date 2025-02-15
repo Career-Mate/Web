@@ -2,7 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import * as S from './styled/styled';
 import { useAuthStore } from '../../../store/authStore';
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const CareerSavePage = () => {
     const { user } = useAuthStore();
@@ -12,59 +13,42 @@ const CareerSavePage = () => {
         navigate(path);
     };
 
-    const [containerStyle, setContainerStyle] = useState({
-        width: '815px',
-        height: '373px',
-        mainFontSize: '30px',
-        detailFontSize: '20px',
-        buttonWidth: '330px',
-        buttonHeight: '57px',
-        buttonFontSize: '18px',
-    });
+    const isMobileScreen = useIsMobileScreen(430);
+    const isTabletScreen = useIsMobileScreen(1024);
 
-    useEffect(() => {
-        const handleResize = () => {
-            let newStyle;
-            if (window.innerWidth <= 430) {
-                newStyle = {
-                    width: '280px',
-                    height: '296px',
-                    mainFontSize: '16px',
-                    detailFontSize: '9px',
-                    buttonWidth: '232px',
-                    buttonHeight: '39px',
-                    buttonFontSize: '12px',
-                };
-            } else if (window.innerWidth <= 1024) {
-                newStyle = {
-                    width: '646px',
-                    height: '338px',
-                    mainFontSize: '26px',
-                    detailFontSize: '20px',
-                    buttonWidth: '260px',
-                    buttonHeight: '57px',
-                    buttonFontSize: '18px',
-                };
-            } else {
-                newStyle = {
-                    width: '815px',
-                    height: '373px',
-                    mainFontSize: '30px',
-                    detailFontSize: '20px',
-                    buttonWidth: '330px',
-                    buttonHeight: '57px',
-                    buttonFontSize: '18px',
-                };
-            }
-
-            setContainerStyle(newStyle);
-        };
-
-        window.addEventListener('resize', handleResize);
-        handleResize();
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    const containerStyle = useMemo(() => {
+        if (isMobileScreen) {
+            return {
+                width: '280px',
+                height: '296px',
+                mainFontSize: '16px',
+                detailFontSize: '9px',
+                buttonWidth: '232px',
+                buttonHeight: '39px',
+                buttonFontSize: '12px',
+            };
+        } else if (isTabletScreen) {
+            return {
+                width: '646px',
+                height: '338px',
+                mainFontSize: '26px',
+                detailFontSize: '20px',
+                buttonWidth: '260px',
+                buttonHeight: '57px',
+                buttonFontSize: '18px',
+            };
+        } else {
+            return {
+                width: '815px',
+                height: '373px',
+                mainFontSize: '30px',
+                detailFontSize: '20px',
+                buttonWidth: '330px',
+                buttonHeight: '57px',
+                buttonFontSize: '18px',
+            };
+        }
+    }, [isMobileScreen, isTabletScreen]);
 
     return (
         <S.CareerSavePageWrapper>
@@ -75,7 +59,12 @@ const CareerSavePage = () => {
                 top="327.73px"
                 showLogo={true}
                 showTitleText={false}
-                mainText={`${user.name} 메이트님의 커리어가 저장되었습니다.`}
+                mainText={
+                    isMobileScreen
+                        ? `${user.name} 메이트님의 커리어가 
+                저장되었습니다.`
+                        : `${user.name} 메이트님의 커리어가 저장되었습니다.`
+                }
                 detailText="정리한 커리어를 바탕으로 채용 공고 추천도 받을 수 있어요!"
                 mainFontSize={containerStyle.mainFontSize}
                 detailFontSize={containerStyle.detailFontSize}

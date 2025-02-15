@@ -66,10 +66,6 @@ const RecommendMainPage = () => {
         }
     }, [isMobileScreen, isTabletScreen]);
 
-    console.log('Button Width:', containerStyle.buttonWidth);
-    console.log('Button Height:', containerStyle.buttonHeight);
-    console.log('Button Font Size:', containerStyle.buttonFontSize);
-
     return (
         <>
             <InfoContainer
