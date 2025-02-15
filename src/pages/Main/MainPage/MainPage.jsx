@@ -42,14 +42,10 @@ const MainPage = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const userName = queryParams.get('name');
-    const { data, error } = useFetchProfile();
 
     useEffect(() => {
         if (userName) {
             login({ name: userName });
-            if (isLogin && data) {
-                fetchUser(data);
-            }
         }
     }, [userName, login]);
 
