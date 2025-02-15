@@ -13,8 +13,6 @@ const ScrapPage = () => {
 
     return (
         <S.Container>
-            {' '}
-            {/* SideContainer를 제외한 공간을 자동으로 차지하도록 수정 */}
             <S.TitleContainer>
                 <S.TitleWrapper isSelected={selectedTab === 'job'} onClick={() => setSelectedTab('job')}>
                     <S.PinIcon isSelected={selectedTab === 'job'} src={pin} alt="pin icon" />

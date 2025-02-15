@@ -24,7 +24,7 @@ export const BoxContainer = styled.div`
         height: 72px;
     }
 
-    @media (max-width: 390px) {
+    @media (max-width: 431px) {
         height: 40px;
         font-size: 16px;
         border-radius: 10px;

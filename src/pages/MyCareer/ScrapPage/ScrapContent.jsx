@@ -1,17 +1,25 @@
 import ContentCard from '../../../components/common/Card/ContentCard/ContentCard';
 import UnderlineButton from '../../../components/common/Button/UnderlineButton/UnderlineButton';
+import ContentCardSkeleton from '../../../components/SkeletonUi/ContentCardSkeleton/ContentCardSkeleton';
 import { useGetScrapContents } from '../../../apis/Scrap/Content/ContentScrapApi';
 import * as S from './styled/styled';
 
 const ScrapContent = ({ onNavigate }) => {
     const { data: scrapContents, isLoading, error } = useGetScrapContents();
-
-    if (isLoading) return <div>Loading...</div>;
+    const numbers = Array.from({ length: 3 }, (_, i) => i + 1);
+    if (isLoading) {
+        return (
+            <S.CardWrapper>
+                {numbers.map((number) => (
+                    <ContentCardSkeleton key={number} />
+                ))}
+            </S.CardWrapper>
+        );
+    }
     if (error) return <div>error</div>;
-
     return (
-        <>
-            {scrapContents.length > 0 ? (
+        <S.ScarpContainer>
+            {scrapContents && scrapContents.length > 0 ? (
                 <S.CardWrapper>
                     {scrapContents.map((content) => (
                         <ContentCard
@@ -25,14 +33,16 @@ const ScrapContent = ({ onNavigate }) => {
                     ))}
                 </S.CardWrapper>
             ) : (
-                <S.EmptyMessage>스크랩한 콘텐츠가 없어요!</S.EmptyMessage>
+                <S.MessageWrapper>
+                    <S.EmptyMessage>스크랩한 채용 공고가 없어요!</S.EmptyMessage>
+                </S.MessageWrapper>
             )}
             <S.ButtonContainer>
                 <UnderlineButton fontSize={'14px'} onClick={onNavigate}>
                     더 많은 콘텐츠 보러 가기&gt;
                 </UnderlineButton>
             </S.ButtonContainer>
-        </>
+        </S.ScarpContainer>
     );
 };
 
