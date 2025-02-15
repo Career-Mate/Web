@@ -10,7 +10,7 @@ import MobileTextarea from '../common/MobileTextarea/MobileTextarea';
 import useIsMobileScreen from '../../hooks/useIsMobileScreen';
 
 const SmartPlanner = ({ data, onDataChange, page }) => {
-    const isMobileScreen = useIsMobileScreen(390);
+    const isMobileScreen = useIsMobileScreen(430);
     return (
         <S.Container>
             <S.InputContainer>

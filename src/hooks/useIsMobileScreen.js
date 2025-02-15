@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
-const useIsMobileScreen = (breakpoint = 390) => {
-    const [isMobileScreen, setIsMobileScreen] = useState(() => window.innerWidth <= breakpoint);
+const useIsMobileScreen = (breakpoint = 430) => {
+    const [isMobileScreen, setIsMobileScreen] = useState(() => window.outerWidth <= breakpoint);
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobileScreen(window.innerWidth <= breakpoint);
+            setIsMobileScreen(window.outerWidth <= breakpoint);
         };
 
         handleResize();
