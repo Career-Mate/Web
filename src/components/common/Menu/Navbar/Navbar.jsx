@@ -9,6 +9,7 @@ import MobileAccountPopup from '../../Popups/MobileAccountPopup/MobileAccountPop
 import { useAuthStore } from '../../../../store/authStore.js';
 import { useLogout } from '../../../../apis/Auth/useAuthApi.js';
 import useIsMobileScreen from '../../../../hooks/useIsMobileScreen.js';
+import MobileNavbar from '../MobileNavbar/MobileNavbar.jsx';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Navbar = () => {
     const [isPopUp, setIsPopUp] = useState(false);
     const { isLogin, user } = useAuthStore();
     const mutation = useLogout();
-    const isMobileScreen = useIsMobileScreen();
+    const isMobileScreen = useIsMobileScreen(430);
 
     const isActive = (path) => location.pathname.startsWith(`/${path}`);
 
@@ -33,7 +34,19 @@ const Navbar = () => {
         mutation.mutate();
     };
 
-    return (
+    return isMobileScreen ? (
+        <>
+            <MobileNavbar
+                logoSrc={logo}
+                isLogin={isLogin}
+                user={user}
+                onLogout={handleLogout}
+                navigate={navigate}
+                isActive={isActive}
+            />
+            {isPopUp && <MobileAccountPopup type="로그아웃" onCancel={handlePopUpClose} onConfirm={handleLogout} />}
+        </>
+    ) : (
         <S.NavbarContainer>
             <S.Container>
                 <S.LogoWrapper>
@@ -72,12 +85,7 @@ const Navbar = () => {
                 </S.Bar>
             </S.Container>
             <S.GradientBorder />
-            {isPopUp &&
-                (isMobileScreen ? (
-                    <MobileAccountPopup type="로그아웃" onCancel={handlePopUpClose} onConfirm={handleLogout} />
-                ) : (
-                    <AccountPopup type="로그아웃" onCancel={handlePopUpClose} onConfirm={handleLogout} />
-                ))}
+            {isPopUp && <AccountPopup type="로그아웃" onCancel={handlePopUpClose} onConfirm={handleLogout} />}
         </S.NavbarContainer>
     );
 };

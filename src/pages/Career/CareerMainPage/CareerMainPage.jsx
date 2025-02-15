@@ -46,7 +46,7 @@ const CareerMainPage = () => {
     useEffect(() => {
         const handleResize = () => {
             let newStyle;
-            if (window.innerWidth <= 390) {
+            if (window.innerWidth <= 430) {
                 newStyle = {
                     width: '260px',
                     height: '221px',
@@ -101,10 +101,16 @@ const CareerMainPage = () => {
                 showLogo={false}
                 showTitleText={false}
                 mainText={`${user.user.name} 메이트님에게`}
-                detailText={`관심 직무에 맞는 템플릿을 제공하기 위해 프로필 분석이 필요해요!
-                아래 '내 프로필 분석하기'를 클릭해주세요.`}
-                $mainFontSize={containerStyle.mainFontSize}
-                $detailFontSize={containerStyle.detailFontSize}
+                detailText={
+                    isMobileScreen
+                        ? `관심 직무에 맞는 템플릿을 제공하기 위해 프로필 분석이 필요해요!
+                아래 '내 프로필 분석하기'를 클릭해주세요.`
+                        : `관심 직무에 맞는 템플릿을 제공하기 위해 
+                프로필 분석이 필요해요!
+                아래 '내 프로필 분석하기'를 클릭해주세요.`
+                }
+                mainFontSize={containerStyle.mainFontSize}
+                detailFontSize={containerStyle.detailFontSize}
                 buttons={[
                     {
                         text: '내 프로필 분석하기',

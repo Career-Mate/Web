@@ -1,7 +1,7 @@
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import LoadingPopup from '../../../components/common/Popups/LoadingPopup/LoadingPopup';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState, useRef } from 'react';
+import { useMemo, useState, useRef } from 'react';
 import { useProfilePopup } from '../../../hooks/useProfile';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useAuthStore } from '../../../store/authStore';
@@ -29,63 +29,51 @@ const RecommendMainPage = () => {
         setIsPopupOpen(false);
     };
 
-    const isMobileScreen = useIsMobileScreen();
-    console.log(window.innerWidth);
-    console.log(isMobileScreen);
+    const isMobileScreen = useIsMobileScreen(430);
+    const isTabletScreen = useIsMobileScreen(1024);
 
-    const [containerStyle, setContainerStyle] = useState({
-        width: '768px',
-        height: '486px',
-        mainFontSize: '36px',
-        detailFontSize: '20px',
-        buttonWidth: '327px',
-        buttonHeight: '57px',
-        buttonFontSize: '18px',
-    });
+    const containerStyle = useMemo(() => {
+        if (isMobileScreen) {
+            console.log('모바일');
+            return {
+                width: '280px',
+                height: '300px',
+                mainFontSize: '18px',
+                detailFontSize: '10px',
+                buttonWidth: '213px',
+                buttonHeight: '39px',
+                buttonFontSize: '14px',
+            };
+        } else if (isTabletScreen) {
+            console.log('태블릿');
 
-    useEffect(() => {
-        const handleResize = () => {
-            let newStyle;
-            if (window.innerWidth <= 390) {
-                newStyle = {
-                    width: '280px',
-                    height: '300px',
-                    mainFontSize: '18px',
-                    detailFontSize: '10px',
-                    buttonWidth: '213px',
-                    buttonHeight: '39px',
-                    buttonFontSize: '14px',
-                };
-            } else if (window.innerWidth <= 1024) {
-                newStyle = {
-                    width: '574px',
-                    height: '411px',
-                    mainFontSize: '30px',
-                    detailFontSize: '18px',
-                    buttonWidth: '226px',
-                    buttonHeight: '46px',
-                    buttonFontSize: '18px',
-                };
-            } else {
-                newStyle = {
-                    width: '768px',
-                    height: '486px',
-                    mainFontSize: '36px',
-                    detailFontSize: '20px',
-                    buttonWidth: '327px',
-                    buttonHeight: '57px',
-                    buttonFontSize: '18px',
-                };
-            }
+            return {
+                width: '574px',
+                height: '411px',
+                mainFontSize: '30px',
+                detailFontSize: '18px',
+                buttonWidth: '226px',
+                buttonHeight: '46px',
+                buttonFontSize: '18px',
+            };
+        } else {
+            console.log('웹');
 
-            setContainerStyle(newStyle);
-        };
+            return {
+                width: '768px',
+                height: '486px',
+                mainFontSize: '36px',
+                detailFontSize: '20px',
+                buttonWidth: '327px',
+                buttonHeight: '57px',
+                buttonFontSize: '18px',
+            };
+        }
+    }, [isMobileScreen, isTabletScreen]);
 
-        window.addEventListener('resize', handleResize);
-        handleResize();
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    console.log('isMobileScreen:', isMobileScreen);
+    console.log('isTabletScreen:', isTabletScreen);
+    console.log('containerStyle:', containerStyle);
 
     return (
         <>
@@ -148,5 +136,4 @@ const RecommendMainPage = () => {
         </>
     );
 };
-
 export default RecommendMainPage;

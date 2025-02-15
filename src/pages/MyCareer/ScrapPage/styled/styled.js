@@ -114,7 +114,7 @@ export const CardWrapper = styled.div`
         gap: 40px;
     }
 
-    @media (max-width: 390px) {
+    @media (max-width: 431px) {
         grid-template-columns: repeat(1, 1fr);
     }
 `;
