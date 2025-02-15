@@ -6,11 +6,9 @@ import ContentCardSkeleton from '../../../components/SkeletonUi/ContentCardSkele
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGetRecommendContents } from '../../../apis/Content/ContentApi';
-import { useQueryClient } from '@tanstack/react-query';
 
 const RecommendContentPage = ({ user }) => {
     const navigate = useNavigate();
-    const queryClient = useQueryClient();
 
     const numbers = Array.from({ length: 3 }, (_, i) => i + 1);
 
