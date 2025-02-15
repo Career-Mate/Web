@@ -22,7 +22,7 @@ export const LogoWrapper = styled.div`
 
 export const Logo = styled.img`
     width: 100%;
-    max-height: 80px;
+    max-width: 200px;
     object-fit: cover;
     position: relative;
 `;
