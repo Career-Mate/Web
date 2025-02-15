@@ -25,7 +25,8 @@ export const Title = styled.h1`
     }
 
     @media (max-width: 431px) {
-        font-size: 20px;
+        font-size: 15px;
+        margin-left: 40px;
     }
 `;
 
@@ -41,6 +42,12 @@ export const Subtitle = styled.p`
         font-size: 10px;
         margin-left: 10px;
         line-height: 20px;
+    }
+
+    @media (max-width: 431px) {
+        font-size: 8px;
+        margin-left: 10px;
+        line-height: 8px;
     }
 `;
 
