@@ -25,4 +25,12 @@ export const StyledButton = styled.button`
     &:hover {
         cursor: pointer;
     }
+
+    @media (max-width: 1024px) {
+        font-size: 20px;
+    }
+
+    @media (max-width: 431px) {
+        font-size: 12px;
+    }
 `;
