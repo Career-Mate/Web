@@ -4,8 +4,6 @@ import UnderlineButton from '../../Button/UnderlineButton/UnderlineButton';
 import { handleTemplateChange } from '../../../../utils/SmartPlanner/plannerHandler';
 import MobileTextarea from '../../MobileTextarea/MobileTextarea';
 
-const MAX_CHAR_COUNT = 1000;
-
 const SmartMobileTemplate = ({ data, onDataChange, onClearAll, page }) => {
     const memoizedData = useMemo(() => data, [data]);
     const [localValues, setLocalValues] = useState({});
@@ -17,7 +15,6 @@ const SmartMobileTemplate = ({ data, onDataChange, onClearAll, page }) => {
     const getKey = (sectionIndex, itemIndex) => `${sectionIndex}-${itemIndex}`;
 
     const handleChange = (sectionIndex, itemIndex, value) => {
-        if (value.length > MAX_CHAR_COUNT) return;
         setLocalValues((prev) => ({
             ...prev,
             [getKey(sectionIndex, itemIndex)]: value,

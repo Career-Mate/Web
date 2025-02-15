@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const MyCareerPage = () => {
-    const isMobileScreen = useIsMobileScreen(390);
+    const isMobileScreen = useIsMobileScreen(430);
     return (
         <S.PageContainer>
             {isMobileScreen ? null : (

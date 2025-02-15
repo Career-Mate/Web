@@ -7,7 +7,7 @@ export const InputContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: fit-content;
         height: fit-content;
     }
@@ -18,7 +18,7 @@ export const Label = styled.label`
     font-size: 18px;
     line-height: 21px;
     color: #000000;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 14px;
     }
 `;
@@ -38,7 +38,7 @@ export const StyledInputWrapper = styled.div`
 
     justify-content: space-between;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 340px;
         padding: 10px 15px;
         height: 50px;
@@ -51,7 +51,7 @@ export const DateInput = styled.div.withConfig({
     display: flex;
     align-items: center;
     gap: 8px;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         .react-datepicker {
             font-size: 12px;
             width: 180px;
@@ -86,7 +86,7 @@ export const DateInput = styled.div.withConfig({
         background: ${(props) => (props.isInline ? 'none' : '#ffffff')};
         padding: ${(props) => (props.isInline ? '0' : '4px 8px')};
         outline: none;
-        @media (max-width: 391px) {
+        @media (max-width: 431px) {
             font-size: 10px;
             width: 100px;
             padding: 0px 0px 5px 0px;
@@ -99,7 +99,7 @@ export const Icon = styled.img`
     height: ${({ $size }) => $size || '32px'};
     cursor: pointer;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 24px;
         height: 24px;
     }
@@ -110,7 +110,7 @@ export const DateDivider = styled.span`
     font-weight: 500;
     color: #d9d9d9;
     padding-right: 20px;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         padding-right: 0px;
     }
 `;

@@ -8,7 +8,7 @@ export const PageContainer = styled.div`
     gap: 60px;
     width: 100%;
     height: fit-content;
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         margin-top: 0px;
         margin-bottom: 0px;
     }
@@ -29,4 +29,7 @@ export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 60px;
+    @media (max-width: 431px) {
+        width: 100%;
+    }
 `;

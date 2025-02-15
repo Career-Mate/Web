@@ -40,22 +40,21 @@ const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, isScr
     const thumbnail = getThumbnailByJob(jobType);
 
     return (
-        <S.CardContainer $width={'400px'} $type={false} onClick={goToDetail}>
-            <S.CompanyName $type={false}>{companyName}</S.CompanyName>
-            <S.Thumbnail src={thumbnail} alt={contentName} $width={'348px'} $height={'200px'} $type={false} />
-            <S.Line $type={false} />
-            <S.ContentWrapper $type={false}>
-                <S.Title $type={false}>{contentName}</S.Title>
-
-                <S.DeadlineWrapper $type={false}>
-                    <S.Deadline>{deadline}</S.Deadline>
-                    <S.ScrapIcon
-                        src={isScrapped ? scrapCheckedIcon : scrapUncheckedIcon}
-                        alt="스크랩 아이콘"
-                        onClick={handleScrap}
-                    />
-                </S.DeadlineWrapper>
+        <S.CardContainer $type={false} onClick={goToDetail}>
+            <S.CompanyName>{companyName}</S.CompanyName>
+            <S.Thumbnail src={thumbnail} alt={contentName} $type={false} />
+            <S.Line />
+            <S.ContentWrapper>
+                <S.Title $type={true}>{contentName}</S.Title>
             </S.ContentWrapper>
+            <S.DeadlineWrapper>
+                <S.Deadline>{deadline}</S.Deadline>
+                <S.ScrapIcon
+                    src={isScrapped ? scrapCheckedIcon : scrapUncheckedIcon}
+                    alt="스크랩 아이콘"
+                    onClick={handleScrap}
+                />
+            </S.DeadlineWrapper>
         </S.CardContainer>
     );
 };

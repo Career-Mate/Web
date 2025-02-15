@@ -44,7 +44,7 @@ const MobileNavbar = ({ isLogin, user, navigate, isActive, onLogout }) => {
     return (
         <S.NavbarContainer>
             <S.LogoWrapper>
-                <S.Logo src={LogoImg} />
+                <S.Logo src={LogoImg} onClick={() => navigate(``)} />
             </S.LogoWrapper>
             <S.MenuBtn onClick={handleOpenToggle}>
                 <img src={Hamburger} />
