@@ -79,7 +79,7 @@ export const TableCellHeader = styled.div.withConfig({
     @media (max-width: 431px) {
         width: 280px;
         font-size: 8px;
-        padding: 5px;
+        padding: 5px 10px;
         line-height: 15px;
     }
 `;
