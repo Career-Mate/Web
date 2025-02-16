@@ -90,5 +90,6 @@ export const ButtonWrapper = styled.div`
         align-items: center;
         max-width: 500px;
         width: 80%;
+        gap: 15px;
     }
 `;
