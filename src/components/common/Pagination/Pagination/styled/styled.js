@@ -10,6 +10,12 @@ export const PaginationContainer = styled.div`
     align-items: center;
     justify-content: center;
     position: absolute;
+
+    @media (max-width: 431px) {
+        width: 215px;
+        height: 20px;
+        gap: 15px;
+    }
 `;
 
 export const ArrowWrapper = styled.div`
@@ -21,6 +27,9 @@ export const ArrowWrapper = styled.div`
     align-items: center;
     padding: 0px;
     gap: 32px;
+    @media (max-width: 431px) {
+        gap: 15px;
+    }
 `;
 
 export const ArrowButton = styled.button`
@@ -36,6 +45,11 @@ export const ArrowButton = styled.button`
     cursor: pointer;
     opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
     pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
+
+    @media (max-width: 431px) {
+        width: 5px;
+        height: 8px;
+    }
 `;
 
 export const PageNumberWrapper = styled.div`
@@ -44,6 +58,9 @@ export const PageNumberWrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 32px;
+    @media (max-width: 431px) {
+        gap: 10px;
+    }
 `;
 
 export const PageNumber = styled.button`
@@ -56,4 +73,9 @@ export const PageNumber = styled.button`
     cursor: pointer;
     border: none;
     padding: 2px 10px;
+
+    @media (max-width: 431px) {
+        font-size: 14px;
+        padding: 2px 5px;
+    }
 `;
