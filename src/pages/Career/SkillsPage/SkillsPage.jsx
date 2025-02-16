@@ -37,7 +37,9 @@ const SkillsPage = ({ setActiveScreen }) => {
 
             <S.ButtonWrapper>
                 <SquareButton
-                    width="131px"
+                    width="120px"
+                    height="50px"
+                    fontSize="14px"
                     backgroundColor={'deepgreen'}
                     mobileWidth="340px"
                     mobileHeight="40px"
@@ -49,7 +51,9 @@ const SkillsPage = ({ setActiveScreen }) => {
                 </SquareButton>
                 <div>
                     <SquareButton
-                        width="131px"
+                        width="120px"
+                        height="50px"
+                        fontSize="14px"
                         backgroundColor={'grey'}
                         mobileWidth="180px"
                         mobileHeight="40px"
@@ -59,7 +63,9 @@ const SkillsPage = ({ setActiveScreen }) => {
                         이전
                     </SquareButton>
                     <SquareButton
-                        width="131px"
+                        width="120px"
+                        height="50px"
+                        fontSize="14px"
                         mobileWidth="180px"
                         mobileHeight="40px"
                         mobileFontSize="14px"

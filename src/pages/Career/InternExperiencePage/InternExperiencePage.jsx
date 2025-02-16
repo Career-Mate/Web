@@ -30,7 +30,9 @@ const InternExperiencePage = ({ setActiveScreen }) => {
 
             <S.ButtonWrapper>
                 <SquareButton
-                    width="131px"
+                    width="120px"
+                    height="50px"
+                    fontSize="14px"
                     backgroundColor={'deepgreen'}
                     mobileWidth="340px"
                     mobileHeight="40px"
@@ -41,7 +43,9 @@ const InternExperiencePage = ({ setActiveScreen }) => {
                     저장
                 </SquareButton>
                 <SquareButton
-                    width="131px"
+                    width="120px"
+                    height="50px"
+                    fontSize="14px"
                     backgroundColor={'lightgreen'}
                     mobileWidth="340px"
                     mobileHeight="40px"

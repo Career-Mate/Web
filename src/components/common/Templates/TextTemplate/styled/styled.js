@@ -43,8 +43,9 @@ export const TemplateTable = styled.div`
 export const TableRow = styled.div`
     display: flex;
     width: 100%;
-    height: auto;
+    height: 60px;
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+
     &:last-child {
         border-bottom: none;
     }
@@ -64,7 +65,7 @@ export const TableCellHeader = styled.div.withConfig({
     align-items: center;
     padding: 20px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     color: rgba(0, 0, 0, 0.8);
     border-right: 2px solid rgba(0, 0, 0, 0.2);
     border-top-left-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
@@ -88,7 +89,7 @@ export const TableCellData = styled.div.withConfig({
 })`
     flex-grow: 1;
     background: #ffffff;
-    width: 55%;
+    width: 80%;
     display: flex;
     align-items: flex-start;
     padding: 20px;
@@ -103,7 +104,7 @@ export const TableCellData = styled.div.withConfig({
         display: flex;
         border: none;
         font-weight: 500;
-        font-size: 16px;
+        font-size: 12px;
         color: rgba(0, 0, 0, 0.8);
         background: none;
         outline: none;

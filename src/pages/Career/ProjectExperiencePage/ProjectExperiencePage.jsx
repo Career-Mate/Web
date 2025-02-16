@@ -35,7 +35,9 @@ const ProjectExperiencePage = ({ setActiveScreen }) => {
 
             <S.ButtonWrapper>
                 <SquareButton
-                    width="131px"
+                    width="120px"
+                    height="50px"
+                    fontSize="14px"
                     backgroundColor={'deepgreen'}
                     mobileWidth="340px"
                     mobileHeight="40px"
@@ -47,7 +49,9 @@ const ProjectExperiencePage = ({ setActiveScreen }) => {
                 </SquareButton>
                 <div>
                     <SquareButton
-                        width="131px"
+                        width="120px"
+                        height="50px"
+                        fontSize="14px"
                         backgroundColor={'grey'}
                         mobileWidth="180px"
                         mobileHeight="40px"
@@ -57,7 +61,9 @@ const ProjectExperiencePage = ({ setActiveScreen }) => {
                         이전
                     </SquareButton>
                     <SquareButton
-                        width="131px"
+                        width="120px"
+                        height="50px"
+                        fontSize="14px"
                         backgroundColor={'lightgreen'}
                         mobileWidth="180px"
                         mobileHeight="40px"

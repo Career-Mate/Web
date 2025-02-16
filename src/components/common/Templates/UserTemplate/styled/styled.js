@@ -42,7 +42,7 @@ export const TemplateTable = styled.div`
 export const TableRow = styled.div`
     display: flex;
     width: 100%;
-    height: auto;
+    height: 60px;
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
     &:last-child {
@@ -58,14 +58,14 @@ export const TableCellHeader = styled.div.withConfig({
     shouldForwardProp: (prop) => !['isFirstRow', 'isLastRow'].includes(prop),
 })`
     position: relative;
-    width: 280px;
+    width: 220px;
     background: #b6e3cf;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
     color: rgba(0, 0, 0, 0.8);
     border-right: 2px solid rgba(0, 0, 0, 0.2);
@@ -106,7 +106,7 @@ export const TableCellData = styled.div.withConfig({
         display: flex;
         border: none;
         font-weight: 500;
-        font-size: 16px;
+        font-size: 12px;
         line-height: 24px;
         color: rgba(0, 0, 0, 0.8);
         background: none;
@@ -217,12 +217,13 @@ export const DateInput = styled.div.withConfig({
     gap: 5px;
 
     .calendar-icon {
-        font-size: 16px;
+        font-size: 12px;
         color: #c4c4c4;
     }
 
     input {
-        font-size: 16px;
+        font-size: 12px;
+        font-weight: 500;
         width: ${(props) => (props.isInline ? 'auto' : '200px')};
         border: none;
         background: ${(props) => (props.isInline ? 'none' : '#ffffff')};

@@ -190,7 +190,7 @@ const Template = ({ pageType, onDataChange }) => {
                                                         selectsStart
                                                         startDate={item.startDate ?? null}
                                                         endDate={item.endDate ?? null}
-                                                        placeholderText="시작 날짜를 선택해주세요"
+                                                        placeholderText="시작 날짜를 선택해주세요."
                                                         dateFormat="yyyy년 MM월 dd일"
                                                     />
                                                 </S.DateInput>
@@ -208,7 +208,7 @@ const Template = ({ pageType, onDataChange }) => {
                                                         startDate={item.startDate ?? null}
                                                         endDate={item.endDate ?? null}
                                                         minDate={item.startDate ?? null}
-                                                        placeholderText="종료 날짜를 선택해주세요"
+                                                        placeholderText="종료 날짜를 선택해주세요."
                                                         dateFormat="yyyy년 MM월 dd일"
                                                     />
                                                 </S.DateInput>
