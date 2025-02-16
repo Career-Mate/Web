@@ -115,6 +115,7 @@ export const CardWrapper = styled.div`
     justify-items: center;
 
     @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
         gap: 25px;
     }
 
