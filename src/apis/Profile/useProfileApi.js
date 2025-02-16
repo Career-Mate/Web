@@ -27,6 +27,7 @@ export const useEditProfile = (profile) => {
         onSuccess: () => {
             fetchUser(profile);
             alert('프로필이 수정되었습니다.');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         },
         onError: (error) => {
             alert('프로필 수정에 실패했습니다. 다시 시도해주세요.');
