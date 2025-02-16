@@ -3,11 +3,12 @@ import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSet
 import * as S from './styled/styled';
 import { useProfile } from '../../../hooks/useProfile';
 import { useSaveProfile } from '../../../apis/Profile/useProfileApi';
-import { useAuthStore } from '../../../store/authStore';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const ProfileSettingPage = () => {
     const { canSave, emailError, profile, handleProfileFieldChange } = useProfile();
     const mutation = useSaveProfile(profile);
+    const isMobileScreen = useIsMobileScreen(430);
 
     const handleSave = async () => {
         if (!canSave) {
@@ -21,12 +22,12 @@ const ProfileSettingPage = () => {
         mutation.mutate(profile);
     };
 
-    return (
+    return !isMobileScreen ? (
         <S.ProfileContainer>
             <InfoContainer
                 type={'titleTextOnly'}
-                width={'756px'}
-                height={'1119px'}
+                width={'619px'}
+                height={'970px'}
                 showTitleText={true}
                 mainText={
                     <S.SettingsWrapper>
@@ -41,6 +42,19 @@ const ProfileSettingPage = () => {
                 }
             />
         </S.ProfileContainer>
+    ) : (
+        <S.MobileContainer>
+            <h3>프로필 설정하기</h3>
+            <S.SettingsWrapper>
+                <S.SettingText>기본 정보를 입력해주세요!</S.SettingText>
+                <ProfileSetting
+                    profile={profile}
+                    buttonText={'프로필 설정하기'}
+                    onSave={handleSave}
+                    onChange={handleProfileFieldChange}
+                />
+            </S.SettingsWrapper>
+        </S.MobileContainer>
     );
 };
 export default ProfileSettingPage;
