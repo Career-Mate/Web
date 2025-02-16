@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import UnderlineButton from '../../../components/common/Button/UnderlineButton/UnderlineButton';
 import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSetting';
 import * as S from './styled/styled';
@@ -7,14 +7,22 @@ import MobileAccountPopup from '../../../components/common/Popups/MobileAccountP
 import { useProfileEdit, useDeleteAccount } from './useProfileEdit';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useProfilePopup } from '../../../hooks/useProfile';
-import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import { useAuthStore } from '../../../store/authStore';
+import { useFetchProfile } from '../../../apis/Profile/useProfileApi';
 
 const ProfileEditPage = () => {
     const [isPopUp, setIsPopUp] = useState(false);
     const { profile, handleProfileFieldChange, handleSave } = useProfileEdit();
     const { isDeleting, handleDeleteUser } = useDeleteAccount();
     const { showProfilePopup } = useProfilePopup();
-    const isMobileScreen = useIsMobileScreen();
+    const { data, error } = useFetchProfile();
+    const { fetchUser } = useAuthStore();
+
+    useEffect(() => {
+        if (data) {
+            fetchUser(data);
+        }
+    }, [data]);
 
     const handlePopUpOpen = () => {
         setIsPopUp(true);

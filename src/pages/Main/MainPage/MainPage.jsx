@@ -9,11 +9,11 @@ import CheckTextBox from '../../../components/MainPage/CheckTextBox/CheckTextBox
 import InterviewBox from '../../../components/MainPage/InterviewBox/InterviewBox';
 import Card from '../../../components/MainPage/Card/Card';
 import OvalButton from '../../../components/common/Button/OvalButton/OvalButton';
-import { useNavigate } from 'react-router-dom';
-import { useFetchProfile } from '../../../apis/Profile/useProfileApi';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../../store/authStore';
 import { useEffect } from 'react';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import { useFetchProfile } from '../../../apis/Profile/useProfileApi';
 
 const cards = [
     {
@@ -38,14 +38,16 @@ const cards = [
 
 const MainPage = () => {
     const navigate = useNavigate();
-    const { data, error } = useFetchProfile();
-    const { isLogin, login } = useAuthStore();
+    const { isLogin, login, fetchUser } = useAuthStore();
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const userName = queryParams.get('name');
 
     useEffect(() => {
-        if (data) {
-            login(data);
+        if (userName) {
+            login({ name: userName });
         }
-    }, [data]);
+    }, [userName, login]);
 
     const isMobileScreen = useIsMobileScreen(430);
     const buttonWidth = isMobileScreen ? '240px' : '400px';
