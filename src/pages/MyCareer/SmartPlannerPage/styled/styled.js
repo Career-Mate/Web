@@ -6,13 +6,19 @@ export const MainContainer = styled.div`
     height: fit-content;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin-right: 60px;
-    gap: 60px;
+    margin-left: 70px;
     @media (max-width: 431px) {
         margin: 70px 0px 95px 0px;
-        gap: 10px;
         align-items: center;
+    }
+`;
+export const ComponentContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 60px;
+    @media (max-width: 431px) {
+        gap: 10px;
     }
 `;
 export const TextContainer = styled.div`
