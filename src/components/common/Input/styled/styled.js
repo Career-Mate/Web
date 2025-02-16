@@ -12,7 +12,7 @@ export const InputContainer = styled.div`
         width: 476px;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 431px) {
         width: 351px;
     }
 `;
@@ -50,7 +50,7 @@ export const StyledInputWrapper = styled.div`
         height: 60px;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 431px) {
         width: 351px;
         height: 45px;
     }
