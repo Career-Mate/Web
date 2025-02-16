@@ -4,6 +4,9 @@ import SquareButton from '../../../components/common/Button/SquareButton/SquareB
 import * as S from './styled/styled';
 import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
+import { useState } from 'react';
+import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const OtherExperiencePage = ({ setActiveScreen }) => {
     const { data, setData, canSave, handleSave } = useTemplateData('OTHER_ACTIVITIES');
@@ -18,6 +21,16 @@ const OtherExperiencePage = ({ setActiveScreen }) => {
         nextSummaryProgress();
         setActiveScreen(3);
     };
+
+    const [isPopup, setIsPopup] = useState(false);
+    const handlePopupOpen = () => {
+        setIsPopup(true);
+    };
+    const handlePopupClose = () => {
+        setIsPopup(false);
+    };
+
+    const isMobileScreen = useIsMobileScreen();
 
     return (
         <S.PageWrapper>
@@ -34,7 +47,15 @@ const OtherExperiencePage = ({ setActiveScreen }) => {
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
-                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
+                <SquareButton
+                    width="131px"
+                    backgroundColor={'deepgreen'}
+                    onClick={() => {
+                        handleSave;
+                        handlePopupOpen();
+                    }}
+                    disabled={!canSave}
+                >
                     저장
                 </SquareButton>
                 <div>
@@ -46,6 +67,9 @@ const OtherExperiencePage = ({ setActiveScreen }) => {
                     </SquareButton>
                 </div>
             </S.ButtonWrapper>
+            {isPopup && isMobileScreen && (
+                <MobileAccountPopup type={'저장 완료'} onCancel={handlePopupClose} onConfirm={handlePopupClose} />
+            )}
         </S.PageWrapper>
     );
 };

@@ -115,7 +115,7 @@ export const LoadingImg = styled.img`
     animation: ${rotate} 1s linear infinite;
 `;
 
-export const CancelButton = styled.div`
+export const CloseButton = styled.div`
     width: 15px;
     height: 15px;
     cursor: pointer;

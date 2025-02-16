@@ -9,14 +9,6 @@ export const CareerMainPageWrapper = styled.div`
     padding: 32px 16px;
     background-color: white;
     position: relative;
-
-    @media (max-width: 1024px) {
-        min-height: 100vh;
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-    }
 `;
 
 export const SearchIcon = styled.div`
