@@ -299,5 +299,11 @@ export const CharCount = styled.div`
 
 export const UploadedImg = styled.img`
     max-width: 50%;
-    margin-top: -50px;
+    height: auto;
+    object-fit: contain;
+
+    @media (max-width: 431px) {
+        max-width: 10%;
+        margin-top: -30px;
+    }
 `;
