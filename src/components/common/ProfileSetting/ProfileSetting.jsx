@@ -59,7 +59,15 @@ const ProfileSetting = ({ buttonText, onSave, profile, onChange }) => {
                     onBlur={(value) => onChange('email', value)}
                 />
             </S.InputWrapper>
-            <SquareButton width={'375px'} height={'60px'} onClick={() => onSave(profile)}>
+            <SquareButton
+                width={'375px'}
+                height={'57px'}
+                fontSize={'17px'}
+                mobileWidth={'351px'}
+                mobileHeight={'50px'}
+                mobileFontSize={'16px'}
+                onClick={() => onSave(profile)}
+            >
                 {buttonText}
             </SquareButton>
         </S.SettingContainer>
