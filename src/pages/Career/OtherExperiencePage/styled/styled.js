@@ -99,7 +99,7 @@ export const ButtonWrapper = styled.div`
         & > div {
             display: flex;
             gap: 15px;
-            width: 360px;
+            width: 340px;
             padding-top: 10px;
         }
     }

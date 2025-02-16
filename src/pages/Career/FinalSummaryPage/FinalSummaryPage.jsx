@@ -35,14 +35,36 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
-                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
+                <SquareButton
+                    width="131px"
+                    backgroundColor={'deepgreen'}
+                    mobileWidth="340px"
+                    mobileHeight="40px"
+                    mobileFontSize="14px"
+                    onClick={handleSave}
+                    disabled={!canSave}
+                >
                     저장
                 </SquareButton>
                 <div>
-                    <SquareButton width="131px" backgroundColor={'grey'} onClick={handlePrevClick}>
+                    <SquareButton
+                        width="131px"
+                        backgroundColor={'grey'}
+                        mobileWidth="180px"
+                        mobileHeight="40px"
+                        mobileFontSize="14px"
+                        onClick={handlePrevClick}
+                    >
                         이전
                     </SquareButton>
-                    <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
+                    <SquareButton
+                        width="131px"
+                        backgroundColor={'lightgreen'}
+                        mobileWidth="180px"
+                        mobileHeight="40px"
+                        mobileFontSize="14px"
+                        onClick={handleNextClick}
+                    >
                         완료
                     </SquareButton>
                 </div>
