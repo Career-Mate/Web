@@ -77,7 +77,7 @@ export const TableCellHeader = styled.div.withConfig({
     }
 
     @media (max-width: 431px) {
-        width: 200px;
+        width: 280px;
         font-size: 8px;
         padding: 5px;
         line-height: 15px;
@@ -155,6 +155,13 @@ export const Tooltip = styled.div`
         top: -80px;
         left: -15px;
     }
+
+    @media (max-width: 431px) {
+        width: 80px;
+        top: -50px;
+        left: -20px;
+        padding: 8px;
+    }
 `;
 
 export const TooltipText = styled.div`
@@ -166,6 +173,10 @@ export const TooltipText = styled.div`
 
     @media (max-width: 1024px) {
         font-size: 8px;
+    }
+
+    @media (max-width: 431px) {
+        font-size: 5px;
     }
 `;
 
