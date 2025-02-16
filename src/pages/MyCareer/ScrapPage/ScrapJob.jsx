@@ -52,10 +52,20 @@ const ScrapJob = ({ onNavigate, prevPage }) => {
         window.scrollTo(0, 0);
     }, [currentPage]);
 
+    const numbers = Array.from({ length: 6 }, (_, i) => i + 1);
+    const displayedJobs = filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+    if (isLoading) {
+        return (
+            <S.CardWrapper>
+                {numbers.map((number) => (
+                    <JobPostingCardSkeleton key={number} />
+                ))}
+            </S.CardWrapper>
+        );
+    }
     if (isError) return <div>error</div>;
 
-    const displayedJobs = filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-    const numbers = Array.from({ length: 6 }, (_, i) => i + 1);
     return (
         <S.ScarpContainer>
             {displayedJobs.length > 0 ? (
