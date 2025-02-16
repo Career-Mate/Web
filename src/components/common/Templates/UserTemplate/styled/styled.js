@@ -279,7 +279,10 @@ export const UploadButton = styled.button`
     }
 
     @media (max-width: 431px) {
-        font-size: 10px;
+        font-size: 6px;
+        height: 18px;
+        margin-bottom: 5px;
+        padding: 0 5px;
     }
 `;
 
