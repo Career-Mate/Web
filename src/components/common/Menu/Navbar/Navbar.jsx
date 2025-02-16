@@ -71,10 +71,10 @@ const Navbar = () => {
                             <SquareButton
                                 width={'124px'}
                                 height={'30px'}
-                                padding={'0'}
+                                fontSize={'16px'}
                                 onClick={() => navigate('/login')}
                             >
-                                <span style={{ fontSize: '16px' }}>로그인</span>
+                                로그인
                             </SquareButton>
                         )}
                     </S.ButtonWrapper>
