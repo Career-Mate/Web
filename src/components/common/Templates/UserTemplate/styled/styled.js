@@ -58,7 +58,7 @@ export const TableCellHeader = styled.div.withConfig({
     shouldForwardProp: (prop) => !['isFirstRow', 'isLastRow'].includes(prop),
 })`
     position: relative;
-    width: 200px;
+    width: 280px;
     background: #b6e3cf;
     display: flex;
     align-items: center;
@@ -71,6 +71,7 @@ export const TableCellHeader = styled.div.withConfig({
     border-right: 2px solid rgba(0, 0, 0, 0.2);
     border-top-left-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
     border-bottom-left-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
+    white-space: pre-wrap;
 
     @media (max-width: 1024px) {
         width: 226px;
@@ -195,7 +196,7 @@ export const DatePickerRow = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 100%;
+    width: 280px;
     gap: 20px;
 
     @media (max-width: 1024px) {
