@@ -5,14 +5,14 @@ import SquareButton from '../../../components/common/Button/SquareButton/SquareB
 import * as S from './styled/styled';
 import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
-import { useState } from 'react';
-import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
 
 const FinalSummaryPage = ({ setActiveScreen }) => {
     const navigate = useNavigate();
-    const { data, setData, handleSave, canSave } = useTemplateData('SUMMARY');
+    const { data, setData, handleSave, canSave, isPopup, handlePopupClose } = useTemplateData('SUMMARY');
     const { progression, prevSummaryProgress } = useProgressBar(5);
+    const isMobileScreen = useIsMobileScreen();
 
     const handlePrevClick = () => {
         prevSummaryProgress();
@@ -23,15 +23,9 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
         navigate('/career/success');
     };
 
-    const [isPopup, setIsPopup] = useState(false);
-    const handlePopupOpen = () => {
-        setIsPopup(true);
+    const handleSaveClick = () => {
+        handleSave(isMobileScreen);
     };
-    const handlePopupClose = () => {
-        setIsPopup(false);
-    };
-
-    const isMobileScreen = useIsMobileScreen();
 
     return (
         <S.PageWrapper>
@@ -48,15 +42,7 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
-                <SquareButton
-                    width="131px"
-                    backgroundColor={'deepgreen'}
-                    onClick={() => {
-                        handleSave;
-                        handlePopupOpen();
-                    }}
-                    disabled={!canSave}
-                >
+                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSaveClick} disabled={!canSave}>
                     저장
                 </SquareButton>
                 <div>

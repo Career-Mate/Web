@@ -4,28 +4,22 @@ import SquareButton from '../../../components/common/Button/SquareButton/SquareB
 import * as S from './styled/styled';
 import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
-import { useState } from 'react';
-import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
 
 const InternExperiencePage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave } = useTemplateData('INTERN_EXPERIENCE');
+    const { data, setData, canSave, handleSave, isPopup, handlePopupClose } = useTemplateData('INTERN_EXPERIENCE');
     const { progression, nextSummaryProgress } = useProgressBar(1);
+    const isMobileScreen = useIsMobileScreen();
 
     const handleNextClick = () => {
         nextSummaryProgress();
         setActiveScreen(1);
     };
 
-    const [isPopup, setIsPopup] = useState(false);
-    const handlePopupOpen = () => {
-        setIsPopup(true);
+    const handleSaveClick = () => {
+        handleSave(isMobileScreen);
     };
-    const handlePopupClose = () => {
-        setIsPopup(false);
-    };
-
-    const isMobileScreen = useIsMobileScreen();
 
     return (
         <S.PageWrapper>
@@ -42,21 +36,14 @@ const InternExperiencePage = ({ setActiveScreen }) => {
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
-                <SquareButton
-                    width="131px"
-                    backgroundColor={'deepgreen'}
-                    onClick={() => {
-                        handleSave;
-                        handlePopupOpen();
-                    }}
-                    disabled={!canSave}
-                >
+                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSaveClick} disabled={!canSave}>
                     저장
                 </SquareButton>
                 <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
                     다음
                 </SquareButton>
             </S.ButtonWrapper>
+
             {isPopup && isMobileScreen && (
                 <MobileAccountPopup type={'저장 완료'} onCancel={handlePopupClose} onConfirm={handlePopupClose} />
             )}

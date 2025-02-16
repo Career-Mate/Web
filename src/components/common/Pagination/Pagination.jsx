@@ -1,11 +1,11 @@
 import React from 'react';
 import * as S from './styled/styled';
-import usePagination from '../../../../hooks/usePagination';
+import usePagination from '../../../hooks/usePagination';
 
-import prevIcon from '../../../../assets/Pagination/arrow-prev.svg';
-import nextIcon from '../../../../assets/Pagination/arrow-next.svg';
-import firstIcon from '../../../../assets/Pagination/arrow-first.svg';
-import lastIcon from '../../../../assets/Pagination/arrow-last.svg';
+import prevIcon from '../../../assets/Pagination/arrow-prev.svg';
+import nextIcon from '../../../assets/Pagination/arrow-next.svg';
+import firstIcon from '../../../assets/Pagination/arrow-first.svg';
+import lastIcon from '../../../assets/Pagination/arrow-last.svg';
 
 const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
     const maxVisiblePages = 4;

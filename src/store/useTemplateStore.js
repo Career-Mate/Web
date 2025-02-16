@@ -36,6 +36,7 @@ export const useTemplateStore = create((set, get) => ({
     canSave: false,
     hasExistingData: false,
     uploadedImages: {},
+    isPopup: false,
 
     setUploadedImages: (newImages) => {
         set((state) => ({
@@ -44,6 +45,14 @@ export const useTemplateStore = create((set, get) => ({
                 ...newImages,
             },
         }));
+    },
+
+    handlePopupOpen: () => {
+        set({ isPopup: true });
+    },
+
+    handlePopupClose: () => {
+        set({ isPopup: false });
     },
 
     fetchTemplateData: async (templateType, jobType) => {
@@ -221,7 +230,7 @@ export const useTemplateStore = create((set, get) => ({
         set({ canSave: isValid });
     },
 
-    handleSave: async () => {
+    handleSave: async (isMobileScreen) => {
         const { templateType, canSave, uploadedImages } = get();
 
         if (!canSave) {
@@ -284,7 +293,11 @@ export const useTemplateStore = create((set, get) => ({
                 set({ hasExistingData: true });
             }
 
-            alert('저장되었습니다.');
+            if (isMobileScreen) {
+                set({ isPopup: true });
+            } else {
+                alert('저장되었습니다.');
+            }
         } catch (error) {
             console.error('데이터 저장 실패:', error);
 

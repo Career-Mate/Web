@@ -4,13 +4,13 @@ import SquareButton from '../../../components/common/Button/SquareButton/SquareB
 import * as S from './styled/styled';
 import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
-import { useState } from 'react';
-import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
 
 const SkillsPage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave } = useTemplateData('TECHNICAL_SKILLS');
+    const { data, setData, canSave, handleSave, isPopup, handlePopupClose } = useTemplateData('TECHNICAL_SKILLS');
     const { progression, prevSummaryProgress, nextSummaryProgress } = useProgressBar(4);
+    const isMobileScreen = useIsMobileScreen();
 
     const handlePrevClick = () => {
         prevSummaryProgress();
@@ -22,15 +22,9 @@ const SkillsPage = ({ setActiveScreen }) => {
         setActiveScreen(4);
     };
 
-    const [isPopup, setIsPopup] = useState(false);
-    const handlePopupOpen = () => {
-        setIsPopup(true);
+    const handleSaveClick = () => {
+        handleSave(isMobileScreen);
     };
-    const handlePopupClose = () => {
-        setIsPopup(false);
-    };
-
-    const isMobileScreen = useIsMobileScreen();
 
     return (
         <S.PageWrapper>
@@ -49,15 +43,7 @@ const SkillsPage = ({ setActiveScreen }) => {
             </S.SkillsPageTemplateWrapper>
 
             <S.ButtonWrapper>
-                <SquareButton
-                    width="131px"
-                    backgroundColor={'deepgreen'}
-                    onClick={() => {
-                        handleSave;
-                        handlePopupOpen();
-                    }}
-                    disabled={!canSave}
-                >
+                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSaveClick} disabled={!canSave}>
                     저장
                 </SquareButton>
                 <div>

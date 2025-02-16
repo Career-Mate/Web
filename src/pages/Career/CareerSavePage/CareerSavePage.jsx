@@ -21,8 +21,8 @@ const CareerSavePage = () => {
             return {
                 width: '280px',
                 height: '296px',
-                mainFontSize: '16px',
-                detailFontSize: '9px',
+                $mainFontSize: '16px',
+                $detailFontSize: '9px',
                 buttonWidth: '232px',
                 buttonHeight: '39px',
                 buttonFontSize: '12px',
@@ -31,8 +31,8 @@ const CareerSavePage = () => {
             return {
                 width: '646px',
                 height: '338px',
-                mainFontSize: '26px',
-                detailFontSize: '20px',
+                $mainFontSize: '26px',
+                $detailFontSize: '20px',
                 buttonWidth: '260px',
                 buttonHeight: '57px',
                 buttonFontSize: '18px',
@@ -41,8 +41,8 @@ const CareerSavePage = () => {
             return {
                 width: '748px',
                 height: '373px',
-                mainFontSize: '24px',
-                detailFontSize: '16px',
+                $mainFontSize: '24px',
+                $detailFontSize: '16px',
                 buttonWidth: '330px',
                 buttonHeight: '57px',
                 buttonFontSize: '18px',
@@ -66,8 +66,8 @@ const CareerSavePage = () => {
                         : `${user.name} 메이트님의 커리어가 저장되었습니다.`
                 }
                 detailText="정리한 커리어를 바탕으로 채용 공고 추천도 받을 수 있어요!"
-                mainFontSize={containerStyle.mainFontSize}
-                detailFontSize={containerStyle.detailFontSize}
+                mainFontSize={containerStyle.$mainFontSize}
+                detailFontSize={containerStyle.$detailFontSize}
                 buttons={[
                     {
                         text: '채용 공고 추천 받기',

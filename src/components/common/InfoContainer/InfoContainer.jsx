@@ -12,8 +12,8 @@ const InfoContainer = ({
     showTitleText = false,
     mainText,
     detailText,
-    mainFontSize,
-    detailFontSize,
+    $mainFontSize,
+    $detailFontSize,
     buttons = [],
 }) => {
     return (
@@ -26,13 +26,12 @@ const InfoContainer = ({
             {showTitleText && <S.TitleText $top={top}>프로필 설정하기</S.TitleText>}
 
             <S.ContentWrapper>
-                {mainText && <S.MainText mainFontSize={mainFontSize}>{mainText}</S.MainText>}
-                {detailText && <S.DetailText detailFontSize={detailFontSize}>{detailText}</S.DetailText>}
+                {mainText && <S.MainText mainFontSize={$mainFontSize}>{mainText}</S.MainText>}
+                {detailText && <S.DetailText detailFontSize={$detailFontSize}>{detailText}</S.DetailText>}
 
                 {buttons.length > 0 && (
                     <S.ButtonWrapper>
                         {buttons.map(({ text, backgroundColor, padding, width, height, fontSize, onClick }, index) => {
-                            console.log(`Button ${index} Props:`, { width, height, fontSize });
                             return (
                                 <SquareButton
                                     key={index}
