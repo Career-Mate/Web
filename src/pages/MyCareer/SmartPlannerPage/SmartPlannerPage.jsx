@@ -23,7 +23,7 @@ const SmartPlannerPage = () => {
         window.scrollTo(0, 0);
     }, [page]);
 
-    const isMobileScreen = useIsMobileScreen(390);
+    const isMobileScreen = useIsMobileScreen(430);
     const isTabletScreen = useIsMobileScreen(1024);
 
     const renderTooltip = () => (

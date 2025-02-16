@@ -18,6 +18,7 @@ export const Container = styled.div`
     justify-content: space-between;
     height: 100%;
     position: relative;
+    gap: 30px;
 `;
 
 export const Bar = styled.div`
@@ -61,6 +62,10 @@ export const Text = styled.div`
     font-weight: ${({ $active }) => ($active ? ' 700' : 'normal')};
     color: ${({ $active }) => ($active ? ' #66CCAA' : 'black')};
     border: ${({ $active }) => ($active ? '3px solid #80CFB0' : '3px solid transparent')};
+
+    @media (max-width: 1024px) {
+        font-size: 14px;
+    }
 `;
 
 export const ButtonWrapper = styled.div`
