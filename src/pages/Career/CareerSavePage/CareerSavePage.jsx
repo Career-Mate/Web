@@ -39,10 +39,10 @@ const CareerSavePage = () => {
             };
         } else {
             return {
-                width: '815px',
+                width: '748px',
                 height: '373px',
-                mainFontSize: '30px',
-                detailFontSize: '20px',
+                mainFontSize: '24px',
+                detailFontSize: '16px',
                 buttonWidth: '330px',
                 buttonHeight: '57px',
                 buttonFontSize: '18px',

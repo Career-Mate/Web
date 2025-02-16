@@ -30,7 +30,7 @@ const MobileAccountPopup = ({ type, onCancel, onConfirm }) => {
                             onClick={onConfirm}
                             mobileFontSize={'12px'}
                         >
-                            {type}
+                            {type === '저장 완료' ? '확인' : type}
                         </SquareButton>
                     </S.ButtonWrapper>
                 </S.PopupWrapper>

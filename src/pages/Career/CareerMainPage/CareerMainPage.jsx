@@ -57,7 +57,7 @@ const CareerMainPage = () => {
             };
         } else {
             return {
-                width: '590px',
+                width: '523px',
                 height: '313px',
                 mainFontSize: '24px',
                 detailFontSize: '16px',

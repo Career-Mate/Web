@@ -55,10 +55,10 @@ const RecommendMainPage = () => {
             };
         } else {
             return {
-                width: '768px',
-                height: '486px',
-                mainFontSize: '36px',
-                detailFontSize: '20px',
+                width: '739px',
+                height: '388px',
+                mainFontSize: '26px',
+                detailFontSize: '16px',
                 buttonWidth: '327px',
                 buttonHeight: '57px',
                 buttonFontSize: '18px',
