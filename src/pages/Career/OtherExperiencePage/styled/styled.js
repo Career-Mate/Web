@@ -100,8 +100,7 @@ export const ButtonWrapper = styled.div`
             display: flex;
             gap: 15px;
             width: 360px;
-            flex-direction: column;
-            // padding-top: 10px;
+            padding-top: 10px;
         }
     }
 `;
