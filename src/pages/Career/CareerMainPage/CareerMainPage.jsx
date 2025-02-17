@@ -95,8 +95,13 @@ const CareerMainPage = () => {
 
             <InfoContainer
                 type="contentOnly"
+<<<<<<< HEAD
                 width={containerStyle.width}
                 height={containerStyle.height}
+=======
+                width="520px"
+                height="315px"
+>>>>>>> bc72fa7e59dfc26c54d0571cea0b10e993335c27
                 top="0px"
                 showLogo={false}
                 showTitleText={false}
@@ -114,9 +119,14 @@ const CareerMainPage = () => {
                 buttons={[
                     {
                         text: '내 프로필 분석하기',
+<<<<<<< HEAD
                         width: containerStyle.buttonWidth,
                         height: containerStyle.buttonHeight,
                         fontSize: containerStyle.buttonFontSize,
+=======
+                        width: '370px',
+                        height: '60px',
+>>>>>>> bc72fa7e59dfc26c54d0571cea0b10e993335c27
                         backgroundColor: 'deepgreen',
                         onClick: handleButtonClick,
                     },
