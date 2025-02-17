@@ -58,7 +58,7 @@ export const TableCellHeader = styled.div.withConfig({
     shouldForwardProp: (prop) => !['isFirstRow', 'isLastRow'].includes(prop),
 })`
     position: relative;
-    width: 220px;
+    width: 240px;
     background: #b6e3cf;
     display: flex;
     align-items: center;
