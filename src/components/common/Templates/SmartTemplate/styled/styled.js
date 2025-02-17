@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-export const ComponentContainer = styled.div`
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-`;
-
 export const TemplateWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -97,7 +91,7 @@ export const SectionLabel = styled.h4`
     letter-spacing: 0%;
 `;
 export const TextareaWrapper = styled.div`
-    width: 320px;
+    width: 340px;
     border: 1px solid #d3d3d3;
     border-radius: 10px;
     padding: 15px 20px 5px 20px;

@@ -10,8 +10,6 @@ const SmartTemplate = ({ data, onDataChange, onClearAll }) => {
 
     const isMobileScreen = useIsMobileScreen(430);
 
-    const MAX_CHAR_COUNT = 300;
-
     const getKey = (sectionIndex, itemIndex) => `${sectionIndex}-${itemIndex}`;
 
     const handleBlur = (sectionIndex, itemIndex, value) => {
@@ -25,7 +23,7 @@ const SmartTemplate = ({ data, onDataChange, onClearAll }) => {
 
     const renderMobileTemplate = ({ section, sectionIndex }) =>
         section?.items.map((item, itemIndex) => (
-            <S.SectionWrapper>
+            <S.SectionWrapper key={itemIndex}>
                 {item.label && <S.SectionLabel>{item.label}</S.SectionLabel>}
                 <S.TextareaWrapper>
                     <TemplateTextarea
@@ -36,7 +34,7 @@ const SmartTemplate = ({ data, onDataChange, onClearAll }) => {
                         placeholder={item.placeholder}
                         onBlur={handleBlur}
                         resetTrigger={resetTrigger}
-                        maxCharCount={MAX_CHAR_COUNT}
+                        maxCharCount={100}
                     />
                 </S.TextareaWrapper>
             </S.SectionWrapper>
@@ -62,7 +60,7 @@ const SmartTemplate = ({ data, onDataChange, onClearAll }) => {
                             placeholder={item.placeholder}
                             onBlur={handleBlur}
                             resetTrigger={resetTrigger}
-                            maxCharCount={MAX_CHAR_COUNT}
+                            maxCharCount={300}
                         />
                     </S.TableCellData>
                 </S.TableRow>

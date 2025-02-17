@@ -38,7 +38,9 @@ const TemplateTextarea = ({ value, placeholder, onBlur, sectionIndex, itemIndex,
     };
 
     const handleBlur = () => {
-        onBlur(sectionIndex, itemIndex, text);
+        if (onBlur) {
+            onBlur(sectionIndex, itemIndex, text);
+        }
     };
 
     return (
