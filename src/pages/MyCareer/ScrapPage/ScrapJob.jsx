@@ -103,7 +103,7 @@ const ScrapJob = ({ onNavigate, prevPage }) => {
                             isHidden={displayedJobs.length === 0}
                         />
                     </S.PaginationWrapper>
-                    <UnderlineButton fontSize={'14px'} onClick={onNavigate}>
+                    <UnderlineButton fontSize={'14px'} onClick={onNavigate} color={'#646F7C'}>
                         더 많은 채용 공고 보러 가기&gt;
                     </UnderlineButton>
                 </S.ButtonWrapper>

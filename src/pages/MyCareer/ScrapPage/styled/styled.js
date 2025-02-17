@@ -143,6 +143,10 @@ export const EmptyMessage = styled.p`
     align-items: center;
     text-align: center;
     margin: 0px;
+
+    @media (max-width: 431px) {
+        font-size: 16px;
+    }
 `;
 
 export const ButtonContainer = styled.div`

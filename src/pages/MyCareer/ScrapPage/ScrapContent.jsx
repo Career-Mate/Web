@@ -34,11 +34,11 @@ const ScrapContent = ({ onNavigate }) => {
                 </S.CardWrapper>
             ) : (
                 <S.MessageWrapper>
-                    <S.EmptyMessage>스크랩한 채용 공고가 없어요!</S.EmptyMessage>
+                    <S.EmptyMessage>스크랩한 컨텐츠가 없어요!</S.EmptyMessage>
                 </S.MessageWrapper>
             )}
             <S.ButtonContainer>
-                <UnderlineButton fontSize={'14px'} onClick={onNavigate}>
+                <UnderlineButton fontSize={'14px'} onClick={onNavigate} color={'#646F7C'}>
                     더 많은 콘텐츠 보러 가기&gt;
                 </UnderlineButton>
             </S.ButtonContainer>
