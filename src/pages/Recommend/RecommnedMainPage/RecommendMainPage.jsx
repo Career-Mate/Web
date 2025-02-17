@@ -37,8 +37,8 @@ const RecommendMainPage = () => {
             return {
                 width: '280px',
                 height: '300px',
-                $mainFontSize: '18px',
-                $detailFontSize: '10px',
+                mainFontSize: '18px',
+                detailFontSize: '10px',
                 buttonWidth: '213px',
                 buttonHeight: '39px',
                 buttonFontSize: '14px',
@@ -47,8 +47,8 @@ const RecommendMainPage = () => {
             return {
                 width: '574px',
                 height: '411px',
-                $mainFontSize: '30px',
-                $detailFontSize: '18px',
+                mainFontSize: '30px',
+                detailFontSize: '18px',
                 buttonWidth: '226px',
                 buttonHeight: '46px',
                 buttonFontSize: '18px',
@@ -57,8 +57,8 @@ const RecommendMainPage = () => {
             return {
                 width: '739px',
                 height: '388px',
-                $mainFontSize: '26px',
-                $detailFontSize: '16px',
+                mainFontSize: '26px',
+                detailFontSize: '16px',
                 buttonWidth: '327px',
                 buttonHeight: '57px',
                 buttonFontSize: '18px',
@@ -81,8 +81,8 @@ const RecommendMainPage = () => {
                     
                     지원하기 전 직무 관련 콘텐츠를 보고 싶다면
                     아래 '콘텐츠 보러가기'를 클릭해주세요.`}
-                mainFontSize={containerStyle.$mainFontSize}
-                detailFontSize={containerStyle.$detailFontSize}
+                mainFontSize={containerStyle.mainFontSize}
+                detailFontSize={containerStyle.detailFontSize}
                 buttons={[
                     {
                         text: '추천 공고 불러오기',

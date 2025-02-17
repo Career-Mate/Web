@@ -95,9 +95,8 @@ export const LoadingText = styled.div`
     font-size: 12px;
     line-height: 14px;
     color: #000000;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    display: flex;
+    align-items: center;
 `;
 
 const rotate = keyframes`

@@ -7,7 +7,7 @@ import * as S from './styled/styled';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useProfilePopup } from '../../../hooks/useProfile';
 import { useAuthStore } from '../../../store/authStore';
-import MobileLoadingPopupt from '../../../components/common/Popups/MobileLoadingPopup/MobileLoadingPopup';
+import MobileLoadingPopup from '../../../components/common/Popups/MobileLoadingPopup/MobileLoadingPopup';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const CareerMainPage = () => {
@@ -39,8 +39,8 @@ const CareerMainPage = () => {
             return {
                 width: '260px',
                 height: '221px',
-                $mainFontSize: '18px',
-                $detailFontSize: '10px',
+                mainFontSize: '18px',
+                detailFontSize: '10px',
                 buttonWidth: '213px',
                 buttonHeight: '39px',
                 buttonFontSize: '14px',
@@ -49,8 +49,8 @@ const CareerMainPage = () => {
             return {
                 width: '556px',
                 height: '405px',
-                $mainFontSize: '30px',
-                $detailFontSize: '18px',
+                mainFontSize: '30px',
+                detailFontSize: '18px',
                 buttonWidth: '375px',
                 buttonHeight: '60px',
                 buttonFontSize: '20px',
@@ -59,8 +59,8 @@ const CareerMainPage = () => {
             return {
                 width: '523px',
                 height: '313px',
-                $mainFontSize: '24px',
-                $detailFontSize: '16px',
+                mainFontSize: '24px',
+                detailFontSize: '16px',
                 buttonWidth: '372px',
                 buttonHeight: '57px',
                 buttonFontSize: '18px',
@@ -90,8 +90,8 @@ const CareerMainPage = () => {
                         : `관심 직무에 맞는 템플릿을 제공하기 위해 프로필 분석이 필요해요!
                 아래 '내 프로필 분석하기'를 클릭해주세요.`
                 }
-                mainFontSize={containerStyle.$mainFontSize}
-                detailFontSize={containerStyle.$detailFontSize}
+                mainFontSize={containerStyle.mainFontSize}
+                detailFontSize={containerStyle.detailFontSize}
                 buttons={[
                     {
                         text: '내 프로필 분석하기',
@@ -106,7 +106,7 @@ const CareerMainPage = () => {
 
             {isPopUpVisible &&
                 (isMobileScreen ? (
-                    <MobileLoadingPopupt
+                    <MobileLoadingPopup
                         userName={user.user.name}
                         interestJob={user.user.job}
                         type="template"

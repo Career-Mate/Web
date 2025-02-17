@@ -38,6 +38,7 @@ export const Thumbnail = styled.img`
     width: 260px;
     height: ${({ $type }) => ($type ? '150px' : '130px')};
     border-radius: 20px;
+    object-fit: cover;
 
     @media (max-width: 431px) {
         width: 254px;

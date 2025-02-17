@@ -10,8 +10,9 @@ import Account from '../../../../assets/Navbar/account_circle.svg';
 import DropDown from '../../../../assets/Navbar/drop-down.svg';
 import DropUp from '../../../../assets/Navbar/drop-up.svg';
 import Detail from '../../../../assets/Navbar/detail.svg';
+import MobileAccountPopup from '../../Popups/MobileAccountPopup/MobileAccountPopup.jsx';
 
-const MobileNavbar = ({ isLogin, user, navigate, isActive, onLogout }) => {
+const MobileNavbar = ({ isLogin, user, navigate, isActive, onLogout, isPopUp, handlePopUpOpen, handlePopUpClose }) => {
     const [isToggleSide, setToggleSide] = useState(false);
     const [isAccountToggle, setAccountToggle] = useState(false);
     const toggleRef = useRef(null);
@@ -158,10 +159,11 @@ const MobileNavbar = ({ isLogin, user, navigate, isActive, onLogout }) => {
                         )}
                     </S.AccountOptionWrapper>
                 </S.MenuWrapper>
-                {isLogin && <S.Logout onClick={onLogout}>로그아웃</S.Logout>}
+                {isLogin && <S.Logout onClick={handlePopUpOpen}>로그아웃</S.Logout>}
             </S.ToggleContainer>
 
             <S.GradientBorder />
+            {isPopUp && <MobileAccountPopup type="로그아웃" onCancel={handlePopUpClose} onConfirm={onLogout} />}
         </S.NavbarContainer>
     );
 };

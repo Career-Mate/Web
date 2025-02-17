@@ -10,9 +10,11 @@ const LoadingPopup = ({ type, onCancel }) => {
     const text =
         type === 'template'
             ? `${user.name} 메이트님의
-            ${user.job} 직무에 맞는 템플릿을 제공해드릴게요!`
+            ${user.job} 직무에 맞는 
+            템플릿을 제공해드릴게요!`
             : `${user.name} 메이트님의
-            ${user.job} 직무에 맞는 채용 공고를 추천 중이에요!`;
+            ${user.job} 직무에 맞는 
+            채용 공고를 추천 중이에요!`;
 
     return (
         <S.PopupOverlay>

@@ -87,7 +87,7 @@ export const TextWrapper = styled.div`
 `;
 
 export const MainText = styled.h2`
-    font-size: ${(props) => props.$mainFontSize || '24px'};
+    font-size: ${({ $mainFontSize }) => $mainFontSize || '24px'};
     font-weight: 700;
     color: #000;
     text-align: center;
@@ -96,7 +96,7 @@ export const MainText = styled.h2`
 `;
 
 export const DetailText = styled.p`
-    font-size: ${(props) => props.$detailFontSize || '16px'};
+    font-size: ${({ $detailFontSize }) => $detailFontSize || '16px'};
     font-weight: 400;
     color: #000;
     text-align: center;

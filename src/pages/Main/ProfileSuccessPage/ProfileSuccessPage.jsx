@@ -14,8 +14,8 @@ const ProfileSuccessPage = () => {
             return {
                 width: '280px',
                 height: '296px',
-                $mainFontSize: '16px',
-                $detailFontSize: '10px',
+                mainFontSize: '16px',
+                detailFontSize: '10px',
                 buttonWidth: '213px',
                 buttonHeight: '39px',
                 buttonFontSize: '12px',
@@ -24,8 +24,8 @@ const ProfileSuccessPage = () => {
             return {
                 width: '600px',
                 height: '394px',
-                $mainFontSize: '30px',
-                $detailFontSize: '16px',
+                mainFontSize: '30px',
+                detailFontSize: '16px',
                 buttonWidth: '250px',
                 buttonHeight: '60px',
                 buttonFontSize: '20px',
@@ -34,8 +34,8 @@ const ProfileSuccessPage = () => {
             return {
                 width: '561px',
                 height: '317px',
-                $mainFontSize: '24px',
-                $detailFontSize: '16px',
+                mainFontSize: '24px',
+                detailFontSize: '16px',
                 buttonWidth: '230px',
                 buttonHeight: '57px',
                 buttonFontSize: '18px',
@@ -53,8 +53,8 @@ const ProfileSuccessPage = () => {
             showTitleText={false}
             mainText="프로필 설정 완료!"
             detailText="이제 커리어 정리와 채용 공고를 추천 받을 수 있어요!"
-            mainFontSize={containerStyle.$mainFontSize}
-            detailFontSize={containerStyle.$detailFontSize}
+            mainFontSize={containerStyle.mainFontSize}
+            detailFontSize={containerStyle.detailFontSize}
             buttons={[
                 {
                     text: '커리어 정리하기',

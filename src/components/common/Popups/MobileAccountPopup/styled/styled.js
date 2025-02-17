@@ -47,7 +47,7 @@ export const TextWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    gap: 18px;
+    gap: 10px;
     width: 216px;
     height: 45px;
 `;
@@ -83,7 +83,7 @@ export const ButtonWrapper = styled.div`
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-end;
-    padding-top: 30px;
+    padding-top: 22px;
 `;
 
 export const CloseButton = styled.div`
