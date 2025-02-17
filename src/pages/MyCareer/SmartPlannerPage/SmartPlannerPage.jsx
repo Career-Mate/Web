@@ -94,9 +94,11 @@ const SmartPlannerPage = () => {
 
     return (
         <S.MainContainer>
-            {renderTitleContent()}
-            <SmartPlanner data={data} onDataChange={setData} page={page} />
-            {renderButtons({ isTablet: isTabletScreen })}
+            <S.ComponentContainer>
+                {renderTitleContent()}
+                <SmartPlanner data={data} onDataChange={setData} page={page} />
+                {renderButtons({ isTablet: isTabletScreen })}
+            </S.ComponentContainer>
         </S.MainContainer>
     );
 };
