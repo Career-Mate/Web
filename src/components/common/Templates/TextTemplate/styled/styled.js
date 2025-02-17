@@ -100,7 +100,7 @@ export const TableCellData = styled.div.withConfig({
 
     textarea {
         width: 100%;
-        height: 30px;
+        height: auto;
         display: flex;
         border: none;
         font-weight: 500;

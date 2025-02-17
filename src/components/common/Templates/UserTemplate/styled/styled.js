@@ -102,7 +102,7 @@ export const TableCellData = styled.div.withConfig({
 
     textarea {
         width: 100%;
-        height: 30px;
+        height: auto;
         display: flex;
         border: none;
         font-weight: 500;
@@ -115,15 +115,17 @@ export const TableCellData = styled.div.withConfig({
         white-space: normal;
         word-wrap: break-word;
         box-sizing: border-box;
+        word-break: break-word;
     }
 
     @media (max-width: 431px) {
         textarea {
             font-size: 8px;
+            height: 40px;
         }
 
         padding: 10px;
-        padding-top: 20px;
+        padding-top: 30px;
     }
 `;
 
@@ -209,7 +211,7 @@ export const DatePickerRow = styled.div`
     @media (max-width: 431px) {
         width: 100px;
         font-size: 10px;
-        padding-bottom: 10px;
+        padding-bottom: 20px;
     }
 `;
 
@@ -242,7 +244,7 @@ export const DateInput = styled.div.withConfig({
         }
 
         .calendar-icon {
-            font-size: 8px;
+            font-size: 7px;
             color: #c4c4c4;
         }
     }
@@ -255,8 +257,8 @@ export const DateDivider = styled.span`
     padding-right: 20px;
 
     @media (max-width: 431px) {
-        font-size: 5px;
-        padding: 0px;
+        font-size: 4px;
+        padding-right: 0px;
     }
 `;
 
@@ -293,6 +295,7 @@ export const UploadButton = styled.button`
         width: 40px;
         height: 18px;
         padding: 0 5px;
+        margin-bottom: 20px;
     }
 `;
 
