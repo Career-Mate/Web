@@ -107,7 +107,6 @@ export const TableCellData = styled.div.withConfig({
         border: none;
         font-weight: 500;
         font-size: 12px;
-        line-height: 24px;
         color: rgba(0, 0, 0, 0.8);
         background: none;
         outline: none;

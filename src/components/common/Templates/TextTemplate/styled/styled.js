@@ -43,7 +43,7 @@ export const TemplateTable = styled.div`
 export const TableRow = styled.div`
     display: flex;
     width: 100%;
-    height: 60px;
+    height: auto;
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
     &:last-child {
