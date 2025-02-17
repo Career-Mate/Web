@@ -4,6 +4,7 @@ export const EditContainer = styled.div`
     height: fit-content;
     display: flex;
     flex-direction: column;
+    margin-left: 70px;
 
     @media (max-width: 431px) {
         margin-left: 0;
