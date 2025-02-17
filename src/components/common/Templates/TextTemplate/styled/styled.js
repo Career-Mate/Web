@@ -73,7 +73,7 @@ export const TableCellHeader = styled.div.withConfig({
     white-space: pre-wrap;
 
     @media (max-width: 1024px) {
-        width: 226px;
+        width: 400px;
     }
 
     @media (max-width: 431px) {
