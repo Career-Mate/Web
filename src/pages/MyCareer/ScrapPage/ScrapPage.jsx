@@ -5,7 +5,7 @@ import ScrapJob from './ScrapJob';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
-const ScrapContentPage = () => {
+const ScrapPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -28,7 +28,6 @@ const ScrapContentPage = () => {
                     </S.Title>
                 </S.TitleWrapper>
             </S.TitleContainer>
-
             {selectedTab === 'content' ? (
                 <ScrapContent onNavigate={() => navigate('/recommend/content')} />
             ) : (
@@ -38,4 +37,4 @@ const ScrapContentPage = () => {
     );
 };
 
-export default ScrapContentPage;
+export default ScrapPage;

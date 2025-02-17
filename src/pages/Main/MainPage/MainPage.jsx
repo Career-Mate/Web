@@ -42,12 +42,19 @@ const MainPage = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const userName = queryParams.get('name');
+    const { data, error } = useFetchProfile(isLogin);
 
     useEffect(() => {
         if (userName) {
             login({ name: userName });
         }
     }, [userName, login]);
+
+    useEffect(() => {
+        if (isLogin && data) {
+            fetchUser(data);
+        }
+    }, [isLogin, data]);
 
     const isMobileScreen = useIsMobileScreen(430);
     const buttonWidth = isMobileScreen ? '240px' : '400px';
