@@ -96,7 +96,7 @@ export const Highlight = styled.span`
     }
 `;
 
-export const ScarpContainer = styled.div`
+export const ScrapContainer = styled.div`
     width: fit-content;
     display: flex;
     flex-direction: column;

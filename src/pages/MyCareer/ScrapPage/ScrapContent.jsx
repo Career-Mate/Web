@@ -18,7 +18,7 @@ const ScrapContent = ({ onNavigate }) => {
     }
     if (error) return <div>error</div>;
     return (
-        <S.ScarpContainer>
+        <S.ScrapContainer>
             {scrapContents && scrapContents.length > 0 ? (
                 <S.CardWrapper>
                     {scrapContents.map((content) => (
@@ -42,7 +42,7 @@ const ScrapContent = ({ onNavigate }) => {
                     더 많은 콘텐츠 보러 가기&gt;
                 </UnderlineButton>
             </S.ButtonContainer>
-        </S.ScarpContainer>
+        </S.ScrapContainer>
     );
 };
 

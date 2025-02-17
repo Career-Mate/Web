@@ -28,12 +28,12 @@ const RecommendJobPage = ({ user }) => {
     const totalPages = data?.totalPages || 1;
     const jobName = data?.jobName || '직무 정보 없음';
 
-    const handleScrapUpdate = (jobId, isScarpped) => {
+    const handleScrapUpdate = (jobId, isScrapped) => {
         queryClient.setQueryData(['recommendJobs', currentPage, SORT_TYPES[sortType]], (oldData) => {
             if (!oldData) return oldData;
             return {
                 ...oldData,
-                jobs: oldData.jobs.map((job) => (job.id === jobId ? { ...job, isScarpped } : job)),
+                jobs: oldData.jobs.map((job) => (job.id === jobId ? { ...job, isScrapped } : job)),
             };
         });
     };

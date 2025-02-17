@@ -66,7 +66,7 @@ const ScrapJob = ({ onNavigate, prevPage }) => {
     if (isError) return <div>error</div>;
 
     return (
-        <S.ScarpContainer>
+        <S.ScrapContainer>
             {displayedJobs.length > 0 ? (
                 <S.CardWrapper>
                     {isLoading
@@ -108,7 +108,7 @@ const ScrapJob = ({ onNavigate, prevPage }) => {
                     </UnderlineButton>
                 </S.ButtonWrapper>
             </S.ButtonContainer>
-        </S.ScarpContainer>
+        </S.ScrapContainer>
     );
 };
 
