@@ -54,9 +54,9 @@ const CareerSavePage = () => {
         <S.CareerSavePageWrapper>
             <InfoContainer
                 type="logoWithContent"
-                width={containerStyle.width}
-                height={containerStyle.height}
-                top="327.73px"
+                width="750px"
+                height="420px"
+                top="230px"
                 showLogo={true}
                 showTitleText={false}
                 mainText={
@@ -66,23 +66,19 @@ const CareerSavePage = () => {
                         : `${user.name} 메이트님의 커리어가 저장되었습니다.`
                 }
                 detailText="정리한 커리어를 바탕으로 채용 공고 추천도 받을 수 있어요!"
-                mainFontSize={containerStyle.mainFontSize}
-                detailFontSize={containerStyle.detailFontSize}
                 buttons={[
                     {
                         text: '채용 공고 추천 받기',
-                        width: containerStyle.buttonWidth,
-                        height: containerStyle.buttonHeight,
-                        fontSize: containerStyle.buttonFontSize,
+                        width: '330px',
+                        height: '57px',
                         padding: '0px',
                         backgroundColor: 'deepgreen',
                         onClick: () => handleNavigation('/recommend'),
                     },
                     {
                         text: '메인화면으로 돌아가기',
-                        width: containerStyle.buttonWidth,
-                        height: containerStyle.buttonHeight,
-                        fontSize: containerStyle.buttonFontSize,
+                        width: '330px',
+                        height: '57px',
                         padding: '0px',
                         backgroundColor: 'grey',
                         onClick: () => handleNavigation('/'),

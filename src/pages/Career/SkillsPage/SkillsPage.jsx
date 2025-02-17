@@ -22,10 +22,6 @@ const SkillsPage = ({ setActiveScreen }) => {
         setActiveScreen(4);
     };
 
-    const handleSaveClick = () => {
-        handleSave(isMobileScreen);
-    };
-
     return (
         <S.PageWrapper>
             <S.HeaderWrapper>
@@ -43,14 +39,42 @@ const SkillsPage = ({ setActiveScreen }) => {
             </S.SkillsPageTemplateWrapper>
 
             <S.ButtonWrapper>
-                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSaveClick} disabled={!canSave}>
+                <SquareButton
+                    width="120px"
+                    height="50px"
+                    fontSize="14px"
+                    backgroundColor={'deepgreen'}
+                    mobileWidth="340px"
+                    mobileHeight="40px"
+                    mobileFontSize="14px"
+                    onClick={() => handleSave(isMobileScreen)}
+                    disabled={!canSave}
+                >
                     저장
                 </SquareButton>
                 <div>
-                    <SquareButton width="131px" backgroundColor={'grey'} onClick={handlePrevClick}>
+                    <SquareButton
+                        width="120px"
+                        height="50px"
+                        fontSize="14px"
+                        backgroundColor={'grey'}
+                        mobileWidth="180px"
+                        mobileHeight="40px"
+                        mobileFontSize="14px"
+                        onClick={handlePrevClick}
+                    >
                         이전
                     </SquareButton>
-                    <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
+                    <SquareButton
+                        width="120px"
+                        height="50px"
+                        fontSize="14px"
+                        mobileWidth="180px"
+                        mobileHeight="40px"
+                        mobileFontSize="14px"
+                        backgroundColor={'lightgreen'}
+                        onClick={handleNextClick}
+                    >
                         다음
                     </SquareButton>
                 </div>

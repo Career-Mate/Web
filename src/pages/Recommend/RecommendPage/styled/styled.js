@@ -53,7 +53,7 @@ export const TabButton = styled.div.withConfig({
         background-color: ${({ isActive }) => (isActive ? '#f7f8f9' : 'transparent')};
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 160px;
         padding: 12px 0;
         gap: 0;
@@ -73,6 +73,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
     padding-top: 80px;
 `;
@@ -91,7 +92,7 @@ export const Text = styled.span`
     font-size: 18px;
     font-weight: 400;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 10px;
         line-height: 11px;
     }
@@ -107,20 +108,21 @@ export const CardWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
-    width: 100%;
+    width: fit-content;
     max-width: 1282px;
     margin: 0 auto;
     padding-bottom: 30px;
     justify-items: center;
-    justify-items: stretch;
 
     @media (max-width: 1024px) {
         grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
+        gap: 25px;
     }
 
     @media (max-width: 431px) {
         grid-template-columns: repeat(1, 1fr);
+        padding-bottom: 0px;
+        gap: 25px;
     }
 `;
 
@@ -131,6 +133,7 @@ export const ButtonContainer = styled.div`
     width: 100%;
     max-width: 1280px;
     position: relative;
+    justify-content: center;
 
     & > *:only-child {
         margin: auto;
@@ -145,7 +148,7 @@ export const ButtonContainer = styled.div`
         margin-left: auto;
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         flex-direction: column;
         position: static;
 
@@ -159,7 +162,7 @@ export const ButtonContainer = styled.div`
             margin-left: 0;
         }
 
-        padding-top: 40px;
+        padding-top: 80px;
     }
 `;
 

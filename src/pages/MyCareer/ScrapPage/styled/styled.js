@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 100%;
     padding-bottom: 20px;
-    margin-left: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,7 +51,7 @@ export const TitleWrapper = styled.div.withConfig({
         background-color: ${({ isSelected }) => (isSelected ? 'white' : 'transparent')};
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 160px;
         padding: 12px 0;
         gap: 0;
@@ -66,7 +65,7 @@ export const PinIcon = styled.img.withConfig({
     height: 32px;
     visibility: ${({ isSelected }) => (isSelected ? 'visible' : 'hidden')};
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 16px;
         height: 16px;
     }
@@ -82,7 +81,7 @@ export const Title = styled.span.withConfig({
     text-align: center;
     display: inline-block;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 16px;
     }
 `;
@@ -92,22 +91,26 @@ export const Highlight = styled.span`
     font-weight: 600;
     background-color: #aaffda;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 16px;
     }
+`;
+
+export const ScarpContainer = styled.div`
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 `;
 
 export const CardWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
-    width: 100%;
-    max-width: 1282px;
+    width: fit-content;
     margin: 0 auto;
-    padding-bottom: 30px;
     justify-items: center;
-    justify-items: stretch;
-    padding: 50px 0;
+    padding-top: 50px;
 
     @media (max-width: 1024px) {
         grid-template-columns: repeat(2, 1fr);
@@ -119,8 +122,18 @@ export const CardWrapper = styled.div`
     }
 `;
 
+export const MessageWrapper = styled.div`
+    min-width: 1010px;
+    @media (max-width: 1024px) {
+        min-width: 660px;
+    }
+    @media (max-width: 431px) {
+        min-width: fit-content;
+    }
+`;
+
 export const EmptyMessage = styled.p`
-    width: 1280px;
+    width: 100%;
     min-height: 460px;
     color: #c4c8ce;
     font-weight: 500;
@@ -133,37 +146,36 @@ export const EmptyMessage = styled.p`
 `;
 
 export const ButtonContainer = styled.div`
+    width: 100%;
     padding-top: 100px;
     display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 1280px;
+    justify-content: end;
     position: relative;
+`;
 
-    & > *:only-child {
+export const PaginationWrapper = styled.div`
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
+    display: flex;
+    justify-content: center;
+`;
+
+export const ButtonWrapper = styled.div`
+    width: 650px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    & > :nth-child(2) {
         margin-left: auto;
     }
-
-    & > :nth-child(1):nth-last-child(2) {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    & > :nth-child(2):nth-last-child(1) {
-        margin-left: auto;
-    }
-
-    @media (max-width: 391px) {
+    @media (max-width: 1024px) {
+        width: inherit;
         flex-direction: column;
-        position: static;
-
-        & > :nth-child(1):nth-last-child(2) {
-            position: static;
-            transform: none;
-            margin-bottom: 40px;
-        }
-
-        padding-top: 40px;
+        gap: 130px;
+        justify-content: center;
+    }
+    @media (max-width: 431px) {
+        gap: 50px;
     }
 `;

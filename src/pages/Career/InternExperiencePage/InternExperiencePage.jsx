@@ -17,10 +17,6 @@ const InternExperiencePage = ({ setActiveScreen }) => {
         setActiveScreen(1);
     };
 
-    const handleSaveClick = () => {
-        handleSave(isMobileScreen);
-    };
-
     return (
         <S.PageWrapper>
             <S.HeaderWrapper>
@@ -36,10 +32,29 @@ const InternExperiencePage = ({ setActiveScreen }) => {
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
-                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSaveClick} disabled={!canSave}>
+                <SquareButton
+                    width="120px"
+                    height="50px"
+                    fontSize="14px"
+                    backgroundColor={'deepgreen'}
+                    mobileWidth="340px"
+                    mobileHeight="40px"
+                    mobileFontSize="14px"
+                    onClick={() => handleSave(isMobileScreen)}
+                    disabled={!canSave}
+                >
                     저장
                 </SquareButton>
-                <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
+                <SquareButton
+                    width="120px"
+                    height="50px"
+                    fontSize="14px"
+                    backgroundColor={'lightgreen'}
+                    mobileWidth="340px"
+                    mobileHeight="40px"
+                    mobileFontSize="14px"
+                    onClick={handleNextClick}
+                >
                     다음
                 </SquareButton>
             </S.ButtonWrapper>

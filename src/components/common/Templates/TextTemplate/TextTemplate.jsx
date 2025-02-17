@@ -112,7 +112,9 @@ const TextTemplate = ({ pageType }) => {
                         })}
                     </S.TemplateTable>
                     <S.ButtonWrapper>
-                        <UnderlineButton onClick={() => clearAll(sectionIndex)}>전체 내용 삭제하기</UnderlineButton>
+                        <UnderlineButton onClick={() => clearAll(sectionIndex)} fontSize={'10px'}>
+                            전체 내용 삭제하기
+                        </UnderlineButton>
                     </S.ButtonWrapper>
                 </S.TemplateWrapper>
             ))}

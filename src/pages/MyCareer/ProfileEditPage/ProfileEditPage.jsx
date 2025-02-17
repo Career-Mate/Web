@@ -17,6 +17,7 @@ const ProfileEditPage = () => {
     const { isDeleting, handleDeleteUser } = useDeleteAccount();
     const { showProfilePopup } = useProfilePopup();
     const isMobileScreen = useIsMobileScreen();
+
     const { data, error } = useFetchProfile();
     const { fetchUser } = useAuthStore();
 

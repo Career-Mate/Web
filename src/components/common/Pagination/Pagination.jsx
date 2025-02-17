@@ -7,7 +7,7 @@ import nextIcon from '../../../assets/Pagination/arrow-next.svg';
 import firstIcon from '../../../assets/Pagination/arrow-first.svg';
 import lastIcon from '../../../assets/Pagination/arrow-last.svg';
 
-const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
+const Pagination = ({ totalPages, currentPage, setCurrentPage, isHidden }) => {
     const maxVisiblePages = 4;
 
     const { pages, goToPage } = usePagination({
@@ -18,7 +18,7 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
     });
 
     return (
-        <S.PaginationContainer>
+        <S.PaginationContainer $isHidden={isHidden}>
             <S.ArrowWrapper>
                 <S.ArrowButton onClick={() => goToPage(1)} disabled={currentPage === 1}>
                     <img src={firstIcon} alt="first" />

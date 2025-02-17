@@ -2,6 +2,7 @@ import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPo
 import { useGetScrapJobs } from '../../../apis/Scrap/Job/JobScrapApi';
 import UnderlineButton from '../../../components/common/Button/UnderlineButton/UnderlineButton';
 import Pagination from '../../../components/common/Pagination/Pagination';
+import JobPostingCardSkeleton from '../../../components/SkeletonUi/JobPostingCardSkeleton/JobPostingCardSkeleton';
 import * as S from './styled/styled';
 import { useAuthStore } from '../../../store/authStore';
 import { useNavigate } from 'react-router-dom';
@@ -51,42 +52,64 @@ const ScrapJob = ({ onNavigate, prevPage }) => {
         window.scrollTo(0, 0);
     }, [currentPage]);
 
-    if (isLoading) return <div>loading...</div>;
-    if (isError) return <div>error</div>;
-
+    const numbers = Array.from({ length: 6 }, (_, i) => i + 1);
     const displayedJobs = filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
+    if (isLoading) {
+        return (
+            <S.CardWrapper>
+                {numbers.map((number) => (
+                    <JobPostingCardSkeleton key={number} />
+                ))}
+            </S.CardWrapper>
+        );
+    }
+    if (isError) return <div>error</div>;
+
     return (
-        <>
+        <S.ScarpContainer>
             {displayedJobs.length > 0 ? (
                 <S.CardWrapper>
-                    {displayedJobs.map((job) => (
-                        <JobPostingCard
-                            key={job.recruitId}
-                            id={job.recruitId}
-                            companyName={job.companyName}
-                            deadline={job.deadLine}
-                            contentName={job.title}
-                            jobType={user.job}
-                            goToDetail={() =>
-                                navigate(`/recommend/detail/${job.recruitId}`, {
-                                    state: { page: currentPage, from: 'scrap' },
-                                })
-                            }
-                            isScrapped={job.isScrapped}
-                        />
-                    ))}
+                    {isLoading
+                        ? numbers.map((number) => <JobPostingCardSkeleton key={number} />)
+                        : displayedJobs.map((job) => (
+                              <JobPostingCard
+                                  key={job.recruitId}
+                                  id={job.recruitId}
+                                  companyName={job.companyName}
+                                  deadline={job.deadLine}
+                                  contentName={job.title}
+                                  jobType={user.job}
+                                  goToDetail={() =>
+                                      navigate(`/recommend/detail/${job.recruitId}`, {
+                                          state: { page: currentPage, from: 'scrap' },
+                                      })
+                                  }
+                                  isScrapped={job.isScrapped}
+                              />
+                          ))}
                 </S.CardWrapper>
             ) : (
-                <S.EmptyMessage>스크랩한 채용 공고가 없어요!</S.EmptyMessage>
+                <S.MessageWrapper>
+                    <S.EmptyMessage>스크랩한 채용 공고가 없어요!</S.EmptyMessage>
+                </S.MessageWrapper>
             )}
             <S.ButtonContainer>
-                <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-                <UnderlineButton fontSize={'14px'} onClick={onNavigate}>
-                    더 많은 채용 공고 보러 가기&gt;
-                </UnderlineButton>
+                <S.ButtonWrapper>
+                    <S.PaginationWrapper>
+                        <Pagination
+                            totalPages={totalPages}
+                            currentPage={currentPage}
+                            setCurrentPage={setCurrentPage}
+                            isHidden={displayedJobs.length === 0}
+                        />
+                    </S.PaginationWrapper>
+                    <UnderlineButton fontSize={'14px'} onClick={onNavigate}>
+                        더 많은 채용 공고 보러 가기&gt;
+                    </UnderlineButton>
+                </S.ButtonWrapper>
             </S.ButtonContainer>
-        </>
+        </S.ScarpContainer>
     );
 };
 
