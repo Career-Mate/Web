@@ -15,7 +15,6 @@ const ScrapJob = ({ onNavigate, prevPage }) => {
     const { data: scrapJobs, isLoading, isError } = useGetScrapJobs();
     const itemsPerPage = 6;
 
-    const [filteredJobs, setFilteredJobs] = useState([]);
     const [totalPages, setTotalPages] = useState(1);
     const [currentPage, setCurrentPage] = useState(prevPage ?? 1);
 
@@ -26,34 +25,34 @@ const ScrapJob = ({ onNavigate, prevPage }) => {
     }, [prevPage]);
 
     useEffect(() => {
-        if (!isLoading && scrapJobs && Array.isArray(scrapJobs.recruitScrapThumbNailInfoDTOList)) {
-            if (scrapJobs.jobName === user.job) {
-                setFilteredJobs(scrapJobs.recruitScrapThumbNailInfoDTOList);
-            } else {
-                setFilteredJobs([]);
-            }
-        } else {
-            setFilteredJobs([]);
+        if (scrapJobs?.recruitScrapThumbNailInfoDTOList) {
+            setTotalPages(Math.max(1, Math.ceil(scrapJobs.recruitScrapThumbNailInfoDTOList.length / itemsPerPage)));
         }
-    }, [scrapJobs, user.job, isLoading]);
+    }, [scrapJobs]);
 
     useEffect(() => {
-        const newTotalPages = Math.max(1, Math.ceil(filteredJobs.length / itemsPerPage));
-        setTotalPages(newTotalPages);
-    }, [filteredJobs]);
-
-    useEffect(() => {
-        if (totalPages > 1 && currentPage > totalPages) {
-            setCurrentPage(Math.max(1, totalPages));
+        if (currentPage > totalPages) {
+            setCurrentPage(totalPages);
         }
     }, [totalPages]);
+
+    const displayedJobs =
+        scrapJobs?.recruitScrapThumbNailInfoDTOList?.slice(
+            (currentPage - 1) * itemsPerPage,
+            currentPage * itemsPerPage,
+        ) || [];
+
+    useEffect(() => {
+        if (displayedJobs.length === 0 && currentPage > 1) {
+            setCurrentPage((prev) => Math.max(1, prev - 1));
+        }
+    }, [scrapJobs, currentPage]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [currentPage]);
 
     const numbers = Array.from({ length: 6 }, (_, i) => i + 1);
-    const displayedJobs = filteredJobs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     if (isLoading) {
         return (
