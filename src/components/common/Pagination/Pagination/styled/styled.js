@@ -4,13 +4,13 @@ export const PaginationContainer = styled.div`
     width: 296px;
     height: 26px;
     left: calc(50% - 296px / 2);
-    gap: 56px;
+    gap: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    position: absolute;
-
+    opacity: ${({ $isHidden }) => ($isHidden ? '0' : '1')};
+    pointer-events: ${({ $isHidden }) => ($isHidden ? 'none' : 'auto')};
     @media (max-width: 431px) {
         width: 215px;
         height: 20px;
@@ -28,7 +28,8 @@ export const ArrowWrapper = styled.div`
     padding: 0px;
     gap: 32px;
     @media (max-width: 431px) {
-        gap: 15px;
+        width: 40px;
+        gap: 10px;
     }
 `;
 
@@ -57,7 +58,7 @@ export const PageNumberWrapper = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 32px;
+    gap: 25px;
     @media (max-width: 431px) {
         gap: 10px;
     }

@@ -12,6 +12,8 @@ const InfoContainer = ({
     showTitleText = false,
     mainText,
     detailText,
+    mainFontSize,
+    detailFontSize,
     buttons = [],
 }) => {
     return (
@@ -24,23 +26,25 @@ const InfoContainer = ({
             {showTitleText && <S.TitleText $top={top}>프로필 설정하기</S.TitleText>}
 
             <S.ContentWrapper>
-                {mainText && <S.MainText>{mainText}</S.MainText>}
-                {detailText && <S.DetailText>{detailText}</S.DetailText>}
+                {mainText && <S.MainText mainFontSize={mainFontSize}>{mainText}</S.MainText>}
+                {detailText && <S.DetailText detailFontSize={detailFontSize}>{detailText}</S.DetailText>}
 
                 {buttons.length > 0 && (
                     <S.ButtonWrapper>
-                        {buttons.map(({ text, width, height, backgroundColor, padding, onClick }, index) => (
-                            <SquareButton
-                                key={index}
-                                width={width}
-                                height={height}
-                                backgroundColor={backgroundColor}
-                                padding={padding}
-                                onClick={onClick}
-                            >
-                                {text}
-                            </SquareButton>
-                        ))}
+                        {buttons.map(
+                            ({ text, buttonWidth, buttonHeight, backgroundColor, padding, onClick }, index) => (
+                                <SquareButton
+                                    key={index}
+                                    width={buttonWidth}
+                                    height={buttonHeight}
+                                    backgroundColor={backgroundColor}
+                                    padding={padding}
+                                    onClick={onClick}
+                                >
+                                    {text}
+                                </SquareButton>
+                            ),
+                        )}
                     </S.ButtonWrapper>
                 )}
             </S.ContentWrapper>

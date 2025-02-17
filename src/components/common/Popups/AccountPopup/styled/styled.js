@@ -22,8 +22,8 @@ export const PopupContainer = styled.div`
     gap: 26px;
     padding-top: 5px;
     position: fixed;
-    width: 584px;
-    min-width: 290px;
+    width: 378px;
+    min-width: 209px;
     height: 221px;
     top: 50%;
     left: 50%;
@@ -40,8 +40,8 @@ export const PopupWrapper = styled.div`
     align-items: flex-end;
     padding: 0px;
     gap: 26px;
-    width: 496px;
-    height: 157px;
+    width: 290px;
+    height: 145px;
 `;
 
 export const TextWrapper = styled.div`
@@ -50,17 +50,17 @@ export const TextWrapper = styled.div`
     align-items: flex-start;
     padding: 0px;
     gap: 18px;
-    width: 496px;
-    height: 83px;
+    width: 290px;
+    height: 71px;
 `;
 
 export const StyledText = styled.div`
-    width: 496px;
-    height: 36px;
+    width: 290px;
+    height: 29px;
     font-style: normal;
     font-weight: 700;
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 24px;
+    line-height: 29px;
     color: #000000;
 `;
 
@@ -69,17 +69,17 @@ export const Account = styled.div`
     flex-direction: row;
     align-items: flex-start;
     gap: 10px;
-    width: 496px;
-    height: 29px;
+    width: 290px;
+    height: 24px;
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 20px;
+    line-height: 24px;
     color: #000000;
 `;
 
 export const ButtonWrapper = styled.div`
-    width: 206px;
+    width: 222px;
     height: 48px;
     display: flex;
     flex-direction: row;
