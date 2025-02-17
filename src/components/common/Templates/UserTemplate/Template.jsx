@@ -255,6 +255,7 @@ const Template = ({ pageType, onDataChange }) => {
                                                         handleChange(sectionIndex, itemIndex, e.target.value)
                                                     }
                                                     onBlur={() => handleBlur(sectionIndex, itemIndex)}
+                                                    onInput={(e) => autoResize(e.target)}
                                                 />
                                                 <S.CharCount $charCount={charCounts[key]} $maxCount={MAX_CHAR_COUNT}>
                                                     {charCounts[key] || 0}/{MAX_CHAR_COUNT}
