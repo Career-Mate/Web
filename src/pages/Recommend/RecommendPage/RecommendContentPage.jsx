@@ -44,16 +44,6 @@ const RecommendContentPage = ({ user }) => {
                           />
                       ))}
             </S.CardWrapper>
-            <S.ButtonContainer>
-                <OvalButton
-                    width={'280px'}
-                    height={'58px'}
-                    padding={'17px 74px'}
-                    onClick={() => navigate('/recommend/job')}
-                >
-                    추천 공고 보러 가기
-                </OvalButton>
-            </S.ButtonContainer>
         </S.Container>
     );
 };

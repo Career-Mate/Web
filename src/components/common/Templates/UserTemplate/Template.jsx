@@ -190,7 +190,7 @@ const Template = ({ pageType, onDataChange }) => {
                                                         selectsStart
                                                         startDate={item.startDate ?? null}
                                                         endDate={item.endDate ?? null}
-                                                        placeholderText="시작 날짜를 선택해주세요"
+                                                        placeholderText="시작 날짜를 선택해주세요."
                                                         dateFormat="yyyy년 MM월 dd일"
                                                     />
                                                 </S.DateInput>
@@ -208,13 +208,13 @@ const Template = ({ pageType, onDataChange }) => {
                                                         startDate={item.startDate ?? null}
                                                         endDate={item.endDate ?? null}
                                                         minDate={item.startDate ?? null}
-                                                        placeholderText="종료 날짜를 선택해주세요"
+                                                        placeholderText="종료 날짜를 선택해주세요."
                                                         dateFormat="yyyy년 MM월 dd일"
                                                     />
                                                 </S.DateInput>
                                             </S.DatePickerRow>
                                         ) : shouldShowImageUpload && item.label === '결과물 / 직접 디자인한 화면' ? (
-                                            <div>
+                                            <S.UploadContainer>
                                                 <S.UploadButton onClick={() => handleButtonClick(key)}>
                                                     사진 첨부
                                                 </S.UploadButton>
@@ -228,9 +228,9 @@ const Template = ({ pageType, onDataChange }) => {
                                                 {uploadedImages[`image_${sectionIndex + 1}`] && (
                                                     <div
                                                         style={{
-                                                            display: 'flex',
-                                                            flexDirection: 'column',
+                                                            justifyContent: 'center',
                                                             alignItems: 'center',
+                                                            width: '100%',
                                                         }}
                                                     >
                                                         <S.UploadedImg
@@ -239,7 +239,7 @@ const Template = ({ pageType, onDataChange }) => {
                                                         />
                                                     </div>
                                                 )}
-                                            </div>
+                                            </S.UploadContainer>
                                         ) : (
                                             <>
                                                 <textarea
@@ -255,6 +255,7 @@ const Template = ({ pageType, onDataChange }) => {
                                                         handleChange(sectionIndex, itemIndex, e.target.value)
                                                     }
                                                     onBlur={() => handleBlur(sectionIndex, itemIndex)}
+                                                    onInput={(e) => autoResize(e.target)}
                                                 />
                                                 <S.CharCount $charCount={charCounts[key]} $maxCount={MAX_CHAR_COUNT}>
                                                     {charCounts[key] || 0}/{MAX_CHAR_COUNT}
@@ -268,7 +269,7 @@ const Template = ({ pageType, onDataChange }) => {
                     </S.TemplateTable>
 
                     <S.ButtonWrapper>
-                        <UnderlineButton onClick={() => handleClearAll(sectionIndex)}>
+                        <UnderlineButton onClick={() => handleClearAll(sectionIndex)} fontSize={'10px'}>
                             전체 내용 삭제하기
                         </UnderlineButton>
                     </S.ButtonWrapper>

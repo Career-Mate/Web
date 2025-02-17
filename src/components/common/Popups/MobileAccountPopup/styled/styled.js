@@ -20,11 +20,9 @@ export const PopupContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 26px;
-    padding-top: 5px;
     position: fixed;
-    width: 378px;
-    min-width: 209px;
-    height: 221px;
+    width: 252px;
+    height: 148px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -39,9 +37,9 @@ export const PopupWrapper = styled.div`
     flex-direction: column;
     align-items: flex-end;
     padding: 0px;
-    gap: 26px;
-    width: 290px;
-    height: 145px;
+    gap: 10px;
+    width: 216px;
+    height: 112px;
 `;
 
 export const TextWrapper = styled.div`
@@ -50,17 +48,17 @@ export const TextWrapper = styled.div`
     align-items: flex-start;
     padding: 0px;
     gap: 18px;
-    width: 290px;
-    height: 71px;
+    width: 216px;
+    height: 45px;
 `;
 
 export const StyledText = styled.div`
-    width: 290px;
-    height: 29px;
+    width: 216px;
+    height: 21px;
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 18px;
+    line-height: 21px;
     color: #000000;
 `;
 
@@ -69,21 +67,33 @@ export const Account = styled.div`
     flex-direction: row;
     align-items: flex-start;
     gap: 10px;
-    width: 290px;
-    height: 24px;
+    width: 216px;
+    height: 21px;
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 18px;
+    line-height: 21px;
     color: #000000;
 `;
 
 export const ButtonWrapper = styled.div`
-    width: 222px;
-    height: 48px;
+    width: 216px;
+    height: 14px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-top: 30px;
+`;
+
+export const CloseButton = styled.div`
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    justify-content: flex-end;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
 `;

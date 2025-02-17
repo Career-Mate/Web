@@ -5,6 +5,7 @@ import LogoutButton from '../../Button/LogoutButton/LogoutButton.jsx';
 import SquareButton from '../../Button/SquareButton/SquareButton.jsx';
 import { useState, useEffect } from 'react';
 import AccountPopup from '../../Popups/AccountPopup/AccountPopup.jsx';
+import MobileAccountPopup from '../../Popups/MobileAccountPopup/MobileAccountPopup.jsx';
 import { useAuthStore } from '../../../../store/authStore.js';
 import { useLogout } from '../../../../apis/Auth/useAuthApi.js';
 import useIsMobileScreen from '../../../../hooks/useIsMobileScreen.js';
@@ -34,14 +35,17 @@ const Navbar = () => {
     };
 
     return isMobileScreen ? (
-        <MobileNavbar
-            logoSrc={logo}
-            isLogin={isLogin}
-            user={user}
-            onLogout={handleLogout}
-            navigate={navigate}
-            isActive={isActive}
-        />
+        <>
+            <MobileNavbar
+                logoSrc={logo}
+                isLogin={isLogin}
+                user={user}
+                onLogout={handleLogout}
+                navigate={navigate}
+                isActive={isActive}
+            />
+            {isPopUp && <MobileAccountPopup type="로그아웃" onCancel={handlePopUpClose} onConfirm={handleLogout} />}
+        </>
     ) : (
         <S.NavbarContainer>
             <S.Container>
@@ -81,7 +85,7 @@ const Navbar = () => {
                 </S.Bar>
             </S.Container>
             <S.GradientBorder />
-            {isPopUp && <AccountPopup type={'로그아웃'} onCancel={handlePopUpClose} onConfirm={handleLogout} />}
+            {isPopUp && <AccountPopup type="로그아웃" onCancel={handlePopUpClose} onConfirm={handleLogout} />}
         </S.NavbarContainer>
     );
 };

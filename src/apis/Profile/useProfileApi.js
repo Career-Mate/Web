@@ -35,12 +35,13 @@ export const useEditProfile = (profile) => {
     });
 };
 
-export const useFetchProfile = () => {
+export const useFetchProfile = (isLogin) => {
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['profile'],
         queryFn: getProfile,
         retry: 0,
         refetchOnWindowFocus: false,
+        enabled: isLogin,
     });
     return { data, isLoading, isError, error };
 };

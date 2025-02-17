@@ -19,9 +19,9 @@ export const PopupContainer = styled.div`
     justify-content: center;
     align-items: center;
     position: fixed;
-    width: 621px;
+    width: 257px;
+    min-width: 175px;
     height: fit-content;
-    padding-top: 10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -34,9 +34,9 @@ export const PopupWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding: 32px 44px;
-    gap: 26px;
-    width: 533px;
+    padding: 20px 20px;
+    gap: 10px;
+    width: 221px;
     height: fit-content;
     flex: none;
     order: 0;
@@ -50,7 +50,7 @@ export const TextWrapper = styled.div`
     align-items: flex-start;
     padding: 0px;
     gap: 18px;
-    width: 533px;
+    width: 221px;
     height: fit-content;
     flex: none;
     order: 0;
@@ -59,12 +59,12 @@ export const TextWrapper = styled.div`
 `;
 
 export const StyledText = styled.div`
-    width: 533px;
+    width: 221px;
     height: fit-content;
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 18px;
+    line-height: 21px;
     color: #000000;
     flex: none;
     order: 0;
@@ -79,7 +79,7 @@ export const LoadingWrapper = styled.div`
     align-items: center;
     padding: 0px;
     gap: 10px;
-    width: 533px;
+    width: 221px;
     height: fit-content;
     flex: none;
     order: 1;
@@ -89,11 +89,11 @@ export const LoadingWrapper = styled.div`
 
 export const LoadingText = styled.div`
     width: auto;
-    height: 24px;
+    height: 29px;
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 12px;
+    line-height: 14px;
     color: #000000;
     flex: none;
     order: 0;
@@ -113,4 +113,16 @@ export const LoadingImg = styled.img`
     width: 24px;
     height: 24px;
     animation: ${rotate} 1s linear infinite;
+`;
+
+export const CancelButton = styled.div`
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    justify-content: flex-end;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
 `;

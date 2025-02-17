@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BarContainer = styled.div`
     width: 248px;
-    height: 39px;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -11,10 +11,15 @@ export const BarContainer = styled.div`
     @media (max-width: 1024px) {
         width: 180px;
     }
-    @media (max-width: 391px) {
+
+    @media (max-width: 431px) {
         width: 120px;
+        margin-right: 30px;
+        padding-bottom: 0;
+        gap: 3px;
     }
 `;
+
 export const Text = styled.div`
     font-weight: 600;
     font-size: 16px;
@@ -23,19 +28,27 @@ export const Text = styled.div`
     @media (max-width: 1024px) {
         font-size: 14px;
     }
+
+    @media (max-width: 431px) {
+        font-size: 8px;
+    }
 `;
+
 export const RectangleWrapper = styled.div`
     width: inherit;
     display: flex;
     flex-direction: row;
     gap: 12px;
+
     @media (max-width: 1024px) {
         gap: 8px;
     }
-    @media (max-width: 391px) {
+
+    @media (max-width: 431px) {
         gap: 5px;
     }
 `;
+
 export const Rectangle = styled.div`
     width: 40px;
     height: 10px;
@@ -55,7 +68,8 @@ export const Rectangle = styled.div`
         width: 30px;
         height: 10px;
     }
-    @media (max-width: 391px) {
+
+    @media (max-width: 431px) {
         width: 20px;
         height: 5px;
     }

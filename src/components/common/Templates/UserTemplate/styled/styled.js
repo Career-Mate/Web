@@ -12,6 +12,13 @@ export const TemplateWrapper = styled.div`
         width: 760px;
         padding-bottom: 50px;
     }
+
+    @media (max-width: 431px) {
+        width: 350px;
+        padding-bottom: 40px;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
 `;
 
 export const TemplateTitle = styled.h2`
@@ -41,28 +48,40 @@ export const TableRow = styled.div`
     &:last-child {
         border-bottom: none;
     }
+
+    @media (max-width: 431px) {
+        height: 40px;
+    }
 `;
 
 export const TableCellHeader = styled.div.withConfig({
     shouldForwardProp: (prop) => !['isFirstRow', 'isLastRow'].includes(prop),
 })`
     position: relative;
-    width: 200px;
+    width: 240px;
     background: #b6e3cf;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
     color: rgba(0, 0, 0, 0.8);
     border-right: 2px solid rgba(0, 0, 0, 0.2);
     border-top-left-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
     border-bottom-left-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
+    white-space: pre-wrap;
 
     @media (max-width: 1024px) {
         width: 226px;
+    }
+
+    @media (max-width: 431px) {
+        width: 300px;
+        font-size: 8px;
+        padding: 5px 10px;
+        line-height: 15px;
     }
 `;
 
@@ -73,7 +92,8 @@ export const TableCellData = styled.div.withConfig({
     width: 768px;
     background: #ffffff;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
     padding: 20px;
     overflow-wrap: break-word;
     white-space: normal;
@@ -82,12 +102,11 @@ export const TableCellData = styled.div.withConfig({
 
     textarea {
         width: 100%;
-        height: 30px;
+        height: auto;
         display: flex;
         border: none;
         font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
+        font-size: 12px;
         color: rgba(0, 0, 0, 0.8);
         background: none;
         outline: none;
@@ -96,19 +115,30 @@ export const TableCellData = styled.div.withConfig({
         white-space: normal;
         word-wrap: break-word;
         box-sizing: border-box;
+        word-break: break-word;
+    }
+
+    @media (max-width: 431px) {
+        textarea {
+            font-size: 8px;
+            height: 40px;
+        }
+
+        padding: 10px;
+        padding-top: 30px;
     }
 `;
 
 export const Tooltip = styled.div`
     position: absolute;
-    width: 250px;
+    width: 210px;
     height: auto;
-    left: -10px;
-    top: -75px;
+    left: -15px;
+    top: -70px;
     background: #ffffff;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
-    padding: 12px;
+    padding: 10px;
     z-index: 10;
 
     &::after {
@@ -128,6 +158,13 @@ export const Tooltip = styled.div`
         top: -80px;
         left: -15px;
     }
+
+    @media (max-width: 431px) {
+        width: 80px;
+        top: -50px;
+        left: -20px;
+        padding: 8px;
+    }
 `;
 
 export const TooltipText = styled.div`
@@ -136,9 +173,16 @@ export const TooltipText = styled.div`
     color: rgba(0, 0, 0, 0.8);
     line-height: 1.5;
     text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 
     @media (max-width: 1024px) {
         font-size: 8px;
+    }
+
+    @media (max-width: 431px) {
+        font-size: 5px;
     }
 `;
 
@@ -157,11 +201,17 @@ export const DatePickerRow = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 100%;
+    width: 280px;
     gap: 20px;
 
     @media (max-width: 1024px) {
         width: 226px;
+    }
+
+    @media (max-width: 431px) {
+        width: 100px;
+        font-size: 10px;
+        padding-bottom: 20px;
     }
 `;
 
@@ -173,17 +223,30 @@ export const DateInput = styled.div.withConfig({
     gap: 5px;
 
     .calendar-icon {
-        font-size: 16px;
+        font-size: 12px;
         color: #c4c4c4;
     }
 
     input {
-        font-size: 16px;
+        font-size: 12px;
+        font-weight: 500;
         width: ${(props) => (props.isInline ? 'auto' : '200px')};
         border: none;
         background: ${(props) => (props.isInline ? 'none' : '#ffffff')};
         padding: ${(props) => (props.isInline ? '0' : '4px 8px')};
         outline: none;
+    }
+
+    @media (max-width: 431px) {
+        input {
+            font-size: 8px;
+            width: 80px;
+        }
+
+        .calendar-icon {
+            font-size: 7px;
+            color: #c4c4c4;
+        }
     }
 `;
 
@@ -192,6 +255,11 @@ export const DateDivider = styled.span`
     font-weight: 500;
     color: #d9d9d9;
     padding-right: 20px;
+
+    @media (max-width: 431px) {
+        font-size: 4px;
+        padding-right: 0px;
+    }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -208,24 +276,57 @@ export const UploadButton = styled.button`
     padding: 8px 12px;
     cursor: pointer;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 10px;
+    width: 70px;
+    text-align: center;
+    z-index: 2;
+    height: 30px;
 
     &:hover {
         background: rgb(107, 107, 107);
     }
 
     @media (max-width: 1024px) {
-        font-size: 12px;
+        font-size: 10px;
+    }
+
+    @media (max-width: 431px) {
+        font-size: 6px;
+        width: 40px;
+        height: 18px;
+        padding: 0 5px;
+        margin-bottom: 20px;
     }
 `;
 
 export const CharCount = styled.div`
-    font-size: 8px;
+    font-size: 6px;
     color: ${(props) => (props.$charCount >= props.$maxCount ? 'red' : 'grey')};
     align-self: flex-end;
+
+    @media (max-width: 431px) {
+        font-size: 5px;
+        padding: 0px;
+    }
 `;
 
 export const UploadedImg = styled.img`
-    max-width: 50%;
-    margin-top: -50px;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 200px;
+    display: block;
+    margin: 0 100px;
+
+    @media (max-width: 431px) {
+        max-width: 20%;
+        max-height: 25px;
+        margin: 0 20px;
+    }
+`;
+
+export const UploadContainer = styled.div`
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
 `;

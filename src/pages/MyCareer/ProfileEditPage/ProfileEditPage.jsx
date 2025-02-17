@@ -3,6 +3,7 @@ import UnderlineButton from '../../../components/common/Button/UnderlineButton/U
 import ProfileSetting from '../../../components/common/ProfileSetting/ProfileSetting';
 import * as S from './styled/styled';
 import AccountPopup from '../../../components/common/Popups/AccountPopup/AccountPopup';
+import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
 import { useProfileEdit, useDeleteAccount } from './useProfileEdit';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useProfilePopup } from '../../../hooks/useProfile';
@@ -54,9 +55,12 @@ const ProfileEditPage = () => {
                         회원 탈퇴
                     </UnderlineButton>
                 </S.ContentWrapper>
-                {isPopUp && (
-                    <AccountPopup type={'회원 탈퇴'} onCancel={handlePopUpClose} onConfirm={handleDeleteUser} />
-                )}
+                {isPopUp &&
+                    (isMobileScreen ? (
+                        <MobileAccountPopup type="로그아웃" onCancel={handlePopUpClose} onConfirm={handleLogout} />
+                    ) : (
+                        <AccountPopup type="로그아웃" onCancel={handlePopUpClose} onConfirm={handleLogout} />
+                    ))}
             </S.EditContainer>
             {showProfilePopup && <ProfilePopup />}
         </div>
