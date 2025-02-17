@@ -38,33 +38,17 @@ const SmartPlanner = ({ data, onDataChange, page }) => {
                     onEndDateChange={(date) => handleDateChange(data, onDataChange, page, false, date)}
                 />
             </S.InputContainer>
-            {isMobileScreen ? (
-                <SmartMobileTemplate
-                    data={[data[page]]}
-                    onClearAll={() => handleClearAll(onDataChange, page)}
-                    onDataChange={(updatedArray) =>
-                        onDataChange((prevData) => {
-                            const newData = [...prevData];
-                            newData[page] = updatedArray[0];
-                            return newData;
-                        })
-                    }
-                    page={page}
-                />
-            ) : (
-                <SmartTemplate
-                    data={[data[page]]}
-                    onClearAll={() => handleClearAll(onDataChange, page)}
-                    onDataChange={(updatedArray) =>
-                        onDataChange((prevData) => {
-                            const newData = [...prevData];
-                            newData[page] = updatedArray[0];
-                            return newData;
-                        })
-                    }
-                    page={page}
-                />
-            )}
+            <SmartTemplate
+                data={[data[page]]}
+                onClearAll={() => handleClearAll(onDataChange, page)}
+                onDataChange={(updatedArray) =>
+                    onDataChange((prevData) => {
+                        const newData = [...prevData];
+                        newData[page] = updatedArray[0];
+                        return newData;
+                    })
+                }
+            />
         </S.Container>
     );
 };
