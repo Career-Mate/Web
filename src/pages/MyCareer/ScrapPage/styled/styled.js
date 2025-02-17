@@ -134,7 +134,7 @@ export const MessageWrapper = styled.div`
 
 export const EmptyMessage = styled.p`
     width: 100%;
-    min-height: 460px;
+    min-height: 350px;
     color: #c4c8ce;
     font-weight: 500;
     font-size: 32px;
