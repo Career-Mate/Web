@@ -37,8 +37,8 @@ const CareerMainPage = () => {
 
             <InfoContainer
                 type="contentOnly"
-                width="655px"
-                height="405px"
+                width="520px"
+                height="315px"
                 top="0px"
                 showLogo={false}
                 showTitleText={false}
@@ -48,7 +48,7 @@ const CareerMainPage = () => {
                 buttons={[
                     {
                         text: '내 프로필 분석하기',
-                        width: '375px',
+                        width: '370px',
                         height: '60px',
                         backgroundColor: 'deepgreen',
                         onClick: handleButtonClick,
