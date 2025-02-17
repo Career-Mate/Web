@@ -86,7 +86,7 @@ export const ButtonWrapper = styled.div`
     padding-top: 30px;
 `;
 
-export const CancelButton = styled.div`
+export const CloseButton = styled.div`
     width: 15px;
     height: 15px;
     cursor: pointer;
