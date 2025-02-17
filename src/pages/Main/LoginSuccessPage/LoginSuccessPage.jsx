@@ -25,7 +25,7 @@ const LoginSuccessPage = () => {
                 height: '278px',
                 mainFontSize: '16px',
                 detailFontSize: '10px',
-                $buttonWidth: '213px',
+                buttonWidth: '213px',
                 buttonHeight: '39px',
                 buttonFontSize: '12px',
             };
@@ -52,7 +52,6 @@ const LoginSuccessPage = () => {
         }
     }, [isMobileScreen, isTabletScreen]);
 
-    console.log('login', login);
     return (
         <>
             <InfoContainer

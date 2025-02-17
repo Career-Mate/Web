@@ -16,7 +16,7 @@ export const CareerSavePageWrapper = styled.div`
         transform: translate(-50%, -50%);
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         position: absolute;
         top: 50%;
         left: 50%;
