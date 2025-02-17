@@ -128,14 +128,14 @@ export const TableCellData = styled.div.withConfig({
 
 export const Tooltip = styled.div`
     position: absolute;
-    width: 250px;
+    width: 210px;
     height: auto;
-    left: -10px;
-    top: -75px;
+    left: -15px;
+    top: -70px;
     background: #ffffff;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
-    padding: 12px;
+    padding: 10px;
     z-index: 10;
 
     &::after {
@@ -170,6 +170,9 @@ export const TooltipText = styled.div`
     color: rgba(0, 0, 0, 0.8);
     line-height: 1.5;
     text-align: center;
+    word-wrap: break-word; // 단어가 길어도 내부에서 줄바꿈됨
+    overflow-wrap: break-word; // 긴 단어를 줄바꿈 처리
+    white-space: normal;
 
     @media (max-width: 1024px) {
         font-size: 8px;
