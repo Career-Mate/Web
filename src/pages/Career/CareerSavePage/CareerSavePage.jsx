@@ -15,9 +15,9 @@ const CareerSavePage = () => {
         <S.CareerSavePageWrapper>
             <InfoContainer
                 type="logoWithContent"
-                width="815px"
-                height="372px"
-                top="327.73px"
+                width="750px"
+                height="420px"
+                top="230px"
                 showLogo={true}
                 showTitleText={false}
                 mainText={`${user.name} 메이트님의 커리어가 저장되었습니다.`}

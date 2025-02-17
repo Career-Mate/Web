@@ -12,6 +12,13 @@ export const TemplateWrapper = styled.div`
         width: 760px;
         padding-bottom: 50px;
     }
+
+    @media (max-width: 431px) {
+        width: 350px;
+        padding-bottom: 40px;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
 `;
 
 export const TemplateTitle = styled.h2`
@@ -38,8 +45,13 @@ export const TableRow = styled.div`
     width: 100%;
     height: auto;
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+
     &:last-child {
         border-bottom: none;
+    }
+
+    @media (max-width: 431px) {
+        height: 40px;
     }
 `;
 
@@ -47,20 +59,28 @@ export const TableCellHeader = styled.div.withConfig({
     shouldForwardProp: (prop) => !['isFirstRow', 'isLastRow'].includes(prop),
 })`
     position: relative;
-    width: 45%;
+    width: 400px;
     background: #b6e3cf;
     display: flex;
     align-items: center;
     padding: 20px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     color: rgba(0, 0, 0, 0.8);
     border-right: 2px solid rgba(0, 0, 0, 0.2);
     border-top-left-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
     border-bottom-left-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
+    white-space: pre-wrap;
 
     @media (max-width: 1024px) {
-        width: 40%;
+        width: 400px;
+    }
+
+    @media (max-width: 431px) {
+        width: 280px;
+        font-size: 8px;
+        padding: 5px 10px;
+        line-height: 15px;
     }
 `;
 
@@ -69,7 +89,7 @@ export const TableCellData = styled.div.withConfig({
 })`
     flex-grow: 1;
     background: #ffffff;
-    width: 55%;
+    width: 80%;
     display: flex;
     align-items: flex-start;
     padding: 20px;
@@ -80,11 +100,11 @@ export const TableCellData = styled.div.withConfig({
 
     textarea {
         width: 100%;
-        height: 30px;
+        height: auto;
         display: flex;
         border: none;
         font-weight: 500;
-        font-size: 16px;
+        font-size: 12px;
         color: rgba(0, 0, 0, 0.8);
         background: none;
         outline: none;
@@ -93,6 +113,14 @@ export const TableCellData = styled.div.withConfig({
         white-space: normal;
         word-wrap: break-word;
         box-sizing: border-box;
+    }
+
+    @media (max-width: 431px) {
+        textarea {
+            font-size: 8px;
+        }
+
+        padding: 10px;
     }
 `;
 
@@ -107,4 +135,9 @@ export const CharCount = styled.div`
     font-size: 8px;
     color: ${(props) => (props.$charCount >= props.$maxCount ? 'red' : 'grey')};
     align-self: flex-end;
+
+    @media (max-width: 431px) {
+        font-size: 5px;
+        padding: 0px;
+    }
 `;
