@@ -214,7 +214,7 @@ const Template = ({ pageType, onDataChange }) => {
                                                 </S.DateInput>
                                             </S.DatePickerRow>
                                         ) : shouldShowImageUpload && item.label === '결과물 / 직접 디자인한 화면' ? (
-                                            <div>
+                                            <S.UploadContainer>
                                                 <S.UploadButton onClick={() => handleButtonClick(key)}>
                                                     사진 첨부
                                                 </S.UploadButton>
@@ -228,7 +228,6 @@ const Template = ({ pageType, onDataChange }) => {
                                                 {uploadedImages[`image_${sectionIndex + 1}`] && (
                                                     <div
                                                         style={{
-                                                            display: 'flex',
                                                             justifyContent: 'center',
                                                             alignItems: 'center',
                                                             width: '100%',
@@ -240,7 +239,7 @@ const Template = ({ pageType, onDataChange }) => {
                                                         />
                                                     </div>
                                                 )}
-                                            </div>
+                                            </S.UploadContainer>
                                         ) : (
                                             <>
                                                 <textarea

@@ -42,7 +42,7 @@ export const TemplateTable = styled.div`
 export const TableRow = styled.div`
     display: flex;
     width: 100%;
-    height: 60px;
+    height: auto;
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
     &:last-child {
@@ -270,26 +270,30 @@ export const UploadButton = styled.button`
     padding: 8px 12px;
     cursor: pointer;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 10px;
+    width: 70px;
+    text-align: center;
+    z-index: 2;
+    height: 30px;
 
     &:hover {
         background: rgb(107, 107, 107);
     }
 
     @media (max-width: 1024px) {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     @media (max-width: 431px) {
         font-size: 6px;
+        width: 40px;
         height: 18px;
-        margin-bottom: 5px;
         padding: 0 5px;
     }
 `;
 
 export const CharCount = styled.div`
-    font-size: 8px;
+    font-size: 6px;
     color: ${(props) => (props.$charCount >= props.$maxCount ? 'red' : 'grey')};
     align-self: flex-end;
 
@@ -300,12 +304,22 @@ export const CharCount = styled.div`
 `;
 
 export const UploadedImg = styled.img`
-    max-width: 50%;
-    height: auto;
     object-fit: contain;
+    max-width: 100%;
+    max-height: 200px;
+    display: block;
+    margin: 0 100px;
 
     @media (max-width: 431px) {
-        max-width: 10%;
-        margin-top: -30px;
+        max-width: 20%;
+        max-height: 25px;
+        margin: 0 20px;
     }
+`;
+
+export const UploadContainer = styled.div`
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
 `;
