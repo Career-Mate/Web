@@ -6,6 +6,12 @@ export const SkillsPageTemplateWrapper = styled.div`
         align-items: center;
         justify-content: center;
     }
+
+    @media (max-width: 431px) {
+        & div[data-component='TableCellHeader'] {
+            width: 30%;
+        }
+    }
 `;
 
 export const HeaderWrapper = styled.div`

@@ -78,7 +78,7 @@ export const TableCellHeader = styled.div.withConfig({
     }
 
     @media (max-width: 431px) {
-        width: 280px;
+        width: 300px;
         font-size: 8px;
         padding: 5px 10px;
         line-height: 15px;
@@ -123,6 +123,7 @@ export const TableCellData = styled.div.withConfig({
         }
 
         padding: 10px;
+        padding-top: 20px;
     }
 `;
 
@@ -170,8 +171,8 @@ export const TooltipText = styled.div`
     color: rgba(0, 0, 0, 0.8);
     line-height: 1.5;
     text-align: center;
-    word-wrap: break-word; // 단어가 길어도 내부에서 줄바꿈됨
-    overflow-wrap: break-word; // 긴 단어를 줄바꿈 처리
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     white-space: normal;
 
     @media (max-width: 1024px) {
@@ -208,6 +209,7 @@ export const DatePickerRow = styled.div`
     @media (max-width: 431px) {
         width: 100px;
         font-size: 10px;
+        padding-bottom: 10px;
     }
 `;
 
