@@ -5,6 +5,5 @@ export const CareerSavePageWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    min-height: calc(100vh - 300px);
     background-color: white;
 `;
