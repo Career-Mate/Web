@@ -11,6 +11,7 @@ export const PaginationContainer = styled.div`
     justify-content: center;
     opacity: ${({ $isHidden }) => ($isHidden ? '0' : '1')};
     pointer-events: ${({ $isHidden }) => ($isHidden ? 'none' : 'auto')};
+
     @media (max-width: 431px) {
         width: 215px;
         height: 20px;
@@ -27,6 +28,7 @@ export const ArrowWrapper = styled.div`
     align-items: center;
     padding: 0px;
     gap: 32px;
+
     @media (max-width: 431px) {
         width: 40px;
         gap: 10px;
@@ -48,8 +50,13 @@ export const ArrowButton = styled.button`
     pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
 
     @media (max-width: 431px) {
-        width: 5px;
-        height: 8px;
+        width: 10px;
+        height: 16px;
+    }
+
+    img {
+        width: ${({ $size }) => ($size === 'full' ? '100%' : '50%')};
+        height: auto;
     }
 `;
 

@@ -23,8 +23,12 @@ const JobDetailSkeleton = () => {
                 </S.ListWrapper>
             </S.SummaryWrapper>
             <S.ButtonWrapper>
-                <SquareButton backgroundColor={'grey'}>이전으로 돌아가기</SquareButton>
-                <SquareButton backgroundColor={'deepgreen'}>채용공고 자세히 보러가기</SquareButton>
+                <SquareButton backgroundColor={'grey'} mobileWidth={'340px'}>
+                    이전으로 돌아가기
+                </SquareButton>
+                <SquareButton backgroundColor={'deepgreen'} mobileWidth={'340px'}>
+                    채용공고 자세히 보러가기
+                </SquareButton>
             </S.ButtonWrapper>
         </S.ComponentContainer>
     );

@@ -24,7 +24,7 @@ export const ButtonContainer = styled.button.withConfig({
         cursor: pointer;
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         font-size: 16px;
         padding: 2px 5px;
     }

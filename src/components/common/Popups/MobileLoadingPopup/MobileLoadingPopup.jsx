@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './styled/styled';
 import loadingIcon from '../../../../assets/loader.svg';
 import { useAuthStore } from '../../../../store/authStore';
-import cancelButton from '../../../../assets/common/cancel.svg';
+import closeButton from '../../../../assets/close.svg';
 
 const LoadingPopup = ({ type, onCancel }) => {
     const { user } = useAuthStore();
@@ -10,17 +10,19 @@ const LoadingPopup = ({ type, onCancel }) => {
     const text =
         type === 'template'
             ? `${user.name} 메이트님의
-            ${user.job} 직무에 맞는 템플릿을 제공해드릴게요!`
+            ${user.job} 직무에 맞는 
+            템플릿을 제공해드릴게요!`
             : `${user.name} 메이트님의
-            ${user.job} 직무에 맞는 채용 공고를 추천 중이에요!`;
+            ${user.job} 직무에 맞는 
+            채용 공고를 추천 중이에요!`;
 
     return (
         <S.PopupOverlay>
             <S.PopupContainer>
                 <S.PopupWrapper>
-                    <S.CancelButton onClick={onCancel}>
-                        <img src={cancelButton} alt="취소" />
-                    </S.CancelButton>
+                    <S.CloseButton onClick={onCancel}>
+                        <img src={closeButton} alt="취소" />
+                    </S.CloseButton>
                     <S.TextWrapper>
                         <S.StyledText>{text}</S.StyledText>
                         <S.LoadingWrapper>

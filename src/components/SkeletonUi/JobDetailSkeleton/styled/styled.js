@@ -16,7 +16,7 @@ export const ComponentContainer = styled.div`
     z-index: 0;
 
     @media (max-width: 431px) {
-        width: 360px;
+        width: 340px;
     }
 `;
 

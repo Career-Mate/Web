@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import JobPostingCard from '../../../components/common/Card/JobPostingCard/JobPostingCard';
 import JobBox from '../../../components/Recommend/JobBox/JobBox';
-import Pagination from '../../../components/common/Pagination/Pagination/Pagination';
+import Pagination from '../../../components/common/Pagination/Pagination';
 import DeadlineButton from '../../../components/common/Button/DeadlineButton/DeadlineButton';
 import JobPostingCardSkeleton from '../../../components/SkeletonUi/JobPostingCardSkeleton/JobPostingCardSkeleton';
 import { useGetRecommendJobs } from '../../../apis/Job/JobApi';
@@ -28,12 +28,12 @@ const RecommendJobPage = ({ user }) => {
     const totalPages = data?.totalPages || 1;
     const jobName = data?.jobName || '직무 정보 없음';
 
-    const handleScrapUpdate = (jobId, isScarpped) => {
+    const handleScrapUpdate = (jobId, isScrapped) => {
         queryClient.setQueryData(['recommendJobs', currentPage, SORT_TYPES[sortType]], (oldData) => {
             if (!oldData) return oldData;
             return {
                 ...oldData,
-                jobs: oldData.jobs.map((job) => (job.id === jobId ? { ...job, isScarpped } : job)),
+                jobs: oldData.jobs.map((job) => (job.id === jobId ? { ...job, isScrapped } : job)),
             };
         });
     };
@@ -71,7 +71,7 @@ const RecommendJobPage = ({ user }) => {
     const renderCardLoading = () => (
         <S.CardWrapper>
             {numbers.map((number) => (
-                <JobPostingCardSkeleton />
+                <JobPostingCardSkeleton key={number} />
             ))}
         </S.CardWrapper>
     );
