@@ -4,10 +4,14 @@ import SquareButton from '../../../components/common/Button/SquareButton/SquareB
 import * as S from './styled/styled';
 import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
 
 const SkillsPage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave, handleAutoSave } = useTemplateData('TECHNICAL_SKILLS');
+    const { data, setData, canSave, handleSave, isPopup, handlePopupClose, handleAutoSave } =
+        useTemplateData('TECHNICAL_SKILLS');
     const { progression, prevSummaryProgress, nextSummaryProgress } = useProgressBar(4);
+    const isMobileScreen = useIsMobileScreen();
 
     const handlePrevClick = async () => {
         await handleAutoSave();
@@ -46,7 +50,7 @@ const SkillsPage = ({ setActiveScreen }) => {
                     mobileWidth="340px"
                     mobileHeight="40px"
                     mobileFontSize="14px"
-                    onClick={handleSave}
+                    onClick={() => handleSave(isMobileScreen)}
                     disabled={!canSave}
                 >
                     저장
@@ -78,6 +82,9 @@ const SkillsPage = ({ setActiveScreen }) => {
                     </SquareButton>
                 </div>
             </S.ButtonWrapper>
+            {isPopup && isMobileScreen && (
+                <MobileAccountPopup type={'저장 완료'} onCancel={handlePopupClose} onConfirm={handlePopupClose} />
+            )}
         </S.PageWrapper>
     );
 };

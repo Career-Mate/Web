@@ -7,6 +7,8 @@ import ProfilePopup from '../../../components/common/Popups/ProfilePopup/Profile
 import { useAuthStore } from '../../../store/authStore';
 import MobileLoadingPopup from '../../../components/common/Popups/MobileLoadingPopup/MobileLoadingPopup';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import searchIcon from '../../../assets/MainPage/search.svg';
+import * as S from './styled/styled';
 
 const RecommendMainPage = () => {
     const user = useAuthStore();
@@ -67,12 +69,16 @@ const RecommendMainPage = () => {
     }, [isMobileScreen, isTabletScreen]);
 
     return (
-        <>
+        <S.PageContainer>
+            <S.SearchIcon>
+                <img src={searchIcon} alt="돋보기 아이콘" />
+            </S.SearchIcon>
+
             <InfoContainer
                 type="contentOnly"
                 width={containerStyle.width}
                 height={containerStyle.height}
-                top="271px"
+                top="60px"
                 showLogo={false}
                 showTitleText={false}
                 mainText={`${user.user.name} 메이트님에게`}
@@ -124,7 +130,7 @@ const RecommendMainPage = () => {
                 ))}
 
             {showProfilePopup && <ProfilePopup />}
-        </>
+        </S.PageContainer>
     );
 };
 export default RecommendMainPage;

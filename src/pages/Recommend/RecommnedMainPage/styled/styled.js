@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 
-export const CareerMainPageWrapper = styled.div`
+export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    min-height: calc(100vh - 100px);
-    padding: 32px 16px;
-    background-color: white;
+    padding: 30px;
     position: relative;
 `;
 
-export const fileIcon = styled.div`
+export const SearchIcon = styled.div`
     margin: 20px auto;
     img {
         width: 124px;

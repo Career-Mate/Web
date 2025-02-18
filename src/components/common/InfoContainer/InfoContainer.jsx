@@ -26,25 +26,29 @@ const InfoContainer = ({
             {showTitleText && <S.TitleText $top={top}>프로필 설정하기</S.TitleText>}
 
             <S.ContentWrapper>
-                {mainText && <S.MainText mainFontSize={mainFontSize}>{mainText}</S.MainText>}
-                {detailText && <S.DetailText detailFontSize={detailFontSize}>{detailText}</S.DetailText>}
+                {mainText && <S.MainText $mainFontSize={mainFontSize}>{mainText}</S.MainText>}
+                {detailText && <S.DetailText $detailFontSize={detailFontSize}>{detailText}</S.DetailText>}
 
                 {buttons.length > 0 && (
                     <S.ButtonWrapper>
-                        {buttons.map(
-                            ({ text, buttonWidth, buttonHeight, backgroundColor, padding, onClick }, index) => (
+                        {buttons.map(({ text, backgroundColor, padding, width, height, fontSize, onClick }, index) => {
+                            return (
                                 <SquareButton
                                     key={index}
-                                    width={buttonWidth}
-                                    height={buttonHeight}
+                                    width={width}
+                                    height={height}
+                                    fontSize={fontSize}
+                                    mobileWidth={width}
+                                    mobileHeight={height}
+                                    mobileFontSize={fontSize}
                                     backgroundColor={backgroundColor}
                                     padding={padding}
                                     onClick={onClick}
                                 >
                                     {text}
                                 </SquareButton>
-                            ),
-                        )}
+                            );
+                        })}
                     </S.ButtonWrapper>
                 )}
             </S.ContentWrapper>

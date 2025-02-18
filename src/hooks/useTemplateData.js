@@ -14,6 +14,8 @@ export const useTemplateData = (templateType) => {
         canSave,
         clearAll,
         handleAutoSave,
+        isPopup,
+        handlePopupClose,
     } = useTemplateStore();
 
     const jobType = useJobStore((state) => state.jobType);
@@ -34,6 +36,8 @@ export const useTemplateData = (templateType) => {
         isError,
         clearAll,
         handleAutoSave,
+        isPopup,
+        handlePopupClose,
     };
 };
 

@@ -96,7 +96,7 @@ export const Highlight = styled.span`
     }
 `;
 
-export const ScarpContainer = styled.div`
+export const ScrapContainer = styled.div`
     width: fit-content;
     display: flex;
     flex-direction: column;
@@ -134,7 +134,7 @@ export const MessageWrapper = styled.div`
 
 export const EmptyMessage = styled.p`
     width: 100%;
-    min-height: 460px;
+    min-height: 350px;
     color: #c4c8ce;
     font-weight: 500;
     font-size: 32px;
@@ -143,6 +143,10 @@ export const EmptyMessage = styled.p`
     align-items: center;
     text-align: center;
     margin: 0px;
+
+    @media (max-width: 431px) {
+        font-size: 16px;
+    }
 `;
 
 export const ButtonContainer = styled.div`
