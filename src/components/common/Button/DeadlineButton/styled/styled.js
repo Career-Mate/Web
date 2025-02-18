@@ -23,4 +23,9 @@ export const ButtonContainer = styled.button.withConfig({
     &:hover {
         cursor: pointer;
     }
+
+    @media (max-width: 391px) {
+        font-size: 16px;
+        padding: 2px 5px;
+    }
 `;

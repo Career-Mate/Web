@@ -18,7 +18,7 @@ export const CardContainer = styled.div`
     font-size: 18px;
     gap: 10px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 295px;
         height: 295px;
     }
@@ -29,7 +29,7 @@ export const Thumbnail = styled.div`
     background-color: gray;
     border-radius: 20px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 245px;
         height: 145px;
     }

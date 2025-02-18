@@ -4,12 +4,18 @@ export const PaginationContainer = styled.div`
     width: 296px;
     height: 26px;
     left: calc(50% - 296px / 2);
-    gap: 56px;
+    gap: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    opacity: ${({ $isHidden }) => ($isHidden ? '0' : '1')};
+    pointer-events: ${({ $isHidden }) => ($isHidden ? 'none' : 'auto')};
+    @media (max-width: 431px) {
+        width: 215px;
+        height: 20px;
+        gap: 15px;
+    }
 `;
 
 export const ArrowWrapper = styled.div`
@@ -21,6 +27,10 @@ export const ArrowWrapper = styled.div`
     align-items: center;
     padding: 0px;
     gap: 32px;
+    @media (max-width: 431px) {
+        width: 40px;
+        gap: 10px;
+    }
 `;
 
 export const ArrowButton = styled.button`
@@ -36,6 +46,11 @@ export const ArrowButton = styled.button`
     cursor: pointer;
     opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
     pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
+
+    @media (max-width: 431px) {
+        width: 5px;
+        height: 8px;
+    }
 `;
 
 export const PageNumberWrapper = styled.div`
@@ -43,7 +58,10 @@ export const PageNumberWrapper = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 32px;
+    gap: 25px;
+    @media (max-width: 431px) {
+        gap: 10px;
+    }
 `;
 
 export const PageNumber = styled.button`
@@ -56,4 +74,9 @@ export const PageNumber = styled.button`
     cursor: pointer;
     border: none;
     padding: 2px 10px;
+
+    @media (max-width: 431px) {
+        font-size: 14px;
+        padding: 2px 5px;
+    }
 `;

@@ -3,6 +3,7 @@ import { useEditProfile, useDeleteProfile } from '../../../apis/Profile/useProfi
 import { useState } from 'react';
 import { useAuthStore } from '../../../store/authStore';
 import { useNavigate } from 'react-router-dom';
+import { useLogout } from '../../../apis/Auth/useAuthApi';
 
 export const useProfileEdit = () => {
     const { canSave, emailError, profile, handleProfileFieldChange } = useProfile();
@@ -27,15 +28,15 @@ export const useProfileEdit = () => {
 
 export const useDeleteAccount = () => {
     const [isDeleting, setIsDeleting] = useState(false);
-    const { logout } = useAuthStore();
     const { mutate: deleteProfile } = useDeleteProfile();
+    const { mutate: logout } = useLogout();
     const navigate = useNavigate();
 
     const handleDeleteUser = () => {
         setIsDeleting(true);
         deleteProfile();
+        logout();
         setTimeout(() => {
-            logout();
             navigate('/');
         }, 300);
     };

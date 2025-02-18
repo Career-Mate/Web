@@ -15,7 +15,7 @@ export const ComponentContainer = styled.div`
 
     z-index: 0;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 360px;
     }
 `;
@@ -29,7 +29,7 @@ export const ImgWrapper = styled.div`
     overflow: hidden;
     z-index: 1;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         height: 250px;
     }
 `;
@@ -48,7 +48,7 @@ export const ImgTextWrapper = styled.div`
     color: white;
     z-index: 2;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         gap: 7px;
         bottom: 25px;
         left: 20px;
@@ -73,7 +73,7 @@ export const ImgTitleWrapper = styled.div`
     align-items: baseline;
     gap: 10px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         gap: 4px;
     }
 `;
@@ -83,7 +83,7 @@ export const ImgTitle = styled.span`
     background-color: grey;
     border-radius: 20px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 130px;
         height: 25px;
     }
@@ -94,7 +94,7 @@ export const ImgButton = styled.div`
     background-color: grey;
     border-radius: 20px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 70px;
         height: 10px;
     }
@@ -105,7 +105,7 @@ export const ImgText = styled.span`
     border-radius: 20px;
     background-color: grey;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: 90px;
         height: 13px;
     }
@@ -132,7 +132,7 @@ export const SummaryWrapper = styled.div`
     box-sizing: border-box;
     padding: 0 40px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         padding: 30px;
         box-shadow: 0px 0px 10px 0px #00000040;
     }
@@ -148,7 +148,7 @@ export const ListWrapper = styled.div`
     box-sizing: border-box;
     padding: 40px 20px 60px 20px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 40px 20px;
@@ -166,7 +166,7 @@ export const ButtonWrapper = styled.div`
     margin-top: 107px;
     margin-bottom: 209px;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         flex-direction: column;
         margin-top: 30px;
         margin-bottom: 70px;
