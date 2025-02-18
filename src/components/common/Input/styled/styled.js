@@ -34,7 +34,7 @@ export const Label = styled.label`
 
 export const StyledInputWrapper = styled.div`
     width: 490px;
-    height: 40px
+    height: 40px;
     display: flex;
     flex-direction: row;
     align-items: center;
