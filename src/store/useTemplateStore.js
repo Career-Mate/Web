@@ -412,9 +412,7 @@ export const useTemplateStore = create((set, get) => ({
     isAllTemplatesValid: () => {
         const { data } = get();
 
-        return data.some((section) =>
-            section.items.every((item) => (item.isRequired ? item.content.trim().length > 0 : true)),
-        );
+        return data.every((section) => section.items.some((item) => item.isRequired && item.content.trim().length > 0));
     },
 }));
 
