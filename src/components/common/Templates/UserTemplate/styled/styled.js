@@ -49,6 +49,10 @@ export const TableRow = styled.div`
     &:last-child {
         border-bottom: none;
     }
+
+    @media (max-width: 431px) {
+        min-height: 15px;
+    }
 `;
 
 export const TableCellHeader = styled.div.withConfig({
@@ -118,6 +122,7 @@ export const TableCellData = styled.div.withConfig({
     @media (max-width: 431px) {
         textarea {
             font-size: 8px;
+            min-height: 15px;
         }
 
         padding: 10px;
@@ -289,7 +294,6 @@ export const UploadButton = styled.button`
         width: 40px;
         height: 18px;
         padding: 0 5px;
-        margin-bottom: 20px;
     }
 `;
 
