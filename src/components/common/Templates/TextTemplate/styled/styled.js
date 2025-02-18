@@ -49,10 +49,6 @@ export const TableRow = styled.div`
     &:last-child {
         border-bottom: none;
     }
-
-    @media (max-width: 431px) {
-        height: 40px;
-    }
 `;
 
 export const TableCellHeader = styled.div.withConfig({
