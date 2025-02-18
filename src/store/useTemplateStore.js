@@ -198,12 +198,7 @@ export const useTemplateStore = create((set, get) => ({
 
         const { templateType, data } = get();
 
-        if (templateType === 'SUMMARY') {
-            set({ canSave: true });
-            return;
-        }
-
-        if (templateType === 'TECHNICAL_SKILLS') {
+        if (templateType === 'TECHNICAL_SKILLS' || 'SUMMARY') {
             const isValid = data.some((section) => section.items.every((item) => item.content.trim().length > 0));
             set({ canSave: isValid });
             return;
@@ -410,9 +405,15 @@ export const useTemplateStore = create((set, get) => ({
     },
 
     isAllTemplatesValid: () => {
-        const { data } = get();
+        const { data, templateType } = get();
 
-        return data.every((section) => section.items.some((item) => item.isRequired && item.content.trim().length > 0));
+        if (['INTERN_EXPERIENCE', 'PROJECT_EXPERIENCE', 'OTHER_ACTIVITIES'].includes(templateType)) {
+            return data.some((section) => section.items.slice(0, 4).every((item) => item.content.trim().length > 0));
+        } else if (['TECHNICAL_SKILLS', 'SUMMARY'].includes(templateType)) {
+            return data.some((section) => section.items.every((item) => item.content.trim().length > 0));
+        }
+
+        return false;
     },
 }));
 
