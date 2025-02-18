@@ -45,6 +45,7 @@ export const TableRow = styled.div`
     width: 100%;
     height: auto;
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    min-height: 40px;
 
     &:last-child {
         border-bottom: none;
@@ -109,6 +110,8 @@ export const TableCellData = styled.div.withConfig({
         white-space: normal;
         word-wrap: break-word;
         box-sizing: border-box;
+        word-break: break-word;
+        min-height: 40px;
     }
 
     @media (max-width: 431px) {
