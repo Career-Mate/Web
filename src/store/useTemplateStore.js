@@ -207,12 +207,7 @@ export const useTemplateStore = create((set, get) => ({
 
         const { templateType, data } = get();
 
-        if (templateType === 'SUMMARY') {
-            set({ canSave: true });
-            return;
-        }
-
-        if (templateType === 'TECHNICAL_SKILLS') {
+        if (templateType === 'TECHNICAL_SKILLS' || 'SUMMARY') {
             const isValid = data.some((section) => section.items.every((item) => item.content.trim().length > 0));
             set({ canSave: isValid });
             return;
