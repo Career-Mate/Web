@@ -315,6 +315,11 @@ export const UploadedImg = styled.img`
     display: block;
     margin: 0 100px;
 
+    @media (max-width: 1024px) {
+        max-width: 80%;
+        margin: 0 50px;
+    }
+
     @media (max-width: 431px) {
         max-width: 20%;
         max-height: 25px;
