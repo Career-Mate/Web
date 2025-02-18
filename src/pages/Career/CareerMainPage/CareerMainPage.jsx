@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import searchIcon from '../../../assets/MainPage/search.svg';
+import fileIcon from '../../../assets/MainPage/file.svg';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import LoadingPopup from '../../../components/common/Popups/LoadingPopup/LoadingPopup';
 import * as S from './styled/styled';
@@ -31,9 +31,9 @@ const CareerMainPage = () => {
 
     return (
         <S.CareerMainPageWrapper>
-            <S.SearchIcon>
-                <img src={searchIcon} alt="돋보기 아이콘" />
-            </S.SearchIcon>
+            <S.fileIcon>
+                <img src={fileIcon} alt="아이콘" />
+            </S.fileIcon>
 
             <InfoContainer
                 type="contentOnly"

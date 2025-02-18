@@ -25,7 +25,7 @@ export const CareerMainPageWrapper = styled.div`
     }
 `;
 
-export const SearchIcon = styled.div`
+export const fileIcon = styled.div`
     margin: 20px auto;
     img {
         width: 124px;
