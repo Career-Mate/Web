@@ -198,7 +198,12 @@ export const useTemplateStore = create((set, get) => ({
 
         const { templateType, data } = get();
 
-        if (templateType === 'TECHNICAL_SKILLS' || 'SUMMARY') {
+        if (templateType === 'SUMMARY') {
+            set({ canSave: true });
+            return;
+        }
+
+        if (templateType === 'TECHNICAL_SKILLS') {
             const isValid = data.some((section) => section.items.every((item) => item.content.trim().length > 0));
             set({ canSave: isValid });
             return;
@@ -220,7 +225,9 @@ export const useTemplateStore = create((set, get) => ({
         const { templateType, canSave, uploadedImages } = get();
 
         if (!canSave) {
-            if (templateType === 'TECHNICAL_SKILLS' || 'SUMMARY') {
+            if (templateType === 'TECHNICAL_SKILLS') {
+                alert('항목을 모두 입력해주세요!');
+            } else if (templateType === 'SUMMARY') {
                 alert('항목을 모두 입력해주세요!');
             } else {
                 alert('필수 항목을 모두 입력해주세요!');
@@ -406,7 +413,6 @@ export const useTemplateStore = create((set, get) => ({
 
     isAllTemplatesValid: () => {
         const { data, templateType } = get();
-
         if (['INTERN_EXPERIENCE', 'PROJECT_EXPERIENCE', 'OTHER_ACTIVITIES'].includes(templateType)) {
             return data.some((section) => section.items.slice(0, 4).every((item) => item.content.trim().length > 0));
         } else if (['TECHNICAL_SKILLS', 'SUMMARY'].includes(templateType)) {
