@@ -9,7 +9,7 @@ export const InputContainer = styled.div`
     gap: 5px;
 
     @media (max-width: 1024px) {
-        width: 476px;
+        width: 633px;
     }
 
     @media (max-width: 431px) {
@@ -34,7 +34,7 @@ export const Label = styled.label`
 
 export const StyledInputWrapper = styled.div`
     width: 490px;
-    height: 40px;
+    height: 40px
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -46,7 +46,7 @@ export const StyledInputWrapper = styled.div`
     gap: 8px;
 
     @media (max-width: 1024px) {
-        width: 476px;
+        width: 633px;
         height: 60px;
     }
 

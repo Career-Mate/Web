@@ -7,7 +7,7 @@ export const InputContainer = styled.div`
     gap: 5px;
 
     @media (max-width: 1024px) {
-        width: 476px;
+        width: 633px;
     }
 
     @media (max-width: 431px) {
