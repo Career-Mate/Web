@@ -238,13 +238,40 @@ export const DateInput = styled.div.withConfig({
 
     @media (max-width: 431px) {
         input {
-            font-size: 8px;
+            font-size: 7px;
             width: 80px;
         }
 
         .calendar-icon {
             font-size: 7px;
             color: #c4c4c4;
+        }
+
+        .react-datepicker {
+            font-size: 12px;
+            width: 180px;
+        }
+
+        .react-datepicker__day {
+            width: 1.2rem;
+            height: 1.2rem;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .react-datepicker__header {
+            width: 180px;
+            font-size: 11px;
+        }
+        .react-datepicker__day-names {
+            display: flex;
+            justify-content: space-between;
+        }
+        .react-datepicker__week {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 `;
