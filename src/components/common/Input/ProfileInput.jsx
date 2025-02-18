@@ -11,6 +11,7 @@ const ProfileInput = React.memo(
         defaultValue = '',
         onBlur: externalOnBlur,
         tabWidth,
+        isSmartPlanner,
     }) => {
         const [value, setValue] = useState(defaultValue);
 
@@ -31,9 +32,9 @@ const ProfileInput = React.memo(
         };
 
         return (
-            <S.InputContainer $tabWidth={tabWidth}>
-                <S.Label>{label}</S.Label>
-                <S.StyledInputWrapper $tabWidth={tabWidth}>
+            <S.InputContainer $tabWidth={tabWidth} $isSmartPlanner={isSmartPlanner}>
+                <S.Label $isSmartPlanner={isSmartPlanner}>{label}</S.Label>
+                <S.StyledInputWrapper $tabWidth={tabWidth} $isSmartPlanner={isSmartPlanner}>
                     <S.StyledInput
                         type={type}
                         placeholder={placeholder}
@@ -42,7 +43,7 @@ const ProfileInput = React.memo(
                         onBlur={handleBlur}
                     />
                 </S.StyledInputWrapper>
-                {showError && <S.ErrorMessage>* {errorMessage}</S.ErrorMessage>}
+                {showError && <S.ErrorMessage $isSmartPlanner={isSmartPlanner}>* {errorMessage}</S.ErrorMessage>}
             </S.InputContainer>
         );
     },

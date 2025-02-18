@@ -19,7 +19,7 @@ export const InputContainer = styled.div`
 
 export const Label = styled.label`
     font-weight: 500;
-    font-size: 16px;
+    font-size: ${({ $isSmartPlanner }) => ($isSmartPlanner ? '18px' : '16px')};
     line-height: 21px;
     color: #000000;
 
@@ -34,7 +34,7 @@ export const Label = styled.label`
 
 export const StyledInputWrapper = styled.div`
     width: 490px;
-    height: 40px;
+    height: ${({ $isSmartPlanner }) => ($isSmartPlanner ? '60px' : '40px')};
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -79,7 +79,7 @@ export const StyledInput = styled.input`
 
 export const ErrorMessage = styled.span`
     font-weight: 400;
-    font-size: 10px;
+    font-size: ${({ $isSmartPlanner }) => ($isSmartPlanner ? '12px' : '10px')};
     line-height: 11.93px;
     color: #ff5353;
     width: 100%;
