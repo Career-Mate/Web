@@ -10,6 +10,7 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
     const navigate = useNavigate();
     const { data, setData, handleSave, canSave, handleAutoSave } = useTemplateData('SUMMARY');
     const { progression, prevSummaryProgress } = useProgressBar(5);
+    const isAllTemplatesValid = useTemplateStore((state) => state.isAllTemplatesValid);
 
     const handlePrevClick = async () => {
         await handleAutoSave();
@@ -18,6 +19,11 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
     };
 
     const handleNextClick = () => {
+        if (!isAllTemplatesValid()) {
+            alert('모든 페이지에서 최소 1개의 템플릿을 완성해야 완료할 수 있습니다.');
+            return;
+        }
+
         navigate('/career/success');
     };
 

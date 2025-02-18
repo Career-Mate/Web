@@ -410,6 +410,14 @@ export const useTemplateStore = create((set, get) => ({
             console.error(`템플릿 ${sectionIndex + 1} 내용 삭제 실패:`, error);
         }
     },
+
+    isAllTemplatesValid: () => {
+        const { data } = get();
+
+        return data.some((section) =>
+            section.items.every((item) => (item.isRequired ? item.content.trim().length > 0 : true)),
+        );
+    },
 }));
 
 window.useTemplateStore = useTemplateStore;
