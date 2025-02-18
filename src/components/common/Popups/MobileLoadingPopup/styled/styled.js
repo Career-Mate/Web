@@ -10,7 +10,7 @@ export const PopupOverlay = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    z-index: 101;
 `;
 
 export const PopupContainer = styled.div`
@@ -95,9 +95,8 @@ export const LoadingText = styled.div`
     font-size: 12px;
     line-height: 14px;
     color: #000000;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    display: flex;
+    align-items: center;
 `;
 
 const rotate = keyframes`
@@ -115,7 +114,7 @@ export const LoadingImg = styled.img`
     animation: ${rotate} 1s linear infinite;
 `;
 
-export const CancelButton = styled.div`
+export const CloseButton = styled.div`
     width: 15px;
     height: 15px;
     cursor: pointer;
