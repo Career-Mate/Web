@@ -7,7 +7,7 @@ import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const LoginSuccessPage = () => {
     const navigate = useNavigate();
-    const { login, user } = useAuthStore();
+    const { login } = useAuthStore();
     const { data, error } = useFetchProfile();
     useEffect(() => {
         if (data) {
@@ -62,7 +62,7 @@ const LoginSuccessPage = () => {
                 showLogo={true}
                 showTitleText={false}
                 mainText="로그인 성공"
-                detailText={`${user.name} 메이트님에게 최적의 서비스를 제공할 수 있도록
+                detailText={`메이트님에게 최적의 서비스를 제공할 수 있도록
                 프로필을 설정해주세요!`}
                 mainFontSize={containerStyle.mainFontSize}
                 detailFontSize={containerStyle.detailFontSize}
