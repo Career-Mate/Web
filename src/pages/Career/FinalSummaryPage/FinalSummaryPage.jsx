@@ -10,7 +10,8 @@ import MobileAccountPopup from '../../../components/common/Popups/MobileAccountP
 
 const FinalSummaryPage = ({ setActiveScreen }) => {
     const navigate = useNavigate();
-    const { data, setData, handleSave, canSave, , isPopup, handlePopupClose, handleAutoSave } = useTemplateData('SUMMARY');
+    const { data, setData, handleSave, canSave, isPopup, handlePopupClose, handleAutoSave } =
+        useTemplateData('SUMMARY');
     const { progression, prevSummaryProgress } = useProgressBar(5);
     const isAllTemplatesValid = useTemplateStore((state) => state.isAllTemplatesValid);
     const isMobileScreen = useIsMobileScreen();
