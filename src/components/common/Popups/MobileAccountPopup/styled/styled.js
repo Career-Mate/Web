@@ -10,7 +10,7 @@ export const PopupOverlay = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    z-index: 101;
 `;
 
 export const PopupContainer = styled.div`
@@ -37,6 +37,7 @@ export const PopupWrapper = styled.div`
     flex-direction: column;
     align-items: flex-end;
     padding: 0px;
+    padding-top: 5px;
     gap: 10px;
     width: 216px;
     height: 112px;
@@ -47,7 +48,7 @@ export const TextWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    gap: 18px;
+    gap: 5px;
     width: 216px;
     height: 45px;
 `;
@@ -71,7 +72,7 @@ export const Account = styled.div`
     height: 21px;
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 12px;
     line-height: 21px;
     color: #000000;
 `;
@@ -83,7 +84,7 @@ export const ButtonWrapper = styled.div`
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-end;
-    padding-top: 30px;
+    padding-top: 18px;
 `;
 
 export const CloseButton = styled.div`

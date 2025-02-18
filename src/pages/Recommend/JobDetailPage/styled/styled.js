@@ -17,19 +17,19 @@ export const ComponentContainer = styled.div`
 
     box-sizing: border-box;
     padding: 0 40px;
-    width: 900px;
+    width: 750px;
     margin-top: 40px;
 
     z-index: 0;
 
     @media (max-width: 431px) {
-        width: 360px;
+        width: 340px;
     }
 `;
 
 export const ImgWrapper = styled.div`
     width: inherit;
-    height: 450px;
+    height: 400px;
     border-radius: 20px;
     background-color: black;
     position: relative;
@@ -166,7 +166,7 @@ export const ListWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 40px;
-    width: inherit;
+    width: fit-content;
     height: fit-content;
 
     box-sizing: border-box;
@@ -186,7 +186,7 @@ export const ButtonWrapper = styled.div`
     height: fit-content;
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 40px;
     margin-top: 107px;
     margin-bottom: 209px;
 

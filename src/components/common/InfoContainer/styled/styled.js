@@ -30,11 +30,20 @@ export const LogoWrapper = styled.div`
     align-items: center;
     justify-content: center;
     z-index: 10;
+
+    @media (max-width: 431px) {
+        padding: 10px;
+        top: -60px;
+    }
 `;
 
 export const Logo = styled.img`
-    width: 160px;
+    width: 138px;
     height: auto;
+
+    @media (max-width: 431px) {
+        width: 107px;
+    }
 `;
 
 export const TitleText = styled.div`
@@ -78,15 +87,16 @@ export const TextWrapper = styled.div`
 `;
 
 export const MainText = styled.h2`
-    font-size: ${(props) => props.mainFontSize || '24px'};
+    font-size: ${({ $mainFontSize }) => $mainFontSize || '24px'};
     font-weight: 700;
     color: #000;
     text-align: center;
     margin-bottom: 0px;
+    white-space: pre-line;
 `;
 
 export const DetailText = styled.p`
-    font-size: ${(props) => props.detailFontSize || '16px'};
+    font-size: ${({ $detailFontSize }) => $detailFontSize || '16px'};
     font-weight: 400;
     color: #000;
     text-align: center;

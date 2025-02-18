@@ -98,7 +98,6 @@ export const SecondContainer = styled.div`
     }
 
     @media (max-width: 1024px) {
-        padding-top: 150px;
         gap: 24px;
         h1 {
             color: rgba(255, 255, 255, 1);
@@ -315,7 +314,6 @@ export const OtherTitle = styled.div`
 `;
 
 export const OtherBox = styled.div`
-    width: 650px;
     font-size: 20px;
     margin-top: 20px;
     text-align: center;

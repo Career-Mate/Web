@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
-    color: #c4c8ce;
+    color: ${(props) => props.color || '#c4c8ce'};
     width: fit-content;
     height: fit-content;
     border: none;
