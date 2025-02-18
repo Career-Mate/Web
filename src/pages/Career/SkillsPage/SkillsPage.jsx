@@ -6,15 +6,17 @@ import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
 
 const SkillsPage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave } = useTemplateData('TECHNICAL_SKILLS');
+    const { data, setData, canSave, handleSave, handleAutoSave } = useTemplateData('TECHNICAL_SKILLS');
     const { progression, prevSummaryProgress, nextSummaryProgress } = useProgressBar(4);
 
-    const handlePrevClick = () => {
+    const handlePrevClick = async () => {
+        await handleAutoSave();
         prevSummaryProgress();
         setActiveScreen(2);
     };
 
-    const handleNextClick = () => {
+    const handleNextClick = async () => {
+        await handleAutoSave();
         nextSummaryProgress();
         setActiveScreen(4);
     };

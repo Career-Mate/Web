@@ -6,15 +6,17 @@ import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
 
 const OtherExperiencePage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave } = useTemplateData('OTHER_ACTIVITIES');
+    const { data, setData, canSave, handleSave, handleAutoSave } = useTemplateData('OTHER_ACTIVITIES');
     const { progression, prevSummaryProgress, nextSummaryProgress } = useProgressBar(3);
 
-    const handlePrevClick = () => {
+    const handlePrevClick = async () => {
+        await handleAutoSave();
         prevSummaryProgress();
         setActiveScreen(1);
     };
 
-    const handleNextClick = () => {
+    const handleNextClick = async () => {
+        await handleAutoSave();
         nextSummaryProgress();
         setActiveScreen(3);
     };

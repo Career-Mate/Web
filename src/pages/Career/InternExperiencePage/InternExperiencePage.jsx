@@ -6,10 +6,11 @@ import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
 
 const InternExperiencePage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave } = useTemplateData('INTERN_EXPERIENCE');
+    const { data, setData, canSave, handleSave, handleAutoSave } = useTemplateData('INTERN_EXPERIENCE');
     const { progression, nextSummaryProgress } = useProgressBar(1);
 
-    const handleNextClick = () => {
+    const handleNextClick = async () => {
+        await handleAutoSave();
         nextSummaryProgress();
         setActiveScreen(1);
     };

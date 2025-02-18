@@ -8,10 +8,11 @@ import useProgressBar from '../../../hooks/useProgressBar';
 
 const FinalSummaryPage = ({ setActiveScreen }) => {
     const navigate = useNavigate();
-    const { data, setData, handleSave, canSave } = useTemplateData('SUMMARY');
+    const { data, setData, handleSave, canSave, handleAutoSave } = useTemplateData('SUMMARY');
     const { progression, prevSummaryProgress } = useProgressBar(5);
 
-    const handlePrevClick = () => {
+    const handlePrevClick = async () => {
+        await handleAutoSave();
         prevSummaryProgress();
         setActiveScreen(3);
     };
