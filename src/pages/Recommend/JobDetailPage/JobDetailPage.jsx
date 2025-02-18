@@ -89,10 +89,10 @@ const JobDetailPage = () => {
                     </S.ListWrapper>
                 </S.SummaryWrapper>
                 <S.ButtonWrapper>
-                    <SquareButton backgroundColor={'grey'} onClick={handlePrevNavigation}>
+                    <SquareButton backgroundColor={'grey'} width={'350px'} onClick={handlePrevNavigation}>
                         이전으로 돌아가기
                     </SquareButton>
-                    <SquareButton backgroundColor={'deepgreen'} onClick={handleJobRecruitNavigation}>
+                    <SquareButton backgroundColor={'deepgreen'} width={'350px'} onClick={handleJobRecruitNavigation}>
                         채용공고 자세히 보러가기
                     </SquareButton>
                 </S.ButtonWrapper>
