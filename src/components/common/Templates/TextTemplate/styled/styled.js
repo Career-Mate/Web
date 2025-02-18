@@ -68,8 +68,8 @@ export const TableCellHeader = styled.div.withConfig({
     font-size: 14px;
     color: rgba(0, 0, 0, 0.8);
     border-right: 2px solid rgba(0, 0, 0, 0.2);
-    border-top-left-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
-    border-bottom-left-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
+    border-top-left-radius: ${(props) => (props.isFirstRow ? '10px' : '0')};
+    border-bottom-left-radius: ${(props) => (props.isLastRow ? '10px' : '0')};
     white-space: pre-wrap;
 
     @media (max-width: 1024px) {
