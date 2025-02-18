@@ -92,6 +92,7 @@ export const MainText = styled.h2`
     color: #000;
     text-align: center;
     margin-bottom: 0px;
+    margin-top: 0px;
     white-space: pre-line;
 `;
 
