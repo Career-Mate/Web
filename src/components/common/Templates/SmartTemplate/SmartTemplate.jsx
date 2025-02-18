@@ -1,101 +1,80 @@
 import * as S from './styled/styled';
 import { useMemo, useState, useEffect } from 'react';
 import UnderlineButton from '../../Button/UnderlineButton/UnderlineButton';
+import TemplateTextarea from '../../TemplateTextarea/TemplateTextarea';
 import { handleTemplateChange } from '../../../../utils/SmartPlanner/plannerHandler';
-const SmartTemplate = ({ data, onDataChange, onClearAll, page }) => {
+import useIsMobileScreen from '../../../../hooks/useIsMobileScreen';
+const SmartTemplate = ({ data, onDataChange, onClearAll }) => {
     const memoizedData = useMemo(() => data, [data]);
-    const [localValues, setLocalValues] = useState({});
-    const [charCounts, setCharCounts] = useState({});
+    const [resetTrigger, setResetTrigger] = useState(false);
 
-    const MAX_CHAR_COUNT = 1000;
+    const isMobileScreen = useIsMobileScreen(430);
 
-    const autoResize = (textarea) => {
-        if (textarea) {
-            textarea.style.height = '20px';
-            textarea.style.height = `${textarea.scrollHeight}px`;
-        }
-    };
+    const getKey = (sectionIndex, itemIndex) => `${sectionIndex}-${itemIndex}`;
 
-    useEffect(() => {
-        document.querySelectorAll('textarea').forEach((textarea) => {
-            autoResize(textarea);
-        });
-        memoizedData.forEach((section, sectionIndex) => {
-            section.items.forEach((item, itemIndex) => {
-                const key = `${page}-${sectionIndex}-${itemIndex}`;
-                setCharCounts((prev) => ({
-                    ...prev,
-                    [key]: item.content.length,
-                }));
-            });
-        });
-    }, [memoizedData]);
-
-    const handleChange = (sectionIndex, itemIndex, value) => {
-        const key = `${page}-${sectionIndex}-${itemIndex}`;
-        if (value.length <= MAX_CHAR_COUNT) {
-            setLocalValues((prev) => ({
-                ...prev,
-                [key]: value,
-            }));
-            setCharCounts((prev) => ({
-                ...prev,
-                [key]: value.length,
-            }));
-        }
-    };
-
-    const handleBlur = (sectionIndex, itemIndex) => {
-        const key = `${page}-${sectionIndex}-${itemIndex}`;
-        if (localValues[key] !== undefined) {
-            handleTemplateChange(data, sectionIndex, itemIndex, onDataChange, localValues[key]);
-        }
+    const handleBlur = (sectionIndex, itemIndex, value) => {
+        handleTemplateChange(data, sectionIndex, itemIndex, onDataChange, value);
     };
 
     const handleClearAllWrapper = () => {
         onClearAll();
-        setLocalValues({});
-        setCharCounts({});
+        setResetTrigger((prev) => !prev);
     };
 
+    const renderMobileTemplate = ({ section, sectionIndex }) =>
+        section?.items.map((item, itemIndex) => (
+            <S.SectionWrapper key={itemIndex}>
+                {item.label && <S.SectionLabel>{item.label}</S.SectionLabel>}
+                <S.TextareaWrapper>
+                    <TemplateTextarea
+                        key={getKey(sectionIndex, itemIndex)}
+                        sectionIndex={sectionIndex}
+                        itemIndex={itemIndex}
+                        value={item.content}
+                        placeholder={item.placeholder}
+                        onBlur={handleBlur}
+                        resetTrigger={resetTrigger}
+                        maxCharCount={100}
+                    />
+                </S.TextareaWrapper>
+            </S.SectionWrapper>
+        ));
+
+    const renderTableTemplate = ({ section, sectionIndex }) => (
+        <S.TemplateTable>
+            {section?.items.map((item, itemIndex) => (
+                <S.TableRow key={itemIndex}>
+                    <S.TableCellHeader
+                        data-component="TableCellHeader"
+                        isFirstRow={itemIndex === 0}
+                        isLastRow={itemIndex === section.items.length - 1}
+                    >
+                        {item.label}
+                    </S.TableCellHeader>
+                    <S.TableCellData isFirstRow={itemIndex === 0} isLastRow={itemIndex === section.items.length - 1}>
+                        <TemplateTextarea
+                            key={getKey(sectionIndex, itemIndex)}
+                            sectionIndex={sectionIndex}
+                            itemIndex={itemIndex}
+                            value={item.content}
+                            placeholder={item.placeholder}
+                            onBlur={handleBlur}
+                            resetTrigger={resetTrigger}
+                            maxCharCount={300}
+                        />
+                    </S.TableCellData>
+                </S.TableRow>
+            ))}
+        </S.TemplateTable>
+    );
     return (
         <div>
             {memoizedData.map((section, sectionIndex) => (
                 <S.TemplateWrapper key={sectionIndex}>
                     <S.TemplateTitle>{section.title}</S.TemplateTitle>
-                    <S.TemplateTable>
-                        {section.items.map((item, itemIndex) => {
-                            const key = `${page}-${sectionIndex}-${itemIndex}`;
-                            return (
-                                <S.TableRow key={itemIndex}>
-                                    <S.TableCellHeader
-                                        data-component="TableCellHeader"
-                                        isFirstRow={itemIndex === 0}
-                                        isLastRow={itemIndex === section.items.length - 1}
-                                    >
-                                        {item.label}
-                                    </S.TableCellHeader>
-                                    <S.TableCellData
-                                        isFirstRow={itemIndex === 0}
-                                        isLastRow={itemIndex === section.items.length - 1}
-                                    >
-                                        <textarea
-                                            value={localValues[key] ?? item.content}
-                                            placeholder={item.placeholder}
-                                            onChange={(e) => {
-                                                handleChange(sectionIndex, itemIndex, e.target.value);
-                                                autoResize(e.target);
-                                            }}
-                                            onBlur={() => handleBlur(sectionIndex, itemIndex)}
-                                        />
-                                        <S.CharCount $charCount={charCounts[key]} $maxCount={MAX_CHAR_COUNT}>
-                                            {charCounts[key] || 0}/{MAX_CHAR_COUNT}
-                                        </S.CharCount>
-                                    </S.TableCellData>
-                                </S.TableRow>
-                            );
-                        })}
-                    </S.TemplateTable>
+                    {isMobileScreen
+                        ? renderMobileTemplate({ section, sectionIndex })
+                        : renderTableTemplate({ section, sectionIndex })}
                     <S.ButtonWrapper>
                         <UnderlineButton onClick={handleClearAllWrapper}>전체 내용 삭제하기</UnderlineButton>
                     </S.ButtonWrapper>

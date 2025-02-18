@@ -38,6 +38,7 @@ export const Thumbnail = styled.img`
     width: 260px;
     height: ${({ $type }) => ($type ? '150px' : '130px')};
     border-radius: 20px;
+    object-fit: cover;
 
     @media (max-width: 431px) {
         width: 254px;
@@ -77,6 +78,10 @@ export const DeadlineWrapper = styled.div`
     flex-direction: row;
     justify-content: ${({ $type }) => ($type ? 'flex-end' : 'space-between')};
     align-items: center;
+
+    @media (max-width: 431px) {
+        height: 40px;
+    }
 `;
 
 export const Deadline = styled.div`
