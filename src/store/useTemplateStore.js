@@ -229,9 +229,7 @@ export const useTemplateStore = create((set, get) => ({
         const { templateType, canSave, uploadedImages } = get();
 
         if (!canSave) {
-            if (templateType === 'TECHNICAL_SKILLS') {
-                alert('항목을 모두 입력해주세요!');
-            } else if (templateType === 'SUMMARY') {
+            if (templateType === 'TECHNICAL_SKILLS' || templateType === 'SUMMARY') {
                 alert('항목을 모두 입력해주세요!');
             } else {
                 alert('필수 항목을 모두 입력해주세요!');
