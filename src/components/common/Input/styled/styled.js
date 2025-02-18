@@ -9,7 +9,7 @@ export const InputContainer = styled.div`
     gap: 5px;
 
     @media (max-width: 1024px) {
-        width: 633px;
+        width: ${({ $tabWidth }) => $tabWidth || '633px'};
     }
 
     @media (max-width: 431px) {
@@ -46,7 +46,7 @@ export const StyledInputWrapper = styled.div`
     gap: 8px;
 
     @media (max-width: 1024px) {
-        width: 633px;
+        width: ${({ $tabWidth }) => $tabWidth || '633px'};
         height: 60px;
     }
 

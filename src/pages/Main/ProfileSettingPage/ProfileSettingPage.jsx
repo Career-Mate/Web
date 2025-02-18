@@ -37,6 +37,7 @@ const ProfileSettingPage = () => {
                             buttonText={'프로필 설정하기'}
                             onSave={handleSave}
                             onChange={handleProfileFieldChange}
+                            tabWidth={'476px'}
                         />
                     </S.SettingsWrapper>
                 }
