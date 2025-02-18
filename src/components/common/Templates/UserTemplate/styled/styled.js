@@ -92,8 +92,7 @@ export const TableCellData = styled.div.withConfig({
     width: 768px;
     background: #ffffff;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
     padding: 20px;
     overflow-wrap: break-word;
     white-space: normal;
@@ -121,11 +120,9 @@ export const TableCellData = styled.div.withConfig({
     @media (max-width: 431px) {
         textarea {
             font-size: 8px;
-            height: 40px;
         }
 
         padding: 10px;
-        padding-top: 30px;
     }
 `;
 
@@ -211,7 +208,6 @@ export const DatePickerRow = styled.div`
     @media (max-width: 431px) {
         width: 100px;
         font-size: 10px;
-        padding-bottom: 20px;
     }
 `;
 
