@@ -32,7 +32,7 @@ const RecommendContentPage = ({ user }) => {
             </S.TextWrapper>
             <S.CardWrapper>
                 {isLoading
-                    ? numbers.map((number) => <ContentCardSkeleton />)
+                    ? numbers.map((number) => <ContentCardSkeleton key={number} />)
                     : contents.map((content) => (
                           <ContentCard
                               key={content.id}

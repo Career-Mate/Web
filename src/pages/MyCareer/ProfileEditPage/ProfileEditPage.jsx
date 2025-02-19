@@ -7,6 +7,7 @@ import MobileAccountPopup from '../../../components/common/Popups/MobileAccountP
 import { useProfileEdit, useDeleteAccount } from './useProfileEdit';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useProfilePopup } from '../../../hooks/useProfile';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 import { useAuthStore } from '../../../store/authStore';
 import { useFetchProfile } from '../../../apis/Profile/useProfileApi';
 
@@ -15,8 +16,10 @@ const ProfileEditPage = () => {
     const { profile, handleProfileFieldChange, handleSave } = useProfileEdit();
     const { isDeleting, handleDeleteUser } = useDeleteAccount();
     const { showProfilePopup } = useProfilePopup();
+    const isMobileScreen = useIsMobileScreen();
+
     const { data, error } = useFetchProfile();
-    const { fetchUser } = useAuthStore();
+    const { fetchUser, user } = useAuthStore();
 
     useEffect(() => {
         if (data) {
@@ -41,8 +44,8 @@ const ProfileEditPage = () => {
         >
             <S.EditContainer>
                 <S.NoticeWrapper>
-                    <S.NoticeTitle>{profile.name} 님의 프로필</S.NoticeTitle>
-                    <S.NoticeDetail>{profile.name} 님의 정보를 수정해주세요!</S.NoticeDetail>
+                    <S.NoticeTitle>{user.name} 님의 프로필</S.NoticeTitle>
+                    <S.NoticeDetail>{user.name} 님의 정보를 수정해주세요!</S.NoticeDetail>
                 </S.NoticeWrapper>
                 <S.ContentWrapper>
                     <ProfileSetting
@@ -57,9 +60,13 @@ const ProfileEditPage = () => {
                 </S.ContentWrapper>
                 {isPopUp &&
                     (isMobileScreen ? (
-                        <MobileAccountPopup type="로그아웃" onCancel={handlePopUpClose} onConfirm={handleLogout} />
+                        <MobileAccountPopup
+                            type={'회원 탈퇴'}
+                            onCancel={handlePopUpClose}
+                            onConfirm={handleDeleteUser}
+                        />
                     ) : (
-                        <AccountPopup type="로그아웃" onCancel={handlePopUpClose} onConfirm={handleLogout} />
+                        <AccountPopup type={'회원 탈퇴'} onCancel={handlePopUpClose} onConfirm={handleDeleteUser} />
                     ))}
             </S.EditContainer>
             {showProfilePopup && <ProfilePopup />}

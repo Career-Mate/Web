@@ -1,12 +1,15 @@
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import LoadingPopup from '../../../components/common/Popups/LoadingPopup/LoadingPopup';
 import { useNavigate } from 'react-router-dom';
-import { useMemo, useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useProfilePopup } from '../../../hooks/useProfile';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useAuthStore } from '../../../store/authStore';
 import MobileLoadingPopup from '../../../components/common/Popups/MobileLoadingPopup/MobileLoadingPopup';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import searchIcon from '../../../assets/MainPage/search.svg';
+import * as S from './styled/styled';
+import useContainerStyle from '../../../hooks/useContainerStyle';
 
 const RecommendMainPage = () => {
     const user = useAuthStore();
@@ -29,50 +32,24 @@ const RecommendMainPage = () => {
         setIsPopupOpen(false);
     };
 
-    const isMobileScreen = useIsMobileScreen(430);
-    const isTabletScreen = useIsMobileScreen(1024);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-    const containerStyle = useMemo(() => {
-        if (isMobileScreen) {
-            return {
-                width: '280px',
-                height: '300px',
-                mainFontSize: '18px',
-                detailFontSize: '10px',
-                buttonWidth: '213px',
-                buttonHeight: '39px',
-                buttonFontSize: '14px',
-            };
-        } else if (isTabletScreen) {
-            return {
-                width: '574px',
-                height: '411px',
-                mainFontSize: '30px',
-                detailFontSize: '18px',
-                buttonWidth: '226px',
-                buttonHeight: '46px',
-                buttonFontSize: '18px',
-            };
-        } else {
-            return {
-                width: '768px',
-                height: '486px',
-                mainFontSize: '36px',
-                detailFontSize: '20px',
-                buttonWidth: '327px',
-                buttonHeight: '57px',
-                buttonFontSize: '18px',
-            };
-        }
-    }, [isMobileScreen, isTabletScreen]);
+    const isMobileScreen = useIsMobileScreen(430);
+    const containerStyle = useContainerStyle('half');
 
     return (
-        <>
+        <S.PageContainer>
+            <S.SearchIcon>
+                <img src={searchIcon} alt="돋보기 아이콘" />
+            </S.SearchIcon>
+
             <InfoContainer
                 type="contentOnly"
                 width={containerStyle.width}
                 height={containerStyle.height}
-                top="271px"
+                top="60px"
                 showLogo={false}
                 showTitleText={false}
                 mainText={`${user.user.name} 메이트님에게`}
@@ -86,9 +63,9 @@ const RecommendMainPage = () => {
                 buttons={[
                     {
                         text: '추천 공고 불러오기',
-                        width: containerStyle.buttonWidth,
-                        height: containerStyle.buttonHeight,
-                        fontSize: containerStyle.buttonFontSize,
+                        width: containerStyle.button.buttonWidth,
+                        height: containerStyle.button.buttonHeight,
+                        fontSize: containerStyle.button.buttonFontSize,
                         backgroundColor: 'deepgreen',
                         onClick: () => {
                             handleOpenPopup();
@@ -96,9 +73,9 @@ const RecommendMainPage = () => {
                     },
                     {
                         text: '콘텐츠 보러가기',
-                        width: containerStyle.buttonWidth,
-                        height: containerStyle.buttonHeight,
-                        fontSize: containerStyle.buttonFontSize,
+                        width: containerStyle.button.buttonWidth,
+                        height: containerStyle.button.buttonHeight,
+                        fontSize: containerStyle.button.buttonFontSize,
                         backgroundColor: 'green',
                         onClick: () => {
                             navigate('/recommend/content');
@@ -124,7 +101,7 @@ const RecommendMainPage = () => {
                 ))}
 
             {showProfilePopup && <ProfilePopup />}
-        </>
+        </S.PageContainer>
     );
 };
 export default RecommendMainPage;

@@ -1,8 +1,8 @@
 import * as S from '../styled/styled';
-import pmThumbnail from '../../../../assets/Card/pm.png';
-import designThumbnail from '../../../../assets/Card/design.png';
-import frontThumbnail from '../../../../assets/Card/frontend.png';
-import backThumbnail from '../../../../assets/Card/backend.png';
+import pmThumbnail from '../../../../assets/Card/pm.svg';
+import designThumbnail from '../../../../assets/Card/designer.svg';
+import frontThumbnail from '../../../../assets/Card/frontend.svg';
+import backThumbnail from '../../../../assets/Card/backend.svg';
 import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';

@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-export const CareerMainPageWrapper = styled.div`
+export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    background-color: white;
     position: relative;
     padding-top: 100px;
     padding-bottom: 200px;
@@ -16,13 +15,14 @@ export const CareerMainPageWrapper = styled.div`
     }
 `;
 
-export const fileIcon = styled.div`
+export const SearchIcon = styled.div`
     margin: 20px auto;
     img {
         width: 124px;
         height: 124px;
-        left: calc(50% - 91px / 2 + 1px);
+        left: 50%;
         top: 250px;
+        transform: -50%;
     }
 
     @media (max-width: 1024px) {

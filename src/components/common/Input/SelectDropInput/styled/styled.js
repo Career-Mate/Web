@@ -1,18 +1,32 @@
 import styled from 'styled-components';
 
 export const InputContainer = styled.div`
-    width: ${({ $width }) => $width};
-    height: 121px;
+    width: 490px;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    margin-bottom: 20px;
+
+    @media (max-width: 1024px) {
+        width: ${({ $tabWidth }) => $tabWidth || '633px'};
+    }
+
+    @media (max-width: 431px) {
+        width: 351px;
+    }
 `;
 
 export const Label = styled.div`
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 21px;
+
+    @media (max-width: 1024px) {
+        font-size: 18px;
+    }
+
+    @media (max-width: 431px) {
+        font-size: 12px;
+    }
 `;
 
 export const SelectorWrapper = styled.div`
@@ -22,18 +36,28 @@ export const SelectorWrapper = styled.div`
 
 export const Selector = styled.div`
     width: 100%;
-    height: 60px;
-    font-size: 16px;
+    height: 40px;
+    font-size: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: white;
     border: 1px solid #c4c4c4;
     border-radius: 10px;
-    padding: 20px 29px;
+    padding: 10px 20px;
     box-sizing: border-box;
     cursor: pointer;
     box-shadow: ${({ $isOpen }) => ($isOpen ? '0px 0px 5px #71B6FF' : 'none')};
+
+    @media (max-width: 1024px) {
+        height: 60px;
+        font-size: 16px;
+    }
+
+    @media (max-width: 431px) {
+        height: 45px;
+        font-size: 12px;
+    }
 `;
 
 export const Text = styled.div`
@@ -41,7 +65,15 @@ export const Text = styled.div`
     padding: 0;
     color: #c4c4c4;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 12px;
+
+    @media (max-width: 1024px) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 431px) {
+        font-size: 12px;
+    }
 `;
 
 export const DropButtonWrapper = styled.div`
@@ -130,8 +162,16 @@ export const WarningText = styled.p`
     padding: 0;
     color: #ff5353;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 10px;
     line-height: 17px;
     z-index: 1;
-    visibility: ${({ $isTouched, $selectedOption }) => ($isTouched && $selectedOption === '' ? 'visible' : 'hidden')};
+    display: ${({ $isTouched, $selectedOption }) => ($isTouched && $selectedOption === '' ? 'visible' : 'none')};
+
+    @media (max-width: 1024px) {
+        font-size: 14px;
+    }
+
+    @media (max-width: 431px) {
+        font-size: 12px;
+    }
 `;

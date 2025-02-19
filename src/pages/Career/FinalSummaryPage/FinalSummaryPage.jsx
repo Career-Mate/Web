@@ -5,18 +5,29 @@ import SquareButton from '../../../components/common/Button/SquareButton/SquareB
 import * as S from './styled/styled';
 import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
 
 const FinalSummaryPage = ({ setActiveScreen }) => {
     const navigate = useNavigate();
-    const { data, setData, handleSave, canSave } = useTemplateData('SUMMARY');
+    const { data, setData, handleSave, canSave, isPopup, handlePopupClose, handleAutoSave } =
+        useTemplateData('SUMMARY');
     const { progression, prevSummaryProgress } = useProgressBar(5);
+    const isAllTemplatesValid = useTemplateStore((state) => state.isAllTemplatesValid);
+    const isMobileScreen = useIsMobileScreen();
 
-    const handlePrevClick = () => {
+    const handlePrevClick = async () => {
+        await handleAutoSave();
         prevSummaryProgress();
         setActiveScreen(3);
     };
 
     const handleNextClick = () => {
+        if (!isAllTemplatesValid()) {
+            alert('모든 페이지에서 최소 1개의 템플릿을 완성해야 완료할 수 있습니다.');
+            return;
+        }
+
         navigate('/career/success');
     };
 
@@ -43,7 +54,7 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
                     mobileWidth="340px"
                     mobileHeight="40px"
                     mobileFontSize="14px"
-                    onClick={handleSave}
+                    onClick={() => handleSave(isMobileScreen)}
                     disabled={!canSave}
                 >
                     저장
@@ -75,6 +86,9 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
                     </SquareButton>
                 </div>
             </S.ButtonWrapper>
+            {isPopup && isMobileScreen && (
+                <MobileAccountPopup type={'저장 완료'} onCancel={handlePopupClose} onConfirm={handlePopupClose} />
+            )}
         </S.PageWrapper>
     );
 };

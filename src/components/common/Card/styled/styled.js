@@ -32,12 +32,17 @@ export const CompanyName = styled.div`
     color: #8f8f8f;
     overflow: hidden;
     line-height: 23.87px;
+
+    @media (max-width: 431px) {
+        height: 22px;
+    }
 `;
 
 export const Thumbnail = styled.img`
     width: 260px;
     height: ${({ $type }) => ($type ? '150px' : '130px')};
     border-radius: 20px;
+    object-fit: cover;
 
     @media (max-width: 431px) {
         width: 254px;
@@ -69,7 +74,6 @@ export const Title = styled.div`
     text-overflow: ellipsis;
     font-weight: 600;
     line-height: 22px;
-    flex-grow: 1;
 `;
 
 export const DeadlineWrapper = styled.div`
@@ -77,6 +81,10 @@ export const DeadlineWrapper = styled.div`
     flex-direction: row;
     justify-content: ${({ $type }) => ($type ? 'flex-end' : 'space-between')};
     align-items: center;
+
+    @media (max-width: 431px) {
+        height: 30px;
+    }
 `;
 
 export const Deadline = styled.div`

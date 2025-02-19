@@ -8,6 +8,10 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     gap: 74px;
+
+    @media (max-width: 431px) {
+        gap: 30px;
+    }
 `;
 
 export const Text = styled.div`
@@ -36,9 +40,22 @@ export const SocialButton = styled.div`
     align-items: center;
     justify-content: center;
     gap: 20px;
-    width: 503px;
-    height: 57px;
+    width: ${(props) => props.width};
+    height: ${(props) => props.height};
+    font-size: ${(props) => props.fontSize};
     border-radius: 5px;
     cursor: pointer;
     font-style: none;
+`;
+
+export const SocialImg = styled.img`
+    width: 16px;
+    height: fit-content;
+
+    @media (max-width: 1024px) {
+        width: 20px;
+    }
+    @media (max-width: 431px) {
+        width: 14px;
+    }
 `;

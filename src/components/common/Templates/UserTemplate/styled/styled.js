@@ -44,13 +44,14 @@ export const TableRow = styled.div`
     width: 100%;
     height: auto;
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    min-height: 40px;
 
     &:last-child {
         border-bottom: none;
     }
 
     @media (max-width: 431px) {
-        height: 40px;
+        min-height: 15px;
     }
 `;
 
@@ -69,8 +70,8 @@ export const TableCellHeader = styled.div.withConfig({
     line-height: 24px;
     color: rgba(0, 0, 0, 0.8);
     border-right: 2px solid rgba(0, 0, 0, 0.2);
-    border-top-left-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
-    border-bottom-left-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
+    border-top-left-radius: ${(props) => (props.isFirstRow ? '10px' : '0')};
+    border-bottom-left-radius: ${(props) => (props.isLastRow ? '10px' : '0')};
     white-space: pre-wrap;
 
     @media (max-width: 1024px) {
@@ -92,8 +93,7 @@ export const TableCellData = styled.div.withConfig({
     width: 768px;
     background: #ffffff;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
     padding: 20px;
     overflow-wrap: break-word;
     white-space: normal;
@@ -116,16 +116,16 @@ export const TableCellData = styled.div.withConfig({
         word-wrap: break-word;
         box-sizing: border-box;
         word-break: break-word;
+        min-height: 40px;
     }
 
     @media (max-width: 431px) {
         textarea {
             font-size: 8px;
-            height: 40px;
+            min-height: 15px;
         }
 
         padding: 10px;
-        padding-top: 30px;
     }
 `;
 
@@ -211,7 +211,6 @@ export const DatePickerRow = styled.div`
     @media (max-width: 431px) {
         width: 100px;
         font-size: 10px;
-        padding-bottom: 20px;
     }
 `;
 
@@ -239,13 +238,40 @@ export const DateInput = styled.div.withConfig({
 
     @media (max-width: 431px) {
         input {
-            font-size: 8px;
+            font-size: 7px;
             width: 80px;
         }
 
         .calendar-icon {
             font-size: 7px;
             color: #c4c4c4;
+        }
+
+        .react-datepicker {
+            font-size: 12px;
+            width: 180px;
+        }
+
+        .react-datepicker__day {
+            width: 1.2rem;
+            height: 1.2rem;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .react-datepicker__header {
+            width: 180px;
+            font-size: 11px;
+        }
+        .react-datepicker__day-names {
+            display: flex;
+            justify-content: space-between;
+        }
+        .react-datepicker__week {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 `;
@@ -295,7 +321,6 @@ export const UploadButton = styled.button`
         width: 40px;
         height: 18px;
         padding: 0 5px;
-        margin-bottom: 20px;
     }
 `;
 
@@ -316,6 +341,11 @@ export const UploadedImg = styled.img`
     max-height: 200px;
     display: block;
     margin: 0 100px;
+
+    @media (max-width: 1024px) {
+        max-width: 80%;
+        margin: 0 50px;
+    }
 
     @media (max-width: 431px) {
         max-width: 20%;
