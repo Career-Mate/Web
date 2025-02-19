@@ -56,7 +56,7 @@ export const DateInput = styled.div.withConfig({
         outline: none;
 
         @media (max-width: 1024px) {
-            font-size: 16px;
+            font-size: ${(props) => (props.type === 'CareerTemplate' ? '12px' : '16px')};
             width: ${(props) => (props.type === 'CareerTemplate' ? '200px' : '200px')};
         }
 
@@ -73,6 +73,11 @@ export const Icon = styled.img`
     height: ${({ $size }) => $size || '26px'};
     cursor: pointer;
 
+    @media (max-width: 1024px) {
+        width: ${(props) => (props.type === 'CareerTemplate' ? '20px' : '26px')};
+        height: ${(props) => (props.type === 'CareerTemplate' ? '20px' : '26px')};
+    }
+
     @media (max-width: 431px) {
         width: ${(props) => (props.type === 'CareerTemplate' ? '10px' : '18px')};
         height: ${(props) => (props.type === 'CareerTemplate' ? '10px' : '18px')};
@@ -84,6 +89,11 @@ export const DateDivider = styled.span`
     font-weight: 500;
     color: #d9d9d9;
     padding-right: 0px;
+
+    @media (max-width: 1024px) {
+        font-size: ${(props) => (props.type === 'CareerTemplate' ? '12px' : '16px')};
+        padding-right: ${(props) => (props.type === 'CareerTemplate' ? '50px' : '0px')};
+    }
 
     @media (max-width: 431px) {
         font-size: ${(props) => (props.type === 'CareerTemplate' ? '8px' : '16px')};
