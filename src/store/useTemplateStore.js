@@ -88,8 +88,12 @@ export const useTemplateStore = create((set, get) => ({
                             content: isDateField ? '' : a.content || '',
                             ...(isDateField && !['TECHNICAL_SKILLS', 'SUMMARY'].includes(templateType)
                                 ? {
-                                      startDate: a.content?.split('~')[0]?.trim() || null,
-                                      endDate: a.content?.split('~')[1]?.trim() || null,
+                                      startDate: a.content?.split('~')[0]?.trim()
+                                          ? new Date(a.content?.split('~')[0]?.trim().replace(/\./g, '-'))
+                                          : null,
+                                      endDate: a.content?.split('~')[1]?.trim()
+                                          ? new Date(a.content?.split('~')[1]?.trim().replace(/\./g, '-'))
+                                          : null,
                                   }
                                 : {}),
                         };
@@ -171,21 +175,12 @@ export const useTemplateStore = create((set, get) => ({
             if (!item) return {};
 
             const key = isStartDate ? 'startDate' : 'endDate';
-            let currentDate = item[key];
+            let formattedDate = date;
 
-            if (typeof currentDate === 'string') {
-                currentDate = currentDate.replace(/\./g, '-');
-            }
-
-            if (currentDate && !(currentDate instanceof Date)) {
-                currentDate = new Date(currentDate);
-            }
-
-            if (
-                (currentDate === null && date === null) ||
-                (currentDate && date && currentDate.getTime() === date.getTime())
-            ) {
-                return {};
+            if (typeof date === 'string') {
+                formattedDate = new Date(date.replace(/\./g, '-'));
+            } else if (!(date instanceof Date)) {
+                formattedDate = new Date(date);
             }
 
             const newData = state.data.map((section, sIndex) =>
@@ -193,11 +188,12 @@ export const useTemplateStore = create((set, get) => ({
                     ? {
                           ...section,
                           items: section.items.map((item, iIndex) =>
-                              iIndex === itemIndex ? { ...item, [key]: date } : item,
+                              iIndex === itemIndex ? { ...item, [key]: formattedDate } : item,
                           ),
                       }
                     : section,
             );
+
             return { data: newData };
         });
         get().checkIfCanSave();
