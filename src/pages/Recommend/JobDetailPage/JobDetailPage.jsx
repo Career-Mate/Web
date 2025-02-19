@@ -1,29 +1,37 @@
 import * as S from './styled/styled.js';
 import companyImg from '../../../assets/JobDetailPage/company.svg';
+import RabbitLogo from '/assets/rabbit-logo.svg';
 import SquareButton from '../../../components/common/Button/SquareButton/SquareButton.jsx';
 import JobDetailList from '../../../components/Recommend/JobDetailList/JobDetailList.jsx';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { useFetchDetail } from '../../../apis/JobDetail/useJobDetailApi.js';
 import { mapJobDetailData } from '../../../utils/JobDetailList/JobDetailMapper.js';
 import { useState, useEffect } from 'react';
+import JobDetailSkeleton from '../../../components/SkeletonUi/JobDetailSkeleton/JobDetailSkeleton.jsx';
 
 const JobDetailPage = () => {
     const { id } = useParams();
-    const { data: detail, error, isLoading, isSuccess: apiSuccess, isError } = useFetchDetail(id);
-    const [isSuccess, setIsSuccess] = useState(false);
+    const { data: detail, isLoading, isError } = useFetchDetail(id);
     const [speechVisible, setSpeechVisible] = useState(false);
 
     const location = useLocation();
+    const navigate = useNavigate();
+
     const prevPage = location.state?.page || 1;
+    const from = location.state?.from || 'recommend';
 
     const onAIChatClick = () => {
         setSpeechVisible((prev) => !prev);
     };
 
-    const navigate = useNavigate();
     const handlePrevNavigation = () => {
-        navigate('/recommend/job', { state: { page: prevPage } });
+        if (from === 'recommend') {
+            navigate('/recommend/job', { state: { page: prevPage, sortType: location.state?.sortType || '전체' } });
+        } else {
+            navigate('/mycareer/saved-content', { state: { page: prevPage, selectedTab: 'job' } });
+        }
     };
+
     const handleJobRecruitNavigation = () => {
         window.open(detail?.data?.recruitUrl, '_blank', 'noopener,noreferrer');
     };
@@ -35,9 +43,6 @@ const JobDetailPage = () => {
         }
     };
     useEffect(() => {
-        if (detail) {
-            setIsSuccess(true);
-        }
         window.scrollTo(0, 0);
     }, [detail]);
     useEffect(() => {
@@ -47,10 +52,14 @@ const JobDetailPage = () => {
     }, [speechVisible]);
 
     if (isLoading) {
-        return <div>데이터 로딩 중...</div>;
+        return (
+            <S.PageContainer>
+                <JobDetailSkeleton />
+            </S.PageContainer>
+        );
     }
 
-    if (error || !isSuccess) {
+    if (isError) {
         return <div>데이터를 불러올 수 없습니다.</div>;
     }
 
@@ -80,10 +89,20 @@ const JobDetailPage = () => {
                     </S.ListWrapper>
                 </S.SummaryWrapper>
                 <S.ButtonWrapper>
-                    <SquareButton backgroundColor={'grey'} onClick={handlePrevNavigation}>
+                    <SquareButton
+                        backgroundColor={'grey'}
+                        width={'350px'}
+                        mobileWidth={'340px'}
+                        onClick={handlePrevNavigation}
+                    >
                         이전으로 돌아가기
                     </SquareButton>
-                    <SquareButton backgroundColor={'deepgreen'} onClick={handleJobRecruitNavigation}>
+                    <SquareButton
+                        backgroundColor={'deepgreen'}
+                        width={'350px'}
+                        mobileWidth={'340px'}
+                        onClick={handleJobRecruitNavigation}
+                    >
                         채용공고 자세히 보러가기
                     </SquareButton>
                 </S.ButtonWrapper>
@@ -98,7 +117,9 @@ const JobDetailPage = () => {
                         <S.AIChatBubbleTailInner />
                     </>
                 )}
-                <S.AIProfile onClick={onAIChatClick} />
+                <S.AIProfile onClick={onAIChatClick}>
+                    <S.RabbitImg src={RabbitLogo} />
+                </S.AIProfile>
             </S.AIChatBotWrapper>
         </S.PageContainer>
     );

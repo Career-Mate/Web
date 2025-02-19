@@ -17,6 +17,11 @@ export const InfoContainer = styled.div`
     margin-top: ${(props) => `calc(${props.$top} * 0.5)`};
     margin-bottom: ${(props) => `calc(${props.$top} * 0.7)`};
     position: relative;
+    padding: 80px 0;
+
+    @media (max-width: 431px) {
+        padding: 40px 0;
+    }
 `;
 
 export const LogoWrapper = styled.div`
@@ -30,11 +35,20 @@ export const LogoWrapper = styled.div`
     align-items: center;
     justify-content: center;
     z-index: 10;
+
+    @media (max-width: 431px) {
+        padding: 10px;
+        top: -60px;
+    }
 `;
 
 export const Logo = styled.img`
-    width: 160px;
+    width: 138px;
     height: auto;
+
+    @media (max-width: 431px) {
+        width: 107px;
+    }
 `;
 
 export const TitleText = styled.div`
@@ -78,15 +92,17 @@ export const TextWrapper = styled.div`
 `;
 
 export const MainText = styled.h2`
-    font-size: 36px;
-    font-weight: 600;
+    font-size: ${({ $mainFontSize }) => $mainFontSize || '24px'};
+    font-weight: 700;
     color: #000;
     text-align: center;
     margin-bottom: 0px;
+    margin-top: 0px;
+    white-space: pre-line;
 `;
 
 export const DetailText = styled.p`
-    font-size: 20px;
+    font-size: ${({ $detailFontSize }) => $detailFontSize || '16px'};
     font-weight: 400;
     color: #000;
     text-align: center;
@@ -100,4 +116,6 @@ export const ButtonWrapper = styled.div`
     gap: 20px;
     width: 100%;
     margin-top: 30px;
+    flex-wrap: wrap;
+    margin-top: 10px;
 `;

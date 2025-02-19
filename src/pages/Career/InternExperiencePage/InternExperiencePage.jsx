@@ -4,12 +4,18 @@ import SquareButton from '../../../components/common/Button/SquareButton/SquareB
 import * as S from './styled/styled';
 import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
 
 const InternExperiencePage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave } = useTemplateData('INTERN_EXPERIENCE');
-    const { progression, nextSummaryProgress } = useProgressBar(1);
+    const { data, setData, canSave, handleSave, isPopup, handlePopupClose, handleAutoSave } =
+        useTemplateData('INTERN_EXPERIENCE');
 
-    const handleNextClick = () => {
+    const { progression, nextSummaryProgress } = useProgressBar(1);
+    const isMobileScreen = useIsMobileScreen();
+
+    const handleNextClick = async () => {
+        await handleAutoSave();
         nextSummaryProgress();
         setActiveScreen(1);
     };
@@ -29,13 +35,36 @@ const InternExperiencePage = ({ setActiveScreen }) => {
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
-                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
+                <SquareButton
+                    width="120px"
+                    height="50px"
+                    fontSize="14px"
+                    backgroundColor={'deepgreen'}
+                    mobileWidth="340px"
+                    mobileHeight="40px"
+                    mobileFontSize="14px"
+                    onClick={() => handleSave(isMobileScreen)}
+                    disabled={!canSave}
+                >
                     저장
                 </SquareButton>
-                <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
+                <SquareButton
+                    width="120px"
+                    height="50px"
+                    fontSize="14px"
+                    backgroundColor={'lightgreen'}
+                    mobileWidth="340px"
+                    mobileHeight="40px"
+                    mobileFontSize="14px"
+                    onClick={handleNextClick}
+                >
                     다음
                 </SquareButton>
             </S.ButtonWrapper>
+
+            {isPopup && isMobileScreen && (
+                <MobileAccountPopup type={'저장 완료'} onCancel={handlePopupClose} onConfirm={handlePopupClose} />
+            )}
         </S.PageWrapper>
     );
 };

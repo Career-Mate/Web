@@ -2,9 +2,15 @@ import styled from 'styled-components';
 
 export const SkillsPageTemplateWrapper = styled.div`
     & div[data-component='TableCellHeader'] {
-        width: 17%;
+        width: 25%;
         align-items: center;
         justify-content: center;
+    }
+
+    @media (max-width: 431px) {
+        & div[data-component='TableCellHeader'] {
+            width: 30%;
+        }
     }
 `;
 
@@ -27,15 +33,36 @@ export const Title = styled.h1`
     font-weight: 700;
     color: #000;
     margin: 0;
+
+    @media (max-width: 1024px) {
+        font-size: 24px;
+    }
+
+    @media (max-width: 431px) {
+        font-size: 14px;
+        margin-left: 30px;
+    }
 `;
 
 export const Subtitle = styled.p`
     font-weight: 400;
-    font-size: 14px;
-    line-height: 10px;
+    font-size: 12px;
+    line-height: 15px;
     color: #c4c8ce;
     text-align: center;
     margin-left: 20px;
+
+    @media (max-width: 1024px) {
+        font-size: 10px;
+        margin-left: 10px;
+        line-height: 20px;
+    }
+
+    @media (max-width: 431px) {
+        font-size: 6px;
+        margin-left: 5px;
+        line-height: 15px;
+    }
 `;
 
 export const PageWrapper = styled.div`
@@ -44,7 +71,6 @@ export const PageWrapper = styled.div`
     align-items: center;
     gap: 10px;
     width: 100%;
-    min-height: 100vh;
 `;
 
 export const ProgressBarWrapper = styled.div`
@@ -72,5 +98,23 @@ export const ButtonWrapper = styled.div`
     & > div {
         display: flex;
         gap: 15px;
+    }
+
+    @media (max-width: 1024px) {
+        padding-top: 0;
+    }
+
+    @media (max-width: 431px) {
+        flex-direction: column;
+        align-items: center;
+        max-width: 500px;
+        width: 80%;
+
+        & > div {
+            display: flex;
+            gap: 15px;
+            width: 340px;
+            padding-top: 10px;
+        }
     }
 `;

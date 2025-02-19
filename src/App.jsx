@@ -2,11 +2,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import HomePage from './pages/HomePage';
 import RecommendMainPage from './pages/Recommend/RecommnedMainPage/RecommendMainPage';
-import RecommendContentPage from './pages/Recommend/RecommendContentPage/RecommendContentPage';
-import RecommendJobPage from './pages/Recommend/RecommendJobPage/RecommendJobPage';
+import RecommendPage from './pages/Recommend/RecommendPage/RecommendPage';
 import JobDetailPage from './pages/Recommend/JobDetailPage/JobDetailPage';
-import { userData as recommendContentData } from './data/recommendContentData';
-import recommendJobData from './data/recommendJobData';
 import Test from './test/Test';
 import LoginSuccessPage from './pages/Main/LoginSuccessPage/LoginSuccessPage';
 import MainPage from './pages/Main/MainPage/MainPage';
@@ -17,7 +14,7 @@ import CareerMainPage from './pages/Career/CareerMainPage/CareerMainPage';
 import ProfileSettingPage from './pages/Main/ProfileSettingPage/ProfileSettingPage';
 import ProfileSuccessPage from './pages/Main/ProfileSuccessPage/ProfileSuccessPage';
 import MyCareerPage from './pages/MyCareer/MyCareerPage/MyCareerPage';
-import ScrapContentPage from './pages/MyCareer/ScrapContentPage/ScrapContentPage';
+import ScrapPage from './pages/MyCareer/ScrapPage/ScrapPage';
 import SmartPlannerPage from './pages/MyCareer/SmartPlannerPage/SmartPlannerPage';
 import ProfileEditPage from './pages/MyCareer/ProfileEditPage/ProfileEditPage';
 
@@ -71,12 +68,8 @@ const router = createBrowserRouter([
                         element: <RecommendMainPage />,
                     },
                     {
-                        path: 'content',
-                        element: <RecommendContentPage user={recommendContentData} />,
-                    },
-                    {
-                        path: 'job',
-                        element: <RecommendJobPage user={recommendJobData} />,
+                        path: ':tab',
+                        element: <RecommendPage />,
                     },
                     {
                         path: 'detail/:id',
@@ -94,7 +87,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: 'saved-content',
-                        element: <ScrapContentPage />,
+                        element: <ScrapPage />,
                     },
                     {
                         path: 'smart-planner',

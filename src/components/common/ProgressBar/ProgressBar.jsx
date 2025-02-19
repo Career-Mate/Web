@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import * as S from './styled/styled.js';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen.js';
-
 const ProgressBar = ({ progression }) => {
-    const isMobileScreen = useIsMobileScreen(390);
+    const isMobileScreen = useIsMobileScreen(431);
     return (
         <S.BarContainer>
             {isMobileScreen ? null : <S.Text>[진행률 {progression * 20}%]</S.Text>}

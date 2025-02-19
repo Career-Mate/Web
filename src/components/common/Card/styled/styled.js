@@ -3,38 +3,57 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: ${({ $width }) => $width};
-    height: 380px;
+    width: 310px;
+    height: 300px;
     background-color: white;
     border: 1px solid #c4c4c4;
     border-radius: 20px;
     box-shadow:
         2px 2px 5.6px 0px #00000040,
         inset 0px 0px 6.6px 0px #00000040;
-    padding: 24px 26px;
-    gap: ${({ $type }) => ($type ? '10px' : '8px')};
+    padding: ${({ $type }) => ($type ? '24px 26px' : '16px 26px')};
+    gap: ${({ $type }) => ($type ? '10px' : '9px')};
     box-sizing: border-box;
     font-weight: 600;
     font-size: 18px;
+    cursor: pointer;
+
+    @media (max-width: 431px) {
+        width: 295px;
+        height: 295px;
+        font-size: 16px;
+        padding: 19px;
+    }
 `;
 
 export const CompanyName = styled.div`
-    transform: ${({ $type }) => ($type ? 'none' : 'translateY(-3px)')};
-    color: #c4c4c4;
+    text-align: center;
+    font-size: 20px;
+    color: #8f8f8f;
+    overflow: hidden;
+    line-height: 23.87px;
+
+    @media (max-width: 431px) {
+        height: 22px;
+    }
 `;
 
 export const Thumbnail = styled.img`
-    width: ${({ $width }) => $width};
-    height: ${({ $height }) => $height};
+    width: 260px;
+    height: ${({ $type }) => ($type ? '150px' : '130px')};
     border-radius: 20px;
     object-fit: cover;
-    transform: ${({ $type }) => ($type ? 'none' : 'translateY(-3px)')};
+
+    @media (max-width: 431px) {
+        width: 254px;
+        height: ${({ $type }) => ($type ? '145px' : '120px')};
+        font-size: 16px;
+    }
 `;
 
 export const Line = styled.div`
     border-top: 2px dashed #c4c4c4;
     width: 100%;
-    transform: ${({ $type }) => ($type ? 'none' : 'translateY(-3px)')};
 `;
 
 export const ContentWrapper = styled.div`
@@ -42,8 +61,7 @@ export const ContentWrapper = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     flex-grow: 1;
-    gap: ${({ $type }) => ($type ? 'none' : '2px')};
-    transform: ${({ $type }) => ($type ? 'none' : 'translateY(-3px)')};
+    width: 100%;
 `;
 
 export const Title = styled.div`
@@ -55,27 +73,24 @@ export const Title = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: 600;
-    flex-grow: 1;
-`;
-
-export const DetailButton = styled.div`
-    font-size: 16px;
-    font-weight: 400;
-    color: ${({ $type }) => ($type ? '#000000' : '#00000080')};
-    cursor: pointer;
+    line-height: 22px;
 `;
 
 export const DeadlineWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: ${({ $type }) => ($type ? 'flex-end' : 'space-between')};
     align-items: center;
+
+    @media (max-width: 431px) {
+        height: 30px;
+    }
 `;
 
 export const Deadline = styled.div`
     color: #ff0000;
     font-size: 20px;
     font-weight: 600;
-    height: 40px;
     display: flex;
     align-items: center;
 `;
@@ -85,6 +100,7 @@ export const ScrapIcon = styled.img`
     height: 27px;
     cursor: pointer;
     box-shadow: inset -6px 2px 0px rgba(255, 255, 255, 0.25);
+    margin-left: auto;
     &:hover {
         opacity: 0.7;
     }

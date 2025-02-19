@@ -5,15 +5,18 @@ export const PageContainer = styled.div`
     margin-bottom: 110px;
     display: flex;
     flex-direction: row;
-    gap: 60px;
     width: 100%;
     height: fit-content;
+
+    @media (max-width: 431px) {
+        margin-top: 0px;
+        margin-bottom: 50px;
+    }
 `;
 export const SideContainer = styled.div`
     position: relative;
     left: -5px;
     height: inherit;
-    margin-right: 100px;
 
     @media (max-width: 1024px) {
         left: -2px;
@@ -22,7 +25,11 @@ export const SideContainer = styled.div`
 `;
 export const MainContainer = styled.div`
     height: fit-content;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 60px;
+
+    @media (max-width: 431px) {
+        width: 100%;
+    }
 `;

@@ -27,6 +27,7 @@ export const useEditProfile = (profile) => {
         onSuccess: () => {
             fetchUser(profile);
             alert('프로필이 수정되었습니다.');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         },
         onError: (error) => {
             alert('프로필 수정에 실패했습니다. 다시 시도해주세요.');
@@ -34,12 +35,13 @@ export const useEditProfile = (profile) => {
     });
 };
 
-export const useFetchProfile = () => {
+export const useFetchProfile = (isLogin) => {
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['profile'],
         queryFn: getProfile,
         retry: 0,
         refetchOnWindowFocus: false,
+        enabled: isLogin,
     });
     return { data, isLoading, isError, error };
 };

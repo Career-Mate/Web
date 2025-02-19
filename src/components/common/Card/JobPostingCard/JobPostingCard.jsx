@@ -1,22 +1,24 @@
 import * as S from '../styled/styled';
-import pmThumbnail from '../../../../assets/Card/pm.png';
-import designThumbnail from '../../../../assets/Card/design.png';
-import frontThumbnail from '../../../../assets/Card/frontend.png';
-import backThumbnail from '../../../../assets/Card/backend.png';
+import pmThumbnail from '../../../../assets/Card/pm.svg';
+import designThumbnail from '../../../../assets/Card/designer.svg';
+import frontThumbnail from '../../../../assets/Card/frontend.svg';
+import backThumbnail from '../../../../assets/Card/backend.svg';
 import defaultThumbnail from '../../../../assets/common/thumbnail.svg';
 import scrapUncheckedIcon from '../../../../assets/common/scrap-uncheck.svg';
 import scrapCheckedIcon from '../../../../assets/common/scrap-check.svg';
-import useScrapStore from '../../../../store/useScrapStore';
+import { usePostScrapJob, useDeleteScrapJob } from '../../../../apis/Scrap/Job/JobScrapApi';
 
-const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, onClick }) => {
-    const { scrapJobs, addScrapJob, removeScrapJob } = useScrapStore();
-    const isScrap = scrapJobs.some((job) => job.id === id);
+const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, isScrapped, goToDetail }) => {
+    const postScrap = usePostScrapJob();
+    const deleteScrap = useDeleteScrapJob();
 
-    const handleClick = () => {
-        if (isScrap) {
-            removeScrapJob(id);
+    const handleScrap = async (e) => {
+        e.stopPropagation();
+
+        if (isScrapped) {
+            deleteScrap.mutate(id);
         } else {
-            addScrapJob({ id, companyName, deadline, contentName, thumbnail, onClick });
+            postScrap.mutate(id);
         }
     };
 
@@ -38,24 +40,21 @@ const JobPostingCard = ({ id, companyName, deadline, contentName, jobType, onCli
     const thumbnail = getThumbnailByJob(jobType);
 
     return (
-        <S.CardContainer $width={'400px'} $type={false}>
-            <S.CompanyName $type={false}>{companyName}</S.CompanyName>
-            <S.Thumbnail src={thumbnail} alt={contentName} $width={'348px'} $height={'200px'} $type={false} />
-            <S.Line $type={false} />
-            <S.ContentWrapper $type={false}>
-                <S.Title $type={false}>{contentName}</S.Title>
-                <S.DetailButton $type={false} onClick={onClick}>
-                    공고 보기 &gt;
-                </S.DetailButton>
-                <S.DeadlineWrapper>
-                    <S.Deadline>{deadline}</S.Deadline>
-                    <S.ScrapIcon
-                        src={isScrap ? scrapCheckedIcon : scrapUncheckedIcon}
-                        alt="스크랩 아이콘"
-                        onClick={handleClick}
-                    />
-                </S.DeadlineWrapper>
+        <S.CardContainer $type={false} onClick={goToDetail}>
+            <S.CompanyName>{companyName}</S.CompanyName>
+            <S.Thumbnail src={thumbnail} alt={contentName} $type={false} />
+            <S.Line />
+            <S.ContentWrapper>
+                <S.Title $type={true}>{contentName}</S.Title>
             </S.ContentWrapper>
+            <S.DeadlineWrapper>
+                <S.Deadline>{deadline}</S.Deadline>
+                <S.ScrapIcon
+                    src={isScrapped ? scrapCheckedIcon : scrapUncheckedIcon}
+                    alt="스크랩 아이콘"
+                    onClick={handleScrap}
+                />
+            </S.DeadlineWrapper>
         </S.CardContainer>
     );
 };

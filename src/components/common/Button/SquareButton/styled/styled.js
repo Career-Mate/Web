@@ -16,10 +16,10 @@ export const StyledButton = styled.button`
 
     text-align: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: ${(props) => props.$fontSize || '20px'};
     font-weight: 400;
 
-    @media (max-width: 391px) {
+    @media (max-width: 431px) {
         width: ${(props) => props.$mobileWidth || '360px'};
         height: ${(props) => props.$mobileHeight || '40px'};
         font-size: ${(props) => props.$mobileFontSize || '16px'};

@@ -18,6 +18,7 @@ export const Container = styled.div`
     justify-content: space-between;
     height: 100%;
     position: relative;
+    gap: 30px;
 `;
 
 export const Bar = styled.div`
@@ -32,6 +33,11 @@ export const LogoWrapper = styled.div`
     justify-content: left;
     align-items: flex-end;
     height: 105%;
+
+    @media (max-width: 900px) {
+        width: 200px;
+        height: 96%;
+    }
 `;
 
 export const Logo = styled.img`
@@ -61,6 +67,10 @@ export const Text = styled.div`
     font-weight: ${({ $active }) => ($active ? ' 700' : 'normal')};
     color: ${({ $active }) => ($active ? ' #66CCAA' : 'black')};
     border: ${({ $active }) => ($active ? '3px solid #80CFB0' : '3px solid transparent')};
+
+    @media (max-width: 1024px) {
+        font-size: 14px;
+    }
 `;
 
 export const ButtonWrapper = styled.div`

@@ -5,18 +5,29 @@ import SquareButton from '../../../components/common/Button/SquareButton/SquareB
 import * as S from './styled/styled';
 import useTemplateData from '../../../hooks/useTemplateData';
 import useProgressBar from '../../../hooks/useProgressBar';
+import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
 
 const FinalSummaryPage = ({ setActiveScreen }) => {
     const navigate = useNavigate();
-    const { data, setData, handleSave, canSave } = useTemplateData('SUMMARY');
+    const { data, setData, handleSave, canSave, isPopup, handlePopupClose, handleAutoSave } =
+        useTemplateData('SUMMARY');
     const { progression, prevSummaryProgress } = useProgressBar(5);
+    const isAllTemplatesValid = useTemplateStore((state) => state.isAllTemplatesValid);
+    const isMobileScreen = useIsMobileScreen();
 
-    const handlePrevClick = () => {
+    const handlePrevClick = async () => {
+        await handleAutoSave();
         prevSummaryProgress();
         setActiveScreen(3);
     };
 
     const handleNextClick = () => {
+        if (!isAllTemplatesValid()) {
+            alert('모든 페이지에서 최소 1개의 템플릿을 완성해야 완료할 수 있습니다.');
+            return;
+        }
+
         navigate('/career/success');
     };
 
@@ -35,18 +46,49 @@ const FinalSummaryPage = ({ setActiveScreen }) => {
             </S.TemplateWrapper>
 
             <S.ButtonWrapper>
-                <SquareButton width="131px" backgroundColor={'deepgreen'} onClick={handleSave} disabled={!canSave}>
+                <SquareButton
+                    width="120px"
+                    height="50px"
+                    fontSize="14px"
+                    backgroundColor={'deepgreen'}
+                    mobileWidth="340px"
+                    mobileHeight="40px"
+                    mobileFontSize="14px"
+                    onClick={() => handleSave(isMobileScreen)}
+                    disabled={!canSave}
+                >
                     저장
                 </SquareButton>
                 <div>
-                    <SquareButton width="131px" backgroundColor={'grey'} onClick={handlePrevClick}>
+                    <SquareButton
+                        width="120px"
+                        height="50px"
+                        fontSize="14px"
+                        backgroundColor={'grey'}
+                        mobileWidth="180px"
+                        mobileHeight="40px"
+                        mobileFontSize="14px"
+                        onClick={handlePrevClick}
+                    >
                         이전
                     </SquareButton>
-                    <SquareButton width="131px" backgroundColor={'lightgreen'} onClick={handleNextClick}>
+                    <SquareButton
+                        width="120px"
+                        height="50px"
+                        fontSize="14px"
+                        backgroundColor={'lightgreen'}
+                        mobileWidth="180px"
+                        mobileHeight="40px"
+                        mobileFontSize="14px"
+                        onClick={handleNextClick}
+                    >
                         완료
                     </SquareButton>
                 </div>
             </S.ButtonWrapper>
+            {isPopup && isMobileScreen && (
+                <MobileAccountPopup type={'저장 완료'} onCancel={handlePopupClose} onConfirm={handlePopupClose} />
+            )}
         </S.PageWrapper>
     );
 };

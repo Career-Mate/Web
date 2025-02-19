@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react';
 import AccountPopup from '../../Popups/AccountPopup/AccountPopup.jsx';
 import { useAuthStore } from '../../../../store/authStore.js';
 import { useLogout } from '../../../../apis/Auth/useAuthApi.js';
+import useIsMobileScreen from '../../../../hooks/useIsMobileScreen.js';
+import MobileNavbar from '../MobileNavbar/MobileNavbar.jsx';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -14,6 +16,7 @@ const Navbar = () => {
     const [isPopUp, setIsPopUp] = useState(false);
     const { isLogin, user } = useAuthStore();
     const mutation = useLogout();
+    const isMobileScreen = useIsMobileScreen(430);
 
     const isActive = (path) => location.pathname.startsWith(`/${path}`);
 
@@ -30,7 +33,19 @@ const Navbar = () => {
         mutation.mutate();
     };
 
-    return (
+    return isMobileScreen ? (
+        <MobileNavbar
+            logoSrc={logo}
+            isLogin={isLogin}
+            user={user}
+            onLogout={handleLogout}
+            navigate={navigate}
+            isActive={isActive}
+            isPopUp={isPopUp}
+            handlePopUpOpen={handlePopUpOpen}
+            handlePopUpClose={handlePopUpClose}
+        />
+    ) : (
         <S.NavbarContainer>
             <S.Container>
                 <S.LogoWrapper>
@@ -59,10 +74,10 @@ const Navbar = () => {
                             <SquareButton
                                 width={'124px'}
                                 height={'30px'}
-                                padding={'0'}
+                                fontSize={'16px'}
                                 onClick={() => navigate('/login')}
                             >
-                                <span style={{ fontSize: '16px' }}>로그인</span>
+                                로그인
                             </SquareButton>
                         )}
                     </S.ButtonWrapper>
