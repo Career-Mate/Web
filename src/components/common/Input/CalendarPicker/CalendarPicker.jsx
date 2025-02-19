@@ -33,6 +33,7 @@ const CalendarPicker = ({ width, startDate, endDate, onStartDateChange, onEndDat
                     selectsStart
                     placeholderText="시작 날짜를 선택해주세요"
                     dateFormat="yyyy년 MM월 dd일"
+                    maxDate={endDate}
                 />
             </S.DateInput>
 
