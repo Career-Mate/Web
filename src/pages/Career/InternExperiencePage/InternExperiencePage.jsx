@@ -8,11 +8,14 @@ import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 import MobileAccountPopup from '../../../components/common/Popups/MobileAccountPopup/MobileAccountPopup';
 
 const InternExperiencePage = ({ setActiveScreen }) => {
-    const { data, setData, canSave, handleSave, isPopup, handlePopupClose } = useTemplateData('INTERN_EXPERIENCE');
+    const { data, setData, canSave, handleSave, isPopup, handlePopupClose, handleAutoSave } =
+        useTemplateData('INTERN_EXPERIENCE');
+
     const { progression, nextSummaryProgress } = useProgressBar(1);
     const isMobileScreen = useIsMobileScreen();
 
-    const handleNextClick = () => {
+    const handleNextClick = async () => {
+        await handleAutoSave();
         nextSummaryProgress();
         setActiveScreen(1);
     };

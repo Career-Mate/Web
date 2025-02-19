@@ -5,8 +5,14 @@ export const PageContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 30px;
     position: relative;
+    padding-top: 100px;
+    padding-bottom: 200px;
+
+    @media (max-width: 431px) {
+        padding-top: 50px;
+        padding-bottom: 100px;
+    }
 `;
 
 export const SearchIcon = styled.div`
@@ -14,8 +20,9 @@ export const SearchIcon = styled.div`
     img {
         width: 124px;
         height: 124px;
-        left: calc(50% - 91px / 2 + 1px);
+        left: 50%;
         top: 250px;
+        transform: -50%;
     }
 
     @media (max-width: 1024px) {

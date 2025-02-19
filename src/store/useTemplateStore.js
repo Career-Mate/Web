@@ -207,13 +207,8 @@ export const useTemplateStore = create((set, get) => ({
 
         const { templateType, data } = get();
 
-        if (templateType === 'SUMMARY') {
-            set({ canSave: true });
-            return;
-        }
-
-        if (templateType === 'TECHNICAL_SKILLS') {
-            const isValid = data.every((section) => section.items.every((item) => item.content.trim().length > 0));
+        if (templateType === 'TECHNICAL_SKILLS' || templateType === 'SUMMARY') {
+            const isValid = data.some((section) => section.items.every((item) => item.content.trim().length > 0));
             set({ canSave: isValid });
             return;
         }
@@ -234,10 +229,8 @@ export const useTemplateStore = create((set, get) => ({
         const { templateType, canSave, uploadedImages } = get();
 
         if (!canSave) {
-            if (templateType === 'TECHNICAL_SKILLS') {
+            if (templateType === 'TECHNICAL_SKILLS' || templateType === 'SUMMARY') {
                 alert('항목을 모두 입력해주세요!');
-            } else if (templateType === 'SUMMARY') {
-                alert('저장되었습니다!');
             } else {
                 alert('필수 항목을 모두 입력해주세요!');
             }
@@ -315,6 +308,60 @@ export const useTemplateStore = create((set, get) => ({
         }
     },
 
+    handleAutoSave: async () => {
+        try {
+            const formatDate = (date) => {
+                if (!date) return '';
+                const d = new Date(date);
+                return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+            };
+
+            const requestData = {
+                answerGroupDTOList: get().data.map((section, index) => ({
+                    sequence: index + 1,
+                    answerInfoDTOList: section.items.map((item) => ({
+                        questionId: item.questionId,
+                        content:
+                            item.type === 'date'
+                                ? `${formatDate(item.startDate)}${item.startDate && item.endDate ? '~' : ''}${formatDate(item.endDate)}`
+                                : (item.content ?? ''),
+                    })),
+                })),
+            };
+
+            const formData = new FormData();
+            const jsonBlob = new Blob([JSON.stringify(requestData)], { type: 'application/json' });
+            formData.append('data', jsonBlob);
+
+            const { uploadedImages } = get();
+            if (uploadedImages) {
+                Object.keys(uploadedImages).forEach((key) => {
+                    const imageIndex = key.split('_')[1];
+                    const imageKey = `image_${imageIndex}`;
+                    const imageFile = dataURLtoFile(uploadedImages[key], imageKey);
+                    formData.append(imageKey, imageFile);
+                });
+            }
+
+            const { templateType, hasExistingData } = get();
+
+            let isComplete = hasExistingData;
+            if (!hasExistingData) {
+                isComplete = await fetchCompletionStatus(templateType);
+            }
+
+            if (isComplete) {
+                await updateTemplateData(formData);
+                set({ hasExistingData: true });
+            } else {
+                await saveTemplateData(formData);
+                set({ hasExistingData: true });
+            }
+        } catch (error) {
+            console.error('자동 저장 실패:', error);
+        }
+    },
+
     clearAll: async (sectionIndex) => {
         set((state) => {
             const templateType = state.templateType;
@@ -368,6 +415,17 @@ export const useTemplateStore = create((set, get) => ({
         } catch (error) {
             console.error(`템플릿 ${sectionIndex + 1} 내용 삭제 실패:`, error);
         }
+    },
+
+    isAllTemplatesValid: () => {
+        const { data, templateType } = get();
+        if (['INTERN_EXPERIENCE', 'PROJECT_EXPERIENCE', 'OTHER_ACTIVITIES'].includes(templateType)) {
+            return data.some((section) => section.items.slice(0, 4).every((item) => item.content.trim().length > 0));
+        } else if (['TECHNICAL_SKILLS', 'SUMMARY'].includes(templateType)) {
+            return data.some((section) => section.items.every((item) => item.content.trim().length > 0));
+        }
+
+        return false;
     },
 }));
 

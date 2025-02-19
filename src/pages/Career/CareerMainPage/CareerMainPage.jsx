@@ -1,6 +1,6 @@
-import { useState, useRef, useMemo } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import searchIcon from '../../../assets/MainPage/search.svg';
+import fileIcon from '../../../assets/MainPage/file.svg';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import LoadingPopup from '../../../components/common/Popups/LoadingPopup/LoadingPopup';
 import * as S from './styled/styled';
@@ -9,6 +9,7 @@ import { useProfilePopup } from '../../../hooks/useProfile';
 import { useAuthStore } from '../../../store/authStore';
 import MobileLoadingPopup from '../../../components/common/Popups/MobileLoadingPopup/MobileLoadingPopup';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
+import useContainerStyle from '../../../hooks/useContainerStyle';
 
 const CareerMainPage = () => {
     const navigate = useNavigate();
@@ -31,48 +32,18 @@ const CareerMainPage = () => {
         setIsPopUpVisible(false);
     };
 
-    const isMobileScreen = useIsMobileScreen(430);
-    const isTabletScreen = useIsMobileScreen(1024);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-    const containerStyle = useMemo(() => {
-        if (isMobileScreen) {
-            return {
-                width: '260px',
-                height: '221px',
-                mainFontSize: '18px',
-                detailFontSize: '10px',
-                buttonWidth: '213px',
-                buttonHeight: '39px',
-                buttonFontSize: '14px',
-            };
-        } else if (isTabletScreen) {
-            return {
-                width: '556px',
-                height: '405px',
-                mainFontSize: '30px',
-                detailFontSize: '18px',
-                buttonWidth: '375px',
-                buttonHeight: '60px',
-                buttonFontSize: '20px',
-            };
-        } else {
-            return {
-                width: '523px',
-                height: '313px',
-                mainFontSize: '24px',
-                detailFontSize: '16px',
-                buttonWidth: '372px',
-                buttonHeight: '57px',
-                buttonFontSize: '18px',
-            };
-        }
-    }, [isMobileScreen, isTabletScreen]);
+    const isMobileScreen = useIsMobileScreen(430);
+    const containerStyle = useContainerStyle('full');
 
     return (
         <S.CareerMainPageWrapper>
-            <S.SearchIcon>
-                <img src={searchIcon} alt="돋보기 아이콘" />
-            </S.SearchIcon>
+            <S.fileIcon>
+                <img src={fileIcon} alt="아이콘" />
+            </S.fileIcon>
 
             <InfoContainer
                 type="contentOnly"
@@ -95,9 +66,9 @@ const CareerMainPage = () => {
                 buttons={[
                     {
                         text: '내 프로필 분석하기',
-                        width: containerStyle.buttonWidth,
-                        height: containerStyle.buttonHeight,
-                        fontSize: containerStyle.buttonFontSize,
+                        width: containerStyle.button.buttonWidth,
+                        height: containerStyle.button.buttonHeight,
+                        fontSize: containerStyle.button.buttonFontSize,
                         onClick: handleButtonClick,
                     },
                 ]}

@@ -45,13 +45,14 @@ export const TableRow = styled.div`
     width: 100%;
     height: auto;
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    min-height: 40px;
 
     &:last-child {
         border-bottom: none;
     }
 
     @media (max-width: 431px) {
-        height: 40px;
+        min-height: 15px;
     }
 `;
 
@@ -68,8 +69,8 @@ export const TableCellHeader = styled.div.withConfig({
     font-size: 14px;
     color: rgba(0, 0, 0, 0.8);
     border-right: 2px solid rgba(0, 0, 0, 0.2);
-    border-top-left-radius: ${(props) => (props.isFirstRow ? '12px' : '0')};
-    border-bottom-left-radius: ${(props) => (props.isLastRow ? '12px' : '0')};
+    border-top-left-radius: ${(props) => (props.isFirstRow ? '10px' : '0')};
+    border-bottom-left-radius: ${(props) => (props.isLastRow ? '10px' : '0')};
     white-space: pre-wrap;
 
     @media (max-width: 1024px) {
@@ -113,11 +114,14 @@ export const TableCellData = styled.div.withConfig({
         white-space: normal;
         word-wrap: break-word;
         box-sizing: border-box;
+        word-break: break-word;
+        min-height: 40px;
     }
 
     @media (max-width: 431px) {
         textarea {
             font-size: 8px;
+            min-height: 15px;
         }
 
         padding: 10px;

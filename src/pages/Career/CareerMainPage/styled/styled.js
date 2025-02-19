@@ -5,13 +5,18 @@ export const CareerMainPageWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    min-height: calc(100vh - 100px);
-    padding: 32px 16px;
     background-color: white;
     position: relative;
+    padding-top: 100px;
+    padding-bottom: 200px;
+
+    @media (max-width: 431px) {
+        padding-top: 50px;
+        padding-bottom: 100px;
+    }
 `;
 
-export const SearchIcon = styled.div`
+export const fileIcon = styled.div`
     margin: 20px auto;
     img {
         width: 124px;

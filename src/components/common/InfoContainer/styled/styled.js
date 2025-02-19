@@ -17,6 +17,11 @@ export const InfoContainer = styled.div`
     margin-top: ${(props) => `calc(${props.$top} * 0.5)`};
     margin-bottom: ${(props) => `calc(${props.$top} * 0.7)`};
     position: relative;
+    padding: 80px 0;
+
+    @media (max-width: 431px) {
+        padding: 40px 0;
+    }
 `;
 
 export const LogoWrapper = styled.div`

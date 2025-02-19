@@ -110,7 +110,7 @@ export const SecondContainer = styled.div`
         gap: 15px;
         h1 {
             color: rgba(255, 255, 255, 1);
-            font-size: 36px;
+            font-size: 24px;
             font-weight: 700;
             margin-bottom: 0;
         }
