@@ -5,9 +5,13 @@ export const CareerMainPageWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 32px 16px;
+    padding: 100px 16px;
     background-color: white;
     position: relative;
+
+    @media (max-width: 431px) {
+        padding: 50px;
+    }
 `;
 
 export const fileIcon = styled.div`

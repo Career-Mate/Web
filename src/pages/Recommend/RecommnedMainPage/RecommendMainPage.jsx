@@ -37,8 +37,8 @@ const RecommendMainPage = () => {
     const containerStyle = useMemo(() => {
         if (isMobileScreen) {
             return {
-                width: '280px',
-                height: '300px',
+                width: '260px',
+                height: '280px',
                 mainFontSize: '18px',
                 detailFontSize: '10px',
                 buttonWidth: '213px',
@@ -47,7 +47,7 @@ const RecommendMainPage = () => {
             };
         } else if (isTabletScreen) {
             return {
-                width: '574px',
+                width: '556px',
                 height: '411px',
                 mainFontSize: '30px',
                 detailFontSize: '18px',
@@ -57,11 +57,11 @@ const RecommendMainPage = () => {
             };
         } else {
             return {
-                width: '768px',
-                height: '486px',
-                mainFontSize: '36px',
-                detailFontSize: '20px',
-                buttonWidth: '327px',
+                width: '600px',
+                height: '400px',
+                mainFontSize: '24px',
+                detailFontSize: '16px',
+                buttonWidth: '250px',
                 buttonHeight: '57px',
                 buttonFontSize: '18px',
             };

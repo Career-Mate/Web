@@ -6,4 +6,5 @@ export const CareerSavePageWrapper = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
     background-color: white;
+    padding-top: 50px;
 `;
