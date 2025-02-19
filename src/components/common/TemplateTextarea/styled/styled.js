@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const TextareaWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+`;
 export const StyledTextarea = styled.textarea`
     width: 100%;
     height: 30px;

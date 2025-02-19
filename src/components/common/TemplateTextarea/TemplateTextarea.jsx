@@ -44,7 +44,7 @@ const TemplateTextarea = ({ value, placeholder, onBlur, sectionIndex, itemIndex,
     };
 
     return (
-        <>
+        <S.TextareaWrapper>
             <S.StyledTextarea
                 ref={textareaRef}
                 value={text}
@@ -55,7 +55,7 @@ const TemplateTextarea = ({ value, placeholder, onBlur, sectionIndex, itemIndex,
             <S.CharCount $charCount={charCount} $maxCount={maxCharCount}>
                 {charCount}/{maxCharCount}
             </S.CharCount>
-        </>
+        </S.TextareaWrapper>
     );
 };
 
