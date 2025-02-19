@@ -19,7 +19,7 @@ const ProfileEditPage = () => {
     const isMobileScreen = useIsMobileScreen();
 
     const { data, error } = useFetchProfile();
-    const { fetchUser } = useAuthStore();
+    const { fetchUser, user } = useAuthStore();
 
     useEffect(() => {
         if (data) {
@@ -44,8 +44,8 @@ const ProfileEditPage = () => {
         >
             <S.EditContainer>
                 <S.NoticeWrapper>
-                    <S.NoticeTitle>{profile.name} 님의 프로필</S.NoticeTitle>
-                    <S.NoticeDetail>{profile.name} 님의 정보를 수정해주세요!</S.NoticeDetail>
+                    <S.NoticeTitle>{user.name} 님의 프로필</S.NoticeTitle>
+                    <S.NoticeDetail>{user.name} 님의 정보를 수정해주세요!</S.NoticeDetail>
                 </S.NoticeWrapper>
                 <S.ContentWrapper>
                     <ProfileSetting

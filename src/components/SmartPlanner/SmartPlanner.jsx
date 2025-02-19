@@ -35,6 +35,7 @@ const SmartPlanner = ({ data, onDataChange, page }) => {
                         placeholder={'활동명을 입력하세요'}
                         defaultValue={data[page]?.activityName || ''}
                         onBlur={(value) => handleInputChange(data, onDataChange, page, value)}
+                        isSmartPlanner={true}
                     />
                 )}
 
