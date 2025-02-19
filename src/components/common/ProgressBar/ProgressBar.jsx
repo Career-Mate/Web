@@ -1,7 +1,7 @@
 import * as S from './styled/styled.js';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen.js';
 const ProgressBar = ({ progression, onClickRectangle }) => {
-    const isMobileScreen = useIsMobileScreen(431);
+    const isMobileScreen = useIsMobileScreen(430);
 
     const handleRectangleClick = (index) => {
         if (onClickRectangle) {
