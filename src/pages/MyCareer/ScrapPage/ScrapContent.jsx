@@ -9,6 +9,10 @@ const ScrapContent = ({ onNavigate }) => {
     const { data: scrapContents, isLoading, error } = useGetScrapContents();
     const numbers = Array.from({ length: 3 }, (_, i) => i + 1);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     if (isLoading) {
         return (
             <S.CardWrapper>
@@ -19,10 +23,6 @@ const ScrapContent = ({ onNavigate }) => {
         );
     }
     if (error) return <div>error</div>;
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     return (
         <S.ScrapContainer>
