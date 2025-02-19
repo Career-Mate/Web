@@ -173,6 +173,10 @@ export const useTemplateStore = create((set, get) => ({
             const key = isStartDate ? 'startDate' : 'endDate';
             let currentDate = item[key];
 
+            if (typeof currentDate === 'string') {
+                currentDate = currentDate.replace(/\./g, '-');
+            }
+
             if (currentDate && !(currentDate instanceof Date)) {
                 currentDate = new Date(currentDate);
             }
@@ -239,7 +243,17 @@ export const useTemplateStore = create((set, get) => ({
 
         const formatDate = (date) => {
             if (!date) return '';
+
+            if (typeof date === 'string') {
+                date = date.replace(/\./g, '-');
+            }
+
             const d = new Date(date);
+            if (isNaN(d.getTime())) {
+                console.error('Invalid date format:', date);
+                return '';
+            }
+
             return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
         };
 
@@ -250,7 +264,7 @@ export const useTemplateStore = create((set, get) => ({
                     questionId: item.questionId,
                     content:
                         item.type === 'date'
-                            ? `${formatDate(item.startDate)}${item.startDate && item.endDate ? '~' : ''}${formatDate(item.endDate)}`
+                            ? `${formatDate(item.startDate?.toString().replace(/\./g, '-'))}${item.startDate && item.endDate ? '~' : ''}${formatDate(item.endDate?.toString().replace(/\./g, '-'))}`
                             : (item.content ?? ''),
                 })),
             })),
@@ -323,7 +337,7 @@ export const useTemplateStore = create((set, get) => ({
                         questionId: item.questionId,
                         content:
                             item.type === 'date'
-                                ? `${formatDate(item.startDate)}${item.startDate && item.endDate ? '~' : ''}${formatDate(item.endDate)}`
+                                ? `${formatDate(item.startDate?.toString().replace(/\./g, '-'))}${item.startDate && item.endDate ? '~' : ''}${formatDate(item.endDate?.toString().replace(/\./g, '-'))}`
                                 : (item.content ?? ''),
                     })),
                 })),
