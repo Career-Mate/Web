@@ -7,14 +7,13 @@ import { useJobStore, useFetchUserJobType } from '../../../../store/useJobStore'
 import * as S from './styled/styled';
 import UnderlineButton from '../../../common/Button/UnderlineButton/UnderlineButton';
 import TemplateTextarea from '../../TemplateTextarea/TemplateTextarea';
+import CalendarPicker from '../../Input/CalendarPicker/CalendarPicker';
 
 const Template = ({ pageType, onDataChange }) => {
     useFetchUserJobType();
     const jobType = useJobStore((state) => state.jobType);
     const [tooltipVisible, setTooltipVisible] = useState(false);
     const [uploadedImages, setUploadedImages] = useState({});
-    const [localValues, setLocalValues] = useState({});
-    const [charCounts, setCharCounts] = useState({});
     const MAX_CHAR_COUNT = 300;
 
     const {
@@ -139,40 +138,18 @@ const Template = ({ pageType, onDataChange }) => {
                                         isLastRow={itemIndex === section.items.length - 1}
                                     >
                                         {item.type === 'date' ? (
-                                            <S.DatePickerRow>
-                                                <S.DateInput isInline>
-                                                    <FaCalendarAlt className="calendar-icon" />
-                                                    <DatePicker
-                                                        selected={item.startDate ?? null}
-                                                        onChange={(date) =>
-                                                            handleDateChange(sectionIndex, itemIndex, date, true)
-                                                        }
-                                                        selectsStart
-                                                        startDate={item.startDate ?? null}
-                                                        endDate={item.endDate ?? null}
-                                                        placeholderText="시작 날짜를 선택해주세요."
-                                                        dateFormat="yyyy년 MM월 dd일"
-                                                    />
-                                                </S.DateInput>
-
-                                                <S.DateDivider>|</S.DateDivider>
-
-                                                <S.DateInput isInline>
-                                                    <FaCalendarAlt className="calendar-icon" />
-                                                    <DatePicker
-                                                        selected={item.endDate ?? null}
-                                                        onChange={(date) =>
-                                                            handleDateChange(sectionIndex, itemIndex, date, false)
-                                                        }
-                                                        selectsEnd
-                                                        startDate={item.startDate ?? null}
-                                                        endDate={item.endDate ?? null}
-                                                        minDate={item.startDate ?? null}
-                                                        placeholderText="종료 날짜를 선택해주세요."
-                                                        dateFormat="yyyy년 MM월 dd일"
-                                                    />
-                                                </S.DateInput>
-                                            </S.DatePickerRow>
+                                            <CalendarPicker
+                                                width={'400px'}
+                                                mobileWidth={'200px'}
+                                                startDate={item.startDate ?? null}
+                                                endDate={item.endDate ?? null}
+                                                onStartDateChange={(date) =>
+                                                    handleDateChange(sectionIndex, itemIndex, date, true)
+                                                }
+                                                onEndDateChange={(date) =>
+                                                    handleDateChange(sectionIndex, itemIndex, date, false)
+                                                }
+                                            />
                                         ) : shouldShowImageUpload && item.label === '결과물 / 직접 디자인한 화면' ? (
                                             <S.UploadContainer>
                                                 <S.UploadButton onClick={() => handleButtonClick(key)}>
