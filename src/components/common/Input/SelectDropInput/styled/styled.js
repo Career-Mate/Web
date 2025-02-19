@@ -65,7 +65,15 @@ export const Text = styled.div`
     padding: 0;
     color: #c4c4c4;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 12px;
+
+    @media (max-width: 1024px) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 431px) {
+        font-size: 12px;
+    }
 `;
 
 export const DropButtonWrapper = styled.div`
