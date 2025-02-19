@@ -139,7 +139,6 @@ const Template = ({ pageType, onDataChange }) => {
                                     >
                                         {item.type === 'date' ? (
                                             <CalendarPicker
-                                                width={'400px'}
                                                 startDate={item.startDate ?? null}
                                                 endDate={item.endDate ?? null}
                                                 onStartDateChange={(date) =>
