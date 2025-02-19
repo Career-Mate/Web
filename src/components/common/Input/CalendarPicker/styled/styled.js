@@ -1,27 +1,29 @@
 import styled from 'styled-components';
 
 export const DatePickerRow = styled.div`
-    width: ${(props) => props.width || '600px'};
+    width: ${(props) => (props.type === 'CareerTemplate' ? '400px' : '600px')};
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
     @media (max-width: 431px) {
-        width: ${(props) => props.mobileWidth || '320px'};
+        width: ${(props) => (props.type === 'CareerTemplate' ? '200px' : '320px')};
     }
 `;
+
 export const DateInput = styled.div.withConfig({
     shouldForwardProp: (prop) => prop !== 'isInline',
 })`
     display: flex;
     align-items: center;
     gap: 8px;
+
     @media (max-width: 431px) {
         .react-datepicker {
             font-size: 12px;
             width: 180px;
         }
-
         .react-datepicker__day {
             width: 1.2rem;
             height: 1.2rem;
@@ -44,21 +46,24 @@ export const DateInput = styled.div.withConfig({
             align-items: center;
         }
     }
+
     input {
         font-size: 12px;
         width: 130px;
         border: none;
-        background: ${(props) => (props.isInline ? 'none' : '#ffffff')};
+        background: ${(props) => (props.isInline ? 'none' : '#FFFFFF')};
         padding: ${(props) => (props.isInline ? '0' : '4px 8px')};
         outline: none;
+
         @media (max-width: 1024px) {
             font-size: 16px;
-            width: 200px;
+            width: ${(props) => (props.type === 'CareerTemplate' ? '200px' : '200px')};
         }
+
         @media (max-width: 431px) {
-            font-size: 10px;
-            width: 100px;
-            padding: 0px 0px 5px 0px;
+            font-size: ${(props) => (props.type === 'CareerTemplate' ? '8px' : '10px')};
+            width: ${(props) => (props.type === 'CareerTemplate' ? '80px' : '100px')};
+            padding: 0px 0px 8px 0px;
         }
     }
 `;
@@ -69,8 +74,8 @@ export const Icon = styled.img`
     cursor: pointer;
 
     @media (max-width: 431px) {
-        width: 18px;
-        height: 18px;
+        width: ${(props) => (props.type === 'CareerTemplate' ? '10px' : '18px')};
+        height: ${(props) => (props.type === 'CareerTemplate' ? '10px' : '18px')};
     }
 `;
 
@@ -79,4 +84,9 @@ export const DateDivider = styled.span`
     font-weight: 500;
     color: #d9d9d9;
     padding-right: 0px;
+
+    @media (max-width: 431px) {
+        font-size: ${(props) => (props.type === 'CareerTemplate' ? '8px' : '16px')};
+        padding: 0 5px;
+    }
 `;

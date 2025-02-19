@@ -138,20 +138,18 @@ const Template = ({ pageType, onDataChange }) => {
                                         isLastRow={itemIndex === section.items.length - 1}
                                     >
                                         {item.type === 'date' ? (
-                                            <S.StyledInputWrapper width={'400px'} mobileWidth={'200px'}>
-                                                <CalendarPicker
-                                                    width={'400px'}
-                                                    mobileWidth={'200px'}
-                                                    startDate={item.startDate ?? null}
-                                                    endDate={item.endDate ?? null}
-                                                    onStartDateChange={(date) =>
-                                                        handleDateChange(sectionIndex, itemIndex, date, true)
-                                                    }
-                                                    onEndDateChange={(date) =>
-                                                        handleDateChange(sectionIndex, itemIndex, date, false)
-                                                    }
-                                                />
-                                            </S.StyledInputWrapper>
+                                            <CalendarPicker
+                                                width={'400px'}
+                                                startDate={item.startDate ?? null}
+                                                endDate={item.endDate ?? null}
+                                                onStartDateChange={(date) =>
+                                                    handleDateChange(sectionIndex, itemIndex, date, true)
+                                                }
+                                                onEndDateChange={(date) =>
+                                                    handleDateChange(sectionIndex, itemIndex, date, false)
+                                                }
+                                                type={'CareerTemplate'}
+                                            />
                                         ) : shouldShowImageUpload && item.label === '결과물 / 직접 디자인한 화면' ? (
                                             <S.UploadContainer>
                                                 <S.UploadButton onClick={() => handleButtonClick(key)}>

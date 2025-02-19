@@ -197,24 +197,6 @@ export const IconWrapper = styled.span`
     }
 `;
 
-export const StyledInputWrapper = styled.div.withConfig({
-    shouldForwardProp: (prop) => prop !== 'mobileWidth' && prop !== 'width',
-})`
-    width: ${(props) => props.width || '100%'};
-
-    @media (max-width: 431px) {
-        width: ${(props) => props.mobileWidth || '100px'};
-        padding: 2px 3px;
-        gap: 0px;
-        font-size: 8px;
-
-        input {
-            font-size: 8px;
-            padding: 2px;
-        }
-    }
-`;
-
 export const ButtonWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
