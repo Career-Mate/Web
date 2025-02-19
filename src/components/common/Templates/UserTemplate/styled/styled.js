@@ -197,9 +197,13 @@ export const IconWrapper = styled.span`
     }
 `;
 
-export const StyledInputWrapper = styled.div`
+export const StyledInputWrapper = styled.div.withConfig({
+    shouldForwardProp: (prop) => prop !== 'mobileWidth' && prop !== 'width',
+})`
+    width: ${(props) => props.width || '100%'};
+
     @media (max-width: 431px) {
-        width: 200px;
+        width: ${(props) => props.mobileWidth || '100px'};
         padding: 2px 3px;
         gap: 0px;
         font-size: 8px;
