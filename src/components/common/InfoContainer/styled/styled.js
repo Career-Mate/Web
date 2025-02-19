@@ -14,7 +14,7 @@ export const InfoContainer = styled.div`
     align-items: center;
     justify-content: center;
     overflow: visible;
-    margin-top: ${(props) => `calc(${props.$top} * 0.5)`};
+    margin-top: ${(props) => `calc(${props.$top} * 0.8)`};
     margin-bottom: ${(props) => `calc(${props.$top} * 0.7)`};
     position: relative;
 `;
