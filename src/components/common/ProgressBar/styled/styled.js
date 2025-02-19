@@ -63,8 +63,10 @@ export const Rectangle = styled.div`
                 return 'border-radius: 0;';
         }
     }}
-
-    @media (max-width:1024px) {
+    &:hover {
+        cursor: pointer;
+    }
+    @media (max-width: 1024px) {
         width: 30px;
         height: 10px;
     }
