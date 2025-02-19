@@ -9,6 +9,7 @@ const ProfileSettingPage = () => {
     const { canSave, emailError, profile, handleProfileFieldChange } = useProfile();
     const mutation = useSaveProfile(profile);
     const isMobileScreen = useIsMobileScreen(430);
+    const isTabScreen = useIsMobileScreen(1024);
 
     const handleSave = async () => {
         if (!canSave) {
@@ -27,7 +28,7 @@ const ProfileSettingPage = () => {
             <InfoContainer
                 type={'titleTextOnly'}
                 width={'619px'}
-                height={'970px'}
+                height={isTabScreen ? '850px' : '750px'}
                 showTitleText={true}
                 mainText={
                     <S.SettingsWrapper>
