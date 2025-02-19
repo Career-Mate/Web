@@ -32,7 +32,7 @@ const OtherExperiencePage = ({ setActiveScreen }) => {
                     <S.Title>3. 기타 활동</S.Title>
                     <S.Subtitle>※ 최대 2개까지 작성할 수 있어요.</S.Subtitle>
                 </S.TitleGroup>
-                <ProgressBar progression={progression} />
+                <ProgressBar progression={progression} onClickRectangle={setActiveScreen} />
             </S.HeaderWrapper>
 
             <S.TemplateWrapper>
