@@ -5,11 +5,13 @@ export const PageContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 100px 0;
     position: relative;
+    padding-top: 100px;
+    padding-bottom: 200px;
 
     @media (max-width: 431px) {
-        padding: 30px;
+        padding-top: 50px;
+        padding-bottom: 100px;
     }
 `;
 
