@@ -33,6 +33,11 @@ export const LogoWrapper = styled.div`
     justify-content: left;
     align-items: flex-end;
     height: 105%;
+
+    @media (max-width: 900px) {
+        width: 200px;
+        height: 96%;
+    }
 `;
 
 export const Logo = styled.img`
