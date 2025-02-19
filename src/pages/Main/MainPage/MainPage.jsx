@@ -56,6 +56,10 @@ const MainPage = () => {
         }
     }, [isLogin, data]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const isMobileScreen = useIsMobileScreen(430);
     const buttonWidth = isMobileScreen ? '240px' : '400px';
     const buttonHeight = isMobileScreen ? '41px' : '85px';

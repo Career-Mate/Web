@@ -28,7 +28,7 @@ export const TitleWrapper = styled.div.withConfig({
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 24px 24px;
+    padding: 16px 10px;
     border-radius: 20px 20px 0 0;
     cursor: pointer;
     pointer-events: auto;
@@ -61,8 +61,8 @@ export const TitleWrapper = styled.div.withConfig({
 export const PinIcon = styled.img.withConfig({
     shouldForwardProp: (prop) => prop !== 'isSelected',
 })`
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     visibility: ${({ isSelected }) => (isSelected ? 'visible' : 'hidden')};
 
     @media (max-width: 431px) {
@@ -75,7 +75,7 @@ export const Title = styled.span.withConfig({
     shouldForwardProp: (prop) => prop !== 'isSelected',
 })`
     width: fit-content;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     color: ${({ isSelected }) => (isSelected ? '#000000' : '#aaa')};
     text-align: center;
@@ -87,7 +87,7 @@ export const Title = styled.span.withConfig({
 `;
 
 export const Highlight = styled.span`
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     background-color: #aaffda;
 
@@ -137,7 +137,7 @@ export const EmptyMessage = styled.p`
     min-height: 350px;
     color: #c4c8ce;
     font-weight: 500;
-    font-size: 32px;
+    font-size: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
