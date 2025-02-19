@@ -13,6 +13,7 @@ export const useTemplateData = (templateType) => {
         handleSave,
         canSave,
         clearAll,
+        handleAutoSave,
         isPopup,
         handlePopupClose,
     } = useTemplateStore();
@@ -34,6 +35,7 @@ export const useTemplateData = (templateType) => {
         isLoading,
         isError,
         clearAll,
+        handleAutoSave,
         isPopup,
         handlePopupClose,
     };

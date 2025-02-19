@@ -15,18 +15,18 @@ const AccountPopup = ({ type, onCancel, onConfirm }) => {
                     </S.TextWrapper>
                     <S.ButtonWrapper>
                         <SquareButton
-                            width="95px"
-                            height="48px"
-                            padding="0px"
+                            width="70px"
+                            height="38px"
+                            fontSize="16px"
                             backgroundColor={type === '로그아웃' ? 'grey' : 'green'}
                             onClick={onCancel}
                         >
                             취소
                         </SquareButton>
                         <SquareButton
-                            width="130px"
-                            height="48px"
-                            padding="0px"
+                            width="90px"
+                            height="38px"
+                            fontSize="16px"
                             backgroundColor={type === '로그아웃' ? 'green' : 'grey'}
                             onClick={onConfirm}
                         >

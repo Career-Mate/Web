@@ -3,10 +3,12 @@ import UnderlineButton from '../../../components/common/Button/UnderlineButton/U
 import ContentCardSkeleton from '../../../components/SkeletonUi/ContentCardSkeleton/ContentCardSkeleton';
 import { useGetScrapContents } from '../../../apis/Scrap/Content/ContentScrapApi';
 import * as S from './styled/styled';
+import { useEffect } from 'react';
 
 const ScrapContent = ({ onNavigate }) => {
     const { data: scrapContents, isLoading, error } = useGetScrapContents();
     const numbers = Array.from({ length: 3 }, (_, i) => i + 1);
+
     if (isLoading) {
         return (
             <S.CardWrapper>
@@ -17,6 +19,11 @@ const ScrapContent = ({ onNavigate }) => {
         );
     }
     if (error) return <div>error</div>;
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <S.ScrapContainer>
             {scrapContents && scrapContents.length > 0 ? (

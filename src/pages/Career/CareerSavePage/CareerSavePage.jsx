@@ -2,53 +2,25 @@ import { useNavigate } from 'react-router-dom';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import * as S from './styled/styled';
 import { useAuthStore } from '../../../store/authStore';
-import { useMemo } from 'react';
+import { useEffect } from 'react';
+import useContainerStyle from '../../../hooks/useContainerStyle';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const CareerSavePage = () => {
     const { user } = useAuthStore();
     const navigate = useNavigate();
 
+    const isMobileScreen = useIsMobileScreen(430);
+
     const handleNavigation = (path) => {
         navigate(path);
     };
 
-    const isMobileScreen = useIsMobileScreen(430);
-    const isTabletScreen = useIsMobileScreen(1024);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-    const containerStyle = useMemo(() => {
-        if (isMobileScreen) {
-            return {
-                width: '280px',
-                height: '296px',
-                mainFontSize: '16px',
-                detailFontSize: '9px',
-                buttonWidth: '232px',
-                buttonHeight: '39px',
-                buttonFontSize: '12px',
-            };
-        } else if (isTabletScreen) {
-            return {
-                width: '646px',
-                height: '338px',
-                mainFontSize: '26px',
-                detailFontSize: '20px',
-                buttonWidth: '260px',
-                buttonHeight: '57px',
-                buttonFontSize: '18px',
-            };
-        } else {
-            return {
-                width: '748px',
-                height: '373px',
-                mainFontSize: '24px',
-                detailFontSize: '16px',
-                buttonWidth: '330px',
-                buttonHeight: '57px',
-                buttonFontSize: '18px',
-            };
-        }
-    }, [isMobileScreen, isTabletScreen]);
+    const containerStyle = useContainerStyle('half');
 
     return (
         <S.CareerSavePageWrapper>
@@ -71,17 +43,17 @@ const CareerSavePage = () => {
                 buttons={[
                     {
                         text: '채용 공고 추천 받기',
-                        width: containerStyle.buttonWidth,
-                        height: containerStyle.buttonHeight,
-                        fontSize: containerStyle.buttonFontSize,
+                        width: containerStyle.button.buttonWidth,
+                        height: containerStyle.button.buttonHeight,
+                        fontSize: containerStyle.button.buttonFontSize,
                         backgroundColor: 'deepgreen',
                         onClick: () => handleNavigation('/recommend'),
                     },
                     {
                         text: '메인화면으로 돌아가기',
-                        width: containerStyle.buttonWidth,
-                        height: containerStyle.buttonHeight,
-                        fontSize: containerStyle.buttonFontSize,
+                        width: containerStyle.button.buttonWidth,
+                        height: containerStyle.button.buttonHeight,
+                        fontSize: containerStyle.button.buttonFontSize,
                         backgroundColor: 'grey',
                         onClick: () => handleNavigation('/'),
                     },
