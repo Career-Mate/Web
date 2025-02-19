@@ -23,19 +23,19 @@ export const TabWrapper = styled.div`
 export const TabButton = styled.div.withConfig({
     shouldForwardProp: (prop) => prop !== 'isActive',
 })`
-    width: 220px;
+    width: 200px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 24px 24px;
+    padding: 20px 0;
     border-radius: 20px 20px 0 0;
     cursor: pointer;
     pointer-events: auto;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 700;
-    line-height: 36px;
+    line-height: 28px;
 
     background-color: ${({ isActive }) => (isActive ? '#f7f8f9' : 'transparent')};
     color: ${({ isActive }) => (isActive ? '#000' : ' #C4C8CE')};

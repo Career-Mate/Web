@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import * as S from './styled/styled';
 import { useAuthStore } from '../../../store/authStore';
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import useIsMobileScreen from '../../../hooks/useIsMobileScreen';
 
 const CareerSavePage = () => {
@@ -12,6 +12,10 @@ const CareerSavePage = () => {
     const handleNavigation = (path) => {
         navigate(path);
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const isMobileScreen = useIsMobileScreen(430);
     const isTabletScreen = useIsMobileScreen(1024);

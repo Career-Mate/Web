@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo } from 'react';
+import { useState, useRef, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import fileIcon from '../../../assets/MainPage/file.svg';
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
@@ -30,6 +30,10 @@ const CareerMainPage = () => {
         clearTimeout(timeoutId.current);
         setIsPopUpVisible(false);
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const isMobileScreen = useIsMobileScreen(430);
     const isTabletScreen = useIsMobileScreen(1024);

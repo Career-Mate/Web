@@ -40,7 +40,7 @@ const RecommendJobPage = ({ user }) => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [currentPage, sortType]);
+    }, [currentPage]);
 
     const renderJobPostingCards = () =>
         jobs.length > 0 ? (

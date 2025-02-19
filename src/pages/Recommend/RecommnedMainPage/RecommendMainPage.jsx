@@ -1,7 +1,7 @@
 import InfoContainer from '../../../components/common/InfoContainer/InfoContainer';
 import LoadingPopup from '../../../components/common/Popups/LoadingPopup/LoadingPopup';
 import { useNavigate } from 'react-router-dom';
-import { useMemo, useState, useRef } from 'react';
+import { useMemo, useState, useRef, useEffect } from 'react';
 import { useProfilePopup } from '../../../hooks/useProfile';
 import ProfilePopup from '../../../components/common/Popups/ProfilePopup/ProfilePopup';
 import { useAuthStore } from '../../../store/authStore';
@@ -30,6 +30,10 @@ const RecommendMainPage = () => {
         clearTimeout(timeoutId.current);
         setIsPopupOpen(false);
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const isMobileScreen = useIsMobileScreen(430);
     const isTabletScreen = useIsMobileScreen(1024);
