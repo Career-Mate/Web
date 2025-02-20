@@ -4,7 +4,7 @@ import Calendar from '../../../../assets/calendar.svg';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const CalendarPicker = ({ width, startDate, endDate, onStartDateChange, onEndDateChange }) => {
+const CalendarPicker = ({ width, startDate, endDate, onStartDateChange, onEndDateChange, type }) => {
     const startDatePickerRef = useRef(null);
     const endDatePickerRef = useRef(null);
 
@@ -16,13 +16,14 @@ const CalendarPicker = ({ width, startDate, endDate, onStartDateChange, onEndDat
     const isDateObject = (date) => date instanceof Date && !isNaN(date);
 
     return (
-        <S.DatePickerRow width={width}>
-            <S.DateInput isInline>
+        <S.DatePickerRow width={width} type={type}>
+            <S.DateInput isInline type={type}>
                 <S.Icon
                     src={Calendar}
                     width={'26px'}
                     height={'26px'}
                     onClick={() => startDatePickerRef.current.setFocus()}
+                    type={type}
                 />
                 <DatePicker
                     ref={startDatePickerRef}
@@ -37,14 +38,15 @@ const CalendarPicker = ({ width, startDate, endDate, onStartDateChange, onEndDat
                 />
             </S.DateInput>
 
-            <S.DateDivider>|</S.DateDivider>
+            <S.DateDivider type={type}>|</S.DateDivider>
 
-            <S.DateInput isInline>
+            <S.DateInput isInline type={type}>
                 <S.Icon
                     src={Calendar}
                     width={'26px'}
                     height={'26px'}
                     onClick={() => endDatePickerRef.current.setFocus()}
+                    type={type}
                 />
                 <DatePicker
                     ref={endDatePickerRef}
