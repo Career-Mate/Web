@@ -15,8 +15,8 @@ export const useSelectDrop = (defaultValue) => {
     };
 
     const onClick = (option, currentValue, onChange) => {
-        const newValue = currentValue === option ? '' : option; // 선택 시 같은 값이면 해제
-        onChange(newValue); // 부모에서 상태 업데이트
+        const newValue = currentValue === option ? '' : option;
+        onChange(newValue);
         setIsOpen(false);
     };
 
