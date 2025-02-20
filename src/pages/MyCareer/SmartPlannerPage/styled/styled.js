@@ -7,6 +7,10 @@ export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 300px;
+
+    @media (max-width: 1024px) {
+        margin-left: 70px;
+    }
     @media (max-width: 431px) {
         margin: 70px 0px 95px 0px;
         align-items: center;
