@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import RecommendMainPage from './pages/Recommend/RecommnedMainPage/RecommendMainPage';
@@ -98,10 +99,10 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-    return (
-        <>
-            <RouterProvider router={router} />
-        </>
-    );
+    useEffect(() => {
+        document.title = 'Career Mate';
+    }, []);
+
+    return <RouterProvider router={router} />;
 }
 export default App;
