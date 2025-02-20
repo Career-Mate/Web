@@ -14,8 +14,9 @@ export const useSelectDrop = (defaultValue) => {
         setIsOpen((prev) => !prev);
     };
 
-    const onClick = (option) => {
-        setSelectedOption(selectedOption === option ? '' : option);
+    const onClick = (option, currentValue, onChange) => {
+        const newValue = currentValue === option ? '' : option; // 선택 시 같은 값이면 해제
+        onChange(newValue); // 부모에서 상태 업데이트
         setIsOpen(false);
     };
 

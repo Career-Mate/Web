@@ -25,10 +25,7 @@ const SelectDropInput = ({ label, errorMessage, optionData, boxwidth, boxheight,
                             {optionData.map((option) => (
                                 <S.Option
                                     key={option}
-                                    onClick={() => {
-                                        onClick(option);
-                                        onChange(option);
-                                    }}
+                                    onClick={() => onClick(option, value, onChange)}
                                     $selected={selectedOption === option}
                                 >
                                     {option}
