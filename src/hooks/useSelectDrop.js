@@ -14,8 +14,9 @@ export const useSelectDrop = (defaultValue) => {
         setIsOpen((prev) => !prev);
     };
 
-    const onClick = (option) => {
-        setSelectedOption(selectedOption === option ? '' : option);
+    const onClick = (option, currentValue, onChange) => {
+        const newValue = currentValue === option ? '' : option;
+        onChange(newValue);
         setIsOpen(false);
     };
 

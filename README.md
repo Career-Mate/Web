@@ -1,41 +1,35 @@
-# 💚 Career-Mate Frontend
+# 💚 Career-Mate
+## 📍 프로젝트 소개
 
-## **📍 Setting**
+커리어 메이트 (Career Mate) : 커리어 성장 과정을 함께할 동반자 👫
+> 지원하는 직무에 딱 맞는 커리어 정리 템플릿과 템플릿 분석을 통한 채용 공고를 추천해주는 서비스
+<br>
 
-1. 저장소 복제 (clone)
-    
-    ```
-    git clone [깃허브 주소]
-    git init
-    git remote add origin [중앙 remote repository URL]
-    ```
-    
-2. 본인 브랜치로 이동
-    
-    💡초기 develop 브랜치에서 각자 feature 브랜치 만드는 방법
-    
-    ```
-    git branch [내가 만든 브랜치명] develop
-    git checkout [내가 만든 브랜치명]
-    // 위의 두 명령을 합하면
-    git checkout -b [내가 만든 브랜치명] develop
-    ```
-    
-    ex) login 기능을 추가할 브랜치면 [내가 만든 브랜치명]을 feature/login 으로!
-    
-    ```
-    git checkout [브랜치명]
-    ```
-    
-3. 작업 후 코드 커밋 및 푸시
-    
-    ```
-    git add .
-    git commit -m "[커밋 메세지]"
-    git push
-    ```
+## 📍 개발 환경
+- 언어 : React (JavaScript), styled-components
+- 상태 관리 : Tanstack-query, Zustand
+- 버전 및 이슈관리 : Github Issue templates, Pull Request templates
+- 배포 : Vercel
+- 협업 툴 : Slack, Discord, Notion
+  
+<br>
 
-## **📍 Pull Request Convention**
+## 📍 역할 담당
+
+| 이름 | 담당 업무 |
+| --- | --- |
+| 리아/이아현(Web 파트장) | 커리어 정리하기 전체 (인턴 경험, 프로젝트 경험, 기타 활동, 보유기술 및 업무성향, 최종정리) |
+| 민/구민석  | 추천공고-기업정보, 나의 커리어-SMART 커리어 플래너 |
+| 윌로우/류남경 | 추천공고-공고 및 콘텐츠 불러오기, 나의 커리어-스크랩한 콘텐츠 및 추천공고 확인하기 |
+| 나나/이가영 | 메인화면, 로그인, 나의 커리어-프로필 수정하기 |
+<br>
+
+## 📍 Git flow
+- main, develop, release, feature 브랜치로 나눠서 개발
+<br>
+
+
+## 📍 Pull Request Convention
 
 ```
 ## #️⃣ 관련 이슈
@@ -62,24 +56,21 @@
 - 특정 코드 영역에 대한 피드백 요청
 ```
 
----
 
 - PR 올릴 때, 위의 템플릿에 내용 적어주세요!
 - Reviewers는 파트장 포함 최소 2명으로 설정 ⇒ 코드 리뷰 반영 및 approve 후에 develop 브랜치로 merge 가능
-- PR 제목 양식 : [Feat] 개발 내용 요약
-
-ex) `[Feat] Button 컴포넌트 구현`
+<br>
 
 ## 📍 Code Convention
 
-- 변수 : 카멜 케이스(camelCase)
-- 컴포넌트 : 파스칼 케이스(PascalCase) ex) Button.jsx, SideBar.jsx
-- 함수 : 카멜 케이스(camelCase) ex) checkAvailableDate.js
-- 커스텀 훅 : 카멜 케이스(camelCase) ex) useShareWork.js..
-- 상수 : 대문자
-- 스타일 : 케밥 케이스(kebab-case)
+- 변수 : camelCase
+- 컴포넌트 : PascalCase ex) Button.jsx, SideBar.jsx
+- 함수 : camelCase ex) checkAvailableDate.js
+- 커스텀 훅 : camelCase ex) useShareWork.js..
+- 스타일 : kebab-case
+<br>
 
-## **📍 Commit Convention**
+## 📍 Commit Convention
 
 - feat : 새로운 기능 추가
 - setting: 빌드 수행, 패키지 설치, 환경 설정 수정 등
