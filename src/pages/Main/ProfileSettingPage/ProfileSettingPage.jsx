@@ -28,7 +28,7 @@ const ProfileSettingPage = () => {
             <InfoContainer
                 type={'titleTextOnly'}
                 width={'619px'}
-                height={isTabScreen ? '850px' : '750px'}
+                height={isTabScreen ? '900px' : '800px'}
                 showTitleText={true}
                 mainText={
                     <S.SettingsWrapper>
