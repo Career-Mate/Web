@@ -6,7 +6,7 @@ export const MainContainer = styled.div`
     height: fit-content;
     display: flex;
     flex-direction: column;
-    margin-left: 70px;
+    margin-left: 300px;
     @media (max-width: 431px) {
         margin: 70px 0px 95px 0px;
         align-items: center;
